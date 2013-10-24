@@ -1,0 +1,42 @@
+#+TITLE: This Is My Font Test Page
+#+AUTHOR: Scinart
+
+(insert (format "%s" (list (frame-char-width) (frame-char-height))))
+
+(8 19)	(set-face-attribute 'default nil :font "文泉驿等宽正黑")
+(9 19)	(set-face-attribute 'default nil :font "Consolas")
+(9 17)	(set-face-attribute 'default nil :font "Anonymous Pro")
+(10 19)	(set-face-attribute 'default nil :font "DejaVu Sans Mono")
+(10 20)	no italic (set-face-attribute 'default nil :font "Monaco")
+(10 19)	no italic (set-face-attribute 'default nil :font "Droid Sans Mono") 
+(7 23)	no italic (set-face-attribute 'default nil :font "Comic Sans MS")
+(15 21)	no italic (set-face-attribute 'default nil :font "Code2000")
+(6 19)	(set-face-attribute 'default nil :font "Times New Roman")
+# test l1iI
+  (((( ))))
+l1iI
+
+(0) (1) (2) (3) (4) (5) (6) (7) (9) (10) (11) 
+
+the quick brown fox jumps over the lazy (8) dog
+/the quick brown fox jumps over the lazy dog/
+*the quick brown fox jumps over the lazy dog*
+
+Illegal1 = O0
+#+begin_src lisp
+(defun sci-copy-line (arg)
+  "Copy lines (as many as prefix argument) in the kill ring"
+  (interactive "p")
+  (let ((line-head (line-beginning-position))
+        (line-end (line-end-position arg)))
+    (kill-ring-save line-head line-end)
+    (message "%d line%s copied" arg (if (= 1 arg) "" "s"))))
+#+end_src
+
+
+
+
+
+# Local Variables:
+# eval:(progn (save-excursion (hs-minor-mode t) (let ((hs-state '((1155 1155 nil) (1115 1115 nil) (1071 1071 nil) (1025 1025 nil) (1005 1005 nil) (944 944 nil) (917 917 nil) (900 900 nil) (886 886 nil) (885 885 nil) (839 839 nil) (793 793 nil) (745 745 nil) (744 744 nil) (697 697 nil) (696 696 nil) (691 691 nil) (679 679 nil) (667 667 nil) (602 602 nil) (533 533 nil) (460 460 nil) (383 383 nil) (381 382 nil) (1 1 nil) (1 1 nil) (36 36 nil) (54 54 nil) (55 55 nil) (124 124 nil) (125 125 nil) (126 126 nil) (185 185 nil) (249 249 nil) (316 316 nil) (334 335 nil))) (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (not (null (caddr i))) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (message "%s" "really")))
+# End:
