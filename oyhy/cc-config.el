@@ -1,5 +1,5 @@
 ;;; File created at 2013-05-02 Thursday 20:24:12
-;;; Time-stamp: <2013-05-02 20:28:54 scinart>
+;;; Time-stamp: <2013-11-13 05:16:47 root>
 ;;; Adjust indents of cc-mode.
 (setq indent-tabs-mode nil)
 (setq c-default-style "linux"
