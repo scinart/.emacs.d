@@ -1,12 +1,23 @@
 ;;; -*- coding:utf-8 -*-
 ;;; new-bindings.el ---
-;;; Time-stamp: <2013-09-18 17:30:37 scinart>
+;;; Time-stamp: <2013-11-19 23:42:05 scinart>
 ;;; Code:
-(setq w32-pass-lwindow-to-system nil
-      w32-pass-apps-to-system nil
-      w32-lwindow-modifier 'hyper
-      ;; w32-apps-modifier 'super
-      )
+
+(cond
+ ((string-equal system-type "windows-nt") ; Microsoft Windows
+  (setq w32-pass-lwindow-to-system nil
+	w32-pass-apps-to-system nil
+	w32-lwindow-modifier 'super
+	;; w32-apps-modifier 'super
+	))
+ ((string-equal system-type "darwin")   ; Mac OS X
+  (progn
+    (message "Mac OS X")))
+ ((string-equal system-type "gnu/linux") ; linux
+  (define-key key-translation-map (kbd "<menu>") (kbd "<apps>"))
+  )
+ )
+
 ;;; aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 ;;; glabol unset key
 (progn "glabol unset key"
@@ -177,11 +188,11 @@
 
 ;;; eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
 ;; multiple cursors
-(global-set-key (kbd "H-.") 'mc/mark-next-like-this)
-(global-set-key (kbd "H-,") 'mc/mark-previous-like-this)
-(global-set-key (kbd "H-;") 'mc/mark-all-like-this)
-(global-set-key (kbd "C-H-SPC") 'set-rectangular-region-anchor)
-(global-set-key (kbd "C-H-;") 'mc/edit-lines)
+(global-set-key (kbd "s-.") 'mc/mark-next-like-this)
+(global-set-key (kbd "s-,") 'mc/mark-previous-like-this)
+(global-set-key (kbd "s-;") 'mc/mark-all-like-this)
+(global-set-key (kbd "C-s-SPC") 'set-rectangular-region-anchor)
+(global-set-key (kbd "C-s-;") 'mc/edit-lines)
 
 ;;; eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
 ;;; buffer view narrow
@@ -214,8 +225,8 @@
 (global-set-key (kbd "C-x z") 'repeat)
 (global-set-key (kbd "C-x Z") 'repeat-complex-command)
 (global-set-key (kbd "C-x 5 2") 'make-frame-command)
-(global-set-key (kbd "C-H-l") 'screensaver)
-(global-set-key (kbd "H-'") 'start-button)
+(global-set-key (kbd "C-s-l") 'screensaver)
+(global-set-key (kbd "s-'") 'start-button)
 (global-set-key (kbd "C-x C-c") 'my-exit)
 (global-set-key (kbd "C-x <return> o") 'open-this-buffer-in-explorer)
 (global-set-key (kbd "C-x C-<return> o") 'open-this-buffer-in-explorer)

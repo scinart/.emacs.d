@@ -1,5 +1,5 @@
 ;;; minor-mode.el ---
-;;; Time-stamp: <2013-10-20 04:39:57 scinart>
+;;; Time-stamp: <2013-11-19 23:26:10 root>
 ;;; Date created: 2013-04-30 Tuesday 23:11:44
 ;;; Code:
 

@@ -13,15 +13,15 @@ e.g. Sunday, September 17, 2000.
  (format-time-string \"%x %A \")"
   (interactive)                 ; permit invocation in minibuffer
 ;  (insert (format-time-string "%A, %B %e, %Y" (current-time)))
-  (insert (format-time-string "%x %A " (time-add (current-time)  (seconds-to-time 0)))))
+  (insert (format-time-string "%Y-%m-%d %A ")))
 (defun tomorrow ()
   "Insert string for tomorrow's date nicely formatted in American style,
 e.g. Sunday, September 17, 2000."
   (interactive)                 ; permit invocation in minibuffer
-  (insert (format-time-string "%x" (time-add (current-time)  (seconds-to-time 86400)))))
+  (insert (format-time-string "%Y-%m-%d %A" (time-add (current-time)  (seconds-to-time 86400)))))
 (defun yesterday ()
   (interactive)                 ; permit invocation in minibuffer
-  (insert (format-time-string "%x" (time-add (current-time)  (seconds-to-time -86400)))))
+  (insert (format-time-string "%Y-%m-%d %A" (time-add (current-time)  (seconds-to-time -86400)))))
 (defun dnt ()
   "Insert Date aNd Time\n(format-time-string \"%x %A %T\")"
   (interactive)
@@ -48,7 +48,7 @@ e.g. Sunday, September 17, 2000."
   (interactive)
   (insert (format-time-string "%A")))
 
-(setq current-date-time-format "%x %T")
+(setq current-date-tim-eformat "%x %T")
 (setq current-time-format "%a %H:%M:%S")
 
 
