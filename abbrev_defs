@@ -51,6 +51,8 @@
 
 (define-abbrev-table 'dns-mode-abbrev-table '())
 
+(define-abbrev-table 'doctex-mode-abbrev-table '())
+
 (define-abbrev-table 'dsssl-mode-abbrev-table '())
 
 (define-abbrev-table 'emacs-lisp-byte-code-mode-abbrev-table '())
@@ -59,7 +61,7 @@
   '(
     ("da" "defalias" nil 3)
     ("dc" "defconst" nil 1)
-    ("dk" "define-key" nil 1)
+    ("dk" "define-key" nil 4)
     ("dv" "defvar" nil 6)
    ))
 
@@ -71,6 +73,7 @@
     ("bible" "Bible" nil 10)
     ("dcdx" "Date created: <>" nil 1)
     ("dont" "don't" nil 1)
+    ("dp" "defparameter" nil 2)
     ("emcas" "Emacs" nil 3)
     ("funcitno" "function" nil 2)
     ("funciton" "function" nil 3)
@@ -105,10 +108,12 @@
 
 (define-abbrev-table 'jython-mode-abbrev-table '())
 
+(define-abbrev-table 'latex-mode-abbrev-table '())
+
 (define-abbrev-table 'lisp-mode-abbrev-table
   '(
     ("dc" "defconstant" nil 2)
-    ("df" "defun" nil 30)
+    ("df" "defun" nil 32)
     ("dm" "defmacro" nil 3)
     ("ds" "defstruct" nil 1)
    ))
@@ -130,6 +135,8 @@
 (define-abbrev-table 'package-menu-mode-abbrev-table '())
 
 (define-abbrev-table 'pike-mode-abbrev-table '())
+
+(define-abbrev-table 'plain-tex-mode-abbrev-table '())
 
 (define-abbrev-table 'process-menu-mode-abbrev-table '())
 
@@ -161,13 +168,25 @@
 
 (define-abbrev-table 'slime-xref-mode-abbrev-table '())
 
+(define-abbrev-table 'slitex-mode-abbrev-table '())
+
 (define-abbrev-table 'snippet-mode-abbrev-table '())
 
 (define-abbrev-table 'special-mode-abbrev-table '())
 
 (define-abbrev-table 'tabulated-list-mode-abbrev-table '())
 
+(define-abbrev-table 'term-mode-abbrev-table '())
+
+(define-abbrev-table 'tex-mode-abbrev-table '())
+
+(define-abbrev-table 'tex-shell-abbrev-table '())
+
 (define-abbrev-table 'text-mode-abbrev-table '())
+
+(define-abbrev-table 'vc-git-log-edit-mode-abbrev-table '())
+
+(define-abbrev-table 'vc-git-log-view-mode-abbrev-table '())
 
 (define-abbrev-table 'xah-elisp-mode-abbrev-table '())
 

@@ -1,5 +1,5 @@
 ;;; defuns.el ---
-;;; Time-stamp: <2013-10-23 12:18:43 scinart> 
+;;; Time-stamp: <2013-11-19 23:51:51 scinart> 
 ;;; Code:
 
 
@@ -209,12 +209,15 @@ at around 2013-06-04 Tuesday 00:23:22"
    2013-04-18 Thursday 14:27:04"
   (interactive)
   (cond ((eq 'gnu/linux system-type)
-	 (cond ((buffer-file-name)
-		(call-process "gnome-open" nil 0 nil (file-name-directory (buffer-file-name))))
-	       (dired-directory
-		(call-process "gnome-open" nil 0 nil dired-directory))
-	       (t
-		(message "%s" "Buffer Not Recognized as File or Directory"))))
+	 (let ((pro-name "xdg-open" ;; generic
+		;; "gvfs-open" ;;gnome only
+		))
+	   (cond ((buffer-file-name)
+		  (call-process pro-name nil 0 nil (file-name-directory (buffer-file-name))))
+		 (dired-directory
+		  (call-process pro-name nil 0 nil dired-directory))
+		 (t
+		  (message "%s" "Buffer Not Recognized as File or Directory")))))
 	((eq 'windows-nt system-type)
 	 (cond ((buffer-file-name)
 		(w32-shell-execute 1 (file-name-directory (buffer-file-name))))
@@ -942,6 +945,14 @@ param string is not used"
         (setq file (concat "/sudo:root@localhost:" (buffer-file-name)))
         (find-file file))
     (message "Current buffer does not have an associated file.")))
+
+
+(defun replace-string-case-sensitive (FROM-STRING TO-STRING &optional DELIMITED START END)
+  "replace string case sensitive 2013-11-19 Tuesday 22:49:42"
+  (interactive)
+  (let ((case-fold-search nil))
+    (replace-string FROM-STRING TO-STRING DELIMITED START END)))
+
 
 
 ;;;;##########################################################################

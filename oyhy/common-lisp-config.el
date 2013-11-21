@@ -16,7 +16,9 @@
 (setq slime-lisp-implementations
       '((sbcl ("sbcl") :coding-system utf-8-unix)))
 
-
+(if (file-readable-p "/home/scinart/.emacs.d/HyperSpec/")
+    (setf common-lisp-hyperspec-root "/home/scinart/.emacs.d/HyperSpec/")
+  '())
 ;; use C-u M-x Slime
 
 (setq inferior-lisp-program "sbcl")
@@ -30,6 +32,7 @@
 	  (lambda ()
 	    (set (make-local-variable 'lisp-indent-function)
 		 'common-lisp-indent-function)))
+
 
 (require 'inf-lisp)
 ;; old-version not delete
@@ -46,8 +49,15 @@
      (define-key lisp-mode-map (kbd "RET") 'newline-and-indent)
      (define-key lisp-mode-map (kbd "C-c C-t") 'lisp-trace-procedure)
      (define-key lisp-mode-map "\C-\\" (lambda () "insert \'lambda\'" (interactive) (insert "lambda")))
-     (define-key lisp-mode-map (kbd "C-/ C-d") "defun")
-     (define-key lisp-mode-map (kbd "M-c M-e") 'lisp-eval-last-sexp-split-window)))
+     (define-key lisp-mode-map (kbd "C-/") 'hippie-expand)
+     (define-key lisp-mode-map (kbd "M-c M-e") 'lisp-eval-last-sexp-split-window)
+     (define-key lisp-mode-map [remap lisp-eval-last-sexp] 'slime-eval-last-expression)
+     (if (fboundp 'comint-previous-input)
+	 (progn (define-key lisp-mode-map (kbd "M-<up>") 'comint-previous-input)
+		(define-key lisp-mode-map (kbd "M-<down>") 'comint-next-input))
+       '())
+     )
+  )
 (defun lisp-split-window ()
   (let ((slime-buffer (if (buffer-exist "*slime-repl sbcl*")
 			  "*slime-repl sbcl*"

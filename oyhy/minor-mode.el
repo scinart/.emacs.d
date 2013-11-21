@@ -1,5 +1,5 @@
 ;;; minor-mode.el ---
-;;; Time-stamp: <2013-11-15 23:58:48 root>
+;;; Time-stamp: <2013-11-21 02:46:51 scinart>
 ;;; Date created: 2013-04-30 Tuesday 23:11:44
 ;;; Code:
 
@@ -167,7 +167,10 @@
 ;; ****************************************************************
 ;; ido-minor-mode settings
 (add-hook 'ido-minibuffer-setup-hook 'ido-my-keys)
+<<<<<<< HEAD
 (setq ido-default-buffer-method 'selected-window)
+=======
+>>>>>>> 3f929f11ad702cc23020b5e00aac266c6141002e
 (defun ido-my-keys ()
   "My Keybindings for ido
 especially for extending ido-find-file functionality 
