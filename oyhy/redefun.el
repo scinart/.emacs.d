@@ -1,5 +1,5 @@
 ;;; redefun.el
-;;; Time-stamp: <2013-10-23 09:37:45 scinart>
+;;; Time-stamp: <2013-11-23 15:09:12 scinart>
 ;;; date created around 2013-05-04 Saturday
 ;;;;##########################################################################
 ;;;; OVERRIDE SYSTEM FUNCTIONS

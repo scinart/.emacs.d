@@ -1,5 +1,5 @@
 ;;; defuns.el ---
-;;; Time-stamp: <2013-11-19 23:51:51 scinart> 
+;;; Time-stamp: <2013-11-23 15:08:35 scinart> 
 ;;; Code:
 
 
@@ -703,8 +703,9 @@ if cancelable, \\[keyboard-quit] is able to cancels do-after.
 ;;;;    Site-Specific Variables 
 
 ;; See if we're on MS Windows or some other OS
-(defvar mswindows-p (string-match "windows" (symbol-name system-type)))
+(defvar windows-p (string-match "windows" (symbol-name system-type)))
 (defvar macosx-p (string-match "darwin" (symbol-name system-type)))
+(defvar linux-p (string-match "linux" (symbol-name system-type)))
 (defvar use-home (concat (expand-file-name "~") "/"))
 
 ;; the following is defined 2013-06-11 Tuesday 10:35:47
@@ -952,6 +953,15 @@ param string is not used"
   (interactive)
   (let ((case-fold-search nil))
     (replace-string FROM-STRING TO-STRING DELIMITED START END)))
+
+(defun extern (string)
+  "use native application to open [string]"
+  (interactive)
+  (cond (linux-p
+	 (call-process "xdg-open" nil 0 nil string))
+	(windows-p
+	 (w32-shell-execute 1 string))))
+
 
 
 

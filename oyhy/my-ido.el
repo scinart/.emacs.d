@@ -52,6 +52,43 @@
 
 ;; TODO; disable h in ido-buffer etc.
 ;; 2013-05-27 Monday 13:08:07
+;; ****************************************************************
+;; ido-minor-mode settings
+(add-hook 'ido-minibuffer-setup-hook 'ido-my-keys)
+(defun ido-my-keys ()
+  "My Keybindings for ido
+especially for extending ido-find-file functionality
+2013-08-04 Sunday 17:25:03"
+  (define-key ido-completion-map (kbd "<return>") 'ido-exit-minibuffer) ;; for find-file
+  (define-key ido-completion-map (kbd "RET") 'ido-magic-open)
+  (define-key ido-completion-map (kbd "C-M-<return>") 'ido-sudo-open))
+
+(defun ido-magic-open ()
+  "This should be used when ido-minibuffer is active"
+  (interactive)
+  ;;   (let ((i (length ido-text)))
+  ;;     (while (> i 0)
+  ;;       (push (aref ido-text (setq i (1- i))) unread-command-events)))
+  (setq ido-exit 'fallback)
+  (setq ido-fallback-function
+        '(lambda () (interactive)
+           (let ((dir ido-current-directory)
+                 (file (car ido-matches)))
+             (extern (concat dir file)))))
+  (exit-minibuffer))
+
+
+(defun ido-sudo-open ()
+  "Sudo open this buffer 2013-11-23 Saturday 15:44:04 by scinart"
+  (interactive)
+  (setq ido-exit 'fallback)
+  (setq ido-fallback-function
+        '(lambda () (interactive)
+           (let ((dir ido-current-directory)
+                 (file (car ido-matches)))
+             (find-file (concat "/sudo::" dir file)))))
+  (exit-minibuffer))
+
 
 
 (provide 'my-ido)

@@ -8,3 +8,5 @@ elpa/archives/gnu/archive-contents
 elpa/archives/marmalade/archive-contents
 elpa/archives/melpa/archive-contents
 elpa/*.txt
+ac-comphist.dat
+session.*
