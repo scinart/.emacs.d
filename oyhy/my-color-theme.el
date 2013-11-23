@@ -239,5 +239,5 @@ Green on gray7, includes font-lock, show-paren, and ediff."
 
 
 ;; Local Variables:
-;; eval:(progn (hs-minor-mode t) (let ((hs-state '((268 4179 hs) (4582 5248 hs) (5771 9028 hs) (9239 9239 nil) (9305 9305 nil) (9356 9356 nil) (9405 9405 nil) (9438 9438 nil) (9458 9458 nil) (9483 9483 nil) (9506 9506 nil) (9528 9528 nil) (9562 9562 nil) (9582 9582 nil) (9607 9607 nil) (9629 9629 nil) (9652 9652 nil) (9653 9653 nil) (9653 9654 nil) (9677 9678 nil) (9679 9679 nil) (9680 9680 nil) (9681 9681 nil) (9682 9682 nil) (9702 9702 nil) (10535 10535 nil))) (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (not (null (caddr i))) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char 9653) (recenter-top-bottom))
+;; eval:(progn (hs-minor-mode t) (let ((hs-state '((5771 9028 hs) (268 4179 hs) (4582 5248 hs))) (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (car i) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char 1) (recenter-top-bottom))
 ;; End:

@@ -1,5 +1,5 @@
 ;;; my-org.el ---
-;;; Time-stamp: <2013-05-01 21:00:17 scinart>
+;;; Time-stamp: <2013-11-24 00:49:31 scinart>
 ;;; Code:
 
 
@@ -29,3 +29,11 @@
 (add-hook 'org-mode-hook 'my-org-hook)
 
 (provide 'my-org)
+
+
+
+
+
+;; Local Variables:
+;; eval:(progn (hs-minor-mode t) (let ((hs-state 'nil) (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (car i) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char 1) (recenter-top-bottom))
+;; End:

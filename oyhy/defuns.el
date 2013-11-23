@@ -1,5 +1,5 @@
 ;;; defuns.el ---
-;;; Time-stamp: <2013-11-23 15:08:35 scinart> 
+;;; Time-stamp: <2013-11-24 00:37:03 scinart> 
 ;;; Code:
 
 
@@ -963,10 +963,60 @@ param string is not used"
 	 (w32-shell-execute 1 string))))
 
 
+(defun ipv6-mode ()
+  "hosts and proxy changes for ipv6-mode"
+  (interactive)
+  (if (or (file-exists-p "/usr/share/goagent/local/proxy-ipv6.ini")
+	 (file-exists-p "/etc/apt/sources-ipv4.list"))
+      (progn 
+	(ignore-errors 
+	  (rename-file "/usr/share/goagent/local/proxy.ini" "/usr/share/goagent/local/proxy-ipv4.ini"))
+	(ignore-errors
+	  (rename-file "/usr/share/goagent/local/proxy-ipv6.ini" "/usr/share/goagent/local/proxy.ini"))
+	(ignore-errors
+	  (rename-file "/sudo::/etc/apt/sources.list" "/sudo::/etc/apt/sources-ipv4.list"))
+	(ignore-errors
+	  (rename-file "/sudo::/etc/apt/sources-ipv6.list" "/sudo::/etc/apt/sources.list"))
+	(async-shell-command "sudo apt-get update"))
+    (message "already-ipv6-mode")))
+
+(defun ipv4-mode ()
+  "see ipv6-mode"
+  (interactive)
+  (if (file-exists-p "/usr/share/goagent/local/proxy-ipv4.ini")
+      (progn 
+	(ignore-errors 
+	  (rename-file "/usr/share/goagent/local/proxy.ini" "/usr/share/goagent/local/proxy-ipv6.ini"))
+	(ignore-errors
+	  (rename-file "/usr/share/goagent/local/proxy-ipv4.ini" "/usr/share/goagent/local/proxy.ini"))
+	(ignore-errors
+	  (rename-file "/sudo::/etc/apt/sources.list" "/sudo::/etc/apt/sources-ipv6.list"))
+	(ignore-errors
+	  (rename-file "/sudo::/etc/apt/sources-ipv4.list" "/sudo::/etc/apt/sources.list"))
+	(async-shell-command "sudo apt-get update")
+	)
+    
+    (message "already-ipv4-mode")))
+
+(defun goagent ()
+  "start goagent"
+  (interactive)
+  (if (not (buffer-exist "*goagent*"))
+      (progn 
+	(async-shell-command "python /usr/share/goagent/local/proxy.py")
+	(let ((bfn (buffer-name)))
+	  (switch-to-buffer "*Async Shell Command*")
+	  (rename-buffer "*goagent*")
+	  (switch-to-buffer bfn))))
+  (message "olready running"))
+
+
+
+
 
 
 ;;;;##########################################################################
-;;;; Options, Vraiables
+;;;; options, Vraiables
 ;;;;##########################################################################
 
 

@@ -72,5 +72,5 @@
 
 
 ;; Local Variables:
-;; eval:(progn (hs-minor-mode t) (let ((hs-state '((1983 1983 nil) (1982 1982 nil) (1981 1981 nil) (1980 1980 nil) (1901 1901 nil) (1871 1871 nil) (1792 1792 nil) (1790 1790 nil) (1789 1789 nil) (1788 1788 nil) (1765 1765 nil) (1764 1764 nil) (1762 1763 nil) (1025 1025 nil) (1026 1026 nil) (1130 1130 nil) (1152 1152 nil) (1153 1153 nil) (1192 1192 nil) (1246 1246 nil) (1302 1302 nil) (1351 1351 nil) (1352 1352 nil) (1380 1380 nil) (1405 1405 nil) (1457 1457 nil) (1504 1504 nil) (1559 1559 nil) (1573 1573 nil) (1576 1576 nil) (1599 1599 nil) (1629 1629 nil) (1659 1659 nil) (1697 1697 nil) (1718 1718 nil) (1718 1719 nil))) (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (not (null (caddr i))) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char 1763) (recenter-top-bottom))
+;; eval:(progn (hs-minor-mode t) (let ((hs-state 'nil) (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (car i) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char 1) (recenter-top-bottom))
 ;; End:

@@ -1,5 +1,5 @@
 ;;; enabled-commands.el ---
-;;; Time-stamp: <2013-05-01 00:41:30 scinart>
+;;; Time-stamp: <2013-11-24 00:45:11 scinart>
 ;;; Time-created: 2013-05-01 Wednesday 00:40:31
 ;;; Code:
 
@@ -10,7 +10,7 @@
 (put 'downcase-region 'disabled nil)
 
 
-(provide 'enabled-commands.el)
+(provide 'enabled-commands)
 
 ;;;;##########################################################################
 ;;;;  User Options, Variables

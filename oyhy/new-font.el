@@ -124,5 +124,5 @@
 
 
 ;; Local Variables:
-;; eval:(progn (hs-minor-mode t) (let ((hs-state '((3646 3646 nil) (2922 2922 nil) (2946 2946 nil) (2962 2962 nil) (2979 2979 nil) (2983 2983 nil) (2984 2984 nil) (3057 3057 nil) (3058 3058 nil) (3074 3074 nil) (3106 3106 nil) (3124 3124 nil) (3133 3133 nil) (3142 3142 nil) (3155 3155 nil) (3173 3173 nil) (3233 3233 nil) (3260 3260 nil) (3307 3307 nil) (3362 3362 nil) (3363 3363 nil) (3405 3405 nil) (3429 3429 nil) (3458 3458 nil) (3459 3459 nil) (3523 3523 nil) (3561 3561 nil) (3584 3584 nil) (3614 3614 nil) (3645 3645 nil))) (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (not (null (caddr i))) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char 3614) (recenter-top-bottom))
+;; eval:(progn (hs-minor-mode t) (let ((hs-state 'nil) (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (car i) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char 1) (recenter-top-bottom))
 ;; End:

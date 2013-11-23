@@ -2,7 +2,9 @@
 
 ;;; Code:
 
-(provide 'programs)
+(if windows-p
+    (provide 'programs)
+  '())
 
 (defmacro create-program-shortcut (name path &optional docstring normal param)
   "2013-05-26 Sunday 01:24:21 by Scinart"
@@ -118,5 +120,5 @@
 
 
 ;; Local Variables:
-;; eval:(progn (hs-minor-mode t) (let ((hs-state '((371 487 hs) (522 623 hs) (657 756 hs) (789 952 hs) (986 1103 hs) (1136 1214 hs) (1254 1349 hs) (1384 1489 hs) (1525 1640 hs) (1679 1768 hs) (1807 1890 hs) (1927 2050 hs) (2085 2196 hs) (2233 2272 hs) (2470 2563 hs) (2598 2707 hs) (2808 2877 hs) (2914 2973 hs) (3301 3438 hs) (3452 3526 hs))) (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (car i) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char 3242) (recenter-top-bottom))
+;; eval:(progn (hs-minor-mode t) (let ((hs-state '((3477 3551 hs) (3326 3463 hs) (2939 2998 hs) (2833 2902 hs) (396 512 hs) (547 648 hs) (682 781 hs) (814 977 hs) (1011 1128 hs) (1161 1239 hs) (1279 1374 hs) (1409 1514 hs) (1550 1665 hs) (1704 1793 hs) (1832 1915 hs) (1952 2075 hs) (2110 2221 hs) (2258 2297 hs) (2495 2588 hs) (2623 2732 hs))) (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (car i) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char 78) (recenter-top-bottom))
 ;; End:

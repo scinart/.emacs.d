@@ -1,5 +1,5 @@
 ;; zone.el
-;; Time-stamp: <2013-05-05 20:24:15 scinart> 
+;; Time-stamp: <2013-11-24 00:50:21 scinart> 
 ;; Date created: <2013-05-05 Sunday 20:19:43>
 (setq zone-programs [zone-pgm-jitter])
 (setq zone-programs [zone-pgm-putz-with-case])
@@ -21,3 +21,11 @@
 (setq zone-programs [zone-pgm-stress-destress])
 (setq zone-programs [zone-pgm-random-life])
 (local-set-key (kbd "<f8>") 'zone)
+
+
+
+
+
+;; Local Variables:
+;; eval:(progn (hs-minor-mode t) (let ((hs-state 'nil) (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (car i) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char 1) (recenter-top-bottom))
+;; End:

@@ -1,6 +1,6 @@
 ;;; -*- coding:utf-8 -*-
 ;;; bindings.el ---
-;;; Time-stamp: <2013-06-16 16:38:26 scinart>
+;;; Time-stamp: <2013-11-24 00:40:17 scinart>
 ;;; Code:
 
 ;; C-x command means modified by me;

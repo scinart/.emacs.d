@@ -128,5 +128,5 @@
 
 
 ;; Local Variables:
-;; eval:(progn (hs-minor-mode t) (let ((hs-state '((1340 1429 hs) (1505 1932 hs) (1966 2005 hs) (2045 2469 hs) (2505 2545 hs) (2580 2855 hs) (2886 2917 hs) (2957 3058 hs) (3097 3198 hs) (3239 3346 hs) (3387 3494 hs) (3530 3596 hs) (3632 3698 hs) (3894 3978 hs))) (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (car i) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char 3866) (recenter-top-bottom))
+;; eval:(progn (hs-minor-mode t) (let ((hs-state '((3894 3978 hs) (3632 3698 hs) (3530 3596 hs) (3387 3494 hs) (3239 3346 hs) (3097 3198 hs) (2957 3058 hs) (2886 2917 hs) (2580 2855 hs) (2505 2545 hs) (2045 2469 hs) (1966 2005 hs) (1505 1932 hs) (1340 1429 hs))) (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (car i) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char 1) (recenter-top-bottom))
 ;; End:
