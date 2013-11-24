@@ -10,3 +10,6 @@ elpa/archives/melpa/archive-contents
 elpa/*.txt
 ac-comphist.dat
 session.*
+HyperSpec/*
+unused-*
+url/*

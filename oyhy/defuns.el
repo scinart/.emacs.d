@@ -1,5 +1,5 @@
 ;;; defuns.el ---
-;;; Time-stamp: <2013-11-24 16:15:21 scinart> 
+;;; Time-stamp: <2013-11-24 17:44:35 scinart> 
 ;;; Code:
 
 
@@ -1021,6 +1021,15 @@ param string is not used"
       (delete-region beg end))))
 
 
+
+(defmacro defparameter (symbol &optional initvalue docstring)
+  "since there's no defparameter in emacs lisp let's defmacro it."
+  `(progn
+     (defvar ,symbol nil ,docstring)
+     (setq   ,symbol ,initvalue)))
+
+
+
 
 ;;;;##########################################################################
 ;;;; options, Vraiables
@@ -1041,5 +1050,5 @@ param string is not used"
 
 
 ;; Local Variables:
-;; eval:(progn (hs-minor-mode t) (let ((hs-state 'nil) (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (car i) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char 32308) (recenter-top-bottom))
+;; eval:(progn (hs-minor-mode t) (let ((hs-state 'nil) (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (car i) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char 33817) (recenter-top-bottom))
 ;; End:

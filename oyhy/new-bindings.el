@@ -1,6 +1,6 @@
 ;;; -*- coding:utf-8 -*-
 ;;; new-bindings.el ---
-;;; Time-stamp: <2013-11-24 17:03:40 scinart>
+;;; Time-stamp: <2013-11-24 17:55:03 scinart>
 ;;; Code:
 
 (cond
@@ -324,7 +324,7 @@
 ;; smart compile
 (global-set-key (kbd "C-<f7>") 'smart-compile)
 (global-set-key (kbd "<f7>") 'smart-run)
-(global-set-key (kbd "C-<f5>") 'smart-execute)
+
 ;; base64 stuff
 (global-set-key (kbd "C-c C-,") 'my-base64-encode-region)
 (global-set-key (kbd "C-c C-.") 'my-base64-decode-region)
@@ -408,5 +408,5 @@
 
 (provide 'new-bindings)
 ;; Local Variables:
-;; eval:(progn (hs-minor-mode t) (let ((hs-state 'nil) (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (car i) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char 11385) (recenter-top-bottom))
+;; eval:(progn (hs-minor-mode t) (let ((hs-state 'nil) (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (car i) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char 15944) (recenter-top-bottom))
 ;; End:
