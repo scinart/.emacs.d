@@ -61,7 +61,8 @@ especially for extending ido-find-file functionality
 2013-08-04 Sunday 17:25:03"
   (define-key ido-completion-map (kbd "<return>") 'ido-exit-minibuffer) ;; for find-file
   (define-key ido-completion-map (kbd "RET") 'ido-magic-open)
-  (define-key ido-completion-map (kbd "C-M-<return>") 'ido-sudo-open))
+  (define-key ido-completion-map (kbd "C-M-<return>") 'ido-sudo-open)
+  (define-key ido-completion-map (kbd "C-M-m") 'ido-sudo-open))
 
 (defun ido-magic-open ()
   "This should be used when ido-minibuffer is active"
@@ -98,5 +99,5 @@ especially for extending ido-find-file functionality
 
 
 ;; Local Variables:
-;; eval:(progn (hs-minor-mode t) (let ((hs-state '((990 990 nil) (1028 1028 nil) (1102 1102 nil) (1117 1117 nil) (1180 1180 nil) (1198 1198 nil) (1230 1230 nil) (1274 1274 nil) (1319 1319 nil) (1399 1399 nil) (1420 1420 nil) (1421 1421 nil) (1451 1451 nil) (1456 1456 nil) (1487 1487 nil) (1542 1542 nil) (1591 1591 nil) (1649 1649 nil) (1650 1650 nil) (1651 1651 nil) (1712 1712 nil) (1751 1751 nil) (1752 1752 nil) (1752 1753 nil) (1809 1809 nil) (1823 1823 nil) (1841 1841 nil) (1888 1889 nil) (1890 1890 nil) (1891 1891 nil) (1929 1929 nil) (1959 1959 nil) (1960 1960 nil) (1961 1961 nil))) (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (not (null (caddr i))) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char 1889) (recenter-top-bottom))
+;; eval:(progn (hs-minor-mode t) (let ((hs-state 'nil) (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (car i) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char 2517) (recenter-top-bottom))
 ;; End:

@@ -7,12 +7,11 @@
 
 ;;; Edit Bookmark Record
 
-;;; (add-hook 'edit-)
 ;;; dired-mode
 (add-hook 'dired-mode-hook
           (lambda ()
             (make-local-variable 'coding-system-for-read)
-            (setq coding-system-for-read 'chinese-gbk)
+            (setq coding-system-for-read 'utf-8)
             (visual-line-mode -1)))
 
 ;; from http://whattheemacsd.com/setup-dired.el-02.html
@@ -120,5 +119,5 @@
 
 
 ;; Local Variables:
-;; eval:(progn (hs-minor-mode t) (let ((hs-state 'nil) (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (car i) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char 3169) (recenter-top-bottom))
+;; eval:(progn (hs-minor-mode t) (let ((hs-state 'nil) (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (car i) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char 106) (recenter-top-bottom))
 ;; End:

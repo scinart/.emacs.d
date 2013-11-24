@@ -1,6 +1,6 @@
 ;;; -*- coding:utf-8 -*-
 ;;; new-bindings.el ---
-;;; Time-stamp: <2013-11-19 23:42:05 scinart>
+;;; Time-stamp: <2013-11-24 17:03:40 scinart>
 ;;; Code:
 
 (cond
@@ -124,7 +124,8 @@
 
        (global-set-key (kbd "C-x C-l") 'downcase-region)
        (global-set-key (kbd "C-x C-u") 'upcase-region)
-       (global-set-key (kbd "C-x C-t") 'transpose-lines))
+       (global-set-key (kbd "C-x C-t") 'transpose-lines)
+       (global-set-key (kbd "C-w") 'delete-region-unless-prefix))
 ;;; eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
 ;;; buffer statistics
 (global-set-key (kbd "M-=") 'count-words-region)
@@ -230,6 +231,8 @@
 (global-set-key (kbd "C-x C-c") 'my-exit)
 (global-set-key (kbd "C-x <return> o") 'open-this-buffer-in-explorer)
 (global-set-key (kbd "C-x C-<return> o") 'open-this-buffer-in-explorer)
+(global-set-key (kbd "M-x") 'smex)
+
 ;; fresh frame title
 (global-set-key (kbd "C-c M-q") 'refresh-title)
 
@@ -405,5 +408,5 @@
 
 (provide 'new-bindings)
 ;; Local Variables:
-;; eval:(progn (hs-minor-mode t) (let ((hs-state 'nil) (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (car i) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char 13873) (recenter-top-bottom))
+;; eval:(progn (hs-minor-mode t) (let ((hs-state 'nil) (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (car i) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char 11385) (recenter-top-bottom))
 ;; End:
