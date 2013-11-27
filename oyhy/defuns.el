@@ -1,5 +1,5 @@
 ;;; defuns.el ---
-;;; Time-stamp: <2013-11-24 17:44:35 scinart> 
+;;; Time-stamp: <2013-11-26 17:20:05 scinart> 
 ;;; Code:
 
 
@@ -700,14 +700,6 @@ if cancelable, \\[keyboard-quit] is able to cancels do-after.
     (if (memq t (mapcar (lambda (s) (string-equal string (format "%s" s))) blst))
 	t)))
 
-;;;;    Site-Specific Variables 
-
-;; See if we're on MS Windows or some other OS
-(defvar windows-p (string-match "windows" (symbol-name system-type)))
-(defvar macosx-p (string-match "darwin" (symbol-name system-type)))
-(defvar linux-p (string-match "linux" (symbol-name system-type)))
-(defvar use-home (concat (expand-file-name "~") "/"))
-
 ;; the following is defined 2013-06-11 Tuesday 10:35:47
 (defun move-frame ()
   (interactive)
@@ -954,11 +946,12 @@ param string is not used"
   (let ((case-fold-search nil))
     (replace-string FROM-STRING TO-STRING DELIMITED START END)))
 
-(defun extern (string)
+(defun extern (string &optional command-name)
   "use native application to open [string]"
   (interactive)
+  (setq command-name (or command-name "xdg-open"))
   (cond (linux-p
-	 (call-process "xdg-open" nil 0 nil string))
+	 (call-process command-name nil 0 nil string))
 	(windows-p
 	 (w32-shell-execute 1 string))))
 
@@ -1001,13 +994,10 @@ param string is not used"
   "start goagent"
   (interactive)
   (if (not (buffer-exist "*goagent*"))
-      (progn 
-	(async-shell-command "python /usr/share/goagent/local/proxy.py")
-	(let ((bfn (buffer-name)))
-	  (switch-to-buffer "*Async Shell Command*")
-	  (rename-buffer "*goagent*")
-	  (switch-to-buffer bfn))))
-  (message "olready running"))
+      (if (file-exists-p "/usr/share/goagent/local/proxy.py")
+	  (start-process "goagent" "*goagent*" "python" "/usr/share/goagent/local/proxy.py")
+	(error "please specify your goagent/local/proxy.py location"))
+    (message "already running")))
 
 (defun delete-region-unless-prefix (prefix)
   "call delete-region unless with a prefix, which calls kill-region"
@@ -1050,5 +1040,5 @@ param string is not used"
 
 
 ;; Local Variables:
-;; eval:(progn (hs-minor-mode t) (let ((hs-state 'nil) (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (car i) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char 33817) (recenter-top-bottom))
+;; eval:(progn (hs-minor-mode t) (let ((hs-state 'nil) (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (car i) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char 31287) (recenter-top-bottom))
 ;; End:

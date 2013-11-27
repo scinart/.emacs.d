@@ -33,7 +33,9 @@
                             (kbd "C-c C-<return>")
                             (lambda ()
                               (interactive)
-                              (w32-shell-execute 1 (dired-replace-in-string "/" "\\" (dired-get-filename))))))
+                              (if (windows-p)
+				  (extern (dired-replace-in-string "/" "\\" (dired-get-filename)))
+				(extern (dired-get-filename) "gvfs-open")))))
 
 ;; ibuffer-mode
 (add-hook 'ibuffer-hook
@@ -119,5 +121,5 @@
 
 
 ;; Local Variables:
-;; eval:(progn (hs-minor-mode t) (let ((hs-state 'nil) (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (car i) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char 106) (recenter-top-bottom))
+;; eval:(progn (hs-minor-mode t) (let ((hs-state 'nil) (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (car i) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char 873) (recenter-top-bottom))
 ;; End:
