@@ -4,12 +4,35 @@
 (setq mc/cmds-to-run-for-all
       '(
 	backward-or-to-char
+	bison-electric-close-brace
+	bison-electric-colon
+	bison-electric-greater-than
+	bison-electric-open-brace
+	bison-electric-percent
+	bison-electric-pipe
+	bison-electric-semicolon
+	c-electric-colon
+	c-electric-delete-forward
+	c-electric-paren
+	c-electric-slash
+	c-electric-star
 	continuous-num/++
+	delete-region-unless-prefix
 	forward-or-to-char
+	org-force-self-insert
+	org-self-insert-command
 	paredit-backward-kill-sexp
+	paredit-backward-kill-word
+	paredit-doublequote
+	paredit-forward-delete
+	paredit-kill
+	paredit-open-round
 	paredit-semicolon
 	))
 
 (setq mc/cmds-to-run-once
       '(
+	full-screen
+	mouse-buffer-menu
+	string-rectangle
 	))

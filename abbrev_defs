@@ -79,6 +79,7 @@
 
 (define-abbrev-table 'global-abbrev-table
   '(
+    ("agi" "sudo apt-get install" nil 1)
     ("becmoe" "become" nil 2)
     ("bible" "Bible" nil 10)
     ("dcdx" "Date created: <>" nil 1)
@@ -90,6 +91,7 @@
     ("functino" "function" nil 1)
     ("gss" "git status -s" nil 11)
     ("im" "I'm" nil 1)
+    ("inclued" "include" nil 1)
     ("nko" "1110526 欧阳宏宇 计算机科学与技术" nil 5)
     ("nkux" "Nankai University" nil 1)
     ("nkx" "nankai" nil 3)

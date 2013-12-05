@@ -33,7 +33,7 @@
                             (kbd "C-c C-<return>")
                             (lambda ()
                               (interactive)
-                              (if (windows-p)
+                              (if windows-p
 				  (extern (dired-replace-in-string "/" "\\" (dired-get-filename)))
 				(extern (dired-get-filename) "gvfs-open")))))
 
@@ -83,18 +83,22 @@
   (setq c-basic-offset 4)
   (setq tab-width 4)
   (setq indent-tabs-mode nil)
-  (define-key c++-mode-map (kbd "C-/") 'comment-or-uncomment-region-or-line)
-  (define-key c-mode-base-map (kbd "C-/") 'comment-or-uncomment-region-or-line)
+  (define-key c++-mode-map (kbd "M-/") 'comment-or-uncomment-region-or-line)
+  (define-key c-mode-base-map (kbd "M-/") 'comment-or-uncomment-region-or-line)
+  (define-key c++-mode-map (kbd "C-/") 'hippie-expand)
+  (define-key c-mode-base-map (kbd "C-/") 'hippie-expand)
+  (define-key c-mode-map (kbd "<return>") 'newline-and-indent)
   (key-chord-define c++-mode-map "{}"  "{\n\n}\C-p\t")
   (key-chord-define c-mode-map "{}"  "{\n\n}\C-p\t")
 )
 
 (add-hook 'c++-mode-hook 'my-cc-style)
+(add-hook 'c-mode-hook 'my-cc-style)
 
 ;;(add-hook 'c-mode-common-hook 'google-set-c-style)
 ;;(remove-hook 'c-mode-common-hook 'google-set-c-style)
 
-
+;;fixme
 (add-to-list 'auto-mode-alist '("\\.f?lex\\'" . flex-mode))
 (add-to-list 'auto-mode-alist '("\\.y\\(acc\\)?\\'" . bison-mode))
 
@@ -121,5 +125,5 @@
 
 
 ;; Local Variables:
-;; eval:(progn (hs-minor-mode t) (let ((hs-state 'nil) (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (car i) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char 873) (recenter-top-bottom))
+;; eval:(progn (hs-minor-mode t) (let ((hs-state 'nil) (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (car i) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char 769) (recenter-top-bottom))
 ;; End:

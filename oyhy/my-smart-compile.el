@@ -24,7 +24,7 @@
 ;  ("\\.tex\\'"        . (tex-file))
 ;  ("\\.texi\\'"       . "makeinfo %f")
 ;  ("\\.mp\\'"         . "mptopdf %f")
-  ("\\.l\\'"          . "flex %f")
+  ("\\.l\\'"          . "flex %f -o %n.c")
   ("\\.y\\'"          . "bison %f")
   ("\\.pl\\'"         . "perl -cw %f")
   ("\\.rb\\'"         . "ruby -cw %f")
@@ -33,11 +33,8 @@
 (defparameter smart-run-alist
   '(("\\.c$"          . "./%n")
     ("\\.[Cc]+[Pp]*$" . "./%n")
-;    ("\\.java$"       . "java %n")
     ))
   
-(defvar smart-executable-alist
-  '("%n.class"))
 
 (defun smart-compile-replace (str)
   "Replace the smart-compile-replace-alist."
@@ -102,7 +99,36 @@ commands to new file types."
 	(if (y-or-n-p "Compile first? ")
 	    (smart-compile))))))
 
- 
+
+
+(defun smart-run (&optional arg)
+  (interactive "p")
+  (let ((name (buffer-file-name))
+        (not-yet t))
+    (if (not name)
+        (error "cannot get filename."))
+
+    (let( (alist smart-run-alist) 
+          (case-fold-search nil)
+          (function nil) )
+      (while (and alist not-yet)
+        (if (or (and  (symbolp (caar alist))
+		      (eq (caar alist) major-mode))
+		(and (stringp (caar alist))
+		     (string-match (caar alist) name)))
+            (progn
+              (setq function (cdar alist))
+              (if (stringp function)
+                  (progn
+                    (set (make-local-variable 'compile-command)
+                         (smart-compile-string function))
+                    (call-interactively 'compile))
+                (if (listp function)
+                    (eval function)))
+              (setq alist nil)
+              (setq not-yet nil))
+          (setq alist (cdr alist)))))))
+
 
 ;;;;##########################################################################
 ;;;;  User Options, Variables
@@ -121,5 +147,5 @@ commands to new file types."
 
 
 ;; Local Variables:
-;; eval:(progn (hs-minor-mode t) (let ((hs-state 'nil) (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (car i) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char 1133) (recenter-top-bottom))
+;; eval:(progn (hs-minor-mode t) (let ((hs-state 'nil) (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (car i) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char 623) (recenter-top-bottom))
 ;; End:

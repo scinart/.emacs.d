@@ -1,9 +1,10 @@
 ;;-*- coding: utf-8 -*-
-;; xmsi-math-symbols-input.el -- a mode to input math chars
+;; sci-math-symbol.el -- a mode to input math chars
 
 ;; Copyright © 2010, 2011 by Xah Lee
 
 ;; Author: Xah Lee ( http://xahlee.org/ )
+;; adapted my scinart;
 ;; Keywords: math symbols, unicode, input
 
 ;; You can redistribute this program and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2.
@@ -1915,3 +1916,11 @@ Home page at: URL `http://ergoemacs.org/emacs/sci-math-symbols-input.html'"
   )
 
 (provide 'sci-math-symbol)
+
+
+
+
+
+;; Local Variables:
+;; eval:(progn (hs-minor-mode t) (let ((hs-state '((24 33133 hs) (33441 34852 hs) (34910 37304 hs) (37336 38781 hs) (38829 41413 hs) (41452 43863 hs) (43892 44101 hs) (44132 44937 hs) (44976 50245 hs) (50262 53275 hs) (53331 54000 hs) (54074 55599 hs) (55685 58181 hs) (60401 61887 hs) (61912 62294 hs) (63652 64470 hs) (64600 69625 hs))) (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (car i) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char 64573) (recenter-top-bottom))
+;; End:

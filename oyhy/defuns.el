@@ -1,5 +1,5 @@
 ;;; defuns.el ---
-;;; Time-stamp: <2013-11-26 17:20:05 scinart> 
+;;; Time-stamp: <2013-11-29 09:55:48 scinart> 
 ;;; Code:
 
 
@@ -208,23 +208,29 @@ at around 2013-06-04 Tuesday 00:23:22"
   "Open this buffer or this buffer's directory in Explorer
    2013-04-18 Thursday 14:27:04"
   (interactive)
-  (cond ((eq 'gnu/linux system-type)
-	 (let ((pro-name "xdg-open" ;; generic
-		;; "gvfs-open" ;;gnome only
-		))
-	   (cond ((buffer-file-name)
-		  (call-process pro-name nil 0 nil (file-name-directory (buffer-file-name))))
-		 (dired-directory
-		  (call-process pro-name nil 0 nil dired-directory))
-		 (t
-		  (message "%s" "Buffer Not Recognized as File or Directory")))))
-	((eq 'windows-nt system-type)
-	 (cond ((buffer-file-name)
-		(w32-shell-execute 1 (file-name-directory (buffer-file-name))))
-	       (dired-directory
-		(w32-shell-execute 1 dired-directory))
-	       (t
-		(message "%s" "Buffer Not Recognized as File or Directory"))))))
+  ;; (cond ((eq 'gnu/linux system-type)
+  ;; 	 (let ((pro-name "xdg-open" ;; generic
+  ;; 		;; "gvfs-open" ;;gnome only
+  ;; 		))
+  ;; 	   (cond ((buffer-file-name)
+  ;; 		  (call-process pro-name nil 0 nil (file-name-directory (buffer-file-name))))
+  ;; 		 (dired-directory
+  ;; 		  (call-process pro-name nil 0 nil dired-directory))
+  ;; 		 (t
+  ;; 		  (message "%s" "Buffer Not Recognized as File or Directory")))))
+  ;; 	((eq 'windows-nt system-type)
+  ;; 	 (cond ((buffer-file-name)
+  ;; 		(w32-shell-execute 1 (file-name-directory (buffer-file-name))))
+  ;; 	       (dired-directory
+  ;; 		(w32-shell-execute 1 dired-directory))
+  ;; 	       (t
+  ;; 		(message "%s" "Buffer Not Recognized as File or Directory")))))
+  (cond ((buffer-file-name)
+	 (extern (file-name-directory (buffer-file-name))))
+	(dired-directory
+	 (extern dired-directory))
+	(t
+	 (message "%s" "Buffer Not Recognized as File or Directory"))))
 
 ;; Borrowed from http://whattheemacsd.com/key-bindings.el-01.html
 (defun goto-line-with-feedback ()
@@ -1040,5 +1046,5 @@ param string is not used"
 
 
 ;; Local Variables:
-;; eval:(progn (hs-minor-mode t) (let ((hs-state 'nil) (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (car i) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char 31287) (recenter-top-bottom))
+;; eval:(progn (hs-minor-mode t) (let ((hs-state 'nil) (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (car i) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char 8206) (recenter-top-bottom))
 ;; End:

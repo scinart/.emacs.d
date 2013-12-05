@@ -1,6 +1,6 @@
 ;;; -*- coding:utf-8 -*-
 ;;; new-bindings.el ---
-;;; Time-stamp: <2013-11-24 17:55:03 scinart>
+;;; Time-stamp: <2013-12-04 15:38:04 scinart>
 ;;; Code:
 
 (cond
@@ -31,6 +31,7 @@
        (global-unset-key (kbd "C-z"))
        (global-unset-key (kbd "C-<space>"))
        (global-unset-key (kbd "C-\\"))
+       (global-set-key (kbd "M-m") 'ignore) ;; for dictionaries
        (global-unset-key (kbd "<f3>")))
 
 ;;; aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
@@ -113,7 +114,7 @@
        (global-set-key (kbd "M-%") 'query-replace)
        (global-set-key (kbd "M-c M-%") 'replace-regexp)
        (global-set-key (kbd "M-c M-&") 'replace-string)
-       (global-set-key (kbd "M-c M-SPC") 'xmsi-change-to-symbol)
+       (global-set-key (kbd "M-c M-SPC") 'sci-change-to-symbol)
 
        (global-set-key (kbd "C-t") 'transpose-chars)
        (global-set-key (kbd "C-S-t") '(lambda () (interactive) (transpose-chars -1)))
@@ -408,5 +409,5 @@
 
 (provide 'new-bindings)
 ;; Local Variables:
-;; eval:(progn (hs-minor-mode t) (let ((hs-state 'nil) (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (car i) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char 15944) (recenter-top-bottom))
+;; eval:(progn (hs-minor-mode t) (let ((hs-state 'nil) (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (car i) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char 1176) (recenter-top-bottom))
 ;; End:

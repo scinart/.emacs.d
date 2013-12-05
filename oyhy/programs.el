@@ -74,8 +74,6 @@
 			 "2013-06-23 Sunday 14:50:00"
 			 nil
 			 "-res")
-;; (create-program-shortcut hfs "d:/school/Project/server/")
-
 (create-program-shortcut screenrecord
  "d:/pro/Blueberry Software/BB FlashBack Pro 4/FlashBack Player.exe")
 (create-program-shortcut youdaonote
@@ -88,19 +86,6 @@
 			 "d:/pro/stopwatch/StopWatch.exe")
 
 ;; TODO: use mapcar to the macro functions.
-
-(defun km ()
-  "enhancement of keyboard and Mouse,
-   open carnac and MouseInc
-   2013-05-26 Sunday 12:54:07"
-  (interactive)
-  (carnac)
-  (MouseInc))
-(defun ms ()
-  "open, mouseInc and stardock"
-  (interactive)
-  (MouseInc)
-  (stardock))
 
 
 
@@ -120,5 +105,5 @@
 
 
 ;; Local Variables:
-;; eval:(progn (hs-minor-mode t) (let ((hs-state '((3477 3551 hs) (3326 3463 hs) (2939 2998 hs) (2833 2902 hs) (396 512 hs) (547 648 hs) (682 781 hs) (814 977 hs) (1011 1128 hs) (1161 1239 hs) (1279 1374 hs) (1409 1514 hs) (1550 1665 hs) (1704 1793 hs) (1832 1915 hs) (1952 2075 hs) (2110 2221 hs) (2258 2297 hs) (2495 2588 hs) (2623 2732 hs))) (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (car i) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char 78) (recenter-top-bottom))
+;; eval:(progn (hs-minor-mode t) (let ((hs-state '((396 512 hs) (547 648 hs) (682 781 hs) (814 977 hs) (1011 1128 hs) (1161 1239 hs) (1279 1374 hs) (1409 1514 hs) (1550 1665 hs) (1704 1793 hs) (1832 1915 hs) (1952 2075 hs) (2110 2221 hs) (2258 2297 hs) (2331 2383 hs) (2495 2588 hs) (2623 2732 hs) (2771 2840 hs) (2877 2936 hs) (2969 3045 hs) (3079 3131 hs) (3167 3204 hs) (3252 3252 hs))) (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (car i) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char 3252) (recenter-top-bottom))
 ;; End:
