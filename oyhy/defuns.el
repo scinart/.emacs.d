@@ -1,5 +1,5 @@
 ;;; defuns.el ---
-;;; Time-stamp: <2013-11-29 09:55:48 scinart> 
+;;; Time-stamp: <2013-12-14 11:33:59 scinart> 
 ;;; Code:
 
 
@@ -72,8 +72,6 @@ at around 2013-06-04 Tuesday 00:23:22"
 ;; right 600pixels , 0, 0.548, 1.0
 ;; down 0, 345pixels, 1.0, 0.514
 
-;; (defvar monitor-width 1366 "defun.el 2013-05-18 Saturday 16:36:57")
-;; (defvar monitor-height 768 "defun.el 2013-05-18 Saturday 16:36:59")
 
 (defun refresh-title ()
   "refresh the title of the frame"
@@ -82,7 +80,8 @@ at around 2013-06-04 Tuesday 00:23:22"
 				 (substring (or (buffer-file-name) " ") 1)
 				 (format-time-string "    %B %e, %Y %H:%M:%S")
 				 "    GNU Emacs: The extensible self-documenting text editor. Version"
-				 (substring (emacs-version) 9 14) " 十年磨一剑")))
+				 (substring (emacs-version) 9 14)
+				 " 标题叫啥好呢？")))
 
 (defun my-frame-size-scale-width (float)
   (floor (* float monitor-width (/ 0.976 (frame-char-width)))))
@@ -1046,5 +1045,5 @@ param string is not used"
 
 
 ;; Local Variables:
-;; eval:(progn (hs-minor-mode t) (let ((hs-state 'nil) (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (car i) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char 8206) (recenter-top-bottom))
+;; eval:(progn (hs-minor-mode t) (let ((hs-state 'nil) (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (car i) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char 2974) (recenter-top-bottom))
 ;; End:

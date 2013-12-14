@@ -14,20 +14,25 @@
 	c-electric-colon
 	c-electric-delete-forward
 	c-electric-paren
+	c-electric-semi&comma
 	c-electric-slash
 	c-electric-star
 	continuous-num/++
 	delete-region-unless-prefix
 	forward-or-to-char
+	forward-sexp
 	org-force-self-insert
 	org-self-insert-command
 	paredit-backward-kill-sexp
 	paredit-backward-kill-word
 	paredit-doublequote
 	paredit-forward-delete
+	paredit-forward-kill-word
 	paredit-kill
+	paredit-newline
 	paredit-open-round
 	paredit-semicolon
+	yas-expand
 	))
 
 (setq mc/cmds-to-run-once

@@ -12,6 +12,7 @@
           (lambda ()
             (make-local-variable 'coding-system-for-read)
             (setq coding-system-for-read 'utf-8)
+	    (defparameter dired-deletion-confirmer 'y-or-n-p)
             (visual-line-mode -1)))
 
 ;; from http://whattheemacsd.com/setup-dired.el-02.html
@@ -103,7 +104,7 @@
 (add-to-list 'auto-mode-alist '("\\.y\\(acc\\)?\\'" . bison-mode))
 
 
-
+(defparameter auto-hs-mode (append auto-hs-mode '("bison-mode")) )
 
 
 (provide 'major-mode)
@@ -125,5 +126,5 @@
 
 
 ;; Local Variables:
-;; eval:(progn (hs-minor-mode t) (let ((hs-state 'nil) (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (car i) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char 769) (recenter-top-bottom))
+;; eval:(progn (hs-minor-mode t) (let ((hs-state 'nil) (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (car i) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char 3740) (recenter-top-bottom))
 ;; End:

@@ -1,3 +1,13 @@
+(defcustom auto-hs-mode '("lisp-mode"
+			"emacs-lisp-mode"
+			"scheme-mode"
+			"c++-mode"
+			"c-mode"
+			"java-mode") "mode you want to add magic hs string." )
+
+
+
+
 (add-hook 'before-save-hook 'hs-state-save)
 (defun comment-this-line ()
   (let ((b (progn (beginning-of-line) (point)))
@@ -19,17 +29,12 @@
   (ignore-errors
     (if (and comment-start
 	     (member* (symbol-name major-mode)
-		      '("lisp-mode"
-			"emacs-lisp-mode"
-			"scheme-mode"
-			"c++-mode"
-			"c-mode"
-			"java-mode") :test #'string-equal))
+		      auto-hs-mode :test #'string-equal))
       (save-excursion
 	(let ((current-point (point)))
 	  (goto-char (point-max))
 	  (let ((eval-string (concatenate 'string "eval:(progn (hs-minor-mode t) (let ((hs-state '"
-					  (format "%S" (delq nil (mapcar '(lambda (lst)
+					  (format "%S" (delq nil (mapcar #'(lambda (lst)
 									    (if (null (caddr lst))
 										nil
 									      lst)) (omm-get-all-overlays)))) ") (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (car i) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char " (format "%S" current-point) ") (recenter-top-bottom))")))
@@ -50,5 +55,5 @@
 (provide 'hs-minor-mode-enhancement)
 
 ;; Local Variables:
-;; eval:(progn (hs-minor-mode t) (let ((hs-state 'nil) (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (car i) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char 72) (recenter-top-bottom))
+;; eval:(progn (hs-minor-mode t) (let ((hs-state 'nil) (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (car i) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char 958) (recenter-top-bottom))
 ;; End:

@@ -15,6 +15,7 @@
  '(large-file-warning-threshold 1048576)
  '(major-mode (quote text-mode))
  '(recenter-positions (quote (middle top bottom)))
+ '(safe-local-variable-values (quote ((encoding . utf-8))))
  '(session-use-package t nil (session))
  '(template-default-directories (quote ("~/.emacs.d/.templates/")))
  '(truncate-lines t))
@@ -27,13 +28,13 @@
 (add-to-list 'load-path "~/.emacs.d/configs")
 
 ;; cross platforms settings
-(defvar monitor-width 1366 "requires.el 2013-05-18 Saturday 16:36:57")
-(defvar monitor-height 768 "requires.el 2013-05-18 Saturday 16:36:59")
+(defvar monitor-width (display-pixel-width) "requires.el 2013-05-18 Saturday 16:36:57")
+(defvar monitor-height (display-pixel-height) "requires.el 2013-05-18 Saturday 16:36:59")
 
 (defvar windows-p (string-match "windows" (symbol-name system-type)))
 (defvar macosx-p (string-match "darwin" (symbol-name system-type)))
 (defvar linux-p (string-match "linux" (symbol-name system-type)))
-(defvar use-home (concat (expand-file-name "~") "/"))
+(defvar user-home (concat (expand-file-name "~") "/"))
 
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
                          ("marmalade" . "http://marmalade-repo.org/packages/")
@@ -136,21 +137,24 @@
 (require 'make-regexp)
 (require 'flex-mode)
 (require 'bison-mode)
+(require 'gas-mode)
 (require 'init-hippie-expand)
 (template-initialize)
 
 ;; oyhy
+
 (require 'my-alpha)
 (require 'my-time)
 (require 'defuns)
+(require 'enabled-commands)
 (require 'my-server)
 (require 'my-ido)
 (require 'my-org)
 (require 'my-color-theme)
+(require 'gas-config)
 (require 'new-bindings)
 (require 'minimode)
 ;; not require minor-mode
-;;todo (require 'my-font)
 (require 'major-mode)
 (require 'my-smart-compile)
 (require 'emacs-lisp-color)
@@ -159,6 +163,7 @@
 (require 'scheme-config)
 (require 'scheme-mode-color)
 
+
 ;; load-file
 (load-file "~/.emacs.d/oyhy/redefun.el")
 (load-file "~/.emacs.d/oyhy/my-font.el")
@@ -166,7 +171,7 @@
 ;; major-modes
 (require 'emacs-lisp-config)
 (require 'common-lisp-config)
-
+(require 'c++-config)
 
 
 ;; personal-startup-settings
@@ -227,12 +232,12 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
-(put 'dired-find-alternate-file 'disabled nil)
 
 
-
+(if (y-or-n-p "start tlp?")
+    (async-shell-command "sudo tlp ac"))
 
 
 ;; Local Variables:
-;; eval:(progn (hs-minor-mode t) (let ((hs-state 'nil) (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (car i) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char 2927) (recenter-top-bottom))
+;; eval:(progn (hs-minor-mode t) (let ((hs-state 'nil) (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (car i) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char 4010) (recenter-top-bottom))
 ;; End:
