@@ -99,10 +99,12 @@
 ;;(add-hook 'c-mode-common-hook 'google-set-c-style)
 ;;(remove-hook 'c-mode-common-hook 'google-set-c-style)
 
-;;fixme
+
+;;other file associations.
+
 (add-to-list 'auto-mode-alist '("\\.f?lex\\'" . flex-mode))
 (add-to-list 'auto-mode-alist '("\\.y\\(acc\\)?\\'" . bison-mode))
-
+(add-to-list 'auto-mode-alist '("\\.zsh\\'" . conf-mode))
 
 (defparameter auto-hs-mode (append auto-hs-mode '("bison-mode")) )
 

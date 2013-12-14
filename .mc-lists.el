@@ -21,6 +21,7 @@
 	delete-region-unless-prefix
 	forward-or-to-char
 	forward-sexp
+	org-beginning-of-line
 	org-force-self-insert
 	org-self-insert-command
 	paredit-backward-kill-sexp
@@ -39,5 +40,6 @@
       '(
 	full-screen
 	mouse-buffer-menu
+	org-ctrl-c-ctrl-c
 	string-rectangle
 	))

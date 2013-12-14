@@ -13,3 +13,5 @@ session.*
 HyperSpec/*
 unused-*
 url/*
+eshell/
+oyhy/.emacs.desktop
