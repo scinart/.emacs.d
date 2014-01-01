@@ -4,8 +4,7 @@ tramp
 *~
 [#]*[#]
 .\#*
-elpa/*/*
-elpa/*.txt
+elpa/*
 ac-comphist.dat
 session.*
 HyperSpec/*
