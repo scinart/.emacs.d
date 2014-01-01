@@ -10,6 +10,7 @@
 (require 'env)
 
 (setenv "EMACS_SERVER_FILE" "~/.emacs.d/server/server")
+(setq server-use-tcp t)
 (setq server-auth-dir "~/.emacs.d/server/")
 (setq server-name "server")
 (start-server)

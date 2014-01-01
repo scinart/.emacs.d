@@ -23,6 +23,7 @@
 (setq user-full-name "Scinart O")
 (setq user-mail-address "akubeej@gmail.com")
 
+;; (setq shell-file-name "zsh")
 
 (setq load-path (cons "~/.emacs.d/oyhy" load-path))
 (add-to-list 'load-path "~/.emacs.d/configs")
@@ -122,6 +123,9 @@
 (require 'pretty-mode-plus)
 (require 'smart-compile)
 (require 'smex)
+(require 'multi-term)
+(setq multi-term-program "/bin/zsh")
+
 
 (auto-complete-mode)
 (key-chord-mode 1)

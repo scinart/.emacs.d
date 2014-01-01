@@ -1,5 +1,5 @@
 ;;; defuns.el ---
-;;; Time-stamp: <2013-12-14 11:33:59 scinart> 
+;;; Time-stamp: <2014-01-01 14:20:19 scinart> 
 ;;; Code:
 
 
@@ -230,6 +230,12 @@ at around 2013-06-04 Tuesday 00:23:22"
 	 (extern dired-directory))
 	(t
 	 (message "%s" "Buffer Not Recognized as File or Directory"))))
+
+(defun open-this-buffer-folder-in-terminal ()
+  "TODO"
+  (interactive)
+  (message "How can I do this."))
+
 
 ;; Borrowed from http://whattheemacsd.com/key-bindings.el-01.html
 (defun goto-line-with-feedback ()

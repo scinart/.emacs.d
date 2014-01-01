@@ -1,6 +1,6 @@
 ;;; -*- coding:utf-8 -*-
 ;;; new-bindings.el ---
-;;; Time-stamp: <2013-12-04 15:38:04 scinart>
+;;; Time-stamp: <2013-12-20 12:15:39 scinart>
 ;;; Code:
 
 (cond
@@ -32,7 +32,8 @@
        (global-unset-key (kbd "C-<space>"))
        (global-unset-key (kbd "C-\\"))
        (global-set-key (kbd "M-m") 'ignore) ;; for dictionaries
-       (global-unset-key (kbd "<f3>")))
+       (global-unset-key (kbd "<f3>"))
+       (global-unset-key (kbd "<f2>"))) ;; for dired mode rename.
 
 ;;; aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 ;;; bookmarks  and registers
@@ -354,7 +355,7 @@
 (global-set-key (kbd "C-x <return> w") 'wdired-change-to-wdired-mode)
 (global-set-key (kbd "M-<return>") 'newline-and-indent)
 
-(global-set-key (kbd "C-<f2>") 'wdired-change-to-wdired-mode)
+(global-set-key (kbd "<f2> <f2>") 'wdired-change-to-wdired-mode)
 (global-set-key (kbd "C-M-_") 'undo)
 (global-set-key (kbd "C-_") 'undo)
 

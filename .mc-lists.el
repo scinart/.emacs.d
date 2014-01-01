@@ -17,6 +17,7 @@
 	c-electric-semi&comma
 	c-electric-slash
 	c-electric-star
+	continuous-downcase-word
 	continuous-num/++
 	delete-region-unless-prefix
 	forward-or-to-char
@@ -42,4 +43,5 @@
 	mouse-buffer-menu
 	org-ctrl-c-ctrl-c
 	string-rectangle
+	wdired-finish-edit
 	))

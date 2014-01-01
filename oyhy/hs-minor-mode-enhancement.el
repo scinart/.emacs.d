@@ -8,7 +8,7 @@
 
 
 
-(add-hook 'before-save-hook 'hs-state-save)
+;; (add-hook 'before-save-hook 'hs-state-save)
 (defun comment-this-line ()
   (let ((b (progn (beginning-of-line) (point)))
         (e (progn (end-of-line) (point))))
