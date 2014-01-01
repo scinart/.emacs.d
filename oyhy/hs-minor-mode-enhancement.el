@@ -19,6 +19,8 @@
   (end-of-line)
   (newline))
 (defun hs-state-save ()
+  "I modified this to be interactive to use it manually."
+  (interactive)
   (defun omm-get-all-overlays ()
     "return a list of outline information for all the current buffer"
     (save-excursion

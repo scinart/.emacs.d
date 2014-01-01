@@ -1,5 +1,5 @@
 ;;; redefun.el
-;;; Time-stamp: <2013-11-23 15:09:12 scinart>
+;;; Time-stamp: <2014-01-01 14:36:36 scinart>
 ;;; date created around 2013-05-04 Saturday
 ;;;;##########################################################################
 ;;;; OVERRIDE SYSTEM FUNCTIONS
@@ -157,7 +157,8 @@ modified 2013-06-04 Tuesday 00:23:47)"
     (select-frame (make-frame))))
 
 
-(defvar ido-fallback-function nil "The fallback function that will be explicitly check and can be externally modified
+(defvar ido-fallback-function nil
+  "The fallback function that will be explicitly check and can be externally modified.
 this variable is introduced to enhance ido-find-file functionality
 search (cond ...  ((eq ido-exit 'fallback) ... )) to see where it's used.
 2013-08-04 Sunday 19:35:45 by Scinart")

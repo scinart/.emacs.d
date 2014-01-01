@@ -12,3 +12,4 @@ unused-*
 url/*
 eshell/
 oyhy/.emacs.desktop
+server/*
