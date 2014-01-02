@@ -8,7 +8,6 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(bmkp-last-as-first-bookmark-file "~/.emacs.d/bookmarks")
- '(dired-listing-switches "-alk")
  '(enable-local-eval t)
  '(enable-recursive-minibuffers t)
  '(inhibit-startup-screen t)
@@ -124,6 +123,7 @@
 (require 'smart-compile)
 (require 'smex)
 (require 'multi-term)
+(require 'inf-ruby)
 (setq multi-term-program "/bin/zsh")
 
 

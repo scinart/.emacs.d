@@ -1,5 +1,5 @@
 ;;; defuns.el ---
-;;; Time-stamp: <2014-01-01 14:20:19 scinart> 
+;;; Time-stamp: <2014-01-01 21:49:30 scinart> 
 ;;; Code:
 
 
@@ -1029,6 +1029,21 @@ param string is not used"
      (defvar ,symbol nil ,docstring)
      (setq   ,symbol ,initvalue)))
 
+
+(defun my-revert-buffer-with-coding-system (coding-system)
+  "Visit the current buffer's file again using coding system CODING-SYSTEM.
+For a list of possible values of CODING-SYSTEM, use \\[list-coding-systems].
+
+If CODING-SYSTEM leaves the text conversion unspecified, or if it leaves
+the end-of-line conversion unspecified, FORCE controls what to do.
+If FORCE is nil, get the unspecified aspect (or aspects) from the buffer's
+previous `buffer-file-coding-system' value (if it is specified there).
+Otherwise, determine it from the file contents as usual for visiting a file."
+  (interactive "zCoding system for visited file (default chinese-gbk): \n")
+  (or coding-system (setq coding-system 'chinese-gbk))
+  (check-coding-system coding-system)
+  (let ((coding-system-for-read coding-system))
+    (revert-buffer "from-original-file" "no confirm" "preserve mode")))
 
 
 

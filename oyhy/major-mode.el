@@ -8,6 +8,9 @@
 ;;; Edit Bookmark Record
 
 ;;; dired-mode
+
+(setq dired-listing-switches "-alhF")
+
 (add-hook 'dired-mode-hook
           (lambda ()
             (make-local-variable 'coding-system-for-read)
@@ -25,10 +28,10 @@
   (end-of-buffer)
   (dired-next-line -1))
 
-(define-key dired-mode-map
-  (vector 'remap 'beginning-of-buffer) 'dired-back-to-top)
-(define-key dired-mode-map
-  (vector 'remap 'end-of-buffer) 'dired-jump-to-bottom)
+(define-key dired-mode-map (vector 'remap 'beginning-of-buffer) 'dired-back-to-top)
+(define-key dired-mode-map (vector 'remap 'end-of-buffer) 'dired-jump-to-bottom)
+(define-key dired-mode-map (kbd "M-p") nil)
+(define-key dired-mode-map (kbd "l") 'recenter-top-bottom)
 
 (eval-after-load "dired" '(define-key dired-mode-map
                             (kbd "C-c C-<return>")
@@ -36,7 +39,9 @@
                               (interactive)
                               (if windows-p
 				  (extern (dired-replace-in-string "/" "\\" (dired-get-filename)))
-				(extern (dired-get-filename) "gvfs-open")))))
+				(extern (dired-get-filename) "xdg-open")))))
+
+
 
 ;; ibuffer-mode
 (add-hook 'ibuffer-hook

@@ -1,6 +1,6 @@
 ;;; -*- coding:utf-8 -*-
 ;;; new-bindings.el ---
-;;; Time-stamp: <2013-12-20 12:15:39 scinart>
+;;; Time-stamp: <2014-01-01 21:53:30 scinart>
 ;;; Code:
 
 (cond
@@ -347,10 +347,12 @@
 (global-set-key (kbd "C-c C-k") 'kill-whole-line)
 (global-set-key (kbd "C-c M-l") 'toggle-truncate-lines)
 (global-set-key (kbd "C-c M-r") 'recursive-edit)
-(global-set-key (kbd "C-x <return> r") 'revert-buffer-with-coding-system)
-(global-set-key (kbd "C-x <return> R") '(lambda () (interactive) (revert-buffer t t t)))
-(global-set-key (kbd "C-x C-<return> r") 'revert-buffer-with-coding-system)
-(global-set-key (kbd "C-x C-<return> R") '(lambda () (interactive) (revert-buffer t t t)))
+(global-set-key (kbd "C-x <return> r") 'my-revert-buffer-with-coding-system)
+(global-set-key (kbd "C-x C-m r") 'my-revert-buffer-with-coding-system)
+(global-set-key (kbd "C-x <return> R")
+		'(lambda () (interactive) (let ((coding-system buffer-file-coding-system))
+				       (revert-buffer "from-original-file" "no confirm" "preserve mode"))))
+
 (global-set-key (kbd "C-x <return> u") 'ucs-insert)
 (global-set-key (kbd "C-x <return> w") 'wdired-change-to-wdired-mode)
 (global-set-key (kbd "M-<return>") 'newline-and-indent)
