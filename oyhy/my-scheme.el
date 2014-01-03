@@ -1,4 +1,4 @@
-;;; scheme-config.el --- 
+;;; my-scheme.el --- 
 ;; Copyright 2013 Scinart Ouyang
 ;;
 ;; Author: akubeej@gmail.com
@@ -21,7 +21,10 @@
      ;;   (define-key scheme-mode-map (kbd "C-c C-c") 'comment-or-uncomment-region)
      (define-key scheme-mode-map (kbd "C-x C-e") 'scheme-send-last-sexp-split-window)
      (define-key scheme-mode-map (kbd "C-c C-e") 'scheme-send-definition-split-window)))
-(setq scheme-program-name "D:/pro/Racket/plt-r5rs.exe")
+(case system-type
+  ((windows) (setq scheme-program-name "D:/pro/Racket/plt-r5rs.exe"))
+  ((darwin))
+  ((gnu/linux) (setq scheme-program-name "plt-r5rs")))
 ;(setq scheme-program-name "D:/pro/Racket/racket.exe")
 
 ;; bypass the interactive question and start the default interpreter
@@ -63,7 +66,7 @@
   (scheme-send-definition))
 
 
-(provide 'scheme-config)
+(provide 'my-scheme)
 
 
 ;;;;##########################################################################

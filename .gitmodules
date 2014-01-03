@@ -1,0 +1,3 @@
+[submodule "purcell"]
+	path = purcell
+	url = git@github.com:purcell/emacs.d.git

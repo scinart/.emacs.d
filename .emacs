@@ -1,3 +1,17 @@
+(defun package--read-archive-file (file)
+  "Re-read archive file FILE, if it exists.
+Will return the data from the file, or nil if the file does not exist.
+Will throw an error if the archive version is too new."
+  (let ((filename (expand-file-name file package-user-dir)))
+    (when (file-exists-p filename)
+      (with-temp-buffer
+	(insert-file-contents filename)
+	(let ((contents (read (current-buffer))))
+	  (if (> (car contents) package-archive-version)
+	      (error "Package archive version %d is higher than %d"
+		     (car contents) package-archive-version))
+	  (cdr contents))))))
+
 (package-initialize)
 (setq package-enable-at-startup nil)
 
@@ -26,6 +40,7 @@
 
 (setq load-path (cons "~/.emacs.d/oyhy" load-path))
 (add-to-list 'load-path "~/.emacs.d/configs")
+(add-to-list 'load-path "~/.emacs.d/purcell/lisp")
 
 ;; cross platforms settings
 (defvar monitor-width (display-pixel-width) "requires.el 2013-05-18 Saturday 16:36:57")
@@ -124,6 +139,13 @@
 (require 'smex)
 (require 'multi-term)
 (require 'inf-ruby)
+(require 'ruby-end)
+(require 'ruby-mode)
+(require 'ruby-block)
+(require 'ruby-electric)
+(require 'yari)
+(require 'anything)
+
 (setq multi-term-program "/bin/zsh")
 
 
@@ -138,15 +160,20 @@
 ;; configs
 (require 'sci-math-symbol)
 (require 'template)
+(template-initialize)
 (require 'make-regexp)
 (require 'flex-mode)
 (require 'bison-mode)
 (require 'gas-mode)
+
+(require 'purcell-adapt)
+
+;; purcell's
 (require 'init-hippie-expand)
-(template-initialize)
+(require 'init-utils)
+
 
 ;; oyhy
-
 (require 'my-alpha)
 (require 'my-time)
 (require 'defuns)
@@ -154,7 +181,9 @@
 (require 'my-server)
 (require 'my-ido)
 (require 'my-org)
+(require 'my-scheme)
 (require 'my-color-theme)
+(require 'my-ruby)
 (require 'gas-config)
 (require 'new-bindings)
 (require 'minimode)
@@ -164,7 +193,7 @@
 (require 'emacs-lisp-color)
 (require 'enabled-commands)
 (require 'hs-minor-mode-enhancement)
-(require 'scheme-config)
+
 (require 'scheme-mode-color)
 
 
