@@ -1,6 +1,6 @@
 ;; -*- coding: utf-8 -*- 
 ;; File created: 2013-05-17 Friday 00:31:36
-;; Time-stamp: <2013-11-24 00:40:58 scinart>
+;; Time-stamp: <2014-01-04 18:44:21 scinart>
 
 
 ;; custom-set-faces
@@ -74,7 +74,9 @@
 (eval-when-compile (require 'cl))
 
 (defun qiang-font-existsp (font)
-  (if (null (x-list-fonts font)) nil t))
+  (member font (font-family-list))
+;  (if (null (x-list-fonts font)) nil t)
+  )
 (defun qiang-make-font-string (font-name font-size)
   (if (and (stringp font-size)
 	   (equal ":" (string (elt font-size 0))))

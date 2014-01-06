@@ -33,13 +33,14 @@
 (define-key dired-mode-map (kbd "M-p") nil)
 (define-key dired-mode-map (kbd "l") 'recenter-top-bottom)
 
-(eval-after-load "dired" '(define-key dired-mode-map
-                            (kbd "C-c C-<return>")
-                            (lambda ()
-                              (interactive)
-                              (if windows-p
-				  (extern (dired-replace-in-string "/" "\\" (dired-get-filename)))
-				(extern (dired-get-filename) "xdg-open")))))
+(eval-after-load "dired" '(progn (define-key dired-mode-map
+				    (kbd "C-c C-<return>")
+				    (lambda ()
+				      (interactive)
+				      (if windows-p
+					  (extern (dired-replace-in-string "/" "\\" (dired-get-filename)))
+					(extern (dired-get-filename) "xdg-open"))))
+				 (define-key dired-mode-map (kbd "M-c") nil)))
 
 
 

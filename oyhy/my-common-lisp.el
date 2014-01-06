@@ -1,4 +1,4 @@
-;;; common-lisp-config.el ---
+;;; my-common-lisp.el ---
 
 ;; Copyright 2013 Scinart Ouyang
 ;;
@@ -52,6 +52,9 @@
      (define-key lisp-mode-map (kbd "C-/") 'hippie-expand)
      (define-key lisp-mode-map (kbd "M-c M-e") 'lisp-eval-last-sexp-split-window)
      (define-key lisp-mode-map [remap lisp-eval-last-sexp] 'slime-eval-last-expression)
+     (setq browse-url-browser-function
+      '(("~/.emacs/HyperSpec/" . w3m-browse-url)
+        ("." . browse-url-default-browser)))
      (if (fboundp 'comint-previous-input)
 	 (progn (define-key lisp-mode-map (kbd "M-<up>") 'comint-previous-input)
 		(define-key lisp-mode-map (kbd "M-<down>") 'comint-next-input))
@@ -78,7 +81,8 @@
 
 
 
-(provide 'common-lisp-config)
+
+(provide 'my-common-lisp)
 
 
 
@@ -90,8 +94,3 @@
 
 
 
-
-
-;; Local Variables:
-;; eval:(progn (hs-minor-mode t) (let ((hs-state '((1565 1998 hs) (1370 1370 nil) (179 179 nil) (180 180 nil) (181 181 nil) (210 210 nil) (211 211 nil) (240 240 nil) (324 324 nil) (375 375 nil) (453 453 nil) (569 569 nil) (570 570 nil) (570 571 nil) (603 603 nil) (712 712 nil) (762 762 nil) (811 811 nil) (867 868 nil) (869 869 nil) (890 890 nil) (891 891 nil) (1005 1005 nil) (1041 1041 nil) (1042 1042 nil) (1069 1069 nil) (1141 1141 nil) (1142 1142 nil) (1188 1188 nil) (1189 1189 nil) (1220 1220 nil) (1246 1246 nil) (1260 1260 nil) (1314 1314 nil) (1349 1349 nil) (1350 1350 nil))) (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (not (null (caddr i))) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char 868) (recenter-top-bottom))
-;; End:

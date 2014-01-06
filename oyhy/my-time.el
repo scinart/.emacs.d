@@ -23,9 +23,9 @@ e.g. Sunday, September 17, 2000."
   (interactive)                 ; permit invocation in minibuffer
   (insert (format-time-string "%Y-%m-%d %A" (time-add (current-time)  (seconds-to-time -86400)))))
 (defun dnt ()
-  "Insert Date aNd Time\n(format-time-string \"%x %A %T\")"
+  "Insert Date aNd Time\n(format-time-string \"%Y-%m-%d %A %T\")"
   (interactive)
-  (insert (format-time-string "%x %A %T")))
+  (insert (format-time-string "%Y-%m-%d %A %T")))
 (defun qdnt (arg)
   "Insert Date and Time in YYYYMMDD.HHMMSS format
   (format-time-string \\\"%Y%m%d.%H%M%S\\\")"

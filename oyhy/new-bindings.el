@@ -1,6 +1,6 @@
 ;;; -*- coding:utf-8 -*-
 ;;; new-bindings.el ---
-;;; Time-stamp: <2014-01-01 21:53:30 scinart>
+;;; Time-stamp: <2014-01-04 12:38:07 scinart>
 ;;; Code:
 
 (cond
@@ -249,9 +249,14 @@
        (global-set-key (kbd "C-x M-<left>") 'left-half)
        (global-set-key (kbd "C-x M-<down>") 'down-half)
        (global-set-key (kbd "C-x C-M-p") 'full-screen)
+       (global-set-key (kbd "C-x C-M-.") 'full-screen)
+       (global-set-key (kbd "C-x C-M-,") 'full-screen)
        (global-set-key (kbd "C-x C-M-f") 'right-half)
+       (global-set-key (kbd "C-x C-M-e") 'right-half)
        (global-set-key (kbd "C-x C-M-b") 'left-half)
+       (global-set-key (kbd "C-x C-M-a") 'left-half)
        (global-set-key (kbd "C-x C-M-n") 'down-half)
+       (global-set-key (kbd "C-x C-M-o") 'down-half)
        (global-set-key (kbd "C-h C-c") 'full-screen)
 
        (global-set-key (kbd "M-c w t") 'transparent)

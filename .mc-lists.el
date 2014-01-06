@@ -19,6 +19,7 @@
 	c-electric-star
 	continuous-downcase-word
 	continuous-num/++
+	continuous-upcase-word
 	delete-region-unless-prefix
 	forward-or-to-char
 	forward-sexp
