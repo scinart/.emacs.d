@@ -7,6 +7,9 @@
 ;; forget latest selected directory names
 (setq ido-enable-last-directory-history t)
 
+;; multiframe same buffer.
+(setq ido-default-buffer-method 'selected-window)
+
 ;; <!-- important -->
 (defvar ido-enable-replace-completing-read t
   "If t, use ido-completing-read instead of completing-read if possible.

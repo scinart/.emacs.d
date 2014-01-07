@@ -85,7 +85,6 @@ Will throw an error if the archive version is too new."
 (setq delete-old-versions t)
 (setq backup-by-copying t)
 (setq make-backup-files nil)
-(setq recentf-max-saved-items 200)
 
 ;; ***************************************************************************
 ;; coding settings
@@ -111,12 +110,14 @@ Will throw an error if the archive version is too new."
 (require 'ibuffer)
 (require 'inf-lisp)
 (require 'flyspell)
+(require 'ispell)
 (require 'recentf)
 (require 'tramp)
 (require 'epa)
 (epa-file-enable)
 (recentf-mode 1)
 (setq recentf-max-menu-items 50)
+(setq recentf-max-saved-items 300)
 
 ;; ELPA
 (require 'ace-jump-mode)
@@ -143,11 +144,11 @@ Will throw an error if the archive version is too new."
 (require 'ruby-mode)
 (require 'ruby-block)
 (require 'ruby-electric)
+(require 'w3m)
 (require 'yari)
 (require 'anything)
 
 (setq multi-term-program "/bin/zsh")
-
 
 (auto-complete-mode)
 (key-chord-mode 1)
@@ -174,6 +175,7 @@ Will throw an error if the archive version is too new."
 
 
 ;; oyhy
+(require 'hs-minor-mode-enhancement)
 (require 'my-alpha)
 (require 'my-time)
 (require 'defuns)
@@ -184,15 +186,16 @@ Will throw an error if the archive version is too new."
 (require 'my-scheme)
 (require 'my-color-theme)
 (require 'my-ruby)
+(require 'my-common-lisp)
 (require 'gas-config)
 (require 'new-bindings)
 (require 'minimode)
-;; not require minor-mode
+(require 'minor-mode)
 (require 'major-mode)
 (require 'my-smart-compile)
 (require 'emacs-lisp-color)
 (require 'enabled-commands)
-(require 'hs-minor-mode-enhancement)
+
 
 (require 'scheme-mode-color)
 
@@ -203,7 +206,6 @@ Will throw an error if the archive version is too new."
 
 ;; major-modes
 (require 'emacs-lisp-config)
-(require 'common-lisp-config)
 (require 'c++-config)
 
 
@@ -215,62 +217,11 @@ Will throw an error if the archive version is too new."
 (right-half)
 
 
-;; ****************************************************************
-;; paredit-things.
-(defun my-paredit-mode-hook ()
-  "My hook for paredit modes"
-  ;; eat right
-  (define-key paredit-mode-map (kbd "C-<right>") 'paredit-forward-slurp-sexp)
-  ;; eat left
-  (define-key paredit-mode-map (kbd "C-<left>") 'paredit-backward-slurp-sexp)
-  ;; vomit right
-  (define-key paredit-mode-map (kbd "C-M-<left>") 'paredit-backward-barf-sexp)
-  ;; vomit left
-  (define-key paredit-mode-map (kbd "C-M-<right>") 'paredit-forward-barf-sexp)
-  ;; be eaten backwards
-  (define-key paredit-mode-map (kbd "C-M-S-<left>") 'paredit-backward-be-slurped-sexp)
-  (define-key paredit-mode-map (kbd "C-<backspace>") 'paredit-backward-kill-word)
-  (define-key paredit-mode-map (kbd "M-<backspace>") 'paredit-backward-kill-sexp)
-  (define-key paredit-mode-map (kbd "C-(") 'my-paredit-backward-slurp-sexp)
-  (define-key paredit-mode-map (kbd "C-)") 'my-paredit-forward-slurp-sexp)
-  (define-key paredit-mode-map (kbd "C-M-(") 'paredit-backward-barf-sexp)
-  (define-key paredit-mode-map (kbd "C-M-)") 'paredit-forward-barf-sexp))
-
-(add-hook 'paredit-mode-hook 'my-paredit-mode-hook)
-
-;; ****************************************************************
-;; hs-mode sittings
-
-(defun my-hs-mode-hook ()
-  "My hook for hs-minor-mode
-   redefun some keybindings, C-c C-@ C-c for example"
-                                        ;  (hs-minor-mode)
-  (interactive)
-  (define-key hs-minor-mode-map (kbd "C-c @ C-h") nil)
-  (define-key hs-minor-mode-map (kbd "C-c C-SPC C-c") 'hs-toggle-hiding)
-  (define-key hs-minor-mode-map (kbd "C-c C-SPC C-h") 'hs-hide-block)
-  (define-key hs-minor-mode-map (kbd "C-c C-SPC C-l") 'hs-hide-level)
-  (define-key hs-minor-mode-map (kbd "C-c C-SPC C-s") 'hs-show-block)
-  (define-key hs-minor-mode-map (kbd "C-c C-SPC C-SPC") 'hs-show-block)
-  (define-key hs-minor-mode-map (kbd "C-c C-SPC C-M-h") 'hs-hide-all)
-  (define-key hs-minor-mode-map (kbd "C-c C-SPC C-M-s") 'hs-show-all)
-  (define-key hs-minor-mode-map (kbd "C-c C-SPC C-S-h") 'hs-hide-all)
-  (define-key hs-minor-mode-map (kbd "C-c C-SPC C-S-s") 'hs-show-all))
-(add-hook 'hs-minor-mode-hook 'my-hs-mode-hook)
-
-
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
-
-
 (if (y-or-n-p "start tlp?")
     (async-shell-command "sudo tlp ac"))
 
 
+
 ;; Local Variables:
-;; eval:(progn (hs-minor-mode t) (let ((hs-state 'nil) (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (car i) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char 4010) (recenter-top-bottom))
+;; eval:(progn (hs-minor-mode t) (let ((hs-state '((41 589 hs))) (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (car i) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char 6200) (recenter-top-bottom))
 ;; End:

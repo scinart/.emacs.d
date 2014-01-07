@@ -112,7 +112,10 @@
 (add-to-list 'auto-mode-alist '("\\.y\\(acc\\)?\\'" . bison-mode))
 (add-to-list 'auto-mode-alist '("\\.zsh\\'" . conf-mode))
 
-(defparameter auto-hs-mode (append auto-hs-mode '("bison-mode")) )
+; (defparameter auto-hs-mode (append auto-hs-mode '("bison-mode")) )
+
+(if (boundp 'auto-hs-mode)
+    (add-to-list 'auto-hs-mode "bison-mode"))
 
 
 (provide 'major-mode)

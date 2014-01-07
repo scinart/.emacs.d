@@ -1,5 +1,5 @@
 ;;; defuns.el ---
-;;; Time-stamp: <2014-01-01 21:49:30 scinart> 
+;;; Time-stamp: <2014-01-07 16:41:40 scinart> 
 ;;; Code:
 
 
@@ -357,13 +357,17 @@ at around 2013-06-04 Tuesday 00:23:22"
   (paredit-backward-up)
   (transpose-sexps 1))
 (defun my-paredit-forward-slurp-sexp (arg)
-  "2013-06-23 Sunday 14:20:53 make C-) and C-( more convenient"
+  "2013-06-23 Sunday 14:20:53
+default slurp forward,
+with prefix barf forward"
   (interactive "P")
   (if (listp (or arg 1))
       (paredit-forward-barf-sexp)
     (paredit-forward-slurp-sexp)))
 (defun my-paredit-backward-slurp-sexp (arg)
-  "2013-06-23 Sunday 14:21:13 see previous"
+  "2013-06-23 Sunday 14:21:13
+default backward slurp
+with prefix barkwark barf"
   (interactive "P")
   (if (listp (or arg 1))
       (paredit-backward-barf-sexp)
@@ -399,11 +403,11 @@ at around 2013-06-04 Tuesday 00:23:22"
   "return t if number is 0-9, a-f, A-F
    2013-05-26 Sunday 14:30:22 by Scinart"
   (or (and (<= ?0 number)
-	   (<= number ?9))
+	(<= number ?9))
       (and (<= ?a number)
-	   (<= number ?f))
+	 (<= number ?f))
       (and (<= ?A number)
-	   (<= number ?F))))
+	 (<= number ?F))))
 
 (defun Meta-x ()
   "Mimic Microsoft word Alt-x function
