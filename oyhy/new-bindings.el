@@ -1,6 +1,6 @@
 ;;; -*- coding:utf-8 -*-
 ;;; new-bindings.el ---
-;;; Time-stamp: <2014-01-04 12:38:07 scinart>
+;;; Time-stamp: <2014-01-13 20:35:32 scinart>
 ;;; Code:
 
 (cond
@@ -71,7 +71,7 @@
 
 ;;; aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 ;;; buffer edit expand and insert
-(global-set-key (kbd "M-/") 'dabbrev-expand)
+;; (global-set-key (kbd "M-/") 'semantic-ia-complete-symbol-menu)
 (global-set-key (kbd "C-/") 'hippie-expand)
 ;; insert
 (global-set-key (kbd "C-x i f") 'ido-insert-file)
@@ -414,6 +414,8 @@
   (fset 'copy-sexp "\200\367")
   (global-set-key (kbd "M-c M-@") 'copy-sexp)
   (global-set-key (kbd "C-h C-k") 'command-keys))
+
+
 
 (provide 'new-bindings)
 ;; Local Variables:

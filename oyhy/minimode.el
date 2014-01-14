@@ -28,7 +28,9 @@
 (sci-mode)
 ;; encrypt
 (epa-file-enable)
-
+;; whitespace-mode
+(setq whitespace-style '(face trailing tabs lines-tail newline tab-mark))
+(setq whitespace-line-column 120)
 
 
 (provide 'minimode)

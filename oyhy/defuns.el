@@ -1,5 +1,5 @@
 ;;; defuns.el ---
-;;; Time-stamp: <2014-01-07 16:41:40 scinart> 
+;;; Time-stamp: <2014-01-10 17:25:27 scinart> 
 ;;; Code:
 
 
@@ -595,23 +595,26 @@ else forward char arg times
   (if (listp (or arg 1))
       (backward-to-char)
     (backward-char arg)))
-(defun create-scratch ()
-  "before 2013-06-06 Thursday 21:01:24 "
-  (interactive)
-  (let ((blst (buffer-list)))
-    (if (memq t
-	      (mapcar (lambda (s) (string-equal "*scratch*" (format "%s" s))) blst))
-	(kill-buffer "*scratch*"))
-    (get-buffer-create "*scratch*")
-    (switch-to-buffer "*scratch*")
-    (lim)
-    (insert (format "%s%s\n%s" ";; Now is "
-	      (format-time-string "%x %A %T")
-	      ";; And Happy Hacking\n\n"))
-    (if (eql 'gnu/linux system-type)
-	(setq dafault-directory "~/")
-      (setq default-directory "D:/My Document/"))
-    (not-modified)))
+(defun create-scratch (arg)
+  "before 2013-06-06 Thursday 21:01:24
+or switch-to-scratch, if with prefix argument."
+  (interactive "P")
+  (if (listp (or arg 1))
+	  (switch-to-buffer "*scratch*")
+	(let ((blst (buffer-list)))
+	  (if (memq t
+				(mapcar (lambda (s) (string-equal "*scratch*" (format "%s" s))) blst))
+		  (kill-buffer "*scratch*"))
+	  (get-buffer-create "*scratch*")
+	  (switch-to-buffer "*scratch*")
+	  (lim)
+	  (insert (format "%s%s\n%s" ";; Now is "
+					  (format-time-string "%x %A %T")
+					  ";; And Happy Hacking\n\n"))
+	  (if (eql 'gnu/linux system-type)
+		  (setq dafault-directory "~/")
+		(setq default-directory "D:/My Document/"))
+	  (not-modified))))
 (defun peek (arg)
   "temorary set transparent to arg seconds
 2013-06-06 Thursday 22:45:34 by Scinart"
@@ -1048,6 +1051,9 @@ Otherwise, determine it from the file contents as usual for visiting a file."
   (check-coding-system coding-system)
   (let ((coding-system-for-read coding-system))
     (revert-buffer "from-original-file" "no confirm" "preserve mode")))
+
+
+
 
 
 

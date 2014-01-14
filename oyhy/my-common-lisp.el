@@ -52,9 +52,9 @@
      (define-key lisp-mode-map (kbd "C-/") 'hippie-expand)
      (define-key lisp-mode-map (kbd "M-c M-e") 'lisp-eval-last-sexp-split-window)
      (define-key lisp-mode-map [remap lisp-eval-last-sexp] 'slime-eval-last-expression)
-     (setq browse-url-browser-function
-      '(("~/.emacs/HyperSpec/" . w3m-browse-url)
-        ("." . browse-url-default-browser)))
+     (setq browse-url-browser-function ;;todo use add-to-list
+	   `((,(concat "file://" common-lisp-hyperspec-root "*") . w3m-browse-url)
+	     ("." . browse-url-default-browser)))
      (if (fboundp 'comint-previous-input)
 	 (progn (define-key lisp-mode-map (kbd "M-<up>") 'comint-previous-input)
 		(define-key lisp-mode-map (kbd "M-<down>") 'comint-next-input))

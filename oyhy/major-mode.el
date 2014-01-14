@@ -89,7 +89,7 @@
   (c-set-offset 'access-label '-)
   (setq c-basic-offset 4)
   (setq tab-width 4)
-  (setq indent-tabs-mode nil)
+  (setq indent-tabs-mode t) ;//use tab to indent.
   (define-key c++-mode-map (kbd "M-/") 'comment-or-uncomment-region-or-line)
   (define-key c-mode-base-map (kbd "M-/") 'comment-or-uncomment-region-or-line)
   (define-key c++-mode-map (kbd "C-/") 'hippie-expand)
@@ -97,6 +97,8 @@
   (define-key c-mode-map (kbd "<return>") 'newline-and-indent)
   (key-chord-define c++-mode-map "{}"  "{\n\n}\C-p\t")
   (key-chord-define c-mode-map "{}"  "{\n\n}\C-p\t")
+  (key-chord-define c-mode-map "()"  "()\C-b\C-i")
+  (key-chord-define c-mode-map "\"\"" "\"\"\C-b")
 )
 
 (add-hook 'c++-mode-hook 'my-cc-style)
