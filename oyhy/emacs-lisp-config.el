@@ -39,7 +39,7 @@
 	     (paredit-mode t)
 	     (hs-minor-mode t)
 	     (eldoc-mode t)
-	     (auto-complete-mode t)
+	     (company-mode)
 	     (local-set-key (kbd "C-c C-d") 'today)
 	     (local-set-key (kbd "C-c C-t") 'now)
 	     (local-set-key (kbd "RET") 'newline-and-indent)

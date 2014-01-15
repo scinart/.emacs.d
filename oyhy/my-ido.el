@@ -93,8 +93,6 @@ especially for extending ido-find-file functionality
              (find-file (concat "/sudo::" dir file)))))
   (exit-minibuffer))
 
-
-
 (provide 'my-ido)
 
 

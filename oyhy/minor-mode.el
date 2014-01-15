@@ -1,5 +1,5 @@
 ;;; minor-mode.el ---
-;;; Time-stamp: <2014-01-07 17:11:39 scinart>
+;;; Time-stamp: <2014-01-15 20:09:52 scinart>
 ;;; Date created: 2013-04-30 Tuesday 23:11:44
 ;;; Code:
 
@@ -16,6 +16,10 @@
 (setq ac-dwim t)
 
 ;; auto-complete settings ends here
+
+;; ****************************************************************
+;; company-mode settings
+
 
 ;; ****************************************************************
 ;; paredit-things.

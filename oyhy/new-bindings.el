@@ -1,6 +1,6 @@
 ;;; -*- coding:utf-8 -*-
 ;;; new-bindings.el ---
-;;; Time-stamp: <2014-01-13 20:35:32 scinart>
+;;; Time-stamp: <2014-01-15 20:00:25 scinart>
 ;;; Code:
 
 (cond
@@ -398,7 +398,7 @@
   (global-set-key (kbd "<apps> n") 'ignore)
   (global-set-key (kbd "<apps> o") 'ignore)
   (global-set-key (kbd "<apps> p") 'paredit-mode)
-  (global-set-key (kbd "<apps> q") 'ignore)
+  (global-set-key (kbd "<apps> q") 'refresh-title)
   (global-set-key (kbd "<apps> r") 'ignore)
   (global-set-key (kbd "<apps> s c r") 'toggle-scroll-bar)
   (global-set-key (kbd "<apps> s i t e") 'google-site-ishare)
