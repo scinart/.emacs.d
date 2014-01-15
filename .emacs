@@ -125,6 +125,8 @@ Will throw an error if the archive version is too new."
 (require 'bookmark+)
 (require 'browse-kill-ring)
 (require 'buffer-move)
+(require 'cedet)
+(require 'company)
 (require 'desktop)
 (require 'dired+)
 (require 'eldoc-extension)
@@ -138,6 +140,7 @@ Will throw an error if the archive version is too new."
 (require 'pretty-mode-plus)
 (require 'smart-compile)
 (require 'smex)
+(require 'semantic)
 (require 'multi-term)
 (require 'inf-ruby)
 (require 'ruby-end)
@@ -150,6 +153,8 @@ Will throw an error if the archive version is too new."
 
 (setq multi-term-program "/bin/zsh")
 
+(browse-kill-ring-default-keybindings)
+(company-mode)
 (auto-complete-mode)
 (key-chord-mode 1)
 (paredit-mode 1)
@@ -206,15 +211,15 @@ Will throw an error if the archive version is too new."
 
 ;; major-modes
 (require 'emacs-lisp-config)
-(require 'c++-config)
+(require 'cc-config)
 
 
 ;; personal-startup-settings
 ;; ***************************************************************************
 ;; set the title of the frame.
-(setq frame-title-format (list "emacs " emacs-version " " (getenv "username") " 十年磨一剑" (format-time-string " %b %e, %y %h:%m:%s")))
+;; (setq frame-title-format (list "emacs " emacs-version " " (getenv "username") " 十年磨一剑" (format-time-string " %b %e, %y %h:%m:%s")))
 (frame-alpha-set-all '(90 45))
-(right-half)
+(full-screen)
 
 
 (if (y-or-n-p "start tlp?")
@@ -222,6 +227,12 @@ Will throw an error if the archive version is too new."
 
 
 
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
 ;; Local Variables:
-;; eval:(progn (hs-minor-mode t) (let ((hs-state '((41 589 hs))) (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (car i) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char 6200) (recenter-top-bottom))
+;; eval:(progn (hs-minor-mode t) (let ((hs-state '((41 589 hs))) (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (car i) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char 6333) (recenter-top-bottom))
 ;; End:
