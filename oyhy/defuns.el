@@ -1,5 +1,5 @@
 ;;; defuns.el ---
-;;; Time-stamp: <2014-01-10 17:25:27 scinart> 
+;;; Time-stamp: <2014-01-16 21:15:50 scinart> 
 ;;; Code:
 
 
@@ -84,9 +84,9 @@ at around 2013-06-04 Tuesday 00:23:22"
 				 " 标题叫啥好呢？")))
 
 (defun my-frame-size-scale-width (float)
-  (floor (* float monitor-width (/ 0.976 (frame-char-width)))))
+  (floor (* float (display-pixel-width) (/ 0.976 (frame-char-width)))))
 (defun my-frame-size-scale-height (float)
-  (floor (* float monitor-height (/ 0.94 (frame-char-height)))))
+  (floor (* float (display-pixel-height) (/ 0.94 (frame-char-height)))))
 
 
 (defun full-screen (&optional frame)

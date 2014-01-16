@@ -1,5 +1,5 @@
 ;;; minor-mode.el ---
-;;; Time-stamp: <2014-01-15 20:09:52 scinart>
+;;; Time-stamp: <2014-01-15 22:28:12 scinart>
 ;;; Date created: 2013-04-30 Tuesday 23:11:44
 ;;; Code:
 
@@ -20,6 +20,11 @@
 ;; ****************************************************************
 ;; company-mode settings
 
+;; ****************************************************************
+;; git-gutter
+;; (set-face-foreground 'git-gutter-fr:modified "yellow")
+;; (set-face-foreground 'git-gutter-fr:added    "blue")
+;; (set-face-foreground 'git-gutter-fr:deleted  "white")
 
 ;; ****************************************************************
 ;; paredit-things.

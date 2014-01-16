@@ -13,3 +13,4 @@ url/*
 eshell/
 oyhy/.emacs.desktop
 server/*
+semanticdb/*
