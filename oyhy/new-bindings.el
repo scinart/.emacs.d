@@ -1,6 +1,6 @@
 ;;; -*- coding:utf-8 -*-
 ;;; new-bindings.el ---
-;;; Time-stamp: <2014-01-15 20:00:25 scinart>
+;;; Time-stamp: <2014-01-25 10:54:12 scinart>
 ;;; Code:
 
 (cond
@@ -164,7 +164,7 @@
        ;; define this in case I occasionally press '.' insteand of p
        (global-set-key (kbd "C-.") 'previous-line)
        (global-set-key (kbd "C-v") 'scroll-up-command)
-       (global-set-key (kbd "C-x C-s") 'save-buffer)
+       (global-set-key (kbd "C-x C-s") 'save-buffer-enhanced)
        (global-set-key (kbd "C-x C-n") 'set-goal-column)
        (global-set-key (kbd "C-M-v") 'scroll-other-window)
        (global-set-key (kbd "C-M-S-v") 'scroll-other-window-down)
@@ -181,8 +181,8 @@
        (global-set-key (kbd "C-S-p") (lambda () (interactive) (ignore-errors (previous-line 5))))
        (global-set-key (kbd "C-S-f") (lambda () (interactive) (ignore-errors (forward-char 5))))
        (global-set-key (kbd "C-S-b") (lambda () (interactive) (ignore-errors (backward-char 5))))
-       (global-set-key (kbd "M-p") (lambda (&optional n) (interactive "p") (scroll-down (or n 1))))
-       (global-set-key (kbd "M-n") (lambda (&optional n) (interactive "p") (scroll-up (or n 1))))
+       (global-set-key (kbd "M-p") 'my-scroll-up)
+       (global-set-key (kbd "M-n") 'my-scroll-down)
        (global-set-key (kbd "M-P") (lambda () (interactive) (ignore-errors (scroll-down 5))))
        (global-set-key (kbd "M-N") (lambda () (interactive) (ignore-errors (scroll-up 5))))
        (global-set-key (kbd "C-c SPC") 'ace-jump-mode)

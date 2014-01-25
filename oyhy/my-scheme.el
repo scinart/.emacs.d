@@ -12,7 +12,7 @@
 (eval-after-load "scheme"
   '(progn
      ;; Establishing your own keybindings for scheme-mode.
-     (paredit-mode -1)
+     (paredit-mode 1)
      (define-key scheme-mode-map (kbd "C-c C-d") 'today)
      (define-key scheme-mode-map (kbd "C-c C-t") 'now)
      (define-key scheme-mode-map (kbd "RET") 'newline-and-indent)

@@ -78,6 +78,8 @@ Will throw an error if the archive version is too new."
 
 (setq margin 2)
 (setq scroll-conservatively 10000)
+(setq recentf-max-menu-items 50)
+(setq recentf-max-saved-items 300)
 (setq backup-directory-alist '(("." . "~/.emacs.d/backup-files")))
 (setq version-control t)
 (setq kept-old-versions 2)
@@ -85,6 +87,7 @@ Will throw an error if the archive version is too new."
 (setq delete-old-versions t)
 (setq backup-by-copying t)
 (setq make-backup-files nil)
+(setq time-stamp-pattern "8/[Tt]ime-?stamp:[ \t]+\\\\?[\"<]+%:y-%02m-%02d %02H:%02M:%02S %u\\\\?[\">]")
 
 ;; ***************************************************************************
 ;; coding settings
@@ -116,8 +119,8 @@ Will throw an error if the archive version is too new."
 (require 'epa)
 (epa-file-enable)
 (recentf-mode 1)
-(setq recentf-max-menu-items 50)
-(setq recentf-max-saved-items 300)
+(global-subword-mode)
+
 
 ;; ELPA
 (require 'ace-jump-mode)

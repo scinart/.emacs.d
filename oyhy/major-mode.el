@@ -72,6 +72,11 @@
 (define-key org-mode-map (kbd "C-c C-n") 'outline-next-visible-heading)
 
 ;; ****************************************************************
+;; Markdown-mode
+(define-key markdown-mode-map (kbd "M-p") 'my-scroll-up)
+(define-key markdown-mode-map (kbd "M-n") 'my-scroll-down)
+
+;; ****************************************************************
 ;; recentf-dialog mode
 
 

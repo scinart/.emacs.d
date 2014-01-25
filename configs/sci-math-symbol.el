@@ -988,8 +988,6 @@
 
 ;;   )
 
-(setq sci-version "v1.3.7")
-
 (defvar sci-abrvs nil "A abbreviation hash table that maps a string to unicode char.")
 
 (defun bidirectional-puthash (a b c)
@@ -1000,7 +998,7 @@
   ;; my adapted version
   (setq sci-abrvs (make-hash-table :test 'equal))
 
-  (progn ;;DONE  ;; number forms
+  (progn ;;NUMBER : c[0-9] | [0-9][,.]
     (bidirectional-puthash "c1" "①" sci-abrvs)
     (bidirectional-puthash "c2" "②" sci-abrvs)
     (bidirectional-puthash "c3" "③" sci-abrvs)
@@ -1032,7 +1030,7 @@
     (bidirectional-puthash "8," "🄉" sci-abrvs)
     (bidirectional-puthash "9," "🄊" sci-abrvs)
     (bidirectional-puthash "0," "🄁" sci-abrvs))
-  (progn ;;COMBINE ^+[0-9+-=()ni] _+[0-9+-=()iruvNumber]
+  (progn ;;COMBINE superscripts and subscripts : [\^_][0-9+-=(){some letter}]  
     ;; superscripts
     (bidirectional-puthash "^0" "⁰" sci-abrvs)
     (bidirectional-puthash "^1" "¹" sci-abrvs)
@@ -1087,7 +1085,7 @@
     (bidirectional-puthash "_v" "ᵥ" sci-abrvs)
     (bidirectional-puthash "_x" "ₓ" sci-abrvs)
     (bidirectional-puthash "_schwa" "ₔ" sci-abrvs))
-  (progn ;;HIEROGLYPH ;;ARROWS
+  (progn ;;HIEROGLYPH : ARROWS
     (bidirectional-puthash "<-" "←" sci-abrvs)
     (bidirectional-puthash "->" "→" sci-abrvs)
     (bidirectional-puthash "v|" "↓" sci-abrvs)
@@ -1118,7 +1116,7 @@
     (bidirectional-puthash "|<-" "⇤"sci-abrvs)
     (bidirectional-puthash "->|" "⇥"sci-abrvs)
     (bidirectional-puthash "|<->|" "↹"sci-abrvs))
-  (progn ;;HIEROGLYPH ;;LETTERS `/^o~+[Letter]
+  (progn ;;LATIN-EXTEND : [`^/"~]{letter}
     
     ;; accented letters
     (bidirectional-puthash "`a" "à" sci-abrvs)
@@ -1180,7 +1178,7 @@
     (bidirectional-puthash "~A" "Ã" sci-abrvs)
     (bidirectional-puthash "~N" "Ñ" sci-abrvs)
     (bidirectional-puthash "~O" "Õ" sci-abrvs))
-  (progn ;;FULLNAME ;;GREEK ALPHABET;
+  (progn ;;GREEK ALPHABET : Alpha->Α, alpha->α
     (bidirectional-puthash "Alpha" "Α" sci-abrvs)
     (bidirectional-puthash "Beta" "Β" sci-abrvs)
     (bidirectional-puthash "Gamma" "Γ" sci-abrvs)
@@ -1205,6 +1203,7 @@
     (bidirectional-puthash "Chi" "Χ" sci-abrvs)
     (bidirectional-puthash "Psi" "Ψ" sci-abrvs)
     (bidirectional-puthash "Omega" "Ω" sci-abrvs)
+
     (bidirectional-puthash "alpha" "α" sci-abrvs)
     (bidirectional-puthash "beta" "β" sci-abrvs)
     (bidirectional-puthash "gamma" "γ" sci-abrvs)
@@ -1230,7 +1229,7 @@
     (bidirectional-puthash "chi" "χ" sci-abrvs)
     (bidirectional-puthash "psi" "ψ" sci-abrvs)
     (bidirectional-puthash "omega" "ω" sci-abrvs))
-  (progn ;;FULLNAME 4 MUSIC
+  (progn ;;MUSIC-NOTES
     (bidirectional-puthash "musicnotes" "♩♪♫♬" sci-abrvs)
     (bidirectional-puthash "flat" "♭" sci-abrvs)
     (bidirectional-puthash "natural" "♮" sci-abrvs)
@@ -1253,7 +1252,7 @@
     (bidirectional-puthash "venus" "♀" sci-abrvs)
     (bidirectional-puthash "comet" "☄" sci-abrvs))
   (progn ;;FULLNAME COMMON: from 00A0
-    (bidirectional-puthash "nbsp" " " sci-abrvs)
+    (bidirectional-puthash "nbsp" "0020" sci-abrvs)
     (bidirectional-puthash "bull" "•" sci-abrvs)
     (bidirectional-puthash "inv!" "¡" sci-abrvs)
     (bidirectional-puthash "cent" "¢" sci-abrvs)
@@ -1668,7 +1667,7 @@
     (bidirectional-puthash "diamond2" "♢" sci-abrvs))
   (bidirectional-puthash "rightangle" "⦜" sci-abrvs)
   (bidirectional-puthash "cross" "⨯" sci-abrvs)
-  (progn; "FULL-WIDTH CHAR"
+  (progn ;;FULL-WIDTH-CHAR : fw{char}
     (bidirectional-puthash "fw," "，" sci-abrvs)
     (bidirectional-puthash "fw." "．" sci-abrvs)
     (bidirectional-puthash "fw:" "：" sci-abrvs)
@@ -1922,5 +1921,5 @@ Home page at: URL `http://ergoemacs.org/emacs/sci-math-symbols-input.html'"
 
 
 ;; Local Variables:
-;; eval:(progn (hs-minor-mode t) (let ((hs-state '((24 33133 hs) (33441 34852 hs) (34910 37304 hs) (37336 38781 hs) (38829 41413 hs) (41452 43863 hs) (43892 44101 hs) (44132 44937 hs) (44976 50245 hs) (50262 53275 hs) (53331 54000 hs) (54074 55599 hs) (55685 58181 hs) (60401 61887 hs) (61912 62294 hs) (63652 64470 hs) (64600 69625 hs))) (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (car i) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char 64573) (recenter-top-bottom))
+;; eval:(progn (hs-minor-mode t) (let ((hs-state '((73557 74986 hs) (71722 73527 hs) (70528 71652 hs) (24 33133 hs) (33418 34829 hs) (34910 37304 hs) (37336 38781 hs) (38824 41408 hs) (41456 43868 hs) (44132 44937 hs) (44976 50248 hs) (50265 53278 hs) (53334 54003 hs) (54077 55602 hs) (55688 58184 hs) (60404 61890 hs) (61915 62297 hs) (64613 69638 hs))) (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (car i) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char 69642) (recenter-top-bottom))
 ;; End:

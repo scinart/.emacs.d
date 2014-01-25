@@ -1,5 +1,5 @@
 ;;; defuns.el ---
-;;; Time-stamp: <2014-01-16 21:15:50 scinart> 
+;;; Time-stamp: <2014-01-25 10:54:33 scinart> 
 ;;; Code:
 
 
@@ -1052,9 +1052,33 @@ Otherwise, determine it from the file contents as usual for visiting a file."
   (let ((coding-system-for-read coding-system))
     (revert-buffer "from-original-file" "no confirm" "preserve mode")))
 
+(defun save-buffer-without-hook ()
+  "Doc string"
+  (interactive)
+  (let ((before-save-hook nil))
+    (save-buffer)))
+
+(defmacro macro-arg (function-name docstring with-arg-progn without-arg-progn)
+  `(defun ,function-name (arg)
+     ,docstring
+     (interactive "P")
+  (if (listp (or arg 1))
+      ,with-arg-progn
+    ,without-arg-progn)))
 
 
+(macro-arg save-buffer-enhanced
+  "save-buffer, if with prefix arg, without hook."
+  (save-buffer-without-hook)
+  (save-buffer))
 
+(defun my-scroll-down (&optional n)
+  (interactive "p")
+  (scroll-up (or n 1)))
+
+(defun my-scroll-up (&optional n)
+  (interactive "p")
+  (scroll-down (or n 1)))
 
 
 ;;;;##########################################################################
