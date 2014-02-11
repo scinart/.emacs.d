@@ -1,5 +1,5 @@
 ;;; defuns.el ---
-;;; Time-stamp: <2014-01-25 10:54:33 scinart> 
+;;; Time-stamp: <2014-02-11 14:49:44 scinart> 
 ;;; Code:
 
 
@@ -160,7 +160,8 @@ at around 2013-06-04 Tuesday 00:23:22"
   (cond ((listp (or arg 1))
 	 (bury-buffer))
 	(t
-         (kill-buffer))))
+         (kill-buffer)))
+  (refresh-title))
 (defun smart-delete-window (arg)
   "delete-window, and if it is the only window, kill this buffer
    if arg, bury window"
@@ -170,7 +171,8 @@ at around 2013-06-04 Tuesday 00:23:22"
     (cond ((other-window-exists)
 	   (delete-window))
 	  (t
-	   (kill-buffer)))))
+	   (kill-buffer))))
+  (refresh-title))
 (defun kill-current-buffer ()
   "kill current buffer and disable prompt! 2013-04-27 Saturday 23:59:19 by sci"
   (interactive)
@@ -202,7 +204,8 @@ at around 2013-06-04 Tuesday 00:23:22"
                ((= arg -1)
                 (previous-buffer))
                (t
-                (message "%s" "arg not recognized"))))))
+                (message "%s" "arg not recognized")))))
+  (refresh-title))
 (defun open-this-buffer-in-explorer ()
   "Open this buffer or this buffer's directory in Explorer
    2013-04-18 Thursday 14:27:04"

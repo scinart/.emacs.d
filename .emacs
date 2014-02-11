@@ -158,6 +158,11 @@ Will throw an error if the archive version is too new."
 (require 'yaml-mode)
 (require 'anything)
 (require 'keyfreq)
+
+;; (require 'mwe-log-commands)
+;; mwe:log-keyboard-commands
+;; mwe:open-command-log-buffer
+
 (keyfreq-mode 1)
 (keyfreq-autosave-mode 1)
 
@@ -185,7 +190,9 @@ Will throw an error if the archive version is too new."
 (require 'bison-mode)
 (require 'gas-mode)
 (require 'psilord-lisp-colors)
-
+(require 'mwe-color-box)
+;; (require 'cambridge-permute)
+;; M-x mwe:cambridge-permute-buffer
 (require 'purcell-adapt)
 
 ;; purcell's
