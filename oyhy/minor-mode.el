@@ -1,5 +1,5 @@
 ;;; minor-mode.el ---
-;;; Time-stamp: <2014-02-11 13:12:14 scinart>
+;;; Time-stamp: <2014-02-11 13:25:20 scinart>
 ;;; Date created: 2013-04-30 Tuesday 23:11:44
 ;;; Code:
 
@@ -41,8 +41,8 @@
    `(rainbow-delimiters-depth-2-face ((t (:foreground ,(concatenate 'string oo "1")))))
    `(rainbow-delimiters-depth-3-face ((t (:foreground ,(concatenate 'string ooo "1")))))
    `(rainbow-delimiters-depth-4-face ((t (:foreground ,(concatenate 'string oooo "1")))))
-   `(rainbow-delimiters-depth-5-face ((t (:foreground ,(concatenate 'string o) "3"))))
-   `(rainbow-delimiters-depth-6-face ((t (:foreground ,(concatenate 'string oo "3")))))
+   `(rainbow-delimiters-depth-5-face ((t (:foreground ,(concatenate 'string "gold") "3"))))
+   `(rainbow-delimiters-depth-6-face ((t (:foreground ,(concatenate 'string oo "2")))))
    `(rainbow-delimiters-depth-7-face ((t (:foreground ,(concatenate 'string ooo "3")))))
    `(rainbow-delimiters-depth-8-face ((t (:foreground ,(concatenate 'string oooo "3")))))
    `(rainbow-delimiters-depth-9-face ((t (:foreground ,(concatenate 'string o "4")))))

@@ -141,7 +141,9 @@ Will throw an error if the archive version is too new."
 (require 'pos-tip)
 (require 'paredit)
 (require 'yasnippet)
+(require 'on-screen)
 (require 'session)
+(require 'rainbow-delimiters)
 (require 'pretty-mode-plus)
 (require 'smart-compile)
 (require 'smex)
@@ -153,7 +155,11 @@ Will throw an error if the archive version is too new."
 (require 'ruby-electric)
 (require 'w3m)
 (require 'yari)
+(require 'yaml-mode)
 (require 'anything)
+(require 'keyfreq)
+(keyfreq-mode 1)
+(keyfreq-autosave-mode 1)
 
 (setq multi-term-program "/bin/zsh")
 
@@ -161,8 +167,10 @@ Will throw an error if the archive version is too new."
 (company-mode)
 ;; (auto-complete-mode)
 (global-git-gutter-mode)
+(global-rainbow-delimiters-mode)
 (key-chord-mode 1)
 (paredit-mode 1)
+(on-screen-global-mode 1)
 (yas/global-mode 1)
 (add-hook 'after-init-hook 'session-initialize)
 (global-pretty-mode 1)
@@ -176,6 +184,7 @@ Will throw an error if the archive version is too new."
 (require 'flex-mode)
 (require 'bison-mode)
 (require 'gas-mode)
+(require 'psilord-lisp-colors)
 
 (require 'purcell-adapt)
 
@@ -232,12 +241,7 @@ Will throw an error if the archive version is too new."
 
 
 
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+
 ;; Local Variables:
 ;; eval:(progn (hs-minor-mode t) (let ((hs-state '((41 589 hs))) (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (car i) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char 6333) (recenter-top-bottom))
 ;; End:
