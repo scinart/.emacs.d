@@ -25,6 +25,7 @@
 	forward-sexp
 	insert-register
 	markdown-exdent-or-delete
+	my-paredit-forward-slurp-sexp
 	org-beginning-of-line
 	org-force-self-insert
 	org-self-insert-command

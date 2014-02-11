@@ -1,5 +1,5 @@
 ;;; minor-mode.el ---
-;;; Time-stamp: <2014-02-07 15:57:04 scinart>
+;;; Time-stamp: <2014-02-11 13:12:14 scinart>
 ;;; Date created: 2013-04-30 Tuesday 23:11:44
 ;;; Code:
 
@@ -25,6 +25,28 @@
 (add-hook 'c-mode-hook 'paredit-everywhere-mode)
 (add-hook 'ruby-mode-hook 'paredit-everywhere-mode)
 
+;; ****************************************************************
+;; rainbow-delimiters-mode settings
+
+(let ((o "yellow")
+      (oo "azure")
+      (ooo "cyan")
+      (oooo "magenta"))
+  (custom-set-faces
+   ;; custom-set-faces was added by Custom.
+   ;; If you edit it by hand, you could mess it up, so be careful.
+   ;; Your init file should contain only one such instance.
+   ;; If there is more than one, they won't work right.
+   `(rainbow-delimiters-depth-1-face ((t (:foreground ,(concatenate 'string o "1")))))
+   `(rainbow-delimiters-depth-2-face ((t (:foreground ,(concatenate 'string oo "1")))))
+   `(rainbow-delimiters-depth-3-face ((t (:foreground ,(concatenate 'string ooo "1")))))
+   `(rainbow-delimiters-depth-4-face ((t (:foreground ,(concatenate 'string oooo "1")))))
+   `(rainbow-delimiters-depth-5-face ((t (:foreground ,(concatenate 'string o) "3"))))
+   `(rainbow-delimiters-depth-6-face ((t (:foreground ,(concatenate 'string oo "3")))))
+   `(rainbow-delimiters-depth-7-face ((t (:foreground ,(concatenate 'string ooo "3")))))
+   `(rainbow-delimiters-depth-8-face ((t (:foreground ,(concatenate 'string oooo "3")))))
+   `(rainbow-delimiters-depth-9-face ((t (:foreground ,(concatenate 'string o "4")))))
+   `(rainbow-delimiters-unmatched-face ((t (:foreground "red" :box (:line-width 2 :color "grey75" :style pressed-button)))))))
 
 ;; ****************************************************************
 ;; git-gutter
