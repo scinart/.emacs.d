@@ -23,6 +23,8 @@
 	delete-region-unless-prefix
 	forward-or-to-char
 	forward-sexp
+	insert-register
+	markdown-exdent-or-delete
 	org-beginning-of-line
 	org-force-self-insert
 	org-self-insert-command
@@ -35,6 +37,7 @@
 	paredit-newline
 	paredit-open-round
 	paredit-semicolon
+	slime-space
 	yas-expand
 	))
 
@@ -43,6 +46,7 @@
 	full-screen
 	mouse-buffer-menu
 	org-ctrl-c-ctrl-c
+	save-buffer-enhanced
 	string-rectangle
 	wdired-finish-edit
 	))

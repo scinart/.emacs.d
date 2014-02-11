@@ -46,11 +46,16 @@
 (eval-after-load "lisp"
   '(progn
      ;; Establishing your own keybindings for lisp-mode.
+     (define-key lisp-mode-map (kbd "C-<backspace>") 'backward-kill-sexp)
      (define-key lisp-mode-map (kbd "RET") 'newline-and-indent)
      (define-key lisp-mode-map (kbd "C-c C-t") 'lisp-trace-procedure)
      (define-key lisp-mode-map "\C-\\" (lambda () "insert \'lambda\'" (interactive) (insert "lambda")))
      (define-key lisp-mode-map (kbd "C-/") 'hippie-expand)
      (define-key lisp-mode-map (kbd "M-c M-e") 'lisp-eval-last-sexp-split-window)
+     (define-key lisp-mode-map (kbd "C-h C-h") 'slime-describe-symbol)
+     (define-key slime-mode-map (kbd "M-p") 'my-scroll-up)
+     (define-key slime-mode-map (kbd "M-n") 'my-scroll-down)
+     (define-key lisp-mode-map [remap describe-function] 'hyperspec-lookup)
      (define-key lisp-mode-map [remap lisp-eval-last-sexp] 'slime-eval-last-expression)
      (setq browse-url-browser-function ;;todo use add-to-list
 	   `((,(concat "file://" common-lisp-hyperspec-root "*") . w3m-browse-url)

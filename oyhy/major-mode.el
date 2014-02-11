@@ -73,8 +73,10 @@
 
 ;; ****************************************************************
 ;; Markdown-mode
-(define-key markdown-mode-map (kbd "M-p") 'my-scroll-up)
-(define-key markdown-mode-map (kbd "M-n") 'my-scroll-down)
+
+(if (boundp 'markdown-mode-map)
+   (progn (define-key markdown-mode-map (kbd "M-p") 'my-scroll-up)
+	  (define-key markdown-mode-map (kbd "M-n") 'my-scroll-down)))
 
 ;; ****************************************************************
 ;; recentf-dialog mode
@@ -85,6 +87,8 @@
 (add-to-list 'auto-mode-alist '("\\.f?lex\\'" . flex-mode))
 (add-to-list 'auto-mode-alist '("\\.y\\(acc\\)?\\'" . bison-mode))
 (add-to-list 'auto-mode-alist '("\\.zsh\\'" . conf-mode))
+(add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
+(add-to-list 'auto-mode-alist '("\\.cl$" . common-lisp-mode))
 
 ; (defparameter auto-hs-mode (append auto-hs-mode '("bison-mode")) )
 

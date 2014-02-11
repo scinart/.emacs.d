@@ -51,7 +51,9 @@
 ;;; Robe
 (require 'robe)
 (after-load 'ruby-mode
-  (add-hook 'ruby-mode-hook 'robe-mode))
+  (add-hook 'ruby-mode-hook 'robe-mode)
+  (add-hook 'ruby-mode-hook 'ruby-electric-mode)
+  (add-hook 'ruby-mode-hook 'company-mode))
 (after-load 'robe
   (add-hook 'robe-mode-hook
             (lambda ()

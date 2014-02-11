@@ -1,5 +1,5 @@
 ;;; minor-mode.el ---
-;;; Time-stamp: <2014-01-15 22:28:12 scinart>
+;;; Time-stamp: <2014-02-07 15:57:04 scinart>
 ;;; Date created: 2013-04-30 Tuesday 23:11:44
 ;;; Code:
 
@@ -19,6 +19,12 @@
 
 ;; ****************************************************************
 ;; company-mode settings
+
+;; ****************************************************************
+;; paredit-everywhere-mode settings
+(add-hook 'c-mode-hook 'paredit-everywhere-mode)
+(add-hook 'ruby-mode-hook 'paredit-everywhere-mode)
+
 
 ;; ****************************************************************
 ;; git-gutter
