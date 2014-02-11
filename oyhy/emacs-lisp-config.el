@@ -42,6 +42,7 @@
 	     (company-mode)
 	     (local-set-key (kbd "C-c C-d") 'today)
 	     (local-set-key (kbd "C-c C-t") 'now)
+	     (local-set-key (kbd "C-<backspace>") 'backward-kill-sexp)
 	     (local-set-key (kbd "RET") 'newline-and-indent)
 	     (local-set-key (kbd "C-c M-t") 'lisp-trace-procedure)
 	     (local-set-key "\C-\\" (lambda () "insert \'lambda\'" (interactive) (insert "lambda")))

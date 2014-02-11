@@ -380,7 +380,7 @@
     '("\\_<[+-]?[0-9]+\\_>" . 'ansi-lisp-number)
 
     ;; I'm a psycho and want my parentheis color to be controlled.
-    '("[()]" 0 'ansi-lisp-parenthesis)
+    ;; '("[()]" 0 'ansi-lisp-parenthesis)
 
     ;; These are often important to see, but I don't know how to
     ;; highlight the matching parenthesis with it
