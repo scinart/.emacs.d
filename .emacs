@@ -85,6 +85,7 @@ Will throw an error if the archive version is too new."
 (setq kept-old-versions 2)
 (setq kept-new-versions 5)
 (setq delete-old-versions t)
+(setq echo-keystrokes -1)
 (setq backup-by-copying t)
 (setq make-backup-files nil)
 (setq time-stamp-pattern "8/[Tt]ime-?stamp:[ \t]+\\\\?[\"<]+%:y-%02m-%02d %02H:%02M:%02S %u\\\\?[\">]")
@@ -193,9 +194,9 @@ Will throw an error if the archive version is too new."
 (require 'mwe-color-box)
 ;; (require 'cambridge-permute)
 ;; M-x mwe:cambridge-permute-buffer
-(require 'purcell-adapt)
 
 ;; purcell's
+(require 'purcell-adapt) ;; oyhy/purcell-adapt.el
 (require 'init-hippie-expand)
 (require 'init-utils)
 

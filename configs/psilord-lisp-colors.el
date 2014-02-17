@@ -368,7 +368,7 @@
 (defun ansi-lisp-highlight-all-keywords ()
   "Highlight all known keywords immediatly."
   (font-lock-add-keywords
-   nil
+   'lisp-mode
    (list*
     ;; Conventional Constant Variables
     '("#?\\_<\\(?:[0-9]+=\\)?\\([+][^ ]+?[+]\\)\\_>" 1 'ansi-lisp-constant)

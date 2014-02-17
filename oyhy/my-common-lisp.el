@@ -11,10 +11,11 @@
 (require 'slime)
 (require 'slime-autoloads)
 
-;; (slime-setup '(slime-fancy))
+(slime-setup '(slime-fancy))
 
 (setq slime-lisp-implementations
-      '((sbcl ("sbcl") :coding-system utf-8-unix)))
+      '((sbcl ("sbcl") :coding-system utf-8-unix)
+	(ccl ("/opt/ccl/lx86cl64") :coding-system utf-8-unix)))
 
 (if (file-readable-p "/home/scinart/.emacs.d/HyperSpec/")
     (setf common-lisp-hyperspec-root "/home/scinart/.emacs.d/HyperSpec/")
@@ -38,9 +39,8 @@
 ;; old-version not delete
 ;; (slime-setup '(slime-repl))
 
-(require 'paredit)
 (add-hook 'lisp-mode-hook 'paredit-mode)
-
+(add-hook 'lisp-mode-hook 'company-mode)
 (add-hook 'lisp-mode-hook 'hs-minor-mode)
 
 (eval-after-load "lisp"
@@ -55,7 +55,7 @@
      (define-key lisp-mode-map (kbd "C-h C-h") 'slime-describe-symbol)
      (define-key slime-mode-map (kbd "M-p") 'my-scroll-up)
      (define-key slime-mode-map (kbd "M-n") 'my-scroll-down)
-     (define-key lisp-mode-map (kbd "C-h C-<space>") 'hyperspec-lookup)
+     (define-key lisp-mode-map (kbd "C-h C-SPC") 'hyperspec-lookup)
      (define-key lisp-mode-map [remap describe-function] 'hyperspec-lookup)
      (define-key lisp-mode-map [remap lisp-eval-last-sexp] 'slime-eval-last-expression)
      (setq browse-url-browser-function ;;todo use add-to-list
