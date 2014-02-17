@@ -1,6 +1,6 @@
 ;;; -*- coding:utf-8 -*-
 ;;; new-bindings.el ---
-;;; Time-stamp: <2014-01-25 10:54:12 scinart>
+;;; Time-stamp: <2014-02-12 09:15:08 scinart>
 ;;; Code:
 
 (cond
@@ -80,6 +80,7 @@
 (global-set-key (kbd "M-c M-d") 'today)
 (global-set-key (kbd "M-c M-t") 'now)
 (global-set-key (kbd "M-c q") 'qdnt)
+(global-set-key (kbd "M-c d") 'today)
 (global-set-key (kbd "M-c M-q") 'push-time)
 (global-set-key (kbd "M-c M-x") 'Meta-x)
 

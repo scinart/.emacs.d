@@ -13,7 +13,7 @@ e.g. Sunday, September 17, 2000.
  (format-time-string \"%x %A \")"
   (interactive)                 ; permit invocation in minibuffer
 ;  (insert (format-time-string "%A, %B %e, %Y" (current-time)))
-  (insert (format-time-string "%Y-%m-%d %A ")))
+  (insert (format-time-string "%Y-%m-%d ")))
 (defun tomorrow ()
   "Insert string for tomorrow's date nicely formatted in American style,
 e.g. Sunday, September 17, 2000."

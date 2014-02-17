@@ -35,6 +35,8 @@
 
 (define-abbrev-table 'calendar-mode-abbrev-table '())
 
+(define-abbrev-table 'change-log-mode-abbrev-table '())
+
 (define-abbrev-table 'comint-mode-abbrev-table '())
 
 (define-abbrev-table 'completion-list-mode-abbrev-table '())
@@ -77,14 +79,21 @@
 
 (define-abbrev-table 'fundamental-mode-abbrev-table '())
 
+(define-abbrev-table 'gas-mode-abbrev-table '())
+
+(define-abbrev-table 'gfm-mode-abbrev-table '())
+
+(define-abbrev-table 'git-commit-mode-abbrev-table '())
+
 (define-abbrev-table 'global-abbrev-table
   '(
     ("agi" "sudo apt-get install" nil 1)
     ("becmoe" "become" nil 2)
     ("bible" "Bible" nil 10)
+    ("clx" "Common Lisp" nil 7)
     ("dcdx" "Date created: <>" nil 1)
     ("dont" "don't" nil 1)
-    ("dp" "defparameter" nil 2)
+    ("dp" "defparameter" nil 3)
     ("emcas" "Emacs" nil 3)
     ("funcitno" "function" nil 2)
     ("funciton" "function" nil 3)
@@ -121,6 +130,8 @@
   '(
    ))
 
+(define-abbrev-table 'js-mode-abbrev-table '())
+
 (define-abbrev-table 'jython-mode-abbrev-table '())
 
 (define-abbrev-table 'latex-mode-abbrev-table '())
@@ -134,6 +145,10 @@
     ("dm" "defmacro" nil 3)
     ("ds" "defstruct" nil 1)
    ))
+
+(define-abbrev-table 'log-edit-mode-abbrev-table '())
+
+(define-abbrev-table 'markdown-mode-abbrev-table '())
 
 (define-abbrev-table 'message-mode-abbrev-table '())
 
@@ -164,6 +179,8 @@
 (define-abbrev-table 'prog-mode-abbrev-table '())
 
 (define-abbrev-table 'python-mode-abbrev-table '())
+
+(define-abbrev-table 'ruby-mode-abbrev-table '())
 
 (define-abbrev-table 'scheme-mode-abbrev-table
   '(
@@ -210,4 +227,6 @@
 (define-abbrev-table 'vc-git-log-view-mode-abbrev-table '())
 
 (define-abbrev-table 'xah-elisp-mode-abbrev-table '())
+
+(define-abbrev-table 'yaml-mode-abbrev-table '())
 

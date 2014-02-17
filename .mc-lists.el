@@ -38,6 +38,7 @@
 	paredit-newline
 	paredit-open-round
 	paredit-semicolon
+	sgml-close-tag
 	slime-space
 	yas-expand
 	))
