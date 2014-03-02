@@ -75,6 +75,10 @@
     ("dv" "defvar" nil 6)
    ))
 
+(define-abbrev-table 'ert-results-mode-abbrev-table '())
+
+(define-abbrev-table 'ert-simple-view-mode-abbrev-table '())
+
 (define-abbrev-table 'flex-mode-abbrev-table '())
 
 (define-abbrev-table 'fundamental-mode-abbrev-table '())
@@ -93,7 +97,8 @@
     ("clx" "Common Lisp" nil 7)
     ("dcdx" "Date created: <>" nil 1)
     ("dont" "don't" nil 1)
-    ("dp" "defparameter" nil 3)
+    ("dp" "defparameter" nil 12)
+    ("dv" "defvar" nil 8)
     ("emcas" "Emacs" nil 3)
     ("funcitno" "function" nil 2)
     ("funciton" "function" nil 3)
@@ -162,6 +167,8 @@
 
 (define-abbrev-table 'occur-mode-abbrev-table '())
 
+(define-abbrev-table 'org-export-stack-mode-abbrev-table '())
+
 (define-abbrev-table 'org-mode-abbrev-table '())
 
 (define-abbrev-table 'outline-mode-abbrev-table '())
@@ -203,6 +210,10 @@
 (define-abbrev-table 'slime-inspector-mode-abbrev-table '())
 
 (define-abbrev-table 'slime-thread-control-mode-abbrev-table '())
+
+(define-abbrev-table 'slime-trace-dialog--detail-mode-abbrev-table '())
+
+(define-abbrev-table 'slime-trace-dialog-mode-abbrev-table '())
 
 (define-abbrev-table 'slime-xref-mode-abbrev-table '())
 

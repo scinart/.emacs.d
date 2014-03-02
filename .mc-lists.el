@@ -32,12 +32,14 @@
 	paredit-backward-kill-sexp
 	paredit-backward-kill-word
 	paredit-doublequote
+	paredit-forward
 	paredit-forward-delete
 	paredit-forward-kill-word
 	paredit-kill
 	paredit-newline
 	paredit-open-round
 	paredit-semicolon
+	sci-change-to-symbol
 	sgml-close-tag
 	slime-space
 	yas-expand
@@ -46,6 +48,7 @@
 (setq mc/cmds-to-run-once
       '(
 	full-screen
+	inverse-add-global-abbrev
 	mouse-buffer-menu
 	org-ctrl-c-ctrl-c
 	save-buffer-enhanced

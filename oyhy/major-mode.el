@@ -78,6 +78,8 @@
    (progn (define-key markdown-mode-map (kbd "M-p") 'my-scroll-up)
 	  (define-key markdown-mode-map (kbd "M-n") 'my-scroll-down)))
 
+(setf markdown-indent-on-enter nil)
+
 ;; ****************************************************************
 ;; recentf-dialog mode
 
