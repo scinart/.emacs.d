@@ -1,5 +1,5 @@
 ;;; defuns.el ---
-;;; Time-stamp: <2014-02-11 14:49:44 scinart> 
+;;; Time-stamp: <2014-03-02 20:03:36 scinart> 
 ;;; Code:
 
 
@@ -1082,6 +1082,43 @@ Otherwise, determine it from the file contents as usual for visiting a file."
 (defun my-scroll-up (&optional n)
   (interactive "p")
   (scroll-down (or n 1)))
+
+(defun yank-primary ()
+  "Insert the primary selection at the point.
+Move point to the end of the inserted text, and set mark at beginning.
+Adapted from mouse-yank-primary
+2014-03-02 20:02:44 by scinart"
+  (interactive)
+  ;; Give temporary modes such as isearch a chance to turn off.
+  (run-hooks 'mouse-leave-buffer-hook)
+  ;; Without this, confusing things happen upon e.g. inserting into
+  ;; the middle of an active region.
+  (when select-active-regions
+    (let (select-active-regions)
+      (deactivate-mark)))
+  (let ((primary
+	 (cond
+	  ((eq (framep (selected-frame)) 'w32)
+	   ;; MS-Windows emulates PRIMARY in x-get-selection, but not
+	   ;; in x-get-selection-value (the latter only accesses the
+	   ;; clipboard).  So try PRIMARY first, in case they selected
+	   ;; something with the mouse in the current Emacs session.
+	   (or (x-get-selection 'PRIMARY)
+	       (x-get-selection-value)))
+	  ((fboundp 'x-get-selection-value) ; MS-DOS and X.
+	   ;; On X, x-get-selection-value supports more formats and
+	   ;; encodings, so use it in preference to x-get-selection.
+	   (or (x-get-selection-value)
+	       (x-get-selection 'PRIMARY)))
+	  ;; FIXME: What about xterm-mouse-mode etc.?
+	  (t
+	   (x-get-selection 'PRIMARY)))))
+    (unless primary
+      (error "No selection is available"))
+    (push-mark (point))
+    (insert primary)))
+
+
 
 
 ;;;;##########################################################################

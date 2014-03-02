@@ -1,6 +1,6 @@
 ;;; -*- coding:utf-8 -*-
 ;;; new-bindings.el ---
-;;; Time-stamp: <2014-02-12 09:15:08 scinart>
+;;; Time-stamp: <2014-03-02 20:05:14 scinart>
 ;;; Code:
 
 (cond
@@ -32,18 +32,13 @@
        (global-unset-key (kbd "C-<space>"))
        (global-unset-key (kbd "C-\\"))
        (global-set-key (kbd "M-m") 'ignore) ;; for dictionaries
+       (global-set-key (kbd "C-x C-g") 'ignore) ;; I often use C-g to cancel C-x
        (global-unset-key (kbd "<f3>"))
        (global-unset-key (kbd "<f2>"))) ;; for dired mode rename.
 
 ;;; aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 ;;; bookmarks  and registers
 (progn "registers" 
-       (set-register ?i '(file . "~/.emacs"))
-       (set-register ?e '(file . "~/.emacs.d/emacs-note.org"))
-       (set-register ?o '(file . "~/.emacs.d/oyhy"))
-       (set-register ?u '(file . "~/.emacs.d/emacs-shortcuts.org"))
-       (set-register ?m '(file . "~/.emacs.d/.mc-lists.el"))
-       (set-register ?b '(file . "~/.emacs.d/oyhy/new-bindings.el"))
 
        (global-set-key (kbd "C-x r p") 'sci-push-register)
        (global-set-key (kbd "C-x r j") 'jump-to-register)
@@ -99,6 +94,7 @@
 (global-set-key (kbd "C-x C-#") 'server-edit);same as C-x #
 (global-set-key (kbd "C-c C-r") 'not-modified)
 (global-set-key (kbd "M-c M-r") 'not-modified)
+(global-set-key (kbd "C-S-y") 'yank-primary)
 ;;; eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
 ;;; buffer edit word lines region
 (progn "edit word lines region"
@@ -216,8 +212,7 @@
 					   (text-scale-mode -1)))
        (global-set-key (kbd "C-<wheel-up>") 'text-scale-increase)
        (global-set-key (kbd "C-<wheel-down>") 'text-scale-decrease)
-       (global-set-key (kbd "<mouse-2>") '(lambda () (interactive)
-					    (copy-region-as-kill (region-beginning) (region-end))))
+       (global-set-key (kbd "<mouse-2>") 'mouse-yank-primary)
        (global-set-key (kbd "M-c 0") '(lambda () (interactive)
 					(text-scale-adjust (- text-scale-mode-amount))
 					(text-scale-mode -1))))
