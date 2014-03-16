@@ -1,6 +1,6 @@
 ;;; -*- coding:utf-8 -*-
 ;;; new-bindings.el ---
-;;; Time-stamp: <2014-03-02 20:05:14 scinart>
+;;; Time-stamp: <2014-03-16 13:34:41 scinart>
 ;;; Code:
 
 (cond
@@ -166,7 +166,6 @@
        (global-set-key (kbd "C-M-v") 'scroll-other-window)
        (global-set-key (kbd "C-M-S-v") 'scroll-other-window-down)
        (global-set-key (kbd "C-<apps>") '(lambda () "bindings.el" (interactive) (forward-line)))
-       (global-set-key (kbd "<down>") '(lambda () "bindings.el" (interactive) (forward-line)))
        (global-set-key (kbd "C-c C-n") 'half-screen-down)
        (global-set-key (kbd "C-c C-p") 'half-screen-up)
        (global-set-key (kbd "M-c M-n") 'half-screen-down)
@@ -348,8 +347,17 @@
 (global-set-key (kbd "C-c C-k") 'kill-whole-line)
 (global-set-key (kbd "C-c M-l") 'toggle-truncate-lines)
 (global-set-key (kbd "C-c M-r") 'recursive-edit)
-(global-set-key (kbd "C-x <return> r") 'my-revert-buffer-with-coding-system)
-(global-set-key (kbd "C-x C-m r") 'my-revert-buffer-with-coding-system)
+
+;; coding systems
+(global-set-key (kbd "C-x C-m s") 'set-buffer-file-coding-system)
+(global-set-key (kbd "C-x <return> s") 'set-buffer-file-coding-system)
+(global-set-key (kbd "C-x C-m f") 'revert-buffer-with-utf-8)
+(global-set-key (kbd "C-x <return> f") 'revert-buffer-with-utf-8)
+(global-set-key (kbd "C-x C-m r") 'revert-buffer-with-chinese-gbk)
+(global-set-key (kbd "C-x <return> r") 'revert-buffer-with-chinese-gbk)
+(global-set-key (kbd "C-x C-m R")
+		'(lambda () (interactive) (let ((coding-system buffer-file-coding-system))
+				       (revert-buffer "from-original-file" "no confirm" "preserve mode"))))
 (global-set-key (kbd "C-x <return> R")
 		'(lambda () (interactive) (let ((coding-system buffer-file-coding-system))
 				       (revert-buffer "from-original-file" "no confirm" "preserve mode"))))

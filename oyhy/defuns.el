@@ -1,5 +1,5 @@
 ;;; defuns.el ---
-;;; Time-stamp: <2014-03-02 20:03:36 scinart> 
+;;; Time-stamp: <2014-03-05 16:30:03 scinart> 
 ;;; Code:
 
 
@@ -1040,7 +1040,7 @@ param string is not used"
      (setq   ,symbol ,initvalue)))
 
 
-(defun my-revert-buffer-with-coding-system (coding-system)
+(defun revert-buffer-with-chinese-gbk (coding-system)
   "Visit the current buffer's file again using coding system CODING-SYSTEM.
 For a list of possible values of CODING-SYSTEM, use \\[list-coding-systems].
 
@@ -1051,6 +1051,21 @@ previous `buffer-file-coding-system' value (if it is specified there).
 Otherwise, determine it from the file contents as usual for visiting a file."
   (interactive "zCoding system for visited file (default chinese-gbk): \n")
   (or coding-system (setq coding-system 'chinese-gbk))
+  (check-coding-system coding-system)
+  (let ((coding-system-for-read coding-system))
+    (revert-buffer "from-original-file" "no confirm" "preserve mode")))
+
+(defun revert-buffer-with-utf-8 (coding-system)
+  "Visit the current buffer's file again using coding system CODING-SYSTEM.
+For a list of possible values of CODING-SYSTEM, use \\[list-coding-systems].
+
+If CODING-SYSTEM leaves the text conversion unspecified, or if it leaves
+the end-of-line conversion unspecified, FORCE controls what to do.
+If FORCE is nil, get the unspecified aspect (or aspects) from the buffer's
+previous `buffer-file-coding-system' value (if it is specified there).
+Otherwise, determine it from the file contents as usual for visiting a file."
+  (interactive "zCoding system for visited file (default chinese-gbk): \n")
+  (or coding-system (setq coding-system 'utf-8))
   (check-coding-system coding-system)
   (let ((coding-system-for-read coding-system))
     (revert-buffer "from-original-file" "no confirm" "preserve mode")))
