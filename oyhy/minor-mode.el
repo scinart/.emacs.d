@@ -1,5 +1,5 @@
 ;;; minor-mode.el ---
-;;; Time-stamp: <2014-02-11 13:25:20 scinart>
+;;; Time-stamp: <2014-03-16 22:08:14 scinart>
 ;;; Date created: 2013-04-30 Tuesday 23:11:44
 ;;; Code:
 
@@ -32,7 +32,7 @@
       (oo "azure")
       (ooo "cyan")
       (oooo "magenta"))
-  (custom-set-faces
+  (custom-theme-set-faces 'user 
    ;; custom-set-faces was added by Custom.
    ;; If you edit it by hand, you could mess it up, so be careful.
    ;; Your init file should contain only one such instance.

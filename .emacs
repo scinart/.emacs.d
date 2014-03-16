@@ -229,7 +229,8 @@ Will throw an error if the archive version is too new."
 
 ;; load-file
 (load-file "~/.emacs.d/oyhy/redefun.el")
-(load-file "~/.emacs.d/oyhy/my-font.el")
+(if (display-graphic-p)
+    (load-file "~/.emacs.d/oyhy/my-font.el"))
 
 ;; major-modes
 (require 'emacs-lisp-config)
@@ -242,11 +243,6 @@ Will throw an error if the archive version is too new."
 ;; (setq frame-title-format (list "emacs " emacs-version " " (getenv "username") " 十年磨一剑" (format-time-string " %b %e, %y %h:%m:%s")))
 (frame-alpha-set-all '(90 45))
 (full-screen)
-
-
-(if (y-or-n-p "start tlp?")
-    (async-shell-command "sudo tlp ac"))
-
 
 
 
