@@ -4,6 +4,7 @@
 (setq mc/cmds-to-run-for-all
       '(
 	backward-or-to-char
+	backward-sexp
 	bison-electric-close-brace
 	bison-electric-colon
 	bison-electric-greater-than
@@ -31,6 +32,7 @@
 	org-self-insert-command
 	paredit-backward-kill-sexp
 	paredit-backward-kill-word
+	paredit-backward-up
 	paredit-doublequote
 	paredit-forward
 	paredit-forward-delete
@@ -39,6 +41,7 @@
 	paredit-newline
 	paredit-open-round
 	paredit-semicolon
+	paredit-splice-sexp-killing-backward
 	sci-change-to-symbol
 	sgml-close-tag
 	slime-space

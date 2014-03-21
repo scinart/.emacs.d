@@ -1,5 +1,5 @@
 ;;; File created at 2013-05-02 Thursday 20:24:12
-;;; Time-stamp: <2014-01-15 20:12:32 scinart>
+;;; Time-stamp: <2014-03-17 21:01:17 scinart>
 
 
 (defun my-c++-mode-hook ()
@@ -23,7 +23,7 @@
   (setq comment-start "//" comment-end "")
   (setq c-basic-offset 4)
   (setq tab-width 4)
-  (setq indent-tabs-mode t) ;//use tab to indent.
+  (setq indent-tabs-mode nil) ;//use tab to indent.
   (define-key c++-mode-map (kbd "M-/") 'comment-or-uncomment-region-or-line)
   (define-key c-mode-base-map (kbd "M-/") 'comment-or-uncomment-region-or-line)
   (define-key c++-mode-map (kbd "C-/") 'hippie-expand)

@@ -71,6 +71,8 @@
 (define-key org-mode-map (kbd "C-c C-h") 'outline-previous-visible-heading)
 (define-key org-mode-map (kbd "C-c C-n") 'outline-next-visible-heading)
 
+(setq org-export-latex-listings t)
+
 ;; ****************************************************************
 ;; Markdown-mode
 

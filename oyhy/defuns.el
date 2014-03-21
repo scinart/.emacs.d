@@ -1,5 +1,5 @@
 ;;; defuns.el ---
-;;; Time-stamp: <2014-03-05 16:30:03 scinart> 
+;;; Time-stamp: <2014-03-20 16:20:08 scinart> 
 ;;; Code:
 
 
@@ -1132,6 +1132,7 @@ Adapted from mouse-yank-primary
       (error "No selection is available"))
     (push-mark (point))
     (insert primary)))
+
 
 
 
