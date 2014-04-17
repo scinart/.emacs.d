@@ -1780,6 +1780,9 @@ See also: `sci-mode'."
       ;; if there's no text selection, grab all chars to the left of cursor point up to whitespace, try each string until there a valid abbrev found or none char left.
       (progn
 	(setq p2 (point) )
+	(while (= 32 (char-before p2))
+	  (decf p2)
+	  (backward-char 1))
 	(skip-chars-backward "^ \t\n" -10)
 	(setq p1 (point) )
 	(while (and (not resultSymbol) (>= (- p2 p1) 1) )

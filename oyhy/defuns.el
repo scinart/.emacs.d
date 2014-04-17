@@ -1,5 +1,5 @@
 ;;; defuns.el ---
-;;; Time-stamp: <2014-03-20 16:20:08 scinart> 
+;;; Time-stamp: <2014-04-13 14:27:58 scinart> 
 ;;; Code:
 
 
@@ -381,6 +381,7 @@ with prefix barkwark barf"
    @see global set key."
   (interactive)
   (forward-word)
+  (ispell-set-spellchecker-params)
   (flyspell-auto-correct-word))
 (defun yy-or-nn-p (str)
   "ask twice, if answers are the same, give the answer,
