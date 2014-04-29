@@ -1,5 +1,5 @@
 ;;; defuns.el ---
-;;; Time-stamp: <2014-04-13 14:27:58 scinart> 
+;;; Time-stamp: <2014-04-29 21:46:43 scinart> 
 ;;; Code:
 
 
@@ -94,25 +94,30 @@ at around 2013-06-04 Tuesday 00:23:22"
   (interactive)
   (setq frame (or frame (selected-frame)))
   (set-frame-position frame 0 0)
-  (set-frame-size frame (my-frame-size-scale-width 1.0) (my-frame-size-scale-height 1.0)))
+  (if (display-graphic-p)
+      (set-frame-size frame (my-frame-size-scale-width 1.0) (my-frame-size-scale-height 1.0))
+    (set-frame-size frame (display-pixel-width) (display-pixel-height))))
 (defun right-half (&optional frame)
   "set the frame to the right half"
   (interactive)
-  (setq frame (or frame (selected-frame)))
-  (set-frame-position frame 600 0)
-  (set-frame-size frame (my-frame-size-scale-width 0.548) (my-frame-size-scale-height 1.0)))
+  (when (display-graphic-p)
+    (setq frame (or frame (selected-frame)))
+    (set-frame-position frame 600 0)
+    (set-frame-size frame (my-frame-size-scale-width 0.548) (my-frame-size-scale-height 1.0))))
 (defun down-half (&optional frame)
   "set the frame to the down half"
   (interactive)
-  (setq frame (or frame (selected-frame)))
-  (set-frame-position frame 0 345)
-  (set-frame-size frame (my-frame-size-scale-width 1.0) (my-frame-size-scale-height 0.514)))
+  (when (display-graphic-p)
+    (setq frame (or frame (selected-frame)))
+    (set-frame-position frame 0 345)
+    (set-frame-size frame (my-frame-size-scale-width 1.0) (my-frame-size-scale-height 0.514))))
 (defun left-half (&optional frame)
   "set the frame to the left half"
   (interactive)
-  (setq frame (or frame (selected-frame)))  
-  (set-frame-position frame 0 0)
-  (set-frame-size frame (my-frame-size-scale-width 0.548) (my-frame-size-scale-height 1.0)))
+  (when (display-graphic-p)
+    (setq frame (or frame (selected-frame)))  
+    (set-frame-position frame 0 0)
+    (set-frame-size frame (my-frame-size-scale-width 0.548) (my-frame-size-scale-height 1.0))))
 
 ;; (frame-char-width)
 ;; (frame-char-height)
@@ -438,6 +443,14 @@ with prefix barkwark barf"
 	(let ((a (char-before p)))
 	  (backward-delete-char 1)
 	  (insert (format "%04X" a)))))))
+
+(defun char-name ()
+  "Show the Unicode name of previous char"
+  (interactive)
+  (let* ((char (char-before (point)))
+	 (char-name (get-char-code-property char 'name)))
+    (message "U%04X %s" char char-name)))
+
 (defun init ()
   "start foobar mouseInc and objectdock"
   (interactive)
@@ -453,14 +466,17 @@ with prefix barkwark barf"
   (interactive "P")
   (when (buffer-file-name)
     (let ((temp-buffer-name (format-time-string "%Y%m%d.%H%M%S")))
-      (shell-command (concat "attrib.exe "
-			     (if arg
-				 "-R "
-			       "+R ") "\"" (buffer-file-name) "\"") temp-buffer-name)
-      (if arg
-	  (message "%s set as not read only" (current-buffer))
-	(message "%s set as read only" (current-buffer)))
-      (kill-buffer temp-buffer-name)))
+      (when windows-p
+	(shell-command (concat "attrib.exe "
+			       (if arg
+				   "-R "
+				 "+R ") "\"" (buffer-file-name) "\"") temp-buffer-name)
+	(if arg
+	    (message "%s set as not read only" (current-buffer))
+	  (message "%s set as read only" (current-buffer)))
+	(kill-buffer temp-buffer-name))
+      (when linux-p
+	(message "Not implemented yet."))))
   (unless (buffer-file-name)
     (message "%s" "buffer not recognized as a file")))
 
@@ -1016,8 +1032,8 @@ param string is not used"
   "start goagent"
   (interactive)
   (if (not (buffer-exist "*goagent*"))
-      (if (file-exists-p "/usr/share/goagent/local/proxy.py")
-	  (start-process "goagent" "*goagent*" "python" "/usr/share/goagent/local/proxy.py")
+      (if (file-exists-p "/home/scinart/tools/goagent/local/proxy.py")
+	  (start-process "goagent" "*goagent*" "python" "/home/scinart/tools/goagent/local/proxy.py")
 	(error "please specify your goagent/local/proxy.py location"))
     (message "already running")))
 
@@ -1134,6 +1150,32 @@ Adapted from mouse-yank-primary
     (push-mark (point))
     (insert primary)))
 
+(defun combine-function (default &optional C-u\ list 123-list)
+  "given (func-d (func-u1 func-u2 func-u3 ...) (func-1 func-2 func-3 ...))
+call func-d if no prefix is applied when the return function is called.
+call func-uN if N C-u is pressed before the return function is called.
+call func-N if prefix N is applied before the return function is called.
+2014-04-29 18:20:50 by scinart."
+  (defun 4-power (arg)
+    "arg is 4^x where x≥1 and 4^x < INT_MAX return x"
+    (if (< arg 4)
+	0
+      (let ((aa arg)
+	    (times 0))
+	(while (> (logand -4 aa) 0)
+	  (setq aa (lsh aa -2))
+	  (incf times))
+	times)))
+  (lexical-let ((default default)
+		(C-u\ list C-u\ list)
+		(123-list 123-list))
+    #'(lambda (arg) (interactive "P")
+	(cond ((null arg)
+	       (funcall default))
+	      ((and (listp arg) (= 1 (length arg)))
+	       (funcall (nth (- (4-power (car arg)) 1) C-u\ list)))
+	      ((and (numberp arg) (>= arg 1))
+	       (funcall (nth (- arg 1) 123-list)))))))
 
 
 

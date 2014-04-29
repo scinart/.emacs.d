@@ -18,21 +18,30 @@
 	c-electric-semi&comma
 	c-electric-slash
 	c-electric-star
+	continuous-capitalize-word
 	continuous-downcase-word
 	continuous-num/++
 	continuous-upcase-word
 	delete-region-unless-prefix
+	dired-mark
 	forward-or-to-char
 	forward-sexp
 	insert-register
+	kill-visual-line
+	kmacro-start-macro-or-insert-counter
 	markdown-exdent-or-delete
 	my-paredit-forward-slurp-sexp
 	org-beginning-of-line
+	org-delete-char
+	org-end-of-line
 	org-force-self-insert
 	org-self-insert-command
+	org-set-tags-command
+	org-yank
 	paredit-backward-kill-sexp
 	paredit-backward-kill-word
 	paredit-backward-up
+	paredit-close-round
 	paredit-doublequote
 	paredit-forward
 	paredit-forward-delete
@@ -42,6 +51,7 @@
 	paredit-open-round
 	paredit-semicolon
 	paredit-splice-sexp-killing-backward
+	replace-string
 	sci-change-to-symbol
 	sgml-close-tag
 	slime-space

@@ -57,7 +57,8 @@
 ;; 2013-05-27 Monday 13:08:07
 ;; ****************************************************************
 ;; ido-minor-mode settings
-(add-hook 'ido-minibuffer-setup-hook 'ido-my-keys)
+(if (display-graphic-p)
+    (add-hook 'ido-minibuffer-setup-hook 'ido-my-keys))
 (defun ido-my-keys ()
   "My Keybindings for ido
 especially for extending ido-find-file functionality
