@@ -78,7 +78,8 @@
 
 (if (boundp 'markdown-mode-map)
    (progn (define-key markdown-mode-map (kbd "M-p") 'my-scroll-up)
-	  (define-key markdown-mode-map (kbd "M-n") 'my-scroll-down)))
+	  (define-key markdown-mode-map (kbd "M-n") 'my-scroll-down)
+	  (define-key markdown-mode-map (kbd "C-c C-e") 'sgml-close-tag)))
 
 (setf markdown-indent-on-enter nil)
 

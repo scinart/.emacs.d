@@ -1119,16 +1119,61 @@
   (progn ;;LATIN-EXTEND : [\`\^\/\"\~]{letter}
     
     ;; accented letters
+
+;; 00C0 À LATIN CAPITAL LETTER A WITH GRAVE
+;; ≡ 0041  A   0300  ◌̀
+;; 00C1 Á LATIN CAPITAL LETTER A WITH ACUTE
+;; ≡ 0041  A   0301  ◌́
+;; 00C2 Â LATIN CAPITAL LETTER A WITH CIRCUMFLEX
+;; ≡ 0041  A   0302  ◌̂
+;; 00C3 Ã LATIN CAPITAL LETTER A WITH TILDE
+;; ≡ 0041  A   0303  ◌̃
+;; 00C4 Ä LATIN CAPITAL LETTER A WITH DIAERESIS
+;; ≡ 0041  A   0308  ◌̈
+;; 00C5 Å LATIN CAPITAL LETTER A WITH RING ABOVE
+;; ≡ 0041  A   030A  ◌̊
+;; 0100 Ā LATIN CAPITAL LETTER A WITH MACRON
+;; ≡ 0041  A   0304  ◌̄
+;; 0102 Ă LATIN CAPITAL LETTER A WITH BREVE
+;; ≡ 0041  A   0306  ◌̆
+;; 0104 Ą LATIN CAPITAL LETTER A WITH OGONEK
+;; ≡ 0041  A   0328  ◌̨
+
+    (bidirectional-puthash "ograve" "̀" sci-abrvs)
+    (bidirectional-puthash "oacute" "́" sci-abrvs)
+    (bidirectional-puthash "ocircumflex" "̂" sci-abrvs)
+    (bidirectional-puthash "otilde" "̃" sci-abrvs)
+    (bidirectional-puthash "odiaeresis" "̈" sci-abrvs)
+    (bidirectional-puthash "oabove" "̊" sci-abrvs)
+    (bidirectional-puthash "omacron" "̄" sci-abrvs)
+    (bidirectional-puthash "obreve" "̆" sci-abrvs)
+    (bidirectional-puthash "oogonek" "̨" sci-abrvs)
+
+    (bidirectional-puthash "_a" "ā" sci-abrvs)
+    (bidirectional-puthash "_e" "ē" sci-abrvs)
+    (bidirectional-puthash "_i" "ī" sci-abrvs)
+    (bidirectional-puthash "_o" "ō" sci-abrvs)
+    (bidirectional-puthash "_u" "ū" sci-abrvs)
+    (bidirectional-puthash "_\"u" "ǖ" sci-abrvs)
+    (bidirectional-puthash "_A" "Ā" sci-abrvs)
+    (bidirectional-puthash "_E" "Ē" sci-abrvs)
+    (bidirectional-puthash "_I" "Ī" sci-abrvs)
+    (bidirectional-puthash "_O" "Ō" sci-abrvs)
+    (bidirectional-puthash "_U" "Ū" sci-abrvs)
+    (bidirectional-puthash "_\"U" "Ǖ" sci-abrvs)
+
     (bidirectional-puthash "`a" "à" sci-abrvs)
     (bidirectional-puthash "`e" "è" sci-abrvs)
     (bidirectional-puthash "`i" "ì" sci-abrvs)
     (bidirectional-puthash "`o" "ò" sci-abrvs)
     (bidirectional-puthash "`u" "ù" sci-abrvs)
+    (bidirectional-puthash "`\"u" "ǜ" sci-abrvs)
     (bidirectional-puthash "`A" "À" sci-abrvs)
     (bidirectional-puthash "`E" "È" sci-abrvs)
     (bidirectional-puthash "`I" "Ì" sci-abrvs)
     (bidirectional-puthash "`O" "Ò" sci-abrvs)
     (bidirectional-puthash "`U" "Ù" sci-abrvs)
+    (bidirectional-puthash "`\"U" "Ǜ" sci-abrvs)
 
     (bidirectional-puthash "^a" "â" sci-abrvs)
     (bidirectional-puthash "^e" "ê" sci-abrvs)
@@ -1141,17 +1186,33 @@
     (bidirectional-puthash "^O" "Ô" sci-abrvs)
     (bidirectional-puthash "^U" "Û" sci-abrvs)
 
+    (bidirectional-puthash "va" "ǎ" sci-abrvs)
+    (bidirectional-puthash "ve" "ě" sci-abrvs)
+    (bidirectional-puthash "vi" "ǐ" sci-abrvs)
+    (bidirectional-puthash "vo" "ǒ" sci-abrvs)
+    (bidirectional-puthash "vu" "ǔ" sci-abrvs)
+    (bidirectional-puthash "v\"u" "ǚ" sci-abrvs)
+    (bidirectional-puthash "vA" "Ǎ" sci-abrvs)
+    (bidirectional-puthash "vE" "Ě" sci-abrvs)
+    (bidirectional-puthash "vI" "Ǐ" sci-abrvs)
+    (bidirectional-puthash "vO" "Ǒ" sci-abrvs)
+    (bidirectional-puthash "vU" "Ǔ" sci-abrvs)
+    (bidirectional-puthash "v\"U" "Ǚ" sci-abrvs)
+
     (bidirectional-puthash "/a" "á" sci-abrvs)
     (bidirectional-puthash "/e" "é" sci-abrvs)
     (bidirectional-puthash "/i" "í" sci-abrvs)
     (bidirectional-puthash "/o" "ó" sci-abrvs)
     (bidirectional-puthash "/u" "ú" sci-abrvs)
+    (bidirectional-puthash "/\"u" "ǘ" sci-abrvs)
+    (bidirectional-puthash "/n" "ń" sci-abrvs)
     (bidirectional-puthash "/y" "ý" sci-abrvs)
     (bidirectional-puthash "/A" "Á" sci-abrvs)
     (bidirectional-puthash "/E" "É" sci-abrvs)
     (bidirectional-puthash "/I" "Í" sci-abrvs)
     (bidirectional-puthash "/O" "Ó" sci-abrvs)
     (bidirectional-puthash "/U" "Ú" sci-abrvs)
+    (bidirectional-puthash "/\"u" "Ǘ" sci-abrvs)
     (bidirectional-puthash "/Y" "Ý" sci-abrvs)
 
     (bidirectional-puthash "\"A" "Ä" sci-abrvs)
@@ -1854,5 +1915,5 @@ Home page at: URL `http://ergoemacs.org/emacs/sci-math-symbols-input.html'"
 
 
 ;; Local Variables:
-;; eval:(progn (hs-minor-mode t) (let ((hs-state '((73557 74986 hs) (71722 73527 hs) (70528 71652 hs) (24 33133 hs) (33418 34829 hs) (34910 37304 hs) (37336 38781 hs) (38824 41408 hs) (41456 43868 hs) (44132 44937 hs) (44976 50248 hs) (50265 53278 hs) (53334 54003 hs) (54077 55602 hs) (55688 58184 hs) (60404 61890 hs) (61915 62297 hs) (64613 69638 hs))) (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (car i) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char 69642) (recenter-top-bottom))
+;; eval:(progn (hs-minor-mode t) (let ((hs-state '((72693 74122 hs) (71500 71747 hs) (24 33133 hs) (33418 34829 hs) (34910 37304 hs) (37336 38779 hs) (38827 43893 hs) (43941 46353 hs) (46377 46586 hs) (46617 47422 hs) (47461 50095 hs) (50112 52915 hs) (52960 53488 hs) (53562 55087 hs) (55173 57669 hs) (63682 68707 hs))) (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (car i) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char 68710) (recenter-top-bottom))
 ;; End:

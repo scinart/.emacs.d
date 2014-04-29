@@ -8,13 +8,13 @@
 ;;   %e  extention of file name       ( bin )
 
 (defparameter  smart-compile-alist '(
-  (emacs-lisp-mode    . (emacs-lisp-byte-compile))
+  (emacs-lisp-mode    . (if (y-or-n-p "byte-compile?") (emacs-lisp-byte-compile)))
 ;  (html-mode          . (browse-url-of-buffer))
 ;  (nxhtml-mode        . (browse-url-of-buffer))
 ;  (html-helper-mode   . (browse-url-of-buffer))
 ;  (octave-mode        . (run-octave))
-  ("\\.c\\'"          . "clang %f -o %n")
-  ("\\.[Cc]+[Pp]*\\'" . "clang++ %f -o %n")
+  ("\\.c\\'"          . "clang h%f -o %n -Werror")
+  ("\\.[Cc]+[Pp]*\\'" . "clang++ %f -o %n -Werror")
 ;  ("\\.m\\'"          . "gcc -O2 %f -lobjc -lpthread -o %n")
 ;  ("\\.java\\'"       . "javac %f")
 ;  ("\\.php\\'"        . "php -l %f")
@@ -49,10 +49,3 @@
 
 ;;; my-smart-compile.el ends here
 
-
-
-
-
-;; Local Variables:
-;; eval:(progn (hs-minor-mode t) (let ((hs-state 'nil) (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (car i) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char 623) (recenter-top-bottom))
-;; End:
