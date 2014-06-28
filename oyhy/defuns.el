@@ -1,5 +1,5 @@
 ;;; defuns.el ---
-;;; Time-stamp: <2014-04-29 21:46:43 scinart> 
+;;; Time-stamp: <2014-06-23 01:03:54 scinart> 
 ;;; Code:
 
 
@@ -1107,6 +1107,11 @@ Otherwise, determine it from the file contents as usual for visiting a file."
   (save-buffer-without-hook)
   (save-buffer))
 
+(macro-arg mark-or-copy-whole-buffer
+	   "mark-whole-buffer. If with C-u, copy-whole-buffer,"
+	   (copy-whole-buffer)
+	   (mark-whole-buffer))
+
 (defun my-scroll-down (&optional n)
   (interactive "p")
   (scroll-up (or n 1)))
@@ -1150,7 +1155,7 @@ Adapted from mouse-yank-primary
     (push-mark (point))
     (insert primary)))
 
-(defun combine-function (default &optional C-u\ list 123-list)
+(defun combine-function (default &optional C-u-function-or-function-list 123-list)
   "given (func-d (func-u1 func-u2 func-u3 ...) (func-1 func-2 func-3 ...))
 call func-d if no prefix is applied when the return function is called.
 call func-uN if N C-u is pressed before the return function is called.
@@ -1167,17 +1172,56 @@ call func-N if prefix N is applied before the return function is called.
 	  (incf times))
 	times)))
   (lexical-let ((default default)
-		(C-u\ list C-u\ list)
+		(C-u-list C-u-function-or-function-list)
 		(123-list 123-list))
     #'(lambda (arg) (interactive "P")
 	(cond ((null arg)
 	       (funcall default))
 	      ((and (listp arg) (= 1 (length arg)))
-	       (funcall (nth (- (4-power (car arg)) 1) C-u\ list)))
+	       (funcall (if (listp C-u-list)
+			    (nth (- (4-power (car arg)) 1) C-u-list)
+			  C-u-list)))
 	      ((and (numberp arg) (>= arg 1))
-	       (funcall (nth (- arg 1) 123-list)))))))
+	       (funcall (if (listp 123-list)
+			    (nth (- arg 1) 123-list)
+			  123-list) arg))))))
+
+(defun count-1 (begin end)
+  (interactive
+    (if (region-active-p)
+	(list (region-beginning) (region-end))
+      (list (car (bounds-of-thing-at-point 'word)) (cdr (bounds-of-thing-at-point 'word)))))
+  (message "%s" (count ?1 (buffer-substring-no-properties begin end))))
+
+(defun copy-whole-buffer ()
+  "Copy entire buffer to clipboard"
+  (interactive)
+  (clipboard-kill-ring-save (point-min) (point-max))
+  (message "buffer copied."))
 
 
+(defun htmlize (begin end)
+  (interactive
+       (if (region-active-p)
+	(list (region-beginning) (region-end))
+	(list (1+ (search-backward "\""))
+	      (progn
+		(forward-char)
+		(1- (search-forward "\""))))))
+  (save-excursion
+    (save-restriction
+      (narrow-to-region begin end)
+      (goto-char (point-min))
+      (replace-string "&" "&amp;")
+      (goto-char (point-min))
+      (replace-string "<" "&lt;")
+      (goto-char (point-min))
+      (replace-string ">" "&gt;")
+      (goto-char (point-min))
+      (replace-string "'" "&apos;")
+      (goto-char (point-min))
+      (replace-string "\"" "&quot;")
+      )))
 
 
 ;;;;##########################################################################
@@ -1193,11 +1237,3 @@ call func-N if prefix N is applied before the return function is called.
 (provide 'defuns)
 ;;; defuns.el ends here
 
-
-
-
-
-
-;; Local Variables:
-;; eval:(progn (hs-minor-mode t) (let ((hs-state 'nil) (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (car i) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char 2974) (recenter-top-bottom))
-;; End:

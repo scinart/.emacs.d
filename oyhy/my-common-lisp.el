@@ -11,7 +11,7 @@
 (require 'slime)
 (require 'slime-autoloads)
 
-(slime-setup '(slime-fancy))
+(slime-setup '(slime-fancy slime-company))
 
 (setq slime-lisp-implementations
       '((sbcl ("sbcl") :coding-system utf-8-unix)
@@ -50,6 +50,7 @@
      (define-key lisp-mode-map (kbd "RET") 'newline-and-indent)
      (define-key lisp-mode-map (kbd "C-c C-t") 'lisp-trace-procedure)
      (define-key lisp-mode-map "\C-\\" (lambda () "insert \'lambda\'" (interactive) (insert "lambda")))
+     (define-key lisp-mode-map (kbd "|") (lambda () "insert pairs of ||" (interactive) (insert "||") (backward-char 1)))
      (define-key lisp-mode-map (kbd "C-/") 'hippie-expand)
      (define-key lisp-mode-map (kbd "M-c M-e") 'lisp-eval-last-sexp-split-window)
      (define-key lisp-mode-map (kbd "C-h C-h") 'slime-describe-symbol)

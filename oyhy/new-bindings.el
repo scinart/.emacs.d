@@ -1,6 +1,6 @@
 ;;; -*- coding:utf-8 -*-
 ;;; new-bindings.el ---
-;;; Time-stamp: <2014-03-16 13:34:41 scinart>
+;;; Time-stamp: <2014-06-21 21:17:09 scinart>
 ;;; Code:
 
 (cond
@@ -78,6 +78,7 @@
 (global-set-key (kbd "M-c d") 'today)
 (global-set-key (kbd "M-c M-q") 'push-time)
 (global-set-key (kbd "M-c M-x") 'Meta-x)
+(global-set-key (kbd "M-c x") 'char-name)
 
 
 
@@ -88,7 +89,7 @@
 (global-set-key (kbd "M-Z") 'delete-almost-to-char)
 (global-set-key (kbd "M-@") 'mark-word)
 (global-set-key (kbd "M-c m p") 'mark-paragraph)
-(global-set-key (kbd "C-x h") 'mark-whole-buffer)
+(global-set-key (kbd "C-x h") 'mark-or-copy-whole-buffer)
 (global-set-key (kbd "C-x C-x") 'exchange-point-and-mark)
 (global-set-key (kbd "C-x C-@") 'pop-global-mark)
 (global-set-key (kbd "C-x C-#") 'server-edit);same as C-x #
@@ -371,7 +372,11 @@
 (global-set-key (kbd "C-_") 'undo)
 
 (global-set-key (kbd "C-c d") 'delete-indentation)
-(global-set-key (kbd "C-x C-b") 'my-ibuffer)
+;; (global-set-key (kbd "C-x C-b") 'my-ibuffer)
+;; I mistype C-x C-s to C-x C-b C-s so often that I decide to change this.
+(global-unset-key (kbd "C-x C-b"))
+(global-set-key (kbd "C-x C-S-b") 'my-ibuffer)
+(global-set-key (kbd "C-x C-b C-s") 'save-buffer-enhanced)
 (global-set-key (kbd "C-x u") 'undo)
 (global-set-key (kbd "C-c C-/") 'opaque)
 (global-set-key (kbd "M-c p o") '(lambda () (interactive) (message "%s" (point))))

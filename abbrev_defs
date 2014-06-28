@@ -55,6 +55,8 @@
 
 (define-abbrev-table 'conf-xdefaults-mode-abbrev-table '())
 
+(define-abbrev-table 'css-mode-abbrev-table '())
+
 (define-abbrev-table 'diredp-w32-drives-mode-abbrev-table '())
 
 (define-abbrev-table 'display-time-world-mode-abbrev-table '())
@@ -71,13 +73,15 @@
   '(
     ("da" "defalias" nil 3)
     ("dc" "defconst" nil 1)
-    ("dk" "define-key" nil 4)
+    ("dk" "define-key" nil 5)
     ("dv" "defvar" nil 6)
    ))
 
 (define-abbrev-table 'ert-results-mode-abbrev-table '())
 
 (define-abbrev-table 'ert-simple-view-mode-abbrev-table '())
+
+(define-abbrev-table 'eshell-mode-abbrev-table '())
 
 (define-abbrev-table 'flex-mode-abbrev-table '())
 
@@ -97,12 +101,11 @@
     ("clx" "Common Lisp" nil 7)
     ("dcdx" "Date created: <>" nil 1)
     ("dont" "don't" nil 1)
-    ("dp" "defparameter" nil 12)
-    ("dv" "defvar" nil 8)
+    ("dv" "defvar" nil 9)
     ("emcas" "Emacs" nil 3)
     ("funcitno" "function" nil 2)
     ("funciton" "function" nil 3)
-    ("functino" "function" nil 1)
+    ("functino" "function" nil 3)
     ("gss" "git status -s" nil 11)
     ("im" "I'm" nil 1)
     ("inclued" "include" nil 1)
@@ -117,6 +120,8 @@
     ("tspx" "Time-stamp: <>" nil 11)
    ))
 
+(define-abbrev-table 'grep-mode-abbrev-table '())
+
 (define-abbrev-table 'help-mode-abbrev-table '())
 
 (define-abbrev-table 'html-mode-abbrev-table '())
@@ -124,6 +129,10 @@
 (define-abbrev-table 'icon-mode-abbrev-table '())
 
 (define-abbrev-table 'idl-mode-abbrev-table '())
+
+(define-abbrev-table 'image-dired-display-image-mode-abbrev-table '())
+
+(define-abbrev-table 'image-dired-thumbnail-mode-abbrev-table '())
 
 (define-abbrev-table 'inferior-lisp-mode-abbrev-table '())
 
@@ -137,6 +146,11 @@
 
 (define-abbrev-table 'js-mode-abbrev-table '())
 
+(define-abbrev-table 'js2-mode-abbrev-table
+  '(
+    ("cl" "console.log" nil 2)
+   ))
+
 (define-abbrev-table 'jython-mode-abbrev-table '())
 
 (define-abbrev-table 'latex-mode-abbrev-table '())
@@ -145,10 +159,12 @@
 
 (define-abbrev-table 'lisp-mode-abbrev-table
   '(
-    ("dc" "defconstant" nil 2)
-    ("df" "defun" nil 32)
+    ("dc" "defconstant" nil 5)
+    ("dec" "declare" nil 10)
+    ("df" "defun" nil 62)
     ("dm" "defmacro" nil 3)
-    ("ds" "defstruct" nil 1)
+    ("dp" "defparameter" nil 38)
+    ("ds" "defstruct" nil 2)
    ))
 
 (define-abbrev-table 'log-edit-mode-abbrev-table '())
@@ -166,6 +182,12 @@
 (define-abbrev-table 'occur-edit-mode-abbrev-table '())
 
 (define-abbrev-table 'occur-mode-abbrev-table '())
+
+(define-abbrev-table 'octave-abbrev-table
+  '(
+   ))
+
+(define-abbrev-table 'octave-mode-abbrev-table '())
 
 (define-abbrev-table 'org-export-stack-mode-abbrev-table '())
 
@@ -199,9 +221,13 @@
 
 (define-abbrev-table 'sgml-mode-abbrev-table '())
 
+(define-abbrev-table 'sh-mode-abbrev-table '())
+
 (define-abbrev-table 'shell-mode-abbrev-table '())
 
 (define-abbrev-table 'sldb-mode-abbrev-table '())
+
+(define-abbrev-table 'slime-compiler-notes-mode-abbrev-table '())
 
 (define-abbrev-table 'slime-connection-list-mode-abbrev-table '())
 
@@ -225,6 +251,8 @@
 
 (define-abbrev-table 'tabulated-list-mode-abbrev-table '())
 
+(define-abbrev-table 'tar-mode-abbrev-table '())
+
 (define-abbrev-table 'term-mode-abbrev-table '())
 
 (define-abbrev-table 'tex-mode-abbrev-table '())
@@ -236,6 +264,8 @@
 (define-abbrev-table 'vc-git-log-edit-mode-abbrev-table '())
 
 (define-abbrev-table 'vc-git-log-view-mode-abbrev-table '())
+
+(define-abbrev-table 'vhdl-mode-abbrev-table '())
 
 (define-abbrev-table 'xah-elisp-mode-abbrev-table '())
 

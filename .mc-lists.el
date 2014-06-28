@@ -12,8 +12,10 @@
 	bison-electric-percent
 	bison-electric-pipe
 	bison-electric-semicolon
+	c-electric-brace
 	c-electric-colon
 	c-electric-delete-forward
+	c-electric-lt-gt
 	c-electric-paren
 	c-electric-semi&comma
 	c-electric-slash
@@ -26,10 +28,10 @@
 	dired-mark
 	forward-or-to-char
 	forward-sexp
-	insert-register
 	kill-visual-line
 	kmacro-start-macro-or-insert-counter
 	markdown-exdent-or-delete
+	my-paredit-backward-slurp-sexp
 	my-paredit-forward-slurp-sexp
 	org-beginning-of-line
 	org-delete-char
@@ -62,6 +64,7 @@
       '(
 	full-screen
 	inverse-add-global-abbrev
+	kmacro-end-or-call-macro
 	mouse-buffer-menu
 	org-ctrl-c-ctrl-c
 	save-buffer-enhanced

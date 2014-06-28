@@ -76,16 +76,21 @@
 ;; ****************************************************************
 ;; Markdown-mode
 
-(if (boundp 'markdown-mode-map)
-   (progn (define-key markdown-mode-map (kbd "M-p") 'my-scroll-up)
-	  (define-key markdown-mode-map (kbd "M-n") 'my-scroll-down)
-	  (define-key markdown-mode-map (kbd "C-c C-e") 'sgml-close-tag)))
+(add-hook 'markdown-mode-hook '(lambda ()
+				(local-set-key (kbd "M-p") 'my-scroll-up)
+				(local-set-key (kbd "M-n") 'my-scroll-down)
+				(require 'sgml-mode)
+				(local-set-key (kbd "C-c C-e") 'sgml-close-tag)))
 
 (setf markdown-indent-on-enter nil)
 
 ;; ****************************************************************
 ;; recentf-dialog mode
 
+;; ****************************************************************
+;; Package Menu mode
+
+(define-key package-menu-mode-map (kbd "l") 'recenter-top-bottom)
 
 ;;other file associations.
 
@@ -94,6 +99,8 @@
 (add-to-list 'auto-mode-alist '("\\.zsh\\'" . conf-mode))
 (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
 (add-to-list 'auto-mode-alist '("\\.cl$" . common-lisp-mode))
+(add-to-list 'auto-mode-alist '("\\.m$" . octave-mode))
+(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 
 ; (defparameter auto-hs-mode (append auto-hs-mode '("bison-mode")) )
 

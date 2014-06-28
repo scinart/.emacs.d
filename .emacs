@@ -29,7 +29,7 @@ Will throw an error if the archive version is too new."
  '(major-mode (quote text-mode))
  '(recenter-positions (quote (middle top bottom)))
  '(safe-local-variable-values (quote ((encoding . utf-8))))
- '(session-use-package t nil (session))
+; '(session-use-package t nil (session))
  '(template-default-directories (quote ("~/.emacs.d/.templates/")))
  '(truncate-lines t))
 
@@ -53,7 +53,8 @@ Will throw an error if the archive version is too new."
 
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
                          ("marmalade" . "http://marmalade-repo.org/packages/")
-                         ("melpa" . "http://melpa.milkbox.net/packages/")))
+;;                         ("melpa" . "http://melpa.milkbox.net/packages/")
+			 ))
 
 (setq default-cursor-type 'box)
 (setq cursor-in-non-selected-windows 'hollow)
@@ -79,7 +80,7 @@ Will throw an error if the archive version is too new."
 (setq margin 2)
 (setq scroll-conservatively 10000)
 (setq recentf-max-menu-items 50)
-(setq recentf-max-saved-items 300)
+(setq recentf-max-saved-items 600)
 (setq backup-directory-alist '(("." . "~/.emacs.d/backup-files")))
 (setq version-control t)
 (setq kept-old-versions 2)
@@ -124,6 +125,7 @@ Will throw an error if the archive version is too new."
 
 
 ;; ELPA
+;; (require 'slime)
 (require 'ace-jump-mode)
 (require 'auto-complete)
 (require 'bookmark+)
@@ -145,7 +147,7 @@ Will throw an error if the archive version is too new."
 (require 'on-screen)
 (require 'session)
 (require 'rainbow-delimiters)
-(require 'pretty-mode-plus)
+(when (display-graphic-p) (require 'pretty-mode-plus))
 (require 'smart-compile)
 (require 'smex)
 (require 'semantic)
@@ -179,7 +181,7 @@ Will throw an error if the archive version is too new."
 (on-screen-global-mode 1)
 (yas/global-mode 1)
 (add-hook 'after-init-hook 'session-initialize)
-(global-pretty-mode 1)
+(when (display-graphic-p) (global-pretty-mode 1))
 
 
 ;; configs

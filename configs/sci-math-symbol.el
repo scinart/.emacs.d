@@ -1853,6 +1853,7 @@ See also: `sci-mode'."
 	  (setq p1 (1+ p1)) ) ))
 
     (when (not resultSymbol)
+      (goto-char p2)
       (when print-message-when-no-match (sci-list-math-symbols) (error "「%s」 is not a valid abbrevation or input. Call “sci-list-math-symbols” for a list. Or use a decimal e.g. 「945」 or hexadecimal e.g. 「x3b1」, or full Unicode name e.g. 「greek small letter alpha」."  inputStr)))))
 
 (define-minor-mode sci-mode
