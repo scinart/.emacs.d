@@ -1,6 +1,6 @@
 ;;; -*- coding:utf-8 -*-
 ;;; new-bindings.el ---
-;;; Time-stamp: <2014-06-21 21:17:09 scinart>
+;;; Time-stamp: <2014-06-28 09:56:40 scinart>
 ;;; Code:
 
 (cond
@@ -376,6 +376,7 @@
 ;; I mistype C-x C-s to C-x C-b C-s so often that I decide to change this.
 (global-unset-key (kbd "C-x C-b"))
 (global-set-key (kbd "C-x C-S-b") 'my-ibuffer)
+(global-set-key (kbd "C-x C-b C-b") 'my-ibuffer)
 (global-set-key (kbd "C-x C-b C-s") 'save-buffer-enhanced)
 (global-set-key (kbd "C-x u") 'undo)
 (global-set-key (kbd "C-c C-/") 'opaque)

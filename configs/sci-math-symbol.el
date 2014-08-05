@@ -1422,7 +1422,12 @@
     (bidirectional-puthash "perpendicular" "⊥" sci-abrvs)
     (bidirectional-puthash "dot" "⋅" sci-abrvs)
     (bidirectional-puthash "lang" "〈" sci-abrvs)
-    (bidirectional-puthash "rang" "〉" sci-abrvs))
+    (bidirectional-puthash "rang" "〉" sci-abrvs)
+    (bidirectional-puthash "⋮" "vdots" sci-abrvs)
+    (bidirectional-puthash "⋯" "cdots" sci-abrvs)
+    (bidirectional-puthash "⋰" "bdots" sci-abrvs)
+    (bidirectional-puthash "⋱" "ddots" sci-abrvs)
+    )
   (progn ;;ℂℍℕℙℚℝℤⅆⅇⅈⅉ bb{letter} \mathbb{}
     (bidirectional-puthash "bbC" "ℂ" sci-abrvs)
     (bidirectional-puthash "bbH" "ℍ" sci-abrvs)

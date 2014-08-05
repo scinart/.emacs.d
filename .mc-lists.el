@@ -23,6 +23,7 @@
 	continuous-capitalize-word
 	continuous-downcase-word
 	continuous-num/++
+	continuous-num/--
 	continuous-upcase-word
 	delete-region-unless-prefix
 	dired-mark
@@ -30,6 +31,7 @@
 	forward-sexp
 	kill-visual-line
 	kmacro-start-macro-or-insert-counter
+	mark-sexp
 	markdown-exdent-or-delete
 	my-paredit-backward-slurp-sexp
 	my-paredit-forward-slurp-sexp

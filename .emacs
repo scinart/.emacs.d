@@ -29,7 +29,7 @@ Will throw an error if the archive version is too new."
  '(major-mode (quote text-mode))
  '(recenter-positions (quote (middle top bottom)))
  '(safe-local-variable-values (quote ((encoding . utf-8))))
-; '(session-use-package t nil (session))
+ '(session-use-package t nil (session))
  '(template-default-directories (quote ("~/.emacs.d/.templates/")))
  '(truncate-lines t))
 
@@ -53,7 +53,7 @@ Will throw an error if the archive version is too new."
 
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
                          ("marmalade" . "http://marmalade-repo.org/packages/")
-;;                         ("melpa" . "http://melpa.milkbox.net/packages/")
+                         ("melpa" . "http://melpa.milkbox.net/packages/")
 			 ))
 
 (setq default-cursor-type 'box)
@@ -67,9 +67,12 @@ Will throw an error if the archive version is too new."
               (format-time-string "%x %A %T")
               ";; And Happy Hacking\n\n"))
 
+;; This makes emacs works better when marking large regions
+(setq select-active-regions 'only)
+
 (setq x-select-enable-clipboard t)
 (setq kill-ring-max 200)
-(setq visible-bell t)
+(setq visible-bell nil)
 
 (setq split-height-threshold nil)
 (setq split-width-threshold 100)
@@ -161,6 +164,7 @@ Will throw an error if the archive version is too new."
 (require 'yaml-mode)
 (require 'anything)
 (require 'keyfreq)
+
 
 ;; (require 'mwe-log-commands)
 ;; mwe:log-keyboard-commands
