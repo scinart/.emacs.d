@@ -1,6 +1,6 @@
 ;;; -*- coding:utf-8 -*-
 ;;; new-bindings.el ---
-;;; Time-stamp: <2014-06-28 09:56:40 scinart>
+;;; Time-stamp: <2014-08-05 22:18:59 scinart>
 ;;; Code:
 
 (cond
@@ -99,6 +99,7 @@
 ;;; eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
 ;;; buffer edit word lines region
 (progn "edit word lines region"
+       (global-set-key (kbd "S-<backspace>") 'subword-backward-kill)
        (global-set-key (kbd "M-l") 'downcase-word)
        (global-set-key (kbd "M-t") 'transpose-words)
        (global-set-key (kbd "M-u") 'upcase-word)

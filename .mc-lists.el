@@ -70,6 +70,7 @@
 	mouse-buffer-menu
 	org-ctrl-c-ctrl-c
 	save-buffer-enhanced
+	smart-compile
 	string-rectangle
 	wdired-finish-edit
 	))
