@@ -14,7 +14,7 @@
 ;  (html-helper-mode   . (browse-url-of-buffer))
 ;  (octave-mode        . (run-octave))
   ("\\.c\\'"          . "clang %f -o %n -Wall")
-  ("\\.[Cc]+[Pp]*\\'" . "clang++ %f -o %n -Wall -std=c++11 -g -pg")
+  ("\\.[Cc]+[Pp]*\\'" . "clang++ %f -o %n -Wall -std=c++11 -g")
 ;  ("\\.m\\'"          . "gcc -O2 %f -lobjc -lpthread -o %n")
 ;  ("\\.java\\'"       . "javac %f")
 ;  ("\\.php\\'"        . "php -l %f")

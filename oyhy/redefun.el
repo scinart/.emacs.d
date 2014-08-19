@@ -1,5 +1,5 @@
 ;;; redefun.el
-;;; Time-stamp: <2014-01-01 14:36:36 scinart>
+;;; Time-stamp: <2014-08-19 23:38:53 scinart>
 ;;; date created around 2013-05-04 Saturday
 ;;;;##########################################################################
 ;;;; OVERRIDE SYSTEM FUNCTIONS
@@ -330,6 +330,40 @@ search (cond ...  ((eq ido-exit 'fallback) ... )) to see where it's used.
 	(ido-record-work-directory)
 	(ido-visit-buffer (find-file-noselect filename nil ido-find-literal) method))))))
 
+(defun helm-company ()
+  "the original version of this seems to have a bug.
+  (as of version 00f5e95dd8e347c10399d4cce79df43ef766fae2 1 parent 7a11589 Yasuyuki Oka yasuyk authored on Jan 17)
+I have reported the issue and hopefully the original author will fix it soon.
+This is a temporary solution and I don't know neither why the original version doesn't work nor why this version works."
+  (interactive)
+  (unless company-candidates
+    (company--begin-new)
+    (setq company-point (point)
+	  company--point-max (point-max)))
+  (when company-point
+    (let ((beg (- company-point (length company-prefix)))
+	  (end company--point-max))
+      (declare (indent 2) (debug t))
+      (let ((helm-move-selection-after-hook
+	     (and helm-turn-on-show-completion
+		(append (list 'helm-show-completion)
+			helm-move-selection-after-hook))))
+	(with-helm-temp-hook 'helm-after-initialize-hook
+	  (with-helm-buffer
+	    (set (make-local-variable 'helm-display-function)
+		 (if helm-show-completion-use-special-display
+		     'helm-show-completion-display-function
+		   'helm-default-display-buffer))))
+	(unwind-protect
+	    (progn
+	      (helm-show-completion-init-overlay beg end)
+	      (helm :sources 'helm-source-company
+		    :buffer  "*helm company*"
+		    :candidate-number-limit helm-company-candidate-number-limit))
+	  (when (and helm-turn-on-show-completion
+		   helm-show-completion-overlay
+		   (overlayp helm-show-completion-overlay))
+	    (delete-overlay helm-show-completion-overlay)))))))
 ;; --- not redefun
 
 (ignore)

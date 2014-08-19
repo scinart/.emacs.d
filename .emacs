@@ -143,6 +143,8 @@ Will throw an error if the archive version is too new."
 (require 'fuzzy)
 (require 'git-gutter)
 (require 'git-gutter-fringe)
+(require 'helm-mode)
+(require 'helm-company)
 (require 'multiple-cursors)
 (require 'pos-tip)
 (require 'paredit)
@@ -177,9 +179,14 @@ Will throw an error if the archive version is too new."
 
 (browse-kill-ring-default-keybindings)
 (company-mode)
+(eval-after-load 'company
+  '(progn
+     (define-key company-mode-map (kbd "C-:") 'helm-company)
+     (define-key company-active-map (kbd "C-:") 'helm-company)))
 ;; (auto-complete-mode)
 (global-git-gutter-mode)
 (global-rainbow-delimiters-mode)
+(helm-mode 1)
 (key-chord-mode 1)
 (paredit-mode 1)
 (on-screen-global-mode 1)

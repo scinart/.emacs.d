@@ -1,6 +1,6 @@
 ;;; -*- coding:utf-8 -*-
 ;;; new-bindings.el ---
-;;; Time-stamp: <2014-08-05 22:18:59 scinart>
+;;; Time-stamp: <2014-08-20 02:27:45 scinart>
 ;;; Code:
 
 (cond
@@ -177,8 +177,6 @@
        (global-set-key (kbd "C-c C-S-n") 'half-screen-down)
        (global-set-key (kbd "C-S-n") (lambda () (interactive) (ignore-errors (next-line 5))))
        (global-set-key (kbd "C-S-p") (lambda () (interactive) (ignore-errors (previous-line 5))))
-       (global-set-key (kbd "C-S-f") (lambda () (interactive) (ignore-errors (forward-char 5))))
-       (global-set-key (kbd "C-S-b") (lambda () (interactive) (ignore-errors (backward-char 5))))
        (global-set-key (kbd "M-p") 'my-scroll-up)
        (global-set-key (kbd "M-n") 'my-scroll-down)
        (global-set-key (kbd "M-P") (lambda () (interactive) (ignore-errors (scroll-down 5))))
@@ -350,6 +348,9 @@
 (global-set-key (kbd "C-c M-l") 'toggle-truncate-lines)
 (global-set-key (kbd "C-c M-r") 'recursive-edit)
 
+(global-set-key (kbd "C-<return>") 'helm-company)
+(global-set-key (kbd "M-<return>") 'company-complete)
+
 ;; coding systems
 (global-set-key (kbd "C-x C-m s") 'set-buffer-file-coding-system)
 (global-set-key (kbd "C-x <return> s") 'set-buffer-file-coding-system)
@@ -382,6 +383,9 @@
 (global-set-key (kbd "C-x u") 'undo)
 (global-set-key (kbd "C-c C-/") 'opaque)
 (global-set-key (kbd "M-c p o") '(lambda () (interactive) (message "%s" (point))))
+(global-set-key (kbd "C-S-f") 'helm-find-files)
+(global-set-key (kbd "C-S-b") 'helm-buffers-list)
+(global-set-key (kbd "C-S-x") 'helm-M-x)
 
 
 ;;; aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
@@ -429,6 +433,3 @@
 
 
 (provide 'new-bindings)
-;; Local Variables:
-;; eval:(progn (hs-minor-mode t) (let ((hs-state 'nil) (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (car i) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char 1176) (recenter-top-bottom))
-;; End:
