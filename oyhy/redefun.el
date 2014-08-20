@@ -1,5 +1,5 @@
 ;;; redefun.el
-;;; Time-stamp: <2014-08-19 23:38:53 scinart>
+;;; Time-stamp: <2014-08-20 17:29:25 scinart>
 ;;; date created around 2013-05-04 Saturday
 ;;;;##########################################################################
 ;;;; OVERRIDE SYSTEM FUNCTIONS
@@ -337,7 +337,7 @@ I have reported the issue and hopefully the original author will fix it soon.
 This is a temporary solution and I don't know neither why the original version doesn't work nor why this version works."
   (interactive)
   (unless company-candidates
-    (company--begin-new)
+    (company-manual-begin)
     (setq company-point (point)
 	  company--point-max (point-max)))
   (when company-point
