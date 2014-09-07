@@ -1,6 +1,6 @@
 ;;; -*- coding:utf-8 -*-
 ;;; new-bindings.el ---
-;;; Time-stamp: <2014-08-20 02:27:45 scinart>
+;;; Time-stamp: <2014-08-24 10:53:11 scinart>
 ;;; Code:
 
 (cond
@@ -178,6 +178,8 @@
        (global-set-key (kbd "C-S-n") (lambda () (interactive) (ignore-errors (next-line 5))))
        (global-set-key (kbd "C-S-p") (lambda () (interactive) (ignore-errors (previous-line 5))))
        (global-set-key (kbd "M-p") 'my-scroll-up)
+       (global-set-key (kbd "M-.") 'my-scroll-up) ;; I often mistype M-p as M-.
+       (global-set-key (kbd "<escape> M-.") 'find-tag) ;; originally M-.
        (global-set-key (kbd "M-n") 'my-scroll-down)
        (global-set-key (kbd "M-P") (lambda () (interactive) (ignore-errors (scroll-down 5))))
        (global-set-key (kbd "M-N") (lambda () (interactive) (ignore-errors (scroll-up 5))))

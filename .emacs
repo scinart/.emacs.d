@@ -132,7 +132,7 @@ Will throw an error if the archive version is too new."
 (require 'ace-jump-mode)
 (require 'auto-complete)
 (require 'bookmark+)
-(require 'browse-kill-ring)
+(require 'kill-ring-ido)
 (require 'buffer-move)
 (require 'cedet)
 (require 'company)
@@ -177,7 +177,6 @@ Will throw an error if the archive version is too new."
 
 (setq multi-term-program "/bin/zsh")
 
-(browse-kill-ring-default-keybindings)
 (company-mode)
 (eval-after-load 'company
   '(progn
@@ -258,7 +257,3 @@ Will throw an error if the archive version is too new."
 (full-screen)
 
 
-
-;; Local Variables:
-;; eval:(progn (hs-minor-mode t) (let ((hs-state '((41 589 hs))) (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (car i) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char 6333) (recenter-top-bottom))
-;; End:
