@@ -257,3 +257,22 @@ Will throw an error if the archive version is too new."
 (full-screen)
 
 
+
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(rainbow-delimiters-depth-1-face ((t (:foreground "yellow1"))))
+ '(rainbow-delimiters-depth-2-face ((t (:foreground "azure1"))))
+ '(rainbow-delimiters-depth-3-face ((t (:foreground "cyan1"))))
+ '(rainbow-delimiters-depth-4-face ((t (:foreground "magenta1"))))
+ '(rainbow-delimiters-depth-5-face ((t (:foreground "gold" "3"))))
+ '(rainbow-delimiters-depth-6-face ((t (:foreground "azure2"))))
+ '(rainbow-delimiters-depth-7-face ((t (:foreground "cyan3"))))
+ '(rainbow-delimiters-depth-8-face ((t (:foreground "magenta3"))))
+ '(rainbow-delimiters-depth-9-face ((t (:foreground "yellow4"))))
+ '(rainbow-delimiters-unmatched-face ((t (:foreground "red" :box (:line-width 2 :color "grey75" :style pressed-button))))))
+;; Local Variables:
+;; eval:(progn (hs-minor-mode t) (let ((hs-state '((41 589 hs))) (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (car i) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char 7131) (recenter-top-bottom))
+;; End:

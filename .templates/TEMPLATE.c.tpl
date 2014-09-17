@@ -1,7 +1,12 @@
-/* @(#)TEMPLATE.c.tpl
+/* Time-stamp: <>
+ * created at (>>>ISO_DATE<<<) (>>>TIME<<<)
+ * (>>>FILE<<<)
  */
 
-#include <config.h>
-#include "(>>>FILE_SANS<<<).h"
+#include <stdio.h>
 
-(>>>POINT<<<)
+
+int main()
+{
+    (>>>POINT<<<)
+}

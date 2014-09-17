@@ -52,7 +52,8 @@
 		(newline 5)
 		(comment-string-and-newline "Local Variables:")
 		(comment-string-and-newline eval-string)
-		(comment-string-and-newline "End:")))))))))
+		(comment-string-and-newline "End:")))
+	    (save-buffer-without-hook)))))))
 
 (provide 'hs-minor-mode-enhancement)
 
