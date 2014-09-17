@@ -8,7 +8,7 @@
 
 
 
-;; (add-hook 'before-save-hook 'hs-state-save)
+(add-hook 'before-save-hook 'hs-state-hook)
 (defun comment-this-line ()
   (let ((b (progn (beginning-of-line) (point)))
         (e (progn (end-of-line) (point))))
@@ -18,9 +18,20 @@
   (comment-this-line)
   (end-of-line)
   (newline))
-(defun hs-state-save ()
-  "I modified this to be interactive to use it manually."
+
+(defun hs-state-hook ()
+  (save-excursion
+    (goto-char (point-max))
+    (when (search-backward "(the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr" nil t)
+      (hs-state-save))))
+
+(defun hs-state-insert ()
+  "if hs-state not in file, insert it."
   (interactive)
+  (hs-state-save t))
+
+(defun hs-state-save (&optional create)
+  "Save hs-state to the end of the file."
   (defun omm-get-all-overlays ()
     "return a list of outline information for all the current buffer"
     (save-excursion
@@ -47,16 +58,15 @@
 		  (delete-region (point) (point-max))
 		  (comment-string-and-newline eval-string)
 		  (comment-string-and-newline "End:"))
-	      (progn
+	      (when create
 		(goto-char (point-max))
 		(newline 5)
 		(comment-string-and-newline "Local Variables:")
 		(comment-string-and-newline eval-string)
-		(comment-string-and-newline "End:")))
-	    (save-buffer-without-hook)))))))
+		(comment-string-and-newline "End:")))))))))
 
 (provide 'hs-minor-mode-enhancement)
 
 ;; Local Variables:
-;; eval:(progn (hs-minor-mode t) (let ((hs-state 'nil) (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (car i) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char 958) (recenter-top-bottom))
+;; eval:(progn (hs-minor-mode t) (let ((hs-state 'nil) (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (car i) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char 2505) (recenter-top-bottom))
 ;; End:

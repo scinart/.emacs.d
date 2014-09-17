@@ -1,5 +1,5 @@
 ;;; defuns.el ---
-;;; Time-stamp: <2014-06-23 01:03:54 scinart> 
+;;; Time-stamp: <2014-09-17 10:25:41 scinart>
 ;;; Code:
 
 
@@ -1105,7 +1105,7 @@ Otherwise, determine it from the file contents as usual for visiting a file."
 (macro-arg save-buffer-enhanced
   "save-buffer, if with prefix arg, without hook."
   (save-buffer-without-hook)
-  (save-buffer))
+  (progn (not-modified t) (save-buffer)))
 
 (macro-arg mark-or-copy-whole-buffer
 	   "mark-whole-buffer. If with C-u, copy-whole-buffer,"
