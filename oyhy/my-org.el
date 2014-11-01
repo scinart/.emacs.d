@@ -1,7 +1,36 @@
 ;;; my-org.el ---
-;;; Time-stamp: <2013-11-24 00:49:31 scinart>
+;;; Time-stamp: <2014-11-01 19:21:06 scinart>
 ;;; Code:
 
+(setq org-latex-pdf-process '("xelatex -interaction nonstopmode %f"))
+
+(setq org-latex-default-packages-alist
+      '(("T1" "fontenc" t)
+	("" "fixltx2e" nil)
+	("" "graphicx" t)
+	("" "longtable" nil)
+	("" "float" nil)
+	("" "wrapfig" nil)
+	("" "rotating" nil)
+	("normalem" "ulem" t)
+	("" "amsmath" t)
+	("" "textcomp" t)
+	("" "marvosym" t)
+	("" "wasysym" t)
+	("" "amssymb" t)
+	("" "hyperref" nil)
+	("" "ucharclasses" nil)
+	("" "fontspec" nil)
+	("" "xeCJK" nil)
+	"\\tolerance=1000"
+	"\\setDefaultTransitions{\\fontspec{Code2000}}{}"
+	"\\setTransitionsForLatin{\\fontspec{Linux Libertine O}}{}"
+	"\\setTransitionsForGreek{\\fontspec{Galatia SIL}}{}"
+	"\\setCJKmainfont{Microsoft YaHei}"
+	"\\XeTeXlinebreaklocale \"zh\" %這行及下一行使中文能自動換行"
+	"\\XeTeXlinebreakskip = 0pt plus 1pt"))
+
+(setq org-export-with-sub-superscripts nil)
 
 (defun my-org-hook ()
   "my hook for org-mode, which has the following functions"
@@ -35,5 +64,5 @@
 
 
 ;; Local Variables:
-;; eval:(progn (hs-minor-mode t) (let ((hs-state 'nil) (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (car i) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char 1) (recenter-top-bottom))
+;; eval:(progn (hs-minor-mode t) (let ((hs-state 'nil) (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (car i) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char 2110) (recenter-top-bottom))
 ;; End:
