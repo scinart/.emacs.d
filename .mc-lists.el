@@ -28,8 +28,10 @@
 	continuous-upcase-word
 	delete-region-unless-prefix
 	dired-mark
+	end-of-visual-line
 	forward-or-to-char
 	forward-sexp
+	insert-register
 	kill-visual-line
 	kmacro-start-macro-or-insert-counter
 	mark-sexp

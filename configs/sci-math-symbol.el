@@ -1286,7 +1286,8 @@
     (bidirectional-puthash "sigma" "σ" sci-abrvs)
     (bidirectional-puthash "tau" "τ" sci-abrvs)
     (bidirectional-puthash "upsilon" "υ" sci-abrvs)
-    (bidirectional-puthash "phi" "φ" sci-abrvs)
+    (bidirectional-puthash "phi" "ϕ" sci-abrvs)
+    (bidirectional-puthash "varphi" "φ" sci-abrvs)
     (bidirectional-puthash "chi" "χ" sci-abrvs)
     (bidirectional-puthash "psi" "ψ" sci-abrvs)
     (bidirectional-puthash "omega" "ω" sci-abrvs))
@@ -1373,6 +1374,7 @@
     (bidirectional-puthash "ceiling" "⌈⌉" sci-abrvs)
     (bidirectional-puthash "all" "∀" sci-abrvs)
     (bidirectional-puthash "partial" "∂" sci-abrvs)
+    (bidirectional-puthash "der" "∂" sci-abrvs)
     (bidirectional-puthash "exist" "∃" sci-abrvs)
     (bidirectional-puthash "nabla" "∇" sci-abrvs)
     (bidirectional-puthash "del" "∇" sci-abrvs)
@@ -1921,5 +1923,5 @@ Home page at: URL `http://ergoemacs.org/emacs/sci-math-symbols-input.html'"
 
 
 ;; Local Variables:
-;; eval:(progn (hs-minor-mode t) (let ((hs-state '((72693 74122 hs) (71500 71747 hs) (24 33133 hs) (33418 34829 hs) (34910 37304 hs) (37336 38779 hs) (38827 43893 hs) (43941 46353 hs) (46377 46586 hs) (46617 47422 hs) (47461 50095 hs) (50112 52915 hs) (52960 53488 hs) (53562 55087 hs) (55173 57669 hs) (63682 68707 hs))) (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (car i) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char 68710) (recenter-top-bottom))
+;; eval:(progn (hs-minor-mode t) (let ((hs-state '((71095 72988 hs) (47512 50146 hs) (46668 47473 hs) (46428 46637 hs) (33418 34829 hs) (34910 37304 hs) (37336 38779 hs) (38827 43893 hs))) (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (car i) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char 74708) (recenter-top-bottom))
 ;; End:
