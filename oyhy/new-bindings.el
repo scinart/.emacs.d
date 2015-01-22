@@ -1,6 +1,6 @@
 ;;; -*- coding:utf-8 -*-
 ;;; new-bindings.el ---
-;;; Time-stamp: <2014-08-24 10:53:11 scinart>
+;;; Time-stamp: <2015-01-22 16:05:21 scinart>
 ;;; Code:
 
 (cond
@@ -369,7 +369,6 @@
 
 (global-set-key (kbd "C-x <return> u") 'ucs-insert)
 (global-set-key (kbd "C-x <return> w") 'wdired-change-to-wdired-mode)
-(global-set-key (kbd "M-<return>") 'newline-and-indent)
 
 (global-set-key (kbd "<f2> <f2>") 'wdired-change-to-wdired-mode)
 (global-set-key (kbd "C-M-_") 'undo)
