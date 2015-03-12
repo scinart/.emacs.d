@@ -1372,7 +1372,7 @@
     (bidirectional-puthash "R3" "ℝ³" sci-abrvs)
     (bidirectional-puthash "floor" "⌊⌋" sci-abrvs)
     (bidirectional-puthash "ceiling" "⌈⌉" sci-abrvs)
-    (bidirectional-puthash "all" "∀" sci-abrvs)
+    (bidirectional-puthash "any" "∀" sci-abrvs)
     (bidirectional-puthash "partial" "∂" sci-abrvs)
     (bidirectional-puthash "der" "∂" sci-abrvs)
     (bidirectional-puthash "exist" "∃" sci-abrvs)
@@ -1923,5 +1923,5 @@ Home page at: URL `http://ergoemacs.org/emacs/sci-math-symbols-input.html'"
 
 
 ;; Local Variables:
-;; eval:(progn (hs-minor-mode t) (let ((hs-state '((71095 72988 hs) (47512 50146 hs) (46668 47473 hs) (46428 46637 hs) (33418 34829 hs) (34910 37304 hs) (37336 38779 hs) (38827 43893 hs))) (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (car i) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char 74708) (recenter-top-bottom))
+;; eval:(progn (hs-minor-mode t) (let ((hs-state '((71095 72988 hs) (47512 50146 hs) (46668 47473 hs) (46428 46637 hs) (38827 43893 hs) (37336 38779 hs) (34910 37304 hs) (33418 34829 hs))) (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (car i) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char 74691) (recenter-top-bottom))
 ;; End:

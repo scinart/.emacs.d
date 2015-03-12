@@ -1,6 +1,6 @@
 ;;; -*- coding:utf-8 -*-
 ;;; new-bindings.el ---
-;;; Time-stamp: <2015-01-22 16:06:44 scinart>
+;;; Time-stamp: <2015-02-25 18:12:08 scinart>
 ;;; Code:
 
 (cond
@@ -383,8 +383,8 @@
 (global-set-key (kbd "C-x u") 'undo)
 (global-set-key (kbd "C-c C-/") 'opaque)
 (global-set-key (kbd "M-c p o") '(lambda () (interactive) (message "%s" (point))))
-(global-set-key (kbd "C-S-f") 'helm-find-files)
-(global-set-key (kbd "C-S-b") 'helm-buffers-list)
+(global-set-key (kbd "C-S-f") '(lambda () (interactive) (ignore-errors (forward-char 5))))
+(global-set-key (kbd "C-S-b") '(lambda () (interactive) (ignore-errors (backward-char 5))))
 (global-set-key (kbd "C-S-x") 'helm-M-x)
 
 

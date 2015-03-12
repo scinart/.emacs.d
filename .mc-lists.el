@@ -62,6 +62,7 @@
 	sci-change-to-symbol
 	sgml-close-tag
 	slime-space
+	wdired-next-line
 	yas-expand
 	))
 
