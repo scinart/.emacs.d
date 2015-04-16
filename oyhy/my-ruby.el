@@ -9,16 +9,10 @@
 
 (setq ruby-use-encoding-map nil)
 
-(after-load 'ruby-mode
-  (define-key ruby-mode-map (kbd "RET") 'reindent-then-newline-and-indent)
-  (define-key ruby-mode-map (kbd "TAB") 'indent-for-tab-command)
-
-  ;; Stupidly the non-bundled ruby-mode isn't a derived mode of
-  ;; prog-mode: we run the latter's hooks anyway in that case.
-  (add-hook 'ruby-mode-hook
-            (lambda ()
-              (unless (derived-mode-p 'prog-mode)
-                (run-hooks 'prog-mode-hook)))))
+(defun ruby-send-line ()
+  "Send the current line to the inferior Ruby process."
+  (interactive)
+  (ruby-send-region (line-beginning-position) (line-end-position)))
 
 (add-hook 'ruby-mode-hook 'subword-mode)
 
@@ -36,18 +30,6 @@
 ;;   (define-key inf-ruby-mode-map (kbd "TAB") 'auto-complete))
 
 
-
-;;; Ruby compilation
-;; (require-package 'ruby-compilation)
-
-;; (after-load 'ruby-mode
-;;   (let ((m ruby-mode-map))
-;;     (define-key m [S-f7] 'ruby-compilation-this-buffer)
-;;     (define-key m [f7] 'ruby-compilation-this-test)
-;;     (define-key m [f6] 'recompile)))
-
-
-
 ;;; Robe
 (require 'robe)
 (after-load 'ruby-mode
@@ -61,79 +43,46 @@
 ;            (set-auto-complete-as-completion-at-point-function)
 	      )))
 
-
-
 ;;; ri support
 (require 'yari)
 (defalias 'ri 'yari)
-
-
 
 ;;; YAML
 
 ; (require-package 'yaml-mode)
 
-
-
-;;; ERB
-;; (require-package 'mmm-mode)
-;; (defun sanityinc/ensure-mmm-erb-loaded ()
-;;   (require 'mmm-erb))
-
-;; (require 'derived)
-
-;; (defun sanityinc/set-up-mode-for-erb (mode)
-;;   (add-hook (derived-mode-hook-name mode) 'sanityinc/ensure-mmm-erb-loaded)
-;;   (mmm-add-mode-ext-class mode "\\.erb\\'" 'erb))
-
-;; (let ((html-erb-modes '(html-mode html-erb-mode nxml-mode)))
-;;   (dolist (mode html-erb-modes)
-;;     (sanityinc/set-up-mode-for-erb mode)
-;;     (mmm-add-mode-ext-class mode "\\.r?html\\(\\.erb\\)?\\'" 'html-js)
-;;     (mmm-add-mode-ext-class mode "\\.r?html\\(\\.erb\\)?\\'" 'html-css)))
-
-;; (mapc 'sanityinc/set-up-mode-for-erb
-;;       '(coffee-mode js-mode js2-mode js3-mode markdown-mode textile-mode))
-
-;; (require-package 'tagedit)
-;; (after-load 'sgml-mode
-;;   (tagedit-add-paredit-like-keybindings))
-
-;; (mmm-add-mode-ext-class 'html-erb-mode "\\.jst\\.ejs\\'" 'ejs)
-
-;; (add-auto-mode 'html-erb-mode "\\.rhtml\\'" "\\.html\\.erb\\'")
-;; (add-to-list 'auto-mode-alist '("\\.jst\\.ejs\\'" . html-erb-mode))
-;; (mmm-add-mode-ext-class 'yaml-mode "\\.yaml\\'" 'erb)
-
-;; (dolist (mode (list 'js-mode 'js2-mode 'js3-mode))
-;;   (mmm-add-mode-ext-class mode "\\.js\\.erb\\'" 'erb))
-
-
-;;----------------------------------------------------------------------------
-;; Ruby - my convention for heredocs containing SQL
-;;----------------------------------------------------------------------------
-
-;; Needs to run after rinari to avoid clobbering font-lock-keywords?
-
-;; (require-package 'mmm-mode)
-;; (eval-after-load 'mmm-mode
-;; '(progn
-;; (mmm-add-classes
-;; '((ruby-heredoc-sql
-;; :submode sql-mode
-;; :front "<<-?[\'\"]?\\(end_sql\\)[\'\"]?"
-;; :save-matches 1
-;; :front-offset (end-of-line 1)
-;; :back "^[ \t]*~1$"
-;; :delimiter-mode nil)))
-;; (mmm-add-mode-ext-class 'ruby-mode "\\.rb\\'" 'ruby-heredoc-sql)))
-
-;(add-to-list 'mmm-set-file-name-for-modes 'ruby-mode)
-
-
-
 ;;;; my dk
 
+;; --------- 重定义 -----------------
+
+(defun ruby-send-last-sexp ()
+  "这个是，那个key-binding我一直改不过来，只好重定义了。囧"
+  (interactive)
+  (ruby-send-region (line-beginning-position) (line-end-position)))
+
+(defun ruby-send-block ()
+  "原来的不好用，重写。"
+  (interactive)
+  (save-excursion
+    (let ((end (point)))
+      (ruby-beginning-of-block)
+      (ruby-send-region (point) end))))
+
+(defun my-ruby-mode-hook ()
+  "my ruby mode hook, yeah!"
+  ;; (define-key ruby-mode-map (kbd "RET") 'reindent-then-newline-and-indent)
+  ;; (define-key ruby-mode-map (kbd "TAB") 'indent-for-tab-command)
+  ;; (local-set-key "\C-x\C-e" 'ruby-send-line)
+  
+  ;; Stupidly the non-bundled ruby-mode isn't a derived mode of
+  ;; prog-mode: we run the latter's hooks anyway in that case.
+  (unless (derived-mode-p 'prog-mode)
+    (run-hooks 'prog-mode-hook)))
+
+(add-hook 'ruby-mode-hook 'my-ruby-mode-hook)
+
+
+(define-key inf-ruby-mode-map (kbd "C-x C-e") 'ruby-send-line)
 (define-key ruby-mode-map (kbd "C-h C-h") 'yari-anything)
 (define-key inf-ruby-mode-map (kbd "C-h C-h") 'yari-anything)
 

@@ -1,5 +1,5 @@
 ;;; minor-mode.el ---
-;;; Time-stamp: <2014-03-16 22:08:14 scinart>
+;;; Time-stamp: <2015-04-15 23:08:11 scinart>
 ;;; Date created: 2013-04-30 Tuesday 23:11:44
 ;;; Code:
 
@@ -19,11 +19,6 @@
 
 ;; ****************************************************************
 ;; company-mode settings
-
-;; ****************************************************************
-;; paredit-everywhere-mode settings
-(add-hook 'c-mode-hook 'paredit-everywhere-mode)
-(add-hook 'ruby-mode-hook 'paredit-everywhere-mode)
 
 ;; ****************************************************************
 ;; rainbow-delimiters-mode settings
@@ -93,5 +88,5 @@
 (provide 'minor-mode)
 
 ;; local variables:
-;; eval:(progn (hs-minor-mode t) (let ((hs-state '((1412 2565 hs))) (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (car i) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char 593) (recenter-top-bottom))
-;; end:
+;; eval:(progn (hs-minor-mode t) (let ((hs-state 'nil) (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (car i) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char 3980) (recenter-top-bottom))
+;; End:
