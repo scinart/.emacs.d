@@ -15,6 +15,7 @@
 ;  (octave-mode        . (run-octave))
   ("\\.c\\'"          . "clang %f -o %n -Wall")
   ("\\.[Cc]+[Pp]*\\'" . "clang++ %f -o %n -Wall -std=c++11 -g")
+  ("\\.rs\\'"         . "rustc %f -o %n")
 ;  ("\\.m\\'"          . "gcc -O2 %f -lobjc -lpthread -o %n")
 ;  ("\\.java\\'"       . "javac %f")
 ;  ("\\.php\\'"        . "php -l %f")

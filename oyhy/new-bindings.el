@@ -1,6 +1,6 @@
 ;;; -*- coding:utf-8 -*-
 ;;; new-bindings.el ---
-;;; Time-stamp: <2015-02-25 18:12:08 scinart>
+;;; Time-stamp: <2015-04-16 17:20:08 scinart>
 ;;; Code:
 
 (cond
@@ -309,10 +309,6 @@
   (global-set-key (kbd "C-:") '(lambda () (interactive) (smart-other-window -1)))
   (global-set-key (kbd "C-x o") '(lambda () (interactive) (smart-other-window 1)))
   (global-set-key (kbd "C-x O") '(lambda () (interactive) (smart-other-window -1)))
-  (global-set-key (kbd "C-M-;") 'tabbar-backward-group)
-  (global-set-key (kbd "C-M-:") 'tabbar-forward-group)
-  (global-set-key (kbd "C-S-<tab>") 'tabbar-backward-tab)
-  (global-set-key (kbd "C-<tab>") 'tabbar-forward-tab)
   (global-set-key (kbd "M-c b b") 'buf-move-left)
   (global-set-key (kbd "M-c b f") 'buf-move-right)
   (global-set-key (kbd "M-c b p") 'buf-move-up)
@@ -417,7 +413,7 @@
   (global-set-key (kbd "<apps> r") 'ignore)
   (global-set-key (kbd "<apps> s c r") 'toggle-scroll-bar)
   (global-set-key (kbd "<apps> s i t e") 'google-site-ishare)
-  (global-set-key (kbd "<apps> t") 'tabbar-mode)
+  ;; (global-set-key (kbd "<apps> t") 'tabbar-mode)
   (global-set-key (kbd "<apps> u") 'ignore)
   (global-set-key (kbd "<apps> v") 'visual-line-mode)
   (global-set-key (kbd "<apps> w") 'ignore)

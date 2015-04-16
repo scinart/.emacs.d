@@ -1,5 +1,5 @@
 ;;; redefun.el
-;;; Time-stamp: <2014-08-20 17:29:25 scinart>
+;;; Time-stamp: <2015-04-16 17:23:23 scinart>
 ;;; date created around 2013-05-04 Saturday
 ;;;;##########################################################################
 ;;;; OVERRIDE SYSTEM FUNCTIONS
@@ -330,41 +330,6 @@ search (cond ...  ((eq ido-exit 'fallback) ... )) to see where it's used.
 	(ido-record-work-directory)
 	(ido-visit-buffer (find-file-noselect filename nil ido-find-literal) method))))))
 
-(defun helm-company ()
-  "the original version of this seems to have a bug.
-  (as of version 00f5e95dd8e347c10399d4cce79df43ef766fae2 1 parent 7a11589 Yasuyuki Oka yasuyk authored on Jan 17)
-I have reported the issue and hopefully the original author will fix it soon.
-This is a temporary solution and I don't know neither why the original version doesn't work nor why this version works."
-  (interactive)
-  (unless company-candidates
-    (company-manual-begin)
-    (setq company-point (point)
-	  company--point-max (point-max)))
-  (when company-point
-    (let ((beg (- company-point (length company-prefix)))
-	  (end company--point-max))
-      (declare (indent 2) (debug t))
-      (let ((helm-move-selection-after-hook
-	     (and helm-turn-on-show-completion
-		(append (list 'helm-show-completion)
-			helm-move-selection-after-hook))))
-	(with-helm-temp-hook 'helm-after-initialize-hook
-	  (with-helm-buffer
-	    (set (make-local-variable 'helm-display-function)
-		 (if helm-show-completion-use-special-display
-		     'helm-show-completion-display-function
-		   'helm-default-display-buffer))))
-	(unwind-protect
-	    (progn
-	      (helm-show-completion-init-overlay beg end)
-	      (helm :sources 'helm-source-company
-		    :buffer  "*helm company*"
-		    :candidate-number-limit helm-company-candidate-number-limit))
-	  (when (and helm-turn-on-show-completion
-		   helm-show-completion-overlay
-		   (overlayp helm-show-completion-overlay))
-	    (delete-overlay helm-show-completion-overlay)))))))
-;; --- not redefun
 
 (ignore)
 
@@ -372,5 +337,5 @@ This is a temporary solution and I don't know neither why the original version d
 
 
 ;; Local Variables:
-;; eval:(progn (hs-minor-mode t) (let ((hs-state '((277 512 hs) (592 2426 hs) (2461 2677 hs) (2716 3249 hs) (3289 3859 hs) (3889 4736 hs) (4774 5298 hs) (5329 5695 hs) (5816 5996 hs) (6090 11917 hs))) (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (car i) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char 11949) (recenter-top-bottom))
+;; eval:(progn (hs-minor-mode t) (let ((hs-state '((277 512 hs) (592 2426 hs) (2461 2677 hs) (2716 3249 hs) (3289 3859 hs) (3889 4736 hs) (4774 5224 hs) (5255 5621 hs) (5658 5925 hs) (6087 6109 hs))) (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (car i) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char 12083) (recenter-top-bottom))
 ;; End:

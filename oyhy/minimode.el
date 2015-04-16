@@ -12,7 +12,7 @@
 (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
-(if (fboundp 'tabbar-mode) (tabbar-mode))
+;; (if (fboundp 'tabbar-mode) (tabbar-mode))
 
 ;; text-scale-mode
 (setq text-scale-mode-step 1.1)
