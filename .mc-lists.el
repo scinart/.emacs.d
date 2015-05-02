@@ -61,6 +61,7 @@
 	replace-string
 	sci-change-to-symbol
 	sgml-close-tag
+	sh-assignment
 	slime-space
 	wdired-next-line
 	yas-expand
@@ -68,6 +69,7 @@
 
 (setq mc/cmds-to-run-once
       '(
+	end-of-buffer
 	full-screen
 	inverse-add-global-abbrev
 	kmacro-end-or-call-macro

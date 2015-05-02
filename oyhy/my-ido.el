@@ -63,6 +63,8 @@
   "My Keybindings for ido
 especially for extending ido-find-file functionality
 2013-08-04 Sunday 17:25:03"
+  (define-key ido-completion-map (kbd "C-,") nil)
+  (define-key ido-completion-map (kbd "C-.") nil)
   (define-key ido-completion-map (kbd "<return>") 'ido-exit-minibuffer) ;; for find-file
   (define-key ido-completion-map (kbd "RET") 'ido-magic-open)
   (define-key ido-completion-map (kbd "C-M-<return>") 'ido-sudo-open)
@@ -101,5 +103,5 @@ especially for extending ido-find-file functionality
 
 
 ;; Local Variables:
-;; eval:(progn (hs-minor-mode t) (let ((hs-state 'nil) (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (car i) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char 2517) (recenter-top-bottom))
+;; eval:(progn (hs-minor-mode t) (let ((hs-state 'nil) (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (car i) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char 3664) (recenter-top-bottom))
 ;; End:

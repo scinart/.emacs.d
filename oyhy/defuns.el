@@ -1,5 +1,5 @@
 ;;; defuns.el ---
-;;; Time-stamp: <2014-09-17 10:25:41 scinart>
+;;; Time-stamp: <2015-05-02 15:52:58 scinart>
 ;;; Code:
 
 
@@ -211,6 +211,13 @@ at around 2013-06-04 Tuesday 00:23:22"
                (t
                 (message "%s" "arg not recognized")))))
   (refresh-title))
+
+(defun smart-forward-window ()
+  (interactive)
+  (smart-other-window 1))
+(defun smart-backward-window ()
+  (interactive)
+  (smart-other-window -1))
 (defun open-this-buffer-in-explorer ()
   "Open this buffer or this buffer's directory in Explorer
    2013-04-18 Thursday 14:27:04"
@@ -467,16 +474,15 @@ with prefix barkwark barf"
   (when (buffer-file-name)
     (let ((temp-buffer-name (format-time-string "%Y%m%d.%H%M%S")))
       (when windows-p
-	(shell-command (concat "attrib.exe "
-			       (if arg
-				   "-R "
-				 "+R ") "\"" (buffer-file-name) "\"") temp-buffer-name)
-	(if arg
-	    (message "%s set as not read only" (current-buffer))
-	  (message "%s set as read only" (current-buffer)))
-	(kill-buffer temp-buffer-name))
+	(shell-command (concat "attrib.exe " (if arg "-R " "+R ")
+			       "\"" (buffer-file-name) "\"") temp-buffer-name))
       (when linux-p
-	(message "Not implemented yet."))))
+	(shell-command (concat "chmod " (if arg "+w " "-w ")
+			       "\"" (buffer-file-name) "\"") temp-buffer-name))
+      (kill-buffer temp-buffer-name)
+      (if arg
+      	  (message "%s set as not read only" (current-buffer))
+      	(message "%s set as read only" (current-buffer)))))
   (unless (buffer-file-name)
     (message "%s" "buffer not recognized as a file")))
 
