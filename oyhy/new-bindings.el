@@ -1,6 +1,6 @@
 ;;; -*- coding:utf-8 -*-
 ;;; new-bindings.el ---
-;;; Time-stamp: <2015-05-02 15:52:22 scinart>
+;;; Time-stamp: <2015-07-17 11:31:55 scinart>
 ;;; Code:
 
 (cond
@@ -305,12 +305,13 @@
   (global-set-key (kbd "C-x M-b") 'windmove-left)
   (global-set-key (kbd "C-x M-p") 'windmove-up)
   (global-set-key (kbd "C-x M-n") 'windmove-down)
-  (global-set-key (kbd "C-,") 'smart-forward-window)
-  (global-set-key (kbd "C-<") 'smart-backward-window)
-  (global-set-key (kbd "C-;") 'tabbar-forward-tab)
-  (global-set-key (kbd "C-:") 'tabbar-backward-tab)
-  (global-set-key (kbd "C-<tab>") 'tabbar-forward-group)
-  (global-set-key (kbd "<C-S-iso-lefttab>") 'tabbar-backward-group)
+  (global-set-key (kbd "C-,") 'smart-backward-window)
+  (global-set-key (kbd "C-:") 'smart-forward-window)
+  ;; (global-set-key (kbd "C-;") 'tabbar-forward-tab)
+  ;; (global-set-key (kbd "C-:") 'tabbar-backward-tab)
+  ;; (global-set-key (kbd "C-<tab>") 'tabbar-forward-group)
+  ;; (global-set-key (kbd "<C-S-iso-lefttab>") 'tabbar-backward-group)
+  
   (global-set-key (kbd "C-x o") '(lambda () (interactive) (smart-other-window 1)))
   (global-set-key (kbd "C-x O") '(lambda () (interactive) (smart-other-window -1)))
   (global-set-key (kbd "M-c b b") 'buf-move-left)

@@ -87,6 +87,8 @@
 ;; ****************************************************************
 ;; recentf-dialog mode
 
+;; (define-key js-mode-map "\C-\\" (lambda () "insert \'function\'" (interactive) (insert "function")))
+
 ;; ****************************************************************
 ;; Package Menu mode
 
@@ -127,5 +129,5 @@
 
 
 ;; Local Variables:
-;; eval:(progn (hs-minor-mode t) (let ((hs-state 'nil) (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (car i) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char 3740) (recenter-top-bottom))
+;; eval:(progn (hs-minor-mode t) (let ((hs-state 'nil) (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (car i) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char 4195) (recenter-top-bottom))
 ;; End:

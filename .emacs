@@ -91,6 +91,7 @@ Will throw an error if the archive version is too new."
 (setq delete-old-versions t)
 (setq echo-keystrokes -1)
 (setq backup-by-copying t)
+(setq mode-require-final-newline nil)
 (setq make-backup-files nil)
 (setq time-stamp-pattern "8/[Tt]ime-?stamp:[ \t]+\\\\?[\"<]+%:y-%02m-%02d %02H:%02M:%02S %u\\\\?[\">]")
 
@@ -149,6 +150,7 @@ Will throw an error if the archive version is too new."
 (require 'pos-tip)
 (require 'paredit)
 (require 'yasnippet)
+(setf yas/root-directory '("~/.emacs.d/oyhy/snippets" yas-installed-snippets-dir))
 (require 'on-screen)
 (require 'session)
 (require 'rainbow-delimiters)
@@ -166,7 +168,8 @@ Will throw an error if the archive version is too new."
 (require 'yaml-mode)
 (require 'anything)
 (require 'keyfreq)
-
+(require 'xcscope)
+(cscope-setup)
 
 ;; (require 'mwe-log-commands)
 ;; mwe:log-keyboard-commands
@@ -180,7 +183,7 @@ Will throw an error if the archive version is too new."
 (company-mode)
 ;; (auto-complete-mode)
 (global-git-gutter-mode)
-(global-rainbow-delimiters-mode)
+; (global-rainbow-delimiters-mode)
 (helm-mode 1)
 (key-chord-mode 1)
 (paredit-mode 1)
@@ -270,5 +273,5 @@ Will throw an error if the archive version is too new."
  '(rainbow-delimiters-depth-9-face ((t (:foreground "yellow4"))))
  '(rainbow-delimiters-unmatched-face ((t (:foreground "red" :box (:line-width 2 :color "grey75" :style pressed-button))))))
 ;; Local Variables:
-;; eval:(progn (hs-minor-mode t) (let ((hs-state '((41 589 hs))) (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (car i) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char 7964) (recenter-top-bottom))
+;; eval:(progn (hs-minor-mode t) (let ((hs-state '((41 589 hs))) (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (car i) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char 8120) (recenter-top-bottom))
 ;; End:
