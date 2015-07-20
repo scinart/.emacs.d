@@ -170,6 +170,8 @@ Will throw an error if the archive version is too new."
 (require 'keyfreq)
 (require 'xcscope)
 (cscope-setup)
+(require 'f)
+(require 's)
 
 ;; (require 'mwe-log-commands)
 ;; mwe:log-keyboard-commands
@@ -273,5 +275,5 @@ Will throw an error if the archive version is too new."
  '(rainbow-delimiters-depth-9-face ((t (:foreground "yellow4"))))
  '(rainbow-delimiters-unmatched-face ((t (:foreground "red" :box (:line-width 2 :color "grey75" :style pressed-button))))))
 ;; Local Variables:
-;; eval:(progn (hs-minor-mode t) (let ((hs-state '((41 589 hs))) (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (car i) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char 8120) (recenter-top-bottom))
+;; eval:(progn (hs-minor-mode t) (let ((hs-state '((41 589 hs))) (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (car i) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char 8146) (recenter-top-bottom))
 ;; End:
