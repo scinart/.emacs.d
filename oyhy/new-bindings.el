@@ -1,6 +1,6 @@
 ;;; -*- coding:utf-8 -*-
 ;;; new-bindings.el ---
-;;; Time-stamp: <2015-07-17 11:31:55 scinart>
+;;; Time-stamp: <2015-07-31 14:37:43 scinart>
 ;;; Code:
 
 (cond
@@ -305,7 +305,7 @@
   (global-set-key (kbd "C-x M-b") 'windmove-left)
   (global-set-key (kbd "C-x M-p") 'windmove-up)
   (global-set-key (kbd "C-x M-n") 'windmove-down)
-  (global-set-key (kbd "C-,") 'smart-backward-window)
+  (global-set-key (kbd "C-;") 'smart-backward-window)
   (global-set-key (kbd "C-:") 'smart-forward-window)
   ;; (global-set-key (kbd "C-;") 'tabbar-forward-tab)
   ;; (global-set-key (kbd "C-:") 'tabbar-backward-tab)
