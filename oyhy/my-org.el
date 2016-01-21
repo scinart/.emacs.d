@@ -1,8 +1,8 @@
 ;;; my-org.el ---
-;;; Time-stamp: <2014-11-01 19:21:06 scinart>
+;;; Time-stamp: <2015-08-07 12:16:12 scinart>
 ;;; Code:
 
-(setq org-latex-pdf-process '("xelatex -interaction nonstopmode %f"))
+(setq org-latex-pdf-process '("xelatex -interaction nonstopmode -shell-escape %f"))
 
 (setq org-latex-default-packages-alist
       '(("T1" "fontenc" t)
@@ -22,11 +22,15 @@
 	("" "ucharclasses" nil)
 	("" "fontspec" nil)
 	("" "xeCJK" nil)
+	;; ("" "listings")
+	;; ("" "color")
 	"\\tolerance=1000"
 	"\\setDefaultTransitions{\\fontspec{Code2000}}{}"
 	"\\setTransitionsForLatin{\\fontspec{Linux Libertine O}}{}"
 	"\\setTransitionsForGreek{\\fontspec{Galatia SIL}}{}"
 	"\\setCJKmainfont{Microsoft YaHei}"
+	"\\setmainfont{Ubuntu}"
+	"\\setmonofont{Ubuntu Mono}"
 	"\\XeTeXlinebreaklocale \"zh\" %這行及下一行使中文能自動換行"
 	"\\XeTeXlinebreakskip = 0pt plus 1pt"))
 
@@ -57,6 +61,19 @@
   )
 (add-hook 'org-mode-hook 'my-org-hook)
 
+(setq org-src-fontify-natively t)
+(setq org-export-latex-listings t)
+
+(require 'ox-latex)
+(setq org-latex-listings 'minted)
+(setq org-latex-packages-alist '(("" "minted")))
+;; apt-get install python-pygment
+
+;; listings work poorly
+;; (setq org-latex-listings t)
+;; (setq org-latex-packages-alist '(("" "color") ("" "listings")))
+
+
 (provide 'my-org)
 
 
@@ -64,5 +81,5 @@
 
 
 ;; Local Variables:
-;; eval:(progn (hs-minor-mode t) (let ((hs-state 'nil) (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (car i) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char 2110) (recenter-top-bottom))
+;; eval:(progn (hs-minor-mode t) (let ((hs-state 'nil) (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (car i) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char 2548) (recenter-top-bottom))
 ;; End:

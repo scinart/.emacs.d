@@ -3,6 +3,7 @@
 
 (setq mc/cmds-to-run-for-all
       '(
+	backward-kill-sexp
 	backward-or-to-char
 	backward-sexp
 	bison-electric-close-brace
@@ -31,6 +32,7 @@
 	end-of-visual-line
 	forward-or-to-char
 	forward-sexp
+	git-rebase-squash
 	insert-register
 	kill-visual-line
 	kmacro-start-macro-or-insert-counter
@@ -38,6 +40,7 @@
 	markdown-exdent-or-delete
 	my-paredit-backward-slurp-sexp
 	my-paredit-forward-slurp-sexp
+	my-scroll-up
 	org-beginning-of-line
 	org-delete-char
 	org-end-of-line
@@ -58,8 +61,10 @@
 	paredit-open-round
 	paredit-semicolon
 	paredit-splice-sexp-killing-backward
+	perl-electric-terminator
 	replace-string
 	sci-change-to-symbol
+	sci-copy-line
 	sgml-close-tag
 	sh-assignment
 	slime-space
@@ -69,8 +74,10 @@
 
 (setq mc/cmds-to-run-once
       '(
+	company-complete
 	end-of-buffer
 	full-screen
+	ido-find-file
 	inverse-add-global-abbrev
 	kmacro-end-or-call-macro
 	mouse-buffer-menu
