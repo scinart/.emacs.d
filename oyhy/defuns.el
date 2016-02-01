@@ -1,5 +1,5 @@
 ;;; defuns.el ---
-;;; Time-stamp: <2015-07-18 11:00:51 scinart>
+;;; Time-stamp: <2016-02-01 17:56:24 scinart>
 ;;; Code:
 
 (load "~/.emacs.d/oyhy/bare-defuns.el")
@@ -614,10 +614,10 @@ or switch-to-scratch, if with prefix argument."
 	  (insert (format "%s%s\n%s" ";; Now is "
 					  (format-time-string "%x %A %T")
 					  ";; And Happy Hacking\n\n"))
-	  (if (eql 'gnu/linux system-type)
-		  (setq dafault-directory "~/")
-		(setq default-directory "D:/My Document/"))
-	  (not-modified))))
+	  (if linux-p
+	      (setq dafault-directory "~/")
+	    (setq default-directory "D:/My Document/"))
+	  (set-buffer-modified-p nil))))
 (defun peek (arg)
   "temorary set transparent to arg seconds
 2013-06-06 Thursday 22:45:34 by Scinart"
@@ -711,18 +711,21 @@ if cancelable, \\[keyboard-quit] is able to cancels do-after.
 
 
 ;; the following is defined 2013-06-11 Tuesday 10:35:47
-(defun move-frame ()
-  (interactive)
-  (w32-send-sys-command 61456))
-(defun resize-frame ()
-  (interactive)
-  (w32-send-sys-command 61440))
-(defun start-button ()
-  (interactive)
-  (w32-send-sys-command 61744))
-(defun screensaver ()
-  (interactive)
-  (w32-send-sys-command 61760))
+
+;; I no longer use windows any more.
+(when windows-p
+  (defun move-frame ()
+    (interactive)
+    (w32-send-sys-command 61456))
+  (defun resize-frame ()
+    (interactive)
+    (w32-send-sys-command 61440))
+  (defun start-button ()
+    (interactive)
+    (w32-send-sys-command 61744))
+  (defun screensaver ()
+    (interactive)
+    (w32-send-sys-command 61760)))
 ;; 61440 - resize the window via keyboard
 ;; 61456 - move window via keyboard
 ;; 61472 - minimize current frame
@@ -802,52 +805,7 @@ param string is not used"
 	(windows-p
 	 (w32-shell-execute 1 string))))
 
-
-(defun ipv6-mode ()
-  "hosts and proxy changes for ipv6-mode"
-  (interactive)
-  (ignore-errors 
-    (rename-file "/usr/share/goagent/local/proxy.ini" "/usr/share/goagent/local/proxy-ipv4.ini"))
-  (ignore-errors
-    (rename-file "/usr/share/goagent/local/proxy-ipv6.ini" "/usr/share/goagent/local/proxy.ini"))
-  (ignore-errors
-    (rename-file "/sudo::/etc/apt/sources.list" "/sudo::/etc/apt/sources-ipv4.list"))
-  (ignore-errors
-    (rename-file "/sudo::/etc/apt/sources-ipv6.list" "/sudo::/etc/apt/sources.list"))
-  (ignore-errors
-    (rename-file "/sudo::/etc/hosts" "/sudo::/etc/hosts-ipv4"))
-  (ignore-errors
-    (rename-file "/sudo::/etc/hosts-ipv6" "/sudo::/etc/hosts"))
-  (message "done"))
-
-(defun ipv4-mode ()
-  "see ipv6-mode"
-  (interactive)
-  (ignore-errors 
-    (rename-file "/usr/share/goagent/local/proxy.ini" "/usr/share/goagent/local/proxy-ipv6.ini"))
-  (ignore-errors
-    (rename-file "/usr/share/goagent/local/proxy-ipv4.ini" "/usr/share/goagent/local/proxy.ini"))
-  (ignore-errors
-    (rename-file "/sudo::/etc/apt/sources.list" "/sudo::/etc/apt/sources-ipv6.list"))
-  (ignore-errors
-    (rename-file "/sudo::/etc/apt/sources-ipv4.list" "/sudo::/etc/apt/sources.list"))
-  (ignore-errors
-    (rename-file "/sudo::/etc/hosts" "/sudo::/etc/hosts-ipv6"))
-  (ignore-errors
-    (rename-file "/sudo::/etc/hosts-ipv4" "/sudo::/etc/hosts"))
-  (message "done"))
-
-(defun goagent ()
-  "start goagent"
-  (interactive)
-  (if (not (buffer-exist "*goagent*"))
-      (if (file-exists-p "/home/scinart/tools/goagent/local/proxy.py")
-	  (start-process "goagent" "*goagent*" "python" "/home/scinart/tools/goagent/local/proxy.py")
-	(error "please specify your goagent/local/proxy.py location"))
-    (message "already running")))
-
-
-
+;;; these functions are no longer useful, T_T;
 
 (defun yank-primary ()
   "Insert the primary selection at the point.

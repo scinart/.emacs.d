@@ -295,7 +295,7 @@ Otherwise, determine it from the file contents as usual for visiting a file."
 (macro-arg save-buffer-enhanced
   "save-buffer, if with prefix arg, without hook."
   (save-buffer-without-hook)
-  (progn (not-modified t) (save-buffer)))
+  (progn (set-buffer-modified-p t) (save-buffer)))
 
 (macro-arg mark-or-copy-whole-buffer
 	   "mark-whole-buffer. If with C-u, copy-whole-buffer,"
@@ -352,3 +352,27 @@ Otherwise, determine it from the file contents as usual for visiting a file."
          (set-register arg (cons 'file dired-directory)))
         (t
          (message "%s" "Buffer Not Recognized as File or Directory"))))
+
+(defun eval-last-sexp-and-replace ()
+  "like ``eval-last-sexp'', but also delete last sexp
+if eval fails, nothing changes.
+on eval success, last sexp is deleted and evaled, and non-nil return value is also inserted.
+"
+  (interactive)
+  (let ((e (point))
+	(b (save-excursion (progn (backward-sexp) (point))))
+	str ret)
+    (setf str (buffer-substring-no-properties b e))
+    (delete-region b e)
+    (condition-case ex
+	(setf ret (eval-string str))
+      ('error
+       (insert str)
+       (message (format "Error: %s" ex))))
+    (if ret
+	(insert (format "%s" ret)))))
+
+(macro-arg eval-last-sexp-or-replace
+	   "eval-last-sexp, If with C-u, delete last sexp."
+	   (eval-last-sexp-and-replace)
+	   (eval-last-sexp nil))
