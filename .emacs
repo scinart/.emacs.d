@@ -1,3 +1,6 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; this paragraph initialize package before anything else
+;; by default package is loaded after .emacs. It is too late.
 (defun package--read-archive-file (file)
   "Re-read archive file FILE, if it exists.
 Will return the data from the file, or nil if the file does not exist.
@@ -14,6 +17,8 @@ Will throw an error if the archive version is too new."
 
 (package-initialize)
 (setq package-enable-at-startup nil)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 
 
 (custom-set-variables
@@ -30,18 +35,14 @@ Will throw an error if the archive version is too new."
  '(recenter-positions (quote (middle top bottom)))
  '(safe-local-variable-values (quote ((encoding . utf-8))))
  '(session-use-package t nil (session))
- '(tags-table-list (quote ("/home/work/code/decoder/trunk/TAGS")))
  '(template-default-directories (quote ("~/.emacs.d/.templates/")))
  '(truncate-lines t))
 
-(setq user-full-name "Scinart O")
+(setq user-full-name "Scinart")
 (setq user-mail-address "akubeej@gmail.com")
-
-;; (setq shell-file-name "zsh")
 
 (setq load-path (cons "~/.emacs.d/oyhy" load-path))
 (add-to-list 'load-path "~/.emacs.d/configs")
-(add-to-list 'load-path "~/.emacs.d/purcell/lisp")
 
 ;; cross platforms settings
 (defvar monitor-width (display-pixel-width) "requires.el 2013-05-18 Saturday 16:36:57")
@@ -57,11 +58,9 @@ Will throw an error if the archive version is too new."
                          ("melpa" . "http://melpa.milkbox.net/packages/")
 			 ))
 
-(setq default-cursor-type 'box)
-(setq cursor-in-non-selected-windows 'hollow)
 
-;;  (setq url-proxy-services '(("http"  . "127.0.0.1:8087")
-;;                             ("https" . "127.0.0.1:8087")))
+(setq cursor-type 'box)
+(setq cursor-in-non-selected-windows 'hollow)
 
 (setq initial-scratch-message
       (format "%s%s\n%s" ";; Now is "
@@ -85,13 +84,7 @@ Will throw an error if the archive version is too new."
 (setq scroll-conservatively 10000)
 (setq recentf-max-menu-items 50)
 (setq recentf-max-saved-items 600)
-(setq backup-directory-alist '(("." . "~/.emacs.d/backup-files")))
-(setq version-control t)
-(setq kept-old-versions 2)
-(setq kept-new-versions 5)
-(setq delete-old-versions t)
 (setq echo-keystrokes -1)
-(setq backup-by-copying t)
 (setq mode-require-final-newline nil)
 (setq make-backup-files nil)
 (setq time-stamp-pattern "8/[Tt]ime-?stamp:[ \t]+\\\\?[\"<]+%:y-%02m-%02d %02H:%02M:%02S %u\\\\?[\">]")
@@ -105,7 +98,7 @@ Will throw an error if the archive version is too new."
 
 ;; ****************************************************************
 ;; Abbrev-mode settings
-(setq default-abbrev-mode t)
+(setq abbrev-mode t)
 (setq abbrev-file-name "~/.emacs.d/abbrev_defs")
 (setq save-abbrevs t)
 (quietly-read-abbrev-file)
@@ -176,17 +169,12 @@ Will throw an error if the archive version is too new."
 (require 'f)
 (require 's)
 
-;; (require 'mwe-log-commands)
-;; mwe:log-keyboard-commands
-;; mwe:open-command-log-buffer
-
 (keyfreq-mode 1)
 (keyfreq-autosave-mode 1)
 
 (setq multi-term-program "/bin/zsh")
 
 (company-mode)
-;; (auto-complete-mode)
 (global-git-gutter-mode)
 ; (global-rainbow-delimiters-mode)
 (helm-mode 1)
@@ -211,13 +199,8 @@ Will throw an error if the archive version is too new."
 ;; (require 'cambridge-permute)
 ;; M-x mwe:cambridge-permute-buffer
 
-;; purcell's
-(require 'purcell-adapt) ;; oyhy/purcell-adapt.el
-(require 'init-hippie-expand)
-(require 'init-utils)
-
-
 ;; oyhy
+(require 'init-utils)
 (require 'hs-minor-mode-enhancement)
 (require 'my-alpha)
 (require 'my-time)
@@ -239,7 +222,6 @@ Will throw an error if the archive version is too new."
 (require 'emacs-lisp-color)
 (require 'enabled-commands)
 
-
 (require 'scheme-mode-color)
 
 
@@ -256,7 +238,6 @@ Will throw an error if the archive version is too new."
 ;; personal-startup-settings
 ;; ***************************************************************************
 ;; set the title of the frame.
-;; (setq frame-title-format (list "emacs " emacs-version " " (getenv "username") " 十年磨一剑" (format-time-string " %b %e, %y %h:%m:%s")))
 (frame-alpha-set-all '(90 45))
 (full-screen)
 
@@ -278,5 +259,5 @@ Will throw an error if the archive version is too new."
  '(rainbow-delimiters-depth-9-face ((t (:foreground "yellow4"))))
  '(rainbow-delimiters-unmatched-face ((t (:foreground "red" :box (:line-width 2 :color "grey75" :style pressed-button))))))
 ;; Local Variables:
-;; eval:(progn (hs-minor-mode t) (let ((hs-state '((41 589 hs))) (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (car i) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char 8259) (recenter-top-bottom))
+;; eval:(progn (hs-minor-mode t) (let ((hs-state 'nil) (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (car i) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char 7660) (recenter-top-bottom))
 ;; End:
