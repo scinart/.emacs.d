@@ -1,5 +1,5 @@
 ;;; defuns.el ---
-;;; Time-stamp: <2016-02-01 17:56:24 scinart>
+;;; Time-stamp: <2016-02-19 16:53:45 scinart>
 ;;; Code:
 
 (load "~/.emacs.d/oyhy/bare-defuns.el")
@@ -257,11 +257,14 @@ at around 2013-06-04 Tuesday 00:23:22"
 (defun goto-line-with-feedback ()
   "Show line numbers temporarily, while prompting for the line number input"
   (interactive)
-  (unwind-protect
-      (progn
-        (linum-mode 1)
-        (goto-line (read-number "Goto line: ")))
-    (linum-mode 1)))
+  (let ((linum-on-p (bound-and-true-p linum-mode)))
+    (unwind-protect
+	(progn
+	  (linum-mode 1)
+	  (goto-line (read-number "Goto line: ")))
+      (if linum-on-p
+	  (linum-mode 1)
+	(linum-mode -1)))))
 
 
 ;; used by command line.
@@ -324,29 +327,6 @@ at around 2013-06-04 Tuesday 00:23:22"
       (insert (+ i a) " "))
     (insert b)))
 
-(defun shutdown ()
-  "shutdown after /input/ seconds. NOT WORKING"
-  (interactive)
-  (let ((seconds (read-number "Shutdown after seconds ")))
-    (if (>= seconds 0)
-	(w32-shell-execute 1 "c:/Windows/System32/shutdown.exe" (concat "-s -f -t " (format "%d" seconds)))
-      (w32-shell-execute 1 "c:/Windows/System32/shutdown.exe" "-a"))))
-
-(defun shutn ()
-  "shutdown now.
-   2013-05-27 Monday 10:18:15 by Scinart NOT WORKING"
-  (interactive)
-  (let ((seconds 15))
-    ;; (w32-shell-execute 1 "c:/Windows/System32/shutdown.exe" (concat "-s -f -t " (format "%d" seconds)))
-    (call-process "shutdown" nil 0 nil "--version")
-    (save-some-buffers t t)
-    "Optional argument (the prefix) non-nil means save all with no questions.
-     Optional second argument PRED determines which buffers are considered:
-     If PRED is nil, all the file-visiting buffers are considered.
-     If PRED is t, then certain non-file buffers will also be considered."
-    (run-hook-with-args-until-failure 'kill-emacs-query-functions)
-    (kill-emacs)))
-
 (defun paredit-wrap-round-from-behind ()
   "backward round sexp? I'm not sure What I'm thinking about, even though it is only a few days ago. Commented at 2013-05-01 Wednesday 22:51:19"
   (interactive)
@@ -408,14 +388,11 @@ with prefix barkwark barf"
 	  nil
 	(yes-or-no-p (concat "TELL ME, " (downcase str) " "))))))
 (defun yy-or-n-p (str)
-  "ask twice, if answers are the yes, give t,
-   once no, give nil.
+  "yes-or-no. If yes, ask again.
    by Sciart 2013-05-23 Thursday 00:01:08"
-  (if (y-or-n-p str)
-      (if (y-or-n-p-with-timeout (concat "Really " str) 8 t)
-	  t
-	nil)
-    nil))
+  (and (y-or-n-p str)
+     (y-or-n-p-with-timeout (concat "Really " str) 8 t)))
+
 (defun hexnumberp (number)
   "return t if number is 0-9, a-f, A-F
    2013-05-26 Sunday 14:30:22 by Scinart"
@@ -458,14 +435,6 @@ with prefix barkwark barf"
   (let* ((char (char-before (point)))
 	 (char-name (get-char-code-property char 'name)))
     (message "U%04X %s" char char-name)))
-
-(defun init ()
-  "start foobar mouseInc and objectdock"
-  (interactive)
-  (foobar2000)
-  (MouseInc)
-  (stardock))
-
 
 (defun set-file-read-only (arg)
   "set current buffer-file as read-only

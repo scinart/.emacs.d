@@ -1,22 +1,22 @@
 ;;; -*- coding:utf-8 -*-
 ;;; new-bindings.el ---
-;;; Time-stamp: <2015-07-31 14:37:43 scinart>
+;;; Time-stamp: <2016-02-01 18:01:49 scinart>
 ;;; Code:
 
-(cond
- ((string-equal system-type "windows-nt") ; Microsoft Windows
+(when windows-p ; Microsoft Windows
   (setq w32-pass-lwindow-to-system nil
 	w32-pass-apps-to-system nil
 	w32-lwindow-modifier 'super
 	;; w32-apps-modifier 'super
 	))
- ((string-equal system-type "darwin")   ; Mac OS X
-  (progn
-    (message "Mac OS X")))
- ((string-equal system-type "gnu/linux") ; linux
+
+(when macosx-p   ; Mac OS X
+  )
+
+(when linux-p ; linux
   (define-key key-translation-map (kbd "<menu>") (kbd "<apps>"))
   )
- )
+
 
 ;;; aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 ;;; glabol unset key
@@ -29,7 +29,6 @@
        (global-unset-key (kbd "C-h C-c")) ; describe-copying
        (global-unset-key (kbd "C-/"))
        (global-unset-key (kbd "C-z"))
-       (global-unset-key (kbd "C-<space>"))
        (global-unset-key (kbd "C-\\"))
        (global-set-key (kbd "M-m") 'ignore) ;; for dictionaries
        (global-set-key (kbd "C-x C-g") 'ignore) ;; I often use C-g to cancel C-x
