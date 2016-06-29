@@ -62,6 +62,7 @@
 	paredit-semicolon
 	paredit-splice-sexp-killing-backward
 	perl-electric-terminator
+	python-indent-electric-colon
 	replace-string
 	sci-change-to-symbol
 	sci-copy-line

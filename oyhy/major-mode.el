@@ -110,6 +110,11 @@
     (add-to-list 'auto-hs-mode "bison-mode"))
 
 
+;; python use hs-minor-mode
+(add-hook 'python-mode-hook
+	  #'(lambda () (hs-minor-mode 1)))
+
+
 (provide 'major-mode)
 
 
@@ -129,5 +134,5 @@
 
 
 ;; Local Variables:
-;; eval:(progn (hs-minor-mode t) (let ((hs-state 'nil) (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (car i) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char 4195) (recenter-top-bottom))
+;; eval:(progn (hs-minor-mode t) (let ((hs-state 'nil) (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (car i) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char 4289) (recenter-top-bottom))
 ;; End:
