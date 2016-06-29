@@ -30,6 +30,7 @@
 	delete-region-unless-prefix
 	dired-mark
 	end-of-visual-line
+	eval-last-sexp
 	forward-or-to-char
 	forward-sexp
 	git-rebase-squash
@@ -38,6 +39,8 @@
 	kmacro-start-macro-or-insert-counter
 	mark-sexp
 	markdown-exdent-or-delete
+	my-base64-decode-region
+	my-base64-encode-region
 	my-paredit-backward-slurp-sexp
 	my-paredit-forward-slurp-sexp
 	my-scroll-up
@@ -48,6 +51,7 @@
 	org-self-insert-command
 	org-set-tags-command
 	org-yank
+	paredit-backward
 	paredit-backward-kill-sexp
 	paredit-backward-kill-word
 	paredit-backward-up

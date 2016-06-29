@@ -1,8 +1,9 @@
 ;;; my-org.el ---
-;;; Time-stamp: <2015-08-07 12:16:12 scinart>
+;;; Time-stamp: <2016-04-18 11:27:48 scinart>
 ;;; Code:
 
-(setq org-latex-pdf-process '("xelatex -interaction nonstopmode -shell-escape %f"))
+(setq org-latex-pdf-process '("xelatex -interaction nonstopmode -shell-escape %f"
+			      "xelatex -interaction nonstopmode -shell-escape %f"))
 
 (setq org-latex-default-packages-alist
       '(("T1" "fontenc" t)
@@ -81,5 +82,5 @@
 
 
 ;; Local Variables:
-;; eval:(progn (hs-minor-mode t) (let ((hs-state 'nil) (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (car i) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char 2548) (recenter-top-bottom))
+;; eval:(progn (hs-minor-mode t) (let ((hs-state 'nil) (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (car i) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char 2609) (recenter-top-bottom))
 ;; End:

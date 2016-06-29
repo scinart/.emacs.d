@@ -30,6 +30,7 @@ Will throw an error if the archive version is too new."
  '(recenter-positions (quote (middle top bottom)))
  '(safe-local-variable-values (quote ((encoding . utf-8))))
  '(session-use-package t nil (session))
+ '(tags-table-list (quote ("/home/work/code/decoder/trunk/TAGS")))
  '(template-default-directories (quote ("~/.emacs.d/.templates/")))
  '(truncate-lines t))
 
@@ -49,7 +50,7 @@ Will throw an error if the archive version is too new."
 (defvar windows-p (string-match "windows" (symbol-name system-type)))
 (defvar macosx-p (string-match "darwin" (symbol-name system-type)))
 (defvar linux-p (string-match "linux" (symbol-name system-type)))
-(defvar user-home (concat (expand-file-name "~") "/"))
+(defvar user-home (expand-file-name "~"))
 
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
                          ("marmalade" . "http://marmalade-repo.org/packages/")
@@ -143,7 +144,6 @@ Will throw an error if the archive version is too new."
 (require 'key-chord)
 (require 'fuzzy)
 (require 'git-gutter)
-(require 'git-gutter-fringe)
 (require 'helm-mode)
 (require 'helm-company)
 (require 'multiple-cursors)
@@ -154,7 +154,10 @@ Will throw an error if the archive version is too new."
 (require 'on-screen)
 (require 'session)
 (require 'rainbow-delimiters)
-(when (display-graphic-p) (require 'pretty-mode-plus))
+(when (display-graphic-p)
+  (require 'pretty-mode-plus)
+  (require 'git-gutter-fringe)
+  )
 (require 'smart-compile)
 (require 'smex)
 (require 'semantic)
@@ -163,7 +166,7 @@ Will throw an error if the archive version is too new."
 (require 'ruby-end)
 (require 'ruby-mode)
 (require 'ruby-electric)
-(require 'w3m)
+(ignore-errors (require 'w3m)) ;; in case no w3m is on the server.
 (require 'yari)
 (require 'yaml-mode)
 (require 'anything)
@@ -275,5 +278,5 @@ Will throw an error if the archive version is too new."
  '(rainbow-delimiters-depth-9-face ((t (:foreground "yellow4"))))
  '(rainbow-delimiters-unmatched-face ((t (:foreground "red" :box (:line-width 2 :color "grey75" :style pressed-button))))))
 ;; Local Variables:
-;; eval:(progn (hs-minor-mode t) (let ((hs-state '((41 589 hs))) (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (car i) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char 8146) (recenter-top-bottom))
+;; eval:(progn (hs-minor-mode t) (let ((hs-state '((41 589 hs))) (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (car i) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char 8259) (recenter-top-bottom))
 ;; End:
