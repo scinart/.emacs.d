@@ -159,7 +159,8 @@ Will throw an error if the archive version is too new."
 (require 'ruby-end)
 (require 'ruby-mode)
 (require 'ruby-electric)
-(ignore-errors (require 'w3m)) ;; in case no w3m is on the server.
+(and (executable-find "w3m")
+     (require 'w3m))
 (require 'yari)
 (require 'yaml-mode)
 (require 'anything)
@@ -259,5 +260,5 @@ Will throw an error if the archive version is too new."
  '(rainbow-delimiters-depth-9-face ((t (:foreground "yellow4"))))
  '(rainbow-delimiters-unmatched-face ((t (:foreground "red" :box (:line-width 2 :color "grey75" :style pressed-button))))))
 ;; Local Variables:
-;; eval:(progn (hs-minor-mode t) (let ((hs-state 'nil) (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (car i) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char 7660) (recenter-top-bottom))
+;; eval:(progn (hs-minor-mode t) (let ((hs-state 'nil) (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (car i) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char 7643) (recenter-top-bottom))
 ;; End:
