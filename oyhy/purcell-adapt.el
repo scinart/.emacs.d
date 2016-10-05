@@ -9,7 +9,7 @@
 
 ;;; Code:
 
-(defalias 'require-package 'require)
+;; (defalias 'require-package 'require)
 
 
 

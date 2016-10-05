@@ -214,6 +214,7 @@ Will throw an error if the archive version is too new."
 (require 'my-color-theme)
 (require 'my-ruby)
 (require 'my-common-lisp)
+(require 'my-tex)
 (require 'gas-config)
 (require 'new-bindings)
 (require 'minimode)
@@ -260,5 +261,5 @@ Will throw an error if the archive version is too new."
  '(rainbow-delimiters-depth-9-face ((t (:foreground "yellow4"))))
  '(rainbow-delimiters-unmatched-face ((t (:foreground "red" :box (:line-width 2 :color "grey75" :style pressed-button))))))
 ;; Local Variables:
-;; eval:(progn (hs-minor-mode t) (let ((hs-state 'nil) (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (car i) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char 7643) (recenter-top-bottom))
+;; eval:(progn (hs-minor-mode t) (let ((hs-state 'nil) (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (car i) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char 7661) (recenter-top-bottom))
 ;; End:

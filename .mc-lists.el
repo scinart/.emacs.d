@@ -80,6 +80,7 @@
 (setq mc/cmds-to-run-once
       '(
 	company-complete
+	describe-key
 	end-of-buffer
 	full-screen
 	ido-find-file
