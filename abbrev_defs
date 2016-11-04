@@ -21,6 +21,10 @@
 
 (define-abbrev-table 'bookmark-bmenu-mode-abbrev-table '())
 
+(define-abbrev-table 'bookmark-edit-annotation-mode-abbrev-table '())
+
+(define-abbrev-table 'bookmark-show-annotation-mode-abbrev-table '())
+
 (define-abbrev-table 'browse-kill-ring-edit-mode-abbrev-table '())
 
 (define-abbrev-table 'browse-kill-ring-mode-abbrev-table '())
@@ -105,8 +109,6 @@
     ("functino" "function" nil 3)
     ("im" "I'm" nil 1)
     ("inclued" "include" nil 1)
-    ;; ("nko" "1110526 欧阳宏宇 计算机科学与技术" nil 5)
-    ;; 有些东西永远的留在了配置文件里。
     ("nkux" "Nankai University" nil 1)
     ("nkx" "nankai" nil 3)
     ("quesitno" "question" nil 1)
@@ -115,6 +117,10 @@
    ))
 
 (define-abbrev-table 'grep-mode-abbrev-table '())
+
+(define-abbrev-table 'helm-grep-mode-abbrev-table '())
+
+(define-abbrev-table 'helm-moccur-mode-abbrev-table '())
 
 (define-abbrev-table 'help-mode-abbrev-table '())
 
@@ -147,7 +153,33 @@
 
 (define-abbrev-table 'jython-mode-abbrev-table '())
 
-(define-abbrev-table 'latex-mode-abbrev-table '())
+(define-abbrev-table 'latex-mode-abbrev-table
+  '(
+    ("ga" "\\alpha" nil 10)
+    ("gb" "\\beta" nil 0)
+    ("gch" "\\chi" nil 0)
+    ("gd" "\\delta" nil 0)
+    ("ge" "\\epsilon" nil 1)
+    ("gg" "\\gamma" nil 0)
+    ("gh" "\\eta" nil 0)
+    ("gi" "\\iota" nil 0)
+    ("gk" "\\kappa" nil 0)
+    ("gl" "\\lambda" nil 26)
+    ("gm" "\\mu" nil 0)
+    ("gn" "\\nu" nil 0)
+    ("go" "\\omicron" nil 0)
+    ("gp" "\\pi" nil 0)
+    ("gph" "\\phi" nil 0)
+    ("gps" "\\psi" nil 0)
+    ("gq" "\\omega" nil 0)
+    ("gr" "\\rho" nil 0)
+    ("gs" "\\sigma" nil 0)
+    ("gt" "\\tau" nil 1)
+    ("gth" "\\theta" nil 5)
+    ("gu" "\\upsilon" nil 0)
+    ("gx" "\\xi" nil 0)
+    ("gz" "\\zeta" nil 0)
+   ))
 
 (define-abbrev-table 'ld-script-mode-abbrev-table '())
 
@@ -177,9 +209,7 @@
 
 (define-abbrev-table 'occur-mode-abbrev-table '())
 
-(define-abbrev-table 'octave-abbrev-table
-  '(
-   ))
+(define-abbrev-table 'octave-abbrev-table '())
 
 (define-abbrev-table 'octave-mode-abbrev-table '())
 
@@ -195,7 +225,33 @@
   '(
    ))
 
-(define-abbrev-table 'plain-tex-mode-abbrev-table '())
+(define-abbrev-table 'plain-tex-mode-abbrev-table
+  '(
+    ("ga" "\\alpha" nil 0)
+    ("gb" "\\beta" nil 0)
+    ("gch" "\\chi" nil 0)
+    ("gd" "\\delta" nil 0)
+    ("ge" "\\epsilon" nil 0)
+    ("gg" "\\gamma" nil 0)
+    ("gh" "\\eta" nil 0)
+    ("gi" "\\iota" nil 0)
+    ("gk" "\\kappa" nil 0)
+    ("gl" "\\lambda" nil 0)
+    ("gm" "\\mu" nil 0)
+    ("gn" "\\nu" nil 0)
+    ("go" "\\omicron" nil 0)
+    ("gp" "\\pi" nil 0)
+    ("gph" "\\phi" nil 0)
+    ("gps" "\\psi" nil 0)
+    ("gq" "\\omega" nil 0)
+    ("gr" "\\rho" nil 0)
+    ("gs" "\\sigma" nil 0)
+    ("gt" "\\tau" nil 0)
+    ("gth" "\\theta" nil 0)
+    ("gu" "\\upsilon" nil 0)
+    ("gx" "\\xi" nil 0)
+    ("gz" "\\zeta" nil 0)
+   ))
 
 (define-abbrev-table 'process-menu-mode-abbrev-table '())
 
