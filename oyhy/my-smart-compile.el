@@ -36,7 +36,83 @@
     ("\\.[Cc]+[Pp]*$" . "./%n")
     ))
 
+(defparameter smart-compile-replace-alist
+  '(("%F" . (buffer-file-name))
+    ("%f" . (file-name-nondirectory (buffer-file-name)))
+    ("%n" . (file-name-sans-extension (file-name-nondirectory (buffer-file-name))))
+    ("%e" . (file-name-extension (buffer-file-name)))))
 
+(defparameter smart-executable-alist
+  '("%n.class"
+    "%n"
+    "%n.m"
+    "%n.php"
+    "%n.scm"
+    "%n.dvi"
+    "%n.info"))
+
+(defun smart-compile-replace (str)
+  "Replace the smart-compile-replace-alist."
+  (let ((rlist smart-compile-replace-alist))
+    (while rlist
+      (while (string-match (caar rlist) str)
+	(setq str (replace-match (eval (cdar rlist)) t nil str)))
+      (setq rlist (cdr rlist))))
+  str)
+
+(defun smart-run ()
+  "Run the executable program according to the file type. If you set
+`smart-run-alist' and `smart-executable-alist', then you can add new run
+commands to new file types."
+  (interactive)
+  (let ((name (buffer-file-name))
+	(alist smart-run-alist)
+	(rlist smart-compile-replace-alist)
+	(elist smart-executable-alist)
+	(executable nil)
+	(update t)
+	(case-fold-search nil))
+
+    (if (not name) (error "cannot get filename."))
+
+    ;; dose the executable file exist and update?
+    (let ((exfile (car elist)))
+      (while (and elist (not executable))
+	;; r is a local rlist
+	(let ((r smart-compile-replace-alist))
+	  (while r
+	    (while (string-match (caar r) exfile)
+	      (setq exfile
+		    (replace-match
+		     (eval (cdar r)) t nil exfile)))
+	    (setq r (cdr r))))
+	(let ((file (concat (file-name-directory (buffer-file-name))
+			    exfile)))
+	  (if (file-readable-p file)
+	      (progn
+		(if (file-newer-than-file-p name file)
+		    (setq update nil))
+		(setq executable t))
+	    (setq exfile (cadr elist))))
+	(setq elist (cdr elist))))
+
+    (if (and executable update)
+	(while alist
+	  (let ((run-type (caar alist))
+		(run-cmd (cdar alist)))
+	    (cond ((and (symbolp run-type)
+		      (eq run-type major-mode))
+		   (eval run-cmd))
+		  ((and (stringp run-type)
+		      (string-match run-type name))
+		   (progn (shell-command (smart-compile-replace run-cmd))
+			  (setq alist nil)))
+		  (t (setq alist (cdr alist))))))
+
+      (if (and (not update) (y-or-n-p "File out of date, recompile? "))
+	  (call-interactively 'smart-compile)
+	(if (y-or-n-p "Compile first? ")
+	    (call-interactively 'smart-compile))))))
 
 ;;;;##########################################################################
 ;;;;  User Options, Variables

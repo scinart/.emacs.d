@@ -34,6 +34,7 @@
 	forward-or-to-char
 	forward-sexp
 	git-rebase-squash
+	ignore
 	insert-register
 	kill-visual-line
 	kmacro-start-macro-or-insert-counter
@@ -48,6 +49,8 @@
 	org-delete-char
 	org-end-of-line
 	org-force-self-insert
+	org-kill-line
+	org-open-line
 	org-self-insert-command
 	org-set-tags-command
 	org-yank
@@ -73,6 +76,7 @@
 	sgml-close-tag
 	sh-assignment
 	slime-space
+	undefined
 	wdired-next-line
 	yas-expand
 	))
@@ -80,11 +84,11 @@
 (setq mc/cmds-to-run-once
       '(
 	company-complete
-	describe-key
 	end-of-buffer
 	full-screen
 	ido-find-file
 	inverse-add-global-abbrev
+	js2-mode-show-node
 	kmacro-end-or-call-macro
 	mouse-buffer-menu
 	org-ctrl-c-ctrl-c

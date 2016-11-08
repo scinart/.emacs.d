@@ -1,6 +1,6 @@
 ;;; -*- coding:utf-8 -*-
 ;;; new-bindings.el ---
-;;; Time-stamp: <2016-02-01 18:01:49 scinart>
+;;; Time-stamp: <2016-07-10 14:46:21 scinart>
 ;;; Code:
 
 (when windows-p ; Microsoft Windows
@@ -224,7 +224,6 @@
 (global-set-key (kbd "C-x Z") 'repeat-complex-command)
 (global-set-key (kbd "C-x 5 2") 'make-frame-command)
 (global-set-key (kbd "C-s-l") 'screensaver)
-(global-set-key (kbd "s-'") 'start-button)
 (global-set-key (kbd "C-x C-c") 'my-exit)
 (global-set-key (kbd "C-x <return> o") 'open-this-buffer-in-explorer)
 (global-set-key (kbd "C-x C-<return> o") 'open-this-buffer-in-explorer)

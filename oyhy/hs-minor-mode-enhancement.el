@@ -5,8 +5,7 @@
 			"c-mode"
 			"java-mode") "mode you want to add magic hs string." )
 
-
-
+(defconst HSmark (concat "eCMs9P" "nUiV6Z"))
 
 (add-hook 'before-save-hook 'hs-state-hook)
 (defun comment-this-line ()
@@ -22,7 +21,7 @@
 (defun hs-state-hook ()
   (save-excursion
     (goto-char (point-max))
-    (when (search-backward "(the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr" nil t)
+    (when (search-backward (concat "(HSmark '" HSmark) nil t)
       (hs-state-save))))
 
 (defun hs-state-insert ()
@@ -41,32 +40,43 @@
                 (reverse all-overlays)))))
   (ignore-errors
     (if (and comment-start
-	     (member* (symbol-name major-mode)
-		      auto-hs-mode :test #'string-equal))
-      (save-excursion
-	(let ((current-point (point)))
-	  (goto-char (point-max))
-	  (let ((eval-string (concatenate 'string "eval:(progn (hs-minor-mode t) (let ((hs-state '"
-					  (format "%S" (delq nil (mapcar #'(lambda (lst)
-									    (if (null (caddr lst))
-										nil
-									      lst)) (omm-get-all-overlays)))) ") (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (car i) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char " (format "%S" current-point) ") (recenter-top-bottom))")))
+	   (member* (symbol-name major-mode)
+		    auto-hs-mode :test #'string-equal))
+	(save-excursion
+	  (let* ((current-point (format "%S" (point)))
+		 (eval-string
+		  (concat "eval:"
+			  "(progn (hs-minor-mode t)"
+			  " (let ((hs-state '" (format "%S" (delq nil (mapcar #'(lambda (lst) (and (caddr lst) lst))
+									    (omm-get-all-overlays)))) ")"
+			  "       (HSmark '" HSmark "))"
+			  "  (dolist (i hs-state)"
+			  "   (when (car i)"
+			  "    (goto-char (car i))"
+			  "    (hs-find-block-beginning)"
+			  "    (hs-hide-block-at-point nil nil))))"
+			  " (goto-char " current-point ")"
+			  " (recenter-top-bottom))")))
+	    (goto-char (point-max))
 	    ;; if the mark show only once
-	    (if (search-backward "(the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr" nil t)
-		(progn
-		  (beginning-of-line)
-		  (delete-region (point) (point-max))
-		  (comment-string-and-newline eval-string)
-		  (comment-string-and-newline "End:"))
-	      (when create
+	    (let ((exist (search-backward HSmark nil t)))
+	      (when exist
+		(beginning-of-line)
+		(delete-region (point) (point-max))
+		(comment-string-and-newline eval-string)
+		(comment-string-and-newline "End:"))
+	      (when (not exist)
 		(goto-char (point-max))
-		(newline 5)
+		(newline 2)
 		(comment-string-and-newline "Local Variables:")
 		(comment-string-and-newline eval-string)
-		(comment-string-and-newline "End:")))))))))
+		(comment-string-and-newline "End:"))))))))
 
 (provide 'hs-minor-mode-enhancement)
 
+(hs-state-save t)
+
+
 ;; Local Variables:
-;; eval:(progn (hs-minor-mode t) (let ((hs-state 'nil) (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (car i) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char 2505) (recenter-top-bottom))
+;; eval:(progn (hs-minor-mode t) (let ((hs-state 'nil)       (HSmark 'eCMs9PnUiV6Z))  (dolist (i hs-state)   (when (car i)    (goto-char (car i))    (hs-find-block-beginning)    (hs-hide-block-at-point nil nil)))) (goto-char 2510) (recenter-top-bottom))
 ;; End:

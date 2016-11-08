@@ -1,5 +1,5 @@
 ;;; defuns.el ---
-;;; Time-stamp: <2016-02-19 16:53:45 scinart>
+;;; Time-stamp: <2016-07-21 14:11:21 scinart>
 ;;; Code:
 
 (load "~/.emacs.d/oyhy/bare-defuns.el")
@@ -250,8 +250,16 @@ at around 2013-06-04 Tuesday 00:23:22"
 (defun open-this-buffer-folder-in-terminal ()
   "TODO"
   (interactive)
-  (message "How can I do this."))
-
+  (let (dir)
+    (cond ((buffer-file-name)
+	   (setq dir (file-name-directory (buffer-file-name))))
+	  (dired-directory
+	   (setq dir dired-directory))
+	  (t
+	   (message "%s" "Buffer Not Recognized as File or Directory")))
+    (if dir
+	(start-process-shell-command  )
+	(async-shell-command (concat "gnome-terminal --working-directory=" dir)))))
 
 ;; Borrowed from http://whattheemacsd.com/key-bindings.el-01.html
 (defun goto-line-with-feedback ()

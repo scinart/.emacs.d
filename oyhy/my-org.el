@@ -1,5 +1,5 @@
 ;;; my-org.el ---
-;;; Time-stamp: <2016-04-18 11:27:48 scinart>
+;;; Time-stamp: <2016-09-03 21:49:24 scinart>
 ;;; Code:
 
 (setq org-latex-pdf-process '("xelatex -interaction nonstopmode -shell-escape %f"
@@ -32,6 +32,8 @@
 	"\\setCJKmainfont{Microsoft YaHei}"
 	"\\setmainfont{Ubuntu}"
 	"\\setmonofont{Ubuntu Mono}"
+	"\\usepackage{geometry}"
+	"\\geometry{A4, landscape}"
 	"\\XeTeXlinebreaklocale \"zh\" %這行及下一行使中文能自動換行"
 	"\\XeTeXlinebreakskip = 0pt plus 1pt"))
 

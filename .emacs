@@ -164,14 +164,10 @@ Will throw an error if the archive version is too new."
 (require 'yari)
 (require 'yaml-mode)
 (require 'anything)
-(require 'keyfreq)
 (require 'xcscope)
 (cscope-setup)
 (require 'f)
 (require 's)
-
-(keyfreq-mode 1)
-(keyfreq-autosave-mode 1)
 
 (setq multi-term-program "/bin/zsh")
 
@@ -214,7 +210,7 @@ Will throw an error if the archive version is too new."
 (require 'my-color-theme)
 (require 'my-ruby)
 (require 'my-common-lisp)
-(require 'my-tex)
+; (require 'my-tex)
 (require 'gas-config)
 (require 'new-bindings)
 (require 'minimode)
