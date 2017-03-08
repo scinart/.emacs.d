@@ -29,6 +29,7 @@ Will throw an error if the archive version is too new."
  '(bmkp-last-as-first-bookmark-file "~/.emacs.d/bookmarks")
  '(enable-local-eval t)
  '(enable-recursive-minibuffers t)
+ '(frame-background-mode (quote dark))
  '(inhibit-startup-screen t)
  '(large-file-warning-threshold 1048576)
  '(major-mode (quote text-mode))
@@ -207,7 +208,7 @@ Will throw an error if the archive version is too new."
 (require 'my-ido)
 (require 'my-org)
 (require 'my-scheme)
-(require 'my-color-theme)
+; (require 'my-color-theme)
 (require 'my-ruby)
 (require 'my-common-lisp)
 ; (require 'my-tex)
@@ -236,11 +237,14 @@ Will throw an error if the archive version is too new."
 ;; personal-startup-settings
 ;; ***************************************************************************
 ;; set the title of the frame.
-(frame-alpha-set-all '(90 45))
+;; since using Meta + mouse scroll is bound to adjust transparency by compiz
+;; the following line is of no need.
+;; (frame-alpha-set-all '(90 45))
 (full-screen)
 
 
-
+(add-to-list 'custom-theme-load-path "~/.emacs.d/submodules/emacs-color-theme-solarized")
+(load-theme 'solarized t)
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

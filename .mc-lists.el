@@ -6,6 +6,8 @@
 	backward-kill-sexp
 	backward-or-to-char
 	backward-sexp
+	backward-up-list
+	beginning-of-visual-line
 	bison-electric-close-brace
 	bison-electric-colon
 	bison-electric-greater-than
@@ -34,6 +36,7 @@
 	forward-or-to-char
 	forward-sexp
 	git-rebase-squash
+	haskell-indentation-common-electric-command
 	ignore
 	insert-register
 	kill-visual-line
@@ -87,14 +90,17 @@
 	company-complete
 	end-of-buffer
 	full-screen
+	haskell-indentation-indent-backwards
 	ido-find-file
 	inverse-add-global-abbrev
 	js2-mode-show-node
 	kmacro-end-or-call-macro
 	mouse-buffer-menu
+	mouse-yank-primary
 	org-ctrl-c-ctrl-c
 	save-buffer-enhanced
 	smart-compile
 	string-rectangle
+	visual-line-mode
 	wdired-finish-edit
 	))
