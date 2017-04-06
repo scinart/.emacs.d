@@ -33,7 +33,7 @@
 
 (defvar frame-alpha-active-walk-step 2)
 (defvar frame-alpha-inactive-walk-step 1)
-(defvar frame-alpha-default (list 100 50))
+(defvar frame-alpha-default (list 100 100))
 
 (defconst frame-alpha-original-lower-limit 20)
 

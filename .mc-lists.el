@@ -24,6 +24,7 @@
 	c-electric-semi&comma
 	c-electric-slash
 	c-electric-star
+	c-end-of-statement
 	continuous-capitalize-word
 	continuous-downcase-word
 	continuous-num/++
@@ -100,6 +101,7 @@
 	org-ctrl-c-ctrl-c
 	save-buffer-enhanced
 	smart-compile
+	smex
 	string-rectangle
 	visual-line-mode
 	wdired-finish-edit

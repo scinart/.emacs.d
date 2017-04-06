@@ -1,5 +1,5 @@
 ;;; File created at 2013-05-02 Thursday 20:24:12
-;;; Time-stamp: <2015-08-07 17:57:29 scinart>
+;;; Time-stamp: <2017-03-08 18:02:43 scinart>
 
 
 (defun my-c++-mode-hook ()
@@ -84,5 +84,5 @@
 (add-hook 'c++-mode-hook 'my-cc-style)
 (add-hook 'c-mode-hook 'my-cc-style)
 
-
+(setf company-async-timeout 4)
 (provide 'cc-config)
