@@ -27,12 +27,14 @@ Will throw an error if the archive version is too new."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(bmkp-last-as-first-bookmark-file "~/.emacs.d/bookmarks")
+ '(delete-selection-mode nil)
  '(enable-local-eval t)
  '(enable-recursive-minibuffers t)
  '(frame-background-mode (quote dark))
  '(inhibit-startup-screen t)
  '(large-file-warning-threshold 1048576)
  '(major-mode (quote text-mode))
+ '(python-indent-offset 2)
  '(recenter-positions (quote (middle top bottom)))
  '(safe-local-variable-values (quote ((encoding . utf-8))))
  '(session-use-package t nil (session))
@@ -74,6 +76,7 @@ Will throw an error if the archive version is too new."
 (setq x-select-enable-clipboard t)
 (setq kill-ring-max 200)
 (setq visible-bell nil)
+(setq ring-bell-function 'ignore)
 
 (setq split-height-threshold nil)
 (setq split-width-threshold 100)
@@ -85,7 +88,8 @@ Will throw an error if the archive version is too new."
 (setq scroll-conservatively 10000)
 (setq recentf-max-menu-items 50)
 (setq recentf-max-saved-items 600)
-(setq echo-keystrokes -1)
+(setq echo-keystrokes 0.0001)
+
 (setq mode-require-final-newline nil)
 (setq make-backup-files nil)
 (setq time-stamp-pattern "8/[Tt]ime-?stamp:[ \t]+\\\\?[\"<]+%:y-%02m-%02d %02H:%02M:%02S %u\\\\?[\">]")

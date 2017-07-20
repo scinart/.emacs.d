@@ -93,11 +93,13 @@
 	full-screen
 	haskell-indentation-indent-backwards
 	ido-find-file
+	ido-switch-buffer
 	inverse-add-global-abbrev
 	js2-mode-show-node
 	kmacro-end-or-call-macro
 	mouse-buffer-menu
 	mouse-yank-primary
+	my-scroll-down
 	org-ctrl-c-ctrl-c
 	save-buffer-enhanced
 	smart-compile

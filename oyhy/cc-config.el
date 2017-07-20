@@ -1,5 +1,5 @@
 ;;; File created at 2013-05-02 Thursday 20:24:12
-;;; Time-stamp: <2017-03-08 18:02:43 scinart>
+;;; Time-stamp: <2017-07-10 14:19:12 scinart>
 
 
 (defun my-c++-mode-hook ()
@@ -60,6 +60,9 @@
 (global-font-lock-mode t)
 (setq font-lock-maximum-decoration t)
 
+(defun clean-up-for-cc-mode ()
+  (when (member major-mode '(c-mode c++-mode emacs-lisp-mode))
+    (delete-trailing-whitespace)))
 
 (add-hook 'c++-mode-hook
 	  '(lambda()
@@ -83,6 +86,8 @@
 
 (add-hook 'c++-mode-hook 'my-cc-style)
 (add-hook 'c-mode-hook 'my-cc-style)
+(add-hook 'before-save-hook 'clean-up-for-cc-mode)
+
 
 (setf company-async-timeout 4)
 (provide 'cc-config)
