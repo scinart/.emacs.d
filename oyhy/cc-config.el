@@ -1,5 +1,5 @@
 ;;; File created at 2013-05-02 Thursday 20:24:12
-;;; Time-stamp: <2017-07-10 14:19:12 scinart>
+;;; Time-stamp: <2017-07-21 15:47:39 scinart>
 
 
 (defun my-c++-mode-hook ()
@@ -40,6 +40,13 @@
   (company-mode)
   (load "~/.emacs.d/oyhy/clang_config.el")
   (whitespace-mode 1)
+  (flycheck-mode)
+  (setq flycheck-gcc-language-standard "c++14")
+  (setq flycheck-clang-language-standard "c++14")
+  (add-hook 'flycheck-before-syntax-check-hook
+ 	    #'(lambda ()
+  		(if (file-exists-p ".clang_complete")
+  		    (setf flycheck-clang-args (nconc company-clang-arguments (s-split "\n" (f-read ".clang_complete") t))))))
 )
 
 (require 'font-lock)

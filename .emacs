@@ -34,6 +34,9 @@ Will throw an error if the archive version is too new."
  '(inhibit-startup-screen t)
  '(large-file-warning-threshold 1048576)
  '(major-mode (quote text-mode))
+ '(package-selected-packages
+   (quote
+    (slime-company flycheck yasnippet yari yaml-mode web-beautify w3m w3 typing-game typing tabbar solarized-theme smex smarter-compile smart-compile session rust-mode ruby-mode ruby-end ruby-electric robe rainbow-delimiters pretty-mode-plus pos-tip php-mode paredit org on-screen noflet nodejs-repl multiple-cursors multi-term minimap markdown-mode kill-ring-ido key-chord julia-mode js2-mode highlight-tail haskell-mode git-rebase-mode git-gutter-fringe git-commit-mode fuzzy f erlang emms eldoc-extension dired+ desktop cppcheck color-theme buffer-move bookmark+ auto-complete-clang-async ace-jump-buffer ac-inf-ruby)))
  '(python-indent-offset 2)
  '(recenter-positions (quote (middle top bottom)))
  '(safe-local-variable-values (quote ((encoding . utf-8))))
@@ -56,10 +59,14 @@ Will throw an error if the archive version is too new."
 (defvar linux-p (string-match "linux" (symbol-name system-type)))
 (defvar user-home (expand-file-name "~"))
 
-(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
-                         ("marmalade" . "http://marmalade-repo.org/packages/")
-                         ("melpa" . "http://melpa.milkbox.net/packages/")
-			 ))
+(setq package-archives
+      '(("GNU ELPA"     . "http://elpa.gnu.org/packages/")
+        ("MELPA Stable" . "https://stable.melpa.org/packages/")
+        ("MELPA"        . "https://melpa.org/packages/"))
+      package-archive-priorities
+      '(("MELPA Stable" . 10)
+        ("GNU ELPA"     . 5)
+        ("MELPA"        . 0)))
 
 
 (setq cursor-type 'box)
@@ -128,13 +135,12 @@ Will throw an error if the archive version is too new."
 
 
 ;; ELPA
-;; (require 'slime)
+(require 'slime)
 (require 'ace-jump-mode)
 (require 'auto-complete)
 (require 'bookmark+)
 (require 'kill-ring-ido)
 (require 'buffer-move)
-(require 'cedet)
 (require 'company)
 (require 'desktop)
 (require 'dired+)
@@ -142,8 +148,6 @@ Will throw an error if the archive version is too new."
 (require 'key-chord)
 (require 'fuzzy)
 (require 'git-gutter)
-(require 'helm-mode)
-(require 'helm-company)
 (require 'multiple-cursors)
 (require 'pos-tip)
 (require 'paredit)
@@ -159,27 +163,19 @@ Will throw an error if the archive version is too new."
 (require 'smart-compile)
 (require 'smex)
 (require 'semantic)
-(require 'multi-term)
-(require 'inf-ruby)
-(require 'ruby-end)
-(require 'ruby-mode)
-(require 'ruby-electric)
 (and (executable-find "w3m")
      (require 'w3m))
 (require 'yari)
 (require 'yaml-mode)
-(require 'anything)
 (require 'xcscope)
 (cscope-setup)
 (require 'f)
 (require 's)
 
-(setq multi-term-program "/bin/zsh")
-
 (company-mode)
 (global-git-gutter-mode)
 ; (global-rainbow-delimiters-mode)
-(helm-mode 1)
+;; (helm-mode 1)
 (key-chord-mode 1)
 (paredit-mode 1)
 (on-screen-global-mode 1)
@@ -193,13 +189,11 @@ Will throw an error if the archive version is too new."
 (require 'template)
 (template-initialize)
 (require 'make-regexp)
-(require 'flex-mode)
-(require 'bison-mode)
-(require 'gas-mode)
-(require 'psilord-lisp-colors)
-(require 'mwe-color-box)
-;; (require 'cambridge-permute)
-;; M-x mwe:cambridge-permute-buffer
+
+;; flex, bison, gas mode were used when I wrote my compiler homework.
+;; (require 'flex-mode)
+;; (require 'bison-mode)
+;; (require 'gas-mode)
 
 ;; oyhy
 (require 'init-utils)
@@ -213,7 +207,7 @@ Will throw an error if the archive version is too new."
 (require 'my-org)
 (require 'my-scheme)
 ; (require 'my-color-theme)
-(require 'my-ruby)
+;; (require 'my-ruby)
 (require 'my-common-lisp)
 ; (require 'my-tex)
 (require 'gas-config)
@@ -230,6 +224,7 @@ Will throw an error if the archive version is too new."
 
 ;; load-file
 (load-file "~/.emacs.d/oyhy/redefun.el")
+(load-file "~/.emacs.d/oyhy/my-defadvice.el")
 (if (display-graphic-p)
     (load-file "~/.emacs.d/oyhy/my-font.el"))
 
@@ -266,4 +261,9 @@ Will throw an error if the archive version is too new."
  '(rainbow-delimiters-unmatched-face ((t (:foreground "red" :box (:line-width 2 :color "grey75" :style pressed-button))))))
 ;; Local Variables:
 ;; eval:(progn (hs-minor-mode t) (let ((hs-state 'nil) (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (car i) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char 7661) (recenter-top-bottom))
+;; End:
+
+
+;; Local Variables:
+;; eval:(progn (hs-minor-mode t) (let ((hs-state 'nil)       (HSmark 'eCMs9PnUiV6Z))  (dolist (i hs-state)   (when (car i)    (goto-char (car i))    (hs-find-block-beginning)    (hs-hide-block-at-point nil nil)))) (goto-char 8818) (recenter-top-bottom))
 ;; End:
