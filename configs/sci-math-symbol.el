@@ -102,7 +102,7 @@
     ("lang"."〈") ("rang"."〉")
     ("⋮"."vdots") ("⋯"."cdots") ("⋰"."bdots") ("⋱"."ddots")))
 (defconst sci-abrvs-letters
-  (append 
+  (append
    '( ;;ℂℍℕℙℚℝℤⅆⅇⅈⅉ bb{letter} \mathbb{}
      ("bbC"."ℂ") ("bbH"."ℍ") ("bbN"."ℕ") ("bbP"."ℙ") ("bbQ"."ℚ") ("bbR"."ℝ") ("bbZ"."ℤ")
      ("bbd"."ⅆ") ("bbe"."ⅇ") ("bbi"."ⅈ") ("bbj"."ⅉ"))
@@ -131,7 +131,7 @@
     ("1,"."🄂")  ("2,"."🄃")  ("3,"."🄄")  ("4,"."🄅")  ("5,"."🄆")
     ("6,"."🄇")  ("7,"."🄈")  ("8,"."🄉")  ("9,"."🄊")  ("0,"."🄁")))
 (defconst sci-abrvs-sub-and-super-scripts
-  '( ;;COMBINE superscripts and subscripts : [\^_][0-9+-=(){some letter}]  
+  '( ;;COMBINE superscripts and subscripts : [\^_][0-9+-=(){some letter}]
     ("^0"."⁰") ("^1"."¹") ("^2"."²") ("^3"."³") ("^4"."⁴")
     ("^5"."⁵") ("^6"."⁶") ("^7"."⁷") ("^8"."⁸") ("^9"."⁹")
     ("^+"."⁺") ("^-"."⁻") ("^="."⁼") ("^("."⁽") ("^)"."⁾") ("^n"."ⁿ") ("^i"."ⁱ")
@@ -153,7 +153,9 @@
     ("<==="."⟸") ("===>"."⟹") ("<===>"."⟺")
     ("<\\"."↖") ("\\>"."↘")
     ("<-|"."↵")
-    ("|<-"."⇤") ("->|"."⇥") ("|<->|"."↹")))
+    ("|<-"."⇤") ("->|"."⇥") ("|<->|"."↹")
+    ("|^-"."⤒") ("|v-"."⤓")
+    ))
 (defconst sci-abrvs-hash-table-candidate
   (list
    sci-abrvs-fw
@@ -254,7 +256,7 @@
      ("power"."⎋") ("eject"."⏏") ("print"."⎙")
      ("pgup"."⇞") ("pgdn"."⇟") ("undo"."↶") ("redo"."↷")
      ("enter"."⌤")
-     ("return"."⏎") ("return2"."↩") ("return3"."↵") 
+     ("return"."⏎") ("return2"."↩") ("return3"."↵")
      ("delete"."⌫") ("dell"."⌫") ("delr"."⌦") ("clear"."⌧")
      ("kbd"."⌨") ("_"."␣")
      ("lrarr"."⇄")
@@ -449,5 +451,5 @@ Home page at: URL `http://ergoemacs.org/emacs/sci-math-symbols-input.html'"
 (provide 'sci-math-symbol)
 
 ;; Local Variables:
-;; eval:(progn (hs-minor-mode t) (let ((hs-state '((16526 17955 hs) (14603 16496 hs) (13409 14533 hs) (12785 13216 hs) (11905 12391 hs) (11609 11889 hs) (11467 11581 hs) (10920 11445 hs) (10529 10884 hs) (9598 10496 hs) (9312 9562 hs) (9214 9284 hs) (8001 9193 hs) (7318 7758 hs) (6623 7290 hs) (6166 6580 hs) (4696 6138 hs) (3404 4667 hs) (2677 3378 hs) (1253 2612 hs)))       (HSmark 'eCMs9PnUiV6Z))  (dolist (i hs-state)   (when (car i)    (goto-char (car i))    (hs-find-block-beginning)    (hs-hide-block-at-point nil nil)))) (goto-char 18384) (recenter-top-bottom))
+;; eval:(progn (hs-minor-mode t) (let ((hs-state '((16555 17984 hs) (14632 16525 hs) (13438 14562 hs) (12814 13245 hs) (1253 2612 hs) (2677 3378 hs) (3404 4667 hs) (4696 6137 hs) (6165 6579 hs) (6622 7287 hs) (8031 9223 hs) (9244 9314 hs) (9342 9592 hs) (9628 10526 hs) (10559 10914 hs) (10950 11474 hs) (11496 11610 hs) (11638 11918 hs) (11934 12420 hs)))       (HSmark 'eCMs9PnUiV6Z))  (dolist (i hs-state)   (when (car i)    (goto-char (car i))    (hs-find-block-beginning)    (hs-hide-block-at-point nil nil)))) (goto-char 18413) (recenter-top-bottom))
 ;; End:

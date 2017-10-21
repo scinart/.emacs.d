@@ -1,5 +1,5 @@
 ;;; File created at 2013-05-02 Thursday 20:24:12
-;;; Time-stamp: <2017-07-21 15:47:39 scinart>
+;;; Time-stamp: <2017-07-25 19:41:39 scinart>
 
 
 (defun my-c++-mode-hook ()
@@ -46,7 +46,7 @@
   (add-hook 'flycheck-before-syntax-check-hook
  	    #'(lambda ()
   		(if (file-exists-p ".clang_complete")
-  		    (setf flycheck-clang-args (nconc company-clang-arguments (s-split "\n" (f-read ".clang_complete") t))))))
+  		    (setf flycheck-clang-args (s-split "\n" (f-read ".clang_complete") t)))))
 )
 
 (require 'font-lock)
