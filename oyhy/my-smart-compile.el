@@ -1,4 +1,4 @@
-;;; my-smart-compile.el --- 
+;;; my-smart-compile.el ---
 
 ;;   see \\[describe-variable] smart-compile-replace-alist
 
@@ -14,7 +14,7 @@
 ;  (html-helper-mode   . (browse-url-of-buffer))
 ;  (octave-mode        . (run-octave))
   ("\\.c\\'"          . "clang %f -o %n -Wall")
-  ("\\.[Cc]+[Pp]*\\'" . "clang++ %f -o %n -Wall -std=c++11 -g")
+  ("\\.[Cc]+[Pp]*\\'" . "clang++ %f -o %n -Wall -std=c++14 -g")
   ("\\.rs\\'"         . "rustc %f -o %n")
 ;  ("\\.m\\'"          . "gcc -O2 %f -lobjc -lpthread -o %n")
 ;  ("\\.java\\'"       . "javac %f")
@@ -125,4 +125,3 @@ commands to new file types."
   (require 'cl))
 
 ;;; my-smart-compile.el ends here
-

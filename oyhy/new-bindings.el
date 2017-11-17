@@ -1,6 +1,6 @@
 ;;; -*- coding:utf-8 -*-
 ;;; new-bindings.el ---
-;;; Time-stamp: <2016-07-10 14:46:21 scinart>
+;;; Time-stamp: <2017-11-17 13:39:25 scinart>
 ;;; Code:
 
 (when windows-p ; Microsoft Windows
@@ -37,7 +37,7 @@
 
 ;;; aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 ;;; bookmarks  and registers
-(progn "registers" 
+(progn "registers"
 
        (global-set-key (kbd "C-x r p") 'sci-push-register)
        (global-set-key (kbd "C-x r j") 'jump-to-register)
@@ -152,7 +152,7 @@
 					  (beginning-of-visual-line)
 					(beginning-of-line))))
        (global-set-key (kbd "C-b") 'backward-or-to-char)
-       (global-set-key (kbd "C-e") '(lambda () (interactive) 
+       (global-set-key (kbd "C-e") '(lambda () (interactive)
 				      (if visual-line-mode
 					  (end-of-visual-line)
 					(end-of-line))))
@@ -190,6 +190,10 @@
 (global-set-key (kbd "s-.") 'mc/mark-next-like-this)
 (global-set-key (kbd "s-,") 'mc/mark-previous-like-this)
 (global-set-key (kbd "s-;") 'mc/mark-all-like-this)
+;; super key is not working in console mode.
+(global-set-key (kbd "C-c .") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-c ,") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C-c ;") 'mc/mark-all-like-this)
 (global-set-key (kbd "C-s-SPC") 'set-rectangular-region-anchor)
 (global-set-key (kbd "C-s-;") 'mc/edit-lines)
 
@@ -256,7 +260,7 @@
        (global-set-key (kbd "M-c w t") 'transparent)
        (global-set-key (kbd "M-c w p") 'peek)
        (global-set-key (kbd "M-c w o") 'opaque)
-       
+
        (global-set-key (kbd "M-c ;") 'continuous-frame-alpha-all-increase)
        (global-set-key (kbd "M-c :") 'continuous-frame-alpha-all-decrease)
        (global-set-key (kbd "M-c ,") 'continuous-frame-alpha-active-increase)
@@ -305,11 +309,14 @@
   (global-set-key (kbd "C-x M-n") 'windmove-down)
   (global-set-key (kbd "C-;") 'smart-backward-window)
   (global-set-key (kbd "C-:") 'smart-forward-window)
+  (global-set-key (kbd "C-,") 'next-buffer)
+  (global-set-key (kbd "C-<") 'previous-buffer)
+
   ;; (global-set-key (kbd "C-;") 'tabbar-forward-tab)
   ;; (global-set-key (kbd "C-:") 'tabbar-backward-tab)
   ;; (global-set-key (kbd "C-<tab>") 'tabbar-forward-group)
   ;; (global-set-key (kbd "<C-S-iso-lefttab>") 'tabbar-backward-group)
-  
+
   (global-set-key (kbd "C-x o") '(lambda () (interactive) (smart-other-window 1)))
   (global-set-key (kbd "C-x O") '(lambda () (interactive) (smart-other-window -1)))
   (global-set-key (kbd "M-c b b") 'buf-move-left)
@@ -317,7 +324,7 @@
   (global-set-key (kbd "M-c b p") 'buf-move-up)
   (global-set-key (kbd "M-c b n") 'buf-move-down)
   (global-set-key (kbd "M-c b s") 'create-scratch)
-  (global-set-key (kbd "M-c b r") 'rename-buffer) 
+  (global-set-key (kbd "M-c b r") 'rename-buffer)
   (global-set-key (kbd "C-c C-m") 'switch-to-minibuffer-window))
 
 ;;; aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
@@ -348,7 +355,7 @@
 (global-set-key (kbd "C-c M-l") 'toggle-truncate-lines)
 (global-set-key (kbd "C-c M-r") 'recursive-edit)
 
-(global-set-key (kbd "C-<return>") 'helm-company)
+(global-set-key (kbd "C-<return>") 'up-list)
 (global-set-key (kbd "M-<return>") 'company-complete)
 
 ;; coding systems

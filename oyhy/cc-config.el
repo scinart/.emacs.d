@@ -1,5 +1,5 @@
 ;;; File created at 2013-05-02 Thursday 20:24:12
-;;; Time-stamp: <2017-07-21 15:47:39 scinart>
+;;; Time-stamp: <2017-10-18 14:52:53 scinart>
 
 
 (defun my-c++-mode-hook ()
@@ -46,7 +46,7 @@
   (add-hook 'flycheck-before-syntax-check-hook
  	    #'(lambda ()
   		(if (file-exists-p ".clang_complete")
-  		    (setf flycheck-clang-args (nconc company-clang-arguments (s-split "\n" (f-read ".clang_complete") t))))))
+  		    (setf flycheck-clang-args (s-split "\n" (f-read ".clang_complete") t)))))
 )
 
 (require 'font-lock)
@@ -71,26 +71,47 @@
   (when (member major-mode '(c-mode c++-mode emacs-lisp-mode))
     (delete-trailing-whitespace)))
 
-(add-hook 'c++-mode-hook
-	  '(lambda()
-	     (font-lock-add-keywords
-	      nil '(;; complete some fundamental keywords
-		  ("\\<\\(void\\|unsigned\\|signed\\|char\\|short\\|bool\\|int\\|long\\|float\\|double\\)\\>" . font-lock-keyword-face)
-		  ;; add the new C++11 keywords
-		  ("\\<\\(alignof\\|alignas\\|constexpr\\|decltype\\|noexcept\\|nullptr\\|static_assert\\|thread_local\\|override\\|final\\)\\>" . font-lock-keyword-face)
-		  ("\\<\\(char[0-9]+_t\\)\\>" . font-lock-keyword-face)
-		  ;; PREPROCESSOR_CONSTANT
-		  ("\\<[A-Z]+[A-Z_]+\\>" . font-lock-constant-face)
-		  ;; hexadecimal numbers
-		  ("\\<0[xX][0-9A-Fa-f]+\\>" . font-lock-constant-face)
-		  ;; integer/float/scientific numbers
-		  ("\\<[\\-+]*[0-9]*\\.?[0-9]+\\([ulUL]+\\|[eE][\\-+]?[0-9]+\\)?\\>" . font-lock-constant-face)
-		  ;; user-types (customize!)
-		  ("\\<[A-Za-z_]+[A-Za-z_0-9]*_\\(t\\|type\\|ptr\\)\\>" . font-lock-type-face)
-		  ("\\<\\(xstring\\|xchar\\)\\>" . font-lock-type-face)
-		  ))
-	     ) t)
+;; https://stackoverflow.com/questions/8549351/c11-mode-or-settings-for-emacs
+(add-hook
+ 'c++-mode-hook
+ '(lambda()
+    ;; We could place some regexes into `c-mode-common-hook', but note that their evaluation order
+    ;; matters.
+    (font-lock-add-keywords
+     nil '(;; complete some fundamental keywords
+           ("\\<\\(void\\|unsigned\\|signed\\|char\\|short\\|bool\\|int\\|long\\|float\\|double\\)\\>" . font-lock-keyword-face)
+           ;; namespace names and tags - these are rendered as constants by cc-mode
+           ("\\<\\(\\w+::\\)" . font-lock-function-name-face)
+           ;;  new C++11 keywords
+           ("\\<\\(alignof\\|alignas\\|constexpr\\|decltype\\|noexcept\\|nullptr\\|static_assert\\|thread_local\\|override\\|final\\)\\>" . font-lock-keyword-face)
+           ("\\<\\(char16_t\\|char32_t\\)\\>" . font-lock-keyword-face)
+           ;; PREPROCESSOR_CONSTANT, PREPROCESSORCONSTANT
+           ("\\<[A-Z]*_[A-Z_]+\\>" . font-lock-constant-face)
+           ("\\<[A-Z]\\{3,\\}\\>"  . font-lock-constant-face)
+           ;; hexadecimal numbers
+           ("\\<0[xX][0-9A-Fa-f]+\\>" . font-lock-constant-face)
+           ;; integer/float/scientific numbers
+           ("\\<[\\-+]*[0-9]*\\.?[0-9]+\\([ulUL]+\\|[eE][\\-+]?[0-9]+\\)?\\>" . font-lock-constant-face)
+           ;; c++11 string literals
+           ;;       L"wide string"
+           ;;       L"wide string with UNICODE codepoint: \u2018"
+           ;;       u8"UTF-8 string", u"UTF-16 string", U"UTF-32 string"
+           ("\\<\\([LuU8]+\\)\".*?\"" 1 font-lock-keyword-face)
+           ;;       R"(user-defined literal)"
+           ;;       R"( a "quot'd" string )"
+           ;;       R"delimiter(The String Data" )delimiter"
+           ;;       R"delimiter((a-z))delimiter" is equivalent to "(a-z)"
+           ("\\(\\<[uU8]*R\"[^\\s-\\\\()]\\{0,16\\}(\\)\\([[:ascii:][:nonascii:]]*?\\)\\()[^\\s-\\\\()]\\{0,16\\}\"\\)" 1 font-lock-keyword-face t) ; start delimiter
+           ("\\(\\<[uU8]*R\"[^\\s-\\\\()]\\{0,16\\}(\\)\\([[:ascii:][:nonascii:]]*?\\)\\()[^\\s-\\\\()]\\{0,16\\}\"\\)" 2 font-lock-string-face t)  ; actual string
+           ("\\(\\<[uU8]*R\"[^\\s-\\\\()]\\{0,16\\}(\\)\\([[:ascii:][:nonascii:]]*?\\)\\()[^\\s-\\\\()]\\{0,16\\}\"\\)" 3 font-lock-keyword-face t) ; end delimiter
 
+           ;; user-defined types (rather project-specific)
+           ("\\<[A-Za-z_]+[A-Za-z_0-9]*_\\(type\\|ptr\\)\\>" . font-lock-type-face)
+           ("\\<\\(xstring\\|xchar\\)\\>" . font-lock-type-face)
+           ))
+    ) t)
+
+;; (add-hook 'c++-mode-hook #'modern-c++-font-lock-mode)
 (add-hook 'c++-mode-hook 'my-cc-style)
 (add-hook 'c-mode-hook 'my-cc-style)
 (add-hook 'before-save-hook 'clean-up-for-cc-mode)

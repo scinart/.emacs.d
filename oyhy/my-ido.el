@@ -48,8 +48,8 @@
 ;; disable auto searching for files unless called explicitly
 (setq ido-auto-merge-delay-time 99999)
 
-(define-key ido-file-dir-completion-map (kbd "C-c C-s") 
-  (lambda () 
+(define-key ido-file-dir-completion-map (kbd "C-c C-s")
+  (lambda ()
     (interactive)
     (ido-initiate-auto-merge (current-buffer))))
 
@@ -66,9 +66,8 @@ especially for extending ido-find-file functionality
   (define-key ido-completion-map (kbd "C-,") nil)
   (define-key ido-completion-map (kbd "C-.") nil)
   (define-key ido-completion-map (kbd "<return>") 'ido-exit-minibuffer) ;; for find-file
-  (define-key ido-completion-map (kbd "RET") 'ido-magic-open)
-  (define-key ido-completion-map (kbd "C-M-<return>") 'ido-sudo-open)
-  (define-key ido-completion-map (kbd "C-M-m") 'ido-sudo-open))
+  (define-key ido-completion-map (kbd "M-RET") 'ido-magic-open)
+  (define-key ido-completion-map (kbd "C-M-<return>") 'ido-sudo-open))
 
 (defun ido-magic-open ()
   "This should be used when ido-minibuffer is active"
