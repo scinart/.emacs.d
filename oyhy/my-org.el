@@ -1,39 +1,39 @@
 ;;; my-org.el ---
-;;; Time-stamp: <2016-09-03 21:49:24 scinart>
+;;; Time-stamp: <2017-10-22 00:03:25 scinart>
 ;;; Code:
 
 (setq org-latex-pdf-process '("xelatex -interaction nonstopmode -shell-escape %f"
 			      "xelatex -interaction nonstopmode -shell-escape %f"))
 
+(unless (boundp 'org-export-latex-classes)
+  (setq org-export-latex-classes nil))
+
 (setq org-latex-default-packages-alist
       '(("T1" "fontenc" t)
-	("" "fixltx2e" nil)
-	("" "graphicx" t)
-	("" "longtable" nil)
-	("" "float" nil)
-	("" "wrapfig" nil)
-	("" "rotating" nil)
-	("normalem" "ulem" t)
-	("" "amsmath" t)
-	("" "textcomp" t)
-	("" "marvosym" t)
-	("" "wasysym" t)
-	("" "amssymb" t)
+
+	"% \\usepackage{fixltx2e}"
+	"% \\usepackage{graphicx}"
+	"% \\usepackage{longtable}"
+	"% \\usepackage{float}"
+	"% \\usepackage{wrapfig}"
+	"% \\usepackage{rotating}"
+	"% \\usepackage[normalem]{ulem}"
+	"% \\usepackage{amsmath}"
+	"% \\usepackage{textcomp}"
+	"% \\usepackage{marvosym}"
+	"% \\usepackage{wasysym}"
+	"% \\usepackage{amssymb}"
+
 	("" "hyperref" nil)
-	("" "ucharclasses" nil)
 	("" "fontspec" nil)
 	("" "xeCJK" nil)
-	;; ("" "listings")
-	;; ("" "color")
+	("a4paper,left=3cm,right=2cm,top=2.5cm,bottom=2.5cm" "geometry" nil)
+	;; ("a4paper" "geometry" nil)
+
 	"\\tolerance=1000"
-	"\\setDefaultTransitions{\\fontspec{Code2000}}{}"
-	"\\setTransitionsForLatin{\\fontspec{Linux Libertine O}}{}"
-	"\\setTransitionsForGreek{\\fontspec{Galatia SIL}}{}"
-	"\\setCJKmainfont{Microsoft YaHei}"
-	"\\setmainfont{Ubuntu}"
+	"\\setmainfont{Linux Libertine}"
 	"\\setmonofont{Ubuntu Mono}"
-	"\\usepackage{geometry}"
-	"\\geometry{A4, landscape}"
+	"\\setCJKmainfont{Microsoft YaHei}"
 	"\\XeTeXlinebreaklocale \"zh\" %這行及下一行使中文能自動換行"
 	"\\XeTeXlinebreakskip = 0pt plus 1pt"))
 
@@ -70,19 +70,9 @@
 (require 'ox-latex)
 (setq org-latex-listings 'minted)
 (setq org-latex-packages-alist '(("" "minted")))
-;; apt-get install python-pygment
-
-;; listings work poorly
-;; (setq org-latex-listings t)
-;; (setq org-latex-packages-alist '(("" "color") ("" "listings")))
-
 
 (provide 'my-org)
 
-
-
-
-
 ;; Local Variables:
-;; eval:(progn (hs-minor-mode t) (let ((hs-state 'nil) (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (car i) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char 2609) (recenter-top-bottom))
+;; eval:(progn (hs-minor-mode t) (let ((hs-state 'nil) (HSmark 'eCMs9PnUiV6Z)) (dolist (i hs-state) (when (car i) (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil)))) (goto-char 2520) (recenter-top-bottom))
 ;; End:

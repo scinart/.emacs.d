@@ -1,6 +1,6 @@
 ;;; -*- coding:utf-8 -*-
 ;;; new-bindings.el ---
-;;; Time-stamp: <2017-11-17 13:39:25 scinart>
+;;; Time-stamp: <2017-11-17 14:25:03 scinart>
 ;;; Code:
 
 (when windows-p ; Microsoft Windows

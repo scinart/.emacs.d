@@ -153,7 +153,9 @@
     ("<==="."⟸") ("===>"."⟹") ("<===>"."⟺")
     ("<\\"."↖") ("\\>"."↘") ("</" . "↙") ("/>" "↗")
     ("<-|"."↵")
-    ("|<-"."⇤") ("->|"."⇥") ("|<->|"."↹")))
+    ("|<-"."⇤") ("->|"."⇥") ("|<->|"."↹")
+    ("|^-"."⤒") ("|v-"."⤓")
+    ))
 (defconst sci-abrvs-hash-table-candidate
   (list
    sci-abrvs-fw
@@ -449,5 +451,5 @@ Home page at: URL `http://ergoemacs.org/emacs/sci-math-symbols-input.html'"
 (provide 'sci-math-symbol)
 
 ;; Local Variables:
-;; eval:(progn (hs-minor-mode t) (let ((hs-state '((16546 17975 hs) (14623 16516 hs) (13429 14553 hs) (12805 13236 hs) (11925 12411 hs) (11629 11909 hs) (11487 11601 hs) (10941 11465 hs) (10550 10905 hs) (9619 10517 hs) (9333 9583 hs) (9235 9305 hs) (8022 9214 hs) (1253 2612 hs) (2677 3378 hs) (3404 4667 hs) (4696 6137 hs) (6165 6579 hs) (6622 7287 hs)))       (HSmark 'eCMs9PnUiV6Z))  (dolist (i hs-state)   (when (car i)    (goto-char (car i))    (hs-find-block-beginning)    (hs-hide-block-at-point nil nil)))) (goto-char 18404) (recenter-top-bottom))
+;; eval:(progn (hs-minor-mode t) (let ((hs-state 'nil) (HSmark 'eCMs9PnUiV6Z)) (dolist (i hs-state) (when (car i) (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil)))) (goto-char 18114) (recenter-top-bottom))
 ;; End:

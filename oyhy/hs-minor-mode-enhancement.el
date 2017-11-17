@@ -49,12 +49,12 @@
 			  "(progn (hs-minor-mode t)"
 			  " (let ((hs-state '" (format "%S" (delq nil (mapcar #'(lambda (lst) (and (caddr lst) lst))
 									    (omm-get-all-overlays)))) ")"
-			  "       (HSmark '" HSmark "))"
-			  "  (dolist (i hs-state)"
-			  "   (when (car i)"
-			  "    (goto-char (car i))"
-			  "    (hs-find-block-beginning)"
-			  "    (hs-hide-block-at-point nil nil))))"
+			        " (HSmark '" HSmark "))"
+			   " (dolist (i hs-state)"
+			    " (when (car i)"
+			     " (goto-char (car i))"
+			     " (hs-find-block-beginning)"
+			     " (hs-hide-block-at-point nil nil))))"
 			  " (goto-char " current-point ")"
 			  " (recenter-top-bottom))")))
 	    (goto-char (point-max))
@@ -78,5 +78,5 @@
 
 
 ;; Local Variables:
-;; eval:(progn (hs-minor-mode t) (let ((hs-state 'nil)       (HSmark 'eCMs9PnUiV6Z))  (dolist (i hs-state)   (when (car i)    (goto-char (car i))    (hs-find-block-beginning)    (hs-hide-block-at-point nil nil)))) (goto-char 2510) (recenter-top-bottom))
+;; eval:(progn (hs-minor-mode t) (let ((hs-state 'nil) (HSmark 'eCMs9PnUiV6Z)) (dolist (i hs-state) (when (car i) (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil)))) (goto-char 2510) (recenter-top-bottom))
 ;; End:

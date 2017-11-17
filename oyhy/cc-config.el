@@ -1,5 +1,5 @@
 ;;; File created at 2013-05-02 Thursday 20:24:12
-;;; Time-stamp: <2017-10-18 14:52:53 scinart>
+;;; Time-stamp: <2017-11-17 14:25:18 scinart>
 
 
 (defun my-c++-mode-hook ()
