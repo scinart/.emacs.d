@@ -1,10 +1,10 @@
-;;; emacs-lisp-config.el --- 
+;;; emacs-lisp-config.el ---
 
 ;; Copyright 2013 Scinart Ouyang
 ;;
 ;; Author: akubeej@gmail.com
 ;; Version: $Id: emacs-lisp-config.el,v 0.0 2013/04/19 00:53:27 scinart Exp $
-;; Keywords: 
+;; Keywords:
 ;; X-URL: not distributed yet
 
 ;; This program is free software; you can redistribute it and/or modify
@@ -23,7 +23,7 @@
 
 ;;; Commentary:
 
-;; 
+;;
 
 ;; Put this file into your load-path and the following into your ~/.emacs:
 ;;   (require 'emacs-lisp-config)
@@ -34,12 +34,13 @@
 ;(eval-after-load "emacs-lisp"
 ;  '(progn
     ;; Establishing your own keybindings for lisp-mode.
-(add-hook 'emacs-lisp-mode-hook 
+(add-hook 'emacs-lisp-mode-hook
 	  '(lambda ()
 	     (paredit-mode t)
 	     (hs-minor-mode t)
 	     (eldoc-mode t)
 	     (company-mode)
+	     (rainbow-delimiters-mode)
 	     (local-set-key (kbd "C-c C-d") 'today)
 	     (local-set-key (kbd "C-c C-t") 'now)
 	     (local-set-key (kbd "C-<backspace>") 'backward-kill-sexp)

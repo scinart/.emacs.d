@@ -64,6 +64,7 @@
 	paredit-backward-kill-word
 	paredit-backward-up
 	paredit-close-round
+	paredit-close-square
 	paredit-doublequote
 	paredit-forward
 	paredit-forward-delete
@@ -71,11 +72,13 @@
 	paredit-kill
 	paredit-newline
 	paredit-open-round
+	paredit-open-square
 	paredit-semicolon
 	paredit-splice-sexp-killing-backward
 	perl-electric-terminator
 	python-indent-electric-colon
 	replace-string
+	ruby-end-space
 	sci-change-to-symbol
 	sci-copy-line
 	sgml-close-tag
@@ -83,6 +86,7 @@
 	slime-space
 	undefined
 	wdired-next-line
+	yank-primary
 	yas-expand
 	))
 
@@ -91,6 +95,7 @@
 	company-complete
 	end-of-buffer
 	full-screen
+	handle-switch-frame
 	haskell-indentation-indent-backwards
 	ido-find-file
 	ido-switch-buffer

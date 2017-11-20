@@ -42,6 +42,8 @@
 (add-hook 'lisp-mode-hook 'paredit-mode)
 (add-hook 'lisp-mode-hook 'company-mode)
 (add-hook 'lisp-mode-hook 'hs-minor-mode)
+(add-hook 'lisp-mode-hook 'rainbow-delimiters-mode)
+(add-hook 'lisp-mode-hook 'abbrev-mode)
 
 (eval-after-load "lisp"
   '(progn
@@ -98,6 +100,3 @@
 ;;;;##########################################################################
 
 ;;; common-lisp-config.el ends here
-
-
-
