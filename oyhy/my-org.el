@@ -1,5 +1,5 @@
 ;;; my-org.el ---
-;;; Time-stamp: <2017-10-22 00:03:25 scinart>
+;;; Time-stamp: <2017-10-22 01:26:10 scinart>
 ;;; Code:
 
 (setq org-latex-pdf-process '("xelatex -interaction nonstopmode -shell-escape %f"
@@ -30,6 +30,7 @@
 	("a4paper,left=3cm,right=2cm,top=2.5cm,bottom=2.5cm" "geometry" nil)
 	;; ("a4paper" "geometry" nil)
 
+	"\\setlength{\\parskip}{1em}"
 	"\\tolerance=1000"
 	"\\setmainfont{Linux Libertine}"
 	"\\setmonofont{Ubuntu Mono}"
@@ -74,5 +75,5 @@
 (provide 'my-org)
 
 ;; Local Variables:
-;; eval:(progn (hs-minor-mode t) (let ((hs-state 'nil) (HSmark 'eCMs9PnUiV6Z)) (dolist (i hs-state) (when (car i) (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil)))) (goto-char 2520) (recenter-top-bottom))
+;; eval:(progn (hs-minor-mode t) (let ((hs-state 'nil) (HSmark 'eCMs9PnUiV6Z)) (dolist (i hs-state) (when (car i) (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil)))) (goto-char 2545) (recenter-top-bottom))
 ;; End:

@@ -36,7 +36,7 @@ Will throw an error if the archive version is too new."
  '(major-mode (quote text-mode))
  '(package-selected-packages
    (quote
-    (xcscope modern-cpp-font-lock slime-company flycheck yasnippet yari yaml-mode web-beautify w3m w3 typing-game typing tabbar solarized-theme smex smarter-compile smart-compile session rust-mode ruby-mode ruby-end ruby-electric robe rainbow-delimiters pretty-mode-plus pos-tip php-mode paredit on-screen nodejs-repl multiple-cursors multi-term minimap markdown-mode kill-ring-ido key-chord julia-mode js2-mode highlight-tail haskell-mode git-rebase-mode git-gutter-fringe git-commit-mode fuzzy f erlang emms eldoc-extension dired+ desktop cppcheck buffer-move bookmark+ auto-complete-clang-async ace-jump-buffer ac-inf-ruby)))
+    (xcscope modern-cpp-font-lock slime-company flycheck yasnippet yari yaml-mode web-beautify w3m w3 typing-game typing tabbar solarized-theme smex smarter-compile smart-compile session rust-mode ruby-mode ruby-end ruby-electric robe rainbow-delimiters pretty-mode-plus pos-tip php-mode paredit nodejs-repl multiple-cursors multi-term minimap markdown-mode kill-ring-ido key-chord julia-mode js2-mode highlight-tail haskell-mode git-rebase-mode git-gutter-fringe git-commit-mode fuzzy f erlang emms eldoc-extension dired+ desktop cppcheck buffer-move bookmark+ auto-complete-clang-async ace-jump-buffer ac-inf-ruby)))
  '(python-indent-offset 2)
  '(recenter-positions (quote (middle top bottom)))
  '(safe-local-variable-values (quote ((encoding . utf-8))))
@@ -129,6 +129,7 @@ Will throw an error if the archive version is too new."
 (require 'recentf)
 (require 'tramp)
 (require 'epa)
+(require 'semantic)
 (epa-file-enable)
 (recentf-mode 1)
 (global-subword-mode)
@@ -137,7 +138,6 @@ Will throw an error if the archive version is too new."
 ;; ELPA
 (require 'yasnippet)
 (setf yas/root-directory '("~/.emacs.d/oyhy/snippets" yas-installed-snippets-dir))
-(require 'on-screen)
 (require 'session)
 (when (display-graphic-p)
   (require 'pretty-mode-plus)
@@ -145,7 +145,6 @@ Will throw an error if the archive version is too new."
   )
 (require 'smart-compile)
 (require 'smex)
-(require 'semantic)
 (and (executable-find "w3m")
      (require 'w3m))
 (require 'yari)
@@ -160,7 +159,6 @@ Will throw an error if the archive version is too new."
 ;; (helm-mode 1)
 (key-chord-mode 1)
 (paredit-mode 1)
-(on-screen-global-mode 1)
 (yas/global-mode 1)
 (add-hook 'after-init-hook 'session-initialize)
 (when (display-graphic-p) (global-pretty-mode 1))
@@ -246,5 +244,5 @@ Will throw an error if the archive version is too new."
 
 
 ;; Local Variables:
-;; eval:(progn (hs-minor-mode t) (let ((hs-state 'nil) (HSmark 'eCMs9PnUiV6Z)) (dolist (i hs-state) (when (car i) (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil)))) (goto-char 8380) (recenter-top-bottom))
+;; eval:(progn (hs-minor-mode t) (let ((hs-state 'nil) (HSmark 'eCMs9PnUiV6Z)) (dolist (i hs-state) (when (car i) (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil)))) (goto-char 8323) (recenter-top-bottom))
 ;; End:
