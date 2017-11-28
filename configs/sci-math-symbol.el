@@ -34,15 +34,13 @@
   "A abbreviation hash table that maps a string to unicode char.")
 
 (defconst sci-abrvs-fw ;;FULL-WIDTH-CHAR : fw{char}
-  '(
-    ("fw,"."，") ("fw."."．") ("fw:"."：") ("fw;"."；")
+  '(("fw,"."，") ("fw."."．") ("fw:"."：") ("fw;"."；")
     ("fw!"."！") ("fw?"."？") ("fw`"."｀") ("fw'"."＇") ("fw\""."＂")
     ("fw&"."＆") ("fw("."（") ("fw)"."）") ("fw["."［") ("fw]"."］") ("fw{"."｛") ("fw}"."｝")
-    ("fw@"."＠") ("fw^"."＾") ("fw`"."｀") ("fw~"."～") ("fw_"."＿") ("fw¯"."￣");MACRON
+    ("fw@"."＠") ("fw^"."＾") ("fw`"."｀") ("fw~"."～") ("fw_"."＿") ("fw¯"."￣") ;; MACRON
     ("fw#"."＃") ("fw+"."＋") ("fw-"."－") ("fw*"."＊") ("fw="."＝") ("fw<"."＜") ("fw>"."＞")
     ("fw%"."％") ("fw|"."｜") ("fw¦"."￤") ("fw/"."／") ("fw\\"."＼") ("fw¬"."￢")
-    ("fw(("."｟") ("fw))"."｠") ("fw$"."＄") ("fw£"."￡") ("fw¢"."￠") ("fw₩"."￦") ; WON SIGN
-    ("fw¥"."￥") ; YEN SIGN
+    ("fw(("."｟") ("fw))"."｠") ("fw$"."＄") ("fw£"."￡") ("fw¢"."￠") ("fw¥"."￥") ("fw₩"."￦") ;; WON SIGN
     ("fw0"."０") ("fw1"."１") ("fw2"."２") ("fw3"."３") ("fw4"."４")
     ("fw5"."５") ("fw6"."６") ("fw7"."７") ("fw8"."８") ("fw9"."９")
     ("fwA"."Ａ") ("fwB"."Ｂ") ("fwC"."Ｃ") ("fwD"."Ｄ") ("fwE"."Ｅ") ("fwF"."Ｆ") ("fwG"."Ｇ")
@@ -54,12 +52,10 @@
     ("fwo"."ｏ") ("fwp"."ｐ") ("fwq"."ｑ") ("fwr"."ｒ") ("fws"."ｓ") ("fwt"."ｔ")
     ("fwu"."ｕ") ("fwv"."ｖ") ("fww"."ｗ") ("fwx"."ｘ") ("fwy"."ｙ") ("fwz"."ｚ")))
 (defconst sci-abrvs-greek ;;GREEK ALPHABET : Alpha->Α, alpha->α
-  '(
-    ("Alpha"."Α") ("Beta"."Β") ("Gamma"."Γ") ("Delta"."Δ") ("Epsilon"."Ε") ("Zeta"."Ζ") ("Eta"."Η")
+  '(("Alpha"."Α") ("Beta"."Β") ("Gamma"."Γ") ("Delta"."Δ") ("Epsilon"."Ε") ("Zeta"."Ζ") ("Eta"."Η")
     ("Theta"."Θ") ("Iota"."Ι") ("Kappa"."Κ") ("Lambda"."Λ") ("Mu"."Μ") ("Nu"."Ν") ("Xi"."Ξ")
     ("Omicron"."Ο") ("Pi"."Π") ("Rho"."Ρ") ("Sigma"."Σ") ("Tau"."Τ") ("Upsilon"."Υ")
     ("Phi"."Φ") ("Chi"."Χ") ("Psi"."Ψ") ("Omega"."Ω")
-
     ("alpha"."α") ("beta"."β") ("gamma"."γ") ("delta"."δ") ("epsilon"."ε") ("zeta"."ζ") ("eta"."η")
     ("theta"."θ") ("iota"."ι") ("kappa"."κ") ("lambda"."λ") ("mu"."μ") ("nu"."ν") ("xi"."ξ")
     ("omicron"."ο") ("pi"."π") ("rho"."ρ") ("sigmaf"."ς") ("sigma"."σ") ("tau"."τ")
@@ -79,7 +75,7 @@
     ("proportion"."∝") ("inf"."∞")
     ("angle"."∠")
     ("and"."∧") ("or"."∨") ("xor"."⊻") ("nand"."⊼") ("nor"."⊽")
-    ("intersection"."∩") ("union"."∪")
+    ("intersection"."∩") ("union"."∪") ("setminus". "∖")
     ("int "."∫")
     ("c+"."⊕")    ("c*"."⊗")
     ;; ("*"."×")
@@ -103,8 +99,8 @@
     ("⋮"."vdots") ("⋯"."cdots") ("⋰"."bdots") ("⋱"."ddots")))
 (defconst sci-abrvs-letters
   (append
-   '( ;;ℂℍℕℙℚℝℤⅆⅇⅈⅉ bb{letter} \mathbb{}
-     ("bbC"."ℂ") ("bbH"."ℍ") ("bbN"."ℕ") ("bbP"."ℙ") ("bbQ"."ℚ") ("bbR"."ℝ") ("bbZ"."ℤ")
+   '( ;;ℂ𝔽ℍℕℙℚℝℤⅆⅇⅈⅉ bb{letter} \mathbb{}
+     ("bbC"."ℂ") ("bbF"."𝔽") ("bbH"."ℍ") ("bbN"."ℕ") ("bbP"."ℙ") ("bbQ"."ℚ") ("bbR"."ℝ") ("bbZ"."ℤ")
      ("bbd"."ⅆ") ("bbe"."ⅇ") ("bbi"."ⅈ") ("bbj"."ⅉ"))
    '(;; sc+[Letter] Scripted letter forms. Most are outside BMP.
      ("sca"."𝒶") ("scb"."𝒷") ("scc"."𝒸") ("scd"."𝒹") ("sce"."ℯ") ; in BMP
@@ -451,5 +447,5 @@ Home page at: URL `http://ergoemacs.org/emacs/sci-math-symbols-input.html'"
 (provide 'sci-math-symbol)
 
 ;; Local Variables:
-;; eval:(progn (hs-minor-mode t) (let ((hs-state 'nil) (HSmark 'eCMs9PnUiV6Z)) (dolist (i hs-state) (when (car i) (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil)))) (goto-char 18114) (recenter-top-bottom))
+;; eval:(progn (hs-minor-mode t) (let ((hs-state '((1253 2596 hs) (2661 3356 hs))) (HSmark 'eCMs9PnUiV6Z)) (dolist (i hs-state) (when (car i) (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil)))) (goto-char 18151) (recenter-top-bottom))
 ;; End:
