@@ -32,6 +32,7 @@
 	continuous-upcase-word
 	delete-region-unless-prefix
 	dired-mark
+	electric-newline-and-maybe-indent
 	end-of-visual-line
 	eval-last-sexp
 	forward-or-to-char
@@ -86,6 +87,8 @@
 	slime-space
 	undefined
 	wdired-next-line
+	yaml-electric-backspace
+	yaml-electric-dash-and-dot
 	yank-primary
 	yas-expand
 	))

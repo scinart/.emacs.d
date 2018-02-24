@@ -1,6 +1,6 @@
 ;;; -*- coding:utf-8 -*-
 ;;; new-bindings.el ---
-;;; Time-stamp: <2017-11-17 14:25:03 scinart>
+;;; Time-stamp: <2017-12-04 19:28:00 scinart>
 ;;; Code:
 
 (when windows-p ; Microsoft Windows
@@ -340,7 +340,7 @@
 
 ;; very useful bindings
 
-(global-set-key (kbd "C-x C-r") 'toggle-read-only)
+(global-set-key (kbd "C-x C-r") 'read-only-mode)
 (global-set-key (kbd "C-x M-w") 'write-file)
 (global-set-key (kbd "M-c M-c") 'comment-or-uncomment-region)
 (global-set-key (kbd "M-j") (lambda () (interactive) (join-line) (indent-for-tab-command)))
