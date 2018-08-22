@@ -2,4 +2,4 @@
 
 # name: \vertical line
 # --
-\lvert $1 \rvert $0
+\left\vert $1 \right\vert $0

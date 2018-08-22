@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+
+# name: \left(
+# key: l(
+# --
+\left( $1 \right) $0
