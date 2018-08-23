@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+
+# name: \left\vert
+# key: l|
+# --
+\left\vert $1 \right\vert$0
