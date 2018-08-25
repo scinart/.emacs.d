@@ -115,8 +115,9 @@
 	  #'(lambda () (hs-minor-mode 1)))
 
 
-(provide 'major-mode)
+(add-to-list 'company-backends '(company-ghc :with company-dabbrev-code))
 
+(provide 'major-mode)
 
 
 ;;;;##########################################################################

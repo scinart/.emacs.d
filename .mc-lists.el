@@ -55,6 +55,7 @@
 	org-end-of-line
 	org-force-self-insert
 	org-kill-line
+	org-metaright
 	org-open-line
 	org-self-insert-command
 	org-set-tags-command

@@ -36,12 +36,13 @@ Will throw an error if the archive version is too new."
  '(major-mode (quote text-mode))
  '(package-selected-packages
    (quote
-    (mmm-mode dockerfile-mode go-snippets go-mode ace-jump-mode ace-flyspell xcscope modern-cpp-font-lock slime-company flycheck yasnippet yari yaml-mode web-beautify w3m w3 typing-game typing tabbar solarized-theme smex smarter-compile smart-compile session rust-mode ruby-mode ruby-end ruby-electric robe rainbow-delimiters pretty-mode-plus pos-tip php-mode paredit nodejs-repl multiple-cursors multi-term minimap markdown-mode kill-ring-ido key-chord julia-mode js2-mode highlight-tail haskell-mode git-rebase-mode git-gutter-fringe git-commit-mode fuzzy f erlang emms eldoc-extension dired+ desktop cppcheck buffer-move bookmark+ auto-complete-clang-async ace-jump-buffer ac-inf-ruby)))
+    (company-ghc mmm-mode dockerfile-mode go-snippets go-mode ace-jump-mode ace-flyspell xcscope modern-cpp-font-lock slime-company flycheck yasnippet yari yaml-mode web-beautify w3m w3 typing-game typing tabbar solarized-theme smex smarter-compile smart-compile session rust-mode ruby-mode ruby-end ruby-electric robe rainbow-delimiters pretty-mode-plus pos-tip php-mode paredit nodejs-repl multiple-cursors multi-term minimap markdown-mode kill-ring-ido key-chord julia-mode js2-mode highlight-tail haskell-mode git-rebase-mode git-gutter-fringe git-commit-mode fuzzy f erlang emms eldoc-extension dired+ desktop cppcheck buffer-move bookmark+ auto-complete-clang-async ace-jump-buffer ac-inf-ruby)))
  '(python-indent-offset 2)
  '(recenter-positions (quote (middle top bottom)))
  '(safe-local-variable-values (quote ((encoding . utf-8))))
  '(session-use-package t nil (session))
  '(template-default-directories (quote ("~/.emacs.d/.templates/")))
+ '(tramp-connection-timeout 3)
  '(truncate-lines t))
 
 (setq user-full-name "Scinart")
@@ -244,5 +245,5 @@ Will throw an error if the archive version is too new."
 
 
 ;; Local Variables:
-;; eval:(progn (hs-minor-mode t) (let ((hs-state 'nil) (HSmark 'eCMs9PnUiV6Z)) (dolist (i hs-state) (when (car i) (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil)))) (goto-char 8395) (recenter-top-bottom))
+;; eval:(progn (hs-minor-mode t) (let ((hs-state 'nil) (HSmark 'eCMs9PnUiV6Z)) (dolist (i hs-state) (when (car i) (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil)))) (goto-char 8438) (recenter-top-bottom))
 ;; End:

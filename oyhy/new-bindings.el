@@ -1,6 +1,6 @@
 ;;; -*- coding:utf-8 -*-
 ;;; new-bindings.el ---
-;;; Time-stamp: <2017-12-04 19:28:00 scinart>
+;;; Time-stamp: <2018-08-21 21:50:35 mama>
 ;;; Code:
 
 (when windows-p ; Microsoft Windows
@@ -29,6 +29,7 @@
        (global-unset-key (kbd "C-h C-c")) ; describe-copying
        (global-unset-key (kbd "C-/"))
        (global-unset-key (kbd "C-z"))
+       (global-unset-key (kbd "C-x C-z")) ;; suspend-frame
        (global-unset-key (kbd "C-\\"))
        (global-set-key (kbd "M-m") 'ignore) ;; for dictionaries
        (global-set-key (kbd "C-x C-g") 'ignore) ;; I often use C-g to cancel C-x
