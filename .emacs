@@ -43,7 +43,8 @@ Will throw an error if the archive version is too new."
  '(session-use-package t nil (session))
  '(template-default-directories (quote ("~/.emacs.d/.templates/")))
  '(tramp-connection-timeout 3)
- '(truncate-lines t))
+ '(truncate-lines t)
+ '(yas-triggers-in-field t))
 
 (setq user-full-name "Scinart")
 (setq user-mail-address "akubeej@gmail.com")
@@ -245,5 +246,5 @@ Will throw an error if the archive version is too new."
 
 
 ;; Local Variables:
-;; eval:(progn (hs-minor-mode t) (let ((hs-state 'nil) (HSmark 'eCMs9PnUiV6Z)) (dolist (i hs-state) (when (car i) (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil)))) (goto-char 8438) (recenter-top-bottom))
+;; eval:(progn (hs-minor-mode t) (let ((hs-state 'nil) (HSmark 'eCMs9PnUiV6Z)) (dolist (i hs-state) (when (car i) (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil)))) (goto-char 8466) (recenter-top-bottom))
 ;; End:
