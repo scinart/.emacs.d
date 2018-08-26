@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+
+# name: \dim
+# key: dim
+# --
+\text{dim }$0

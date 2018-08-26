@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+
+# name: imaginary part
+# key: im
+# --
+\operatorname{im } $0

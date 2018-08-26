@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+
+# name: \range
+# key: range
+# --
+\text{range }$0

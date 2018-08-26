@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+
+# name: real part
+# key: re
+# --
+\operatorname{Re } $0

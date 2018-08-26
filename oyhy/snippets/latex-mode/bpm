@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+
+# name: \begin{pmatrix}
+# key: bpm
+# --
+\begin{pmatrix} $1 \end{pmatrix}$0

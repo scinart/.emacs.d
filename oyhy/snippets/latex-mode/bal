@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+
+# name: \begin{aligned}
+# key: bal
+# --
+\begin{aligned} $1 \end{aligned}$0
