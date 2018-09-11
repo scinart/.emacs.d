@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+
+# name: \span
+# key: span
+# --
+\operatorname{span}$0

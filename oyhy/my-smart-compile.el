@@ -22,7 +22,7 @@
 ;  ("\\.f90\\'"        . "gfortran %f -o %n")
 ;  ("\\.[Ff]\\'"       . "gfortran %f -o %n")
 ;  ("\\.cron\\(tab\\)?\\'" . "crontab %f")
-;  ("\\.tex\\'"        . (tex-file))
+  ("\\.tex\\'"        .  "xelatex -interaction=nonstopmode -shell-escape %f")
 ;  ("\\.texi\\'"       . "makeinfo %f")
 ;  ("\\.mp\\'"         . "mptopdf %f")
   ("\\.l\\'"          . "flex %f -o %n.c")

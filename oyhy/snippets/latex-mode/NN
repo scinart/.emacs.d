@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+
+# name: N(μ, \Sigma)
+# key: NN
+# --
+
+$1 \sim \mathcal{N}(${2:\mu}, ${3:\Sigma}) $0

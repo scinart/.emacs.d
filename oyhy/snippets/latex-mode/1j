@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+
+# name: from 1 to j
+# key: 1j
+# --
+$1_1,\ldots,$1_j
