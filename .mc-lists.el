@@ -40,6 +40,7 @@
 	git-rebase-squash
 	haskell-indentation-common-electric-command
 	ignore
+	indent-for-tab-command
 	insert-register
 	kill-visual-line
 	kmacro-start-macro-or-insert-counter

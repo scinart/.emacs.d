@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+
+# name: N(μ, σ^2)
+# key: N
+# --
+
+$1 \sim \mathcal{N}(${2:\mu}, ${3:\sigma^2}) $0
