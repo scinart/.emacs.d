@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+
+# name: fpp
+# key: fpp
+# --
+\frac{\partial $1}{\partial $2}$0

@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+
+# name: op
+# key: op
+# --
+\operatorname{$1}$0
