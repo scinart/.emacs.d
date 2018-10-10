@@ -1,6 +1,6 @@
 ;;; -*- coding:utf-8 -*-
 ;;; new-bindings.el ---
-;;; Time-stamp: <2018-08-21 21:50:35 mama>
+;;; Time-stamp: <2018-09-12 19:45:15 mama>
 ;;; Code:
 
 (when windows-p ; Microsoft Windows
@@ -352,7 +352,7 @@
 (global-set-key (kbd "M-c k p") 'temporarily-bind-prog)
 
 (global-set-key (kbd "<f3> <f3>") 'kmacro-start-macro-or-insert-counter)
-(global-set-key (kbd "C-c C-k") 'kill-whole-line)
+(global-set-key (kbd "C-k") 'kill-line)
 (global-set-key (kbd "C-c M-l") 'toggle-truncate-lines)
 (global-set-key (kbd "C-c M-r") 'recursive-edit)
 

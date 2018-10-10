@@ -3,4 +3,4 @@
 # name: \bb
 # key: bb
 # --
-\mathbb{${1:F}}$0
+\mathbb{$1}$0

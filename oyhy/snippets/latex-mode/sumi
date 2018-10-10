@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+
+# name: sum i = 1 to N
+# key: sumi
+# --
+
+\sum_{i=1}^{${1:N}}{$0}
