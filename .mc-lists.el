@@ -61,6 +61,7 @@
 	org-self-insert-command
 	org-set-tags-command
 	org-yank
+	overwrite-mode
 	paredit-backslash
 	paredit-backward
 	paredit-backward-kill-sexp
