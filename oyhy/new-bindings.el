@@ -1,6 +1,6 @@
 ;;; -*- coding:utf-8 -*-
 ;;; new-bindings.el ---
-;;; Time-stamp: <2018-09-12 19:45:15 mama>
+;;; Time-stamp: <2018-10-10 13:28:38 scinart>
 ;;; Code:
 
 (when windows-p ; Microsoft Windows
@@ -68,6 +68,7 @@
 ;;; buffer edit expand and insert
 ;; (global-set-key (kbd "M-/") 'semantic-ia-complete-symbol-menu)
 (global-set-key (kbd "C-/") 'hippie-expand)
+(global-set-key (kbd "C-\\") 'yas-expand)
 ;; insert
 (global-set-key (kbd "C-x i f") 'ido-insert-file)
 (global-set-key (kbd "C-x i c") 'atob)

@@ -61,7 +61,10 @@
 	org-self-insert-command
 	org-set-tags-command
 	org-yank
-	overwrite-mode
+	orgtbl-hijacker-command-100
+	orgtbl-hijacker-command-102
+	orgtbl-hijacker-command-109
+	orgtbl-self-insert-command
 	paredit-backslash
 	paredit-backward
 	paredit-backward-kill-sexp

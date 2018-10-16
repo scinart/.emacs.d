@@ -3,5 +3,4 @@
 # name: operatorname
 # key: op
 # --
-
-\operatorname{$1}$0
+\mathop{\operatorname{$1}}$0
