@@ -4,4 +4,4 @@
 # key: EE
 # --
 
-\operatorname{\mathbb{E}}
+\mathop{\operatorname{\mathbb{E}}}
