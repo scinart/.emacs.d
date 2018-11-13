@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+
+# name: \argmax
+# key: argmax
+# --
+\mathop{\operatorname{argmax}}_{$1}{$2}$0

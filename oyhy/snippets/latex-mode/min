@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+
+# name: \min
+# key: min
+# --
+\mathop{\operatorname{min}}_{$1}{$0}

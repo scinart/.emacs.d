@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+
+# name: \max
+# key: max
+# --
+\mathop{\operatorname{max}}_{$1}{$0}
