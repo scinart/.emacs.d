@@ -27,6 +27,7 @@ Will throw an error if the archive version is too new."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(bmkp-last-as-first-bookmark-file "~/.emacs.d/bookmarks")
+ '(company-clang-arguments (quote ("-std=c++17")))
  '(delete-selection-mode nil)
  '(elpy-rpc-python-command "python3")
  '(elpy-syntax-check-command "")
@@ -250,5 +251,5 @@ Will throw an error if the archive version is too new."
 
 
 ;; Local Variables:
-;; eval:(progn (hs-minor-mode t) (let ((hs-state 'nil) (HSmark 'eCMs9PnUiV6Z)) (dolist (i hs-state) (when (car i) (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil)))) (goto-char 8630) (recenter-top-bottom))
+;; eval:(progn (hs-minor-mode t) (let ((hs-state 'nil) (HSmark 'eCMs9PnUiV6Z)) (dolist (i hs-state) (when (car i) (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil)))) (goto-char 8681) (recenter-top-bottom))
 ;; End:

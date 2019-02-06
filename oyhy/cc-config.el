@@ -1,17 +1,11 @@
 ;;; File created at 2013-05-02 Thursday 20:24:12
-;;; Time-stamp: <2018-05-11 14:54:50 scinart>
+;;; Time-stamp: <2019-02-06 18:00:19 scinart>
 
-
-(defun my-c++-mode-hook ()
-  "my cpp mode hook, yeah!"
-  (local-set-key "\C-c\M-n" 'c-forward-conditional)
-  (local-set-key "\C-c\C-n" 'half-screen-down)
-  (local-set-key (kbd "C-c C-c") 'comment-or-uncomment-region)
-)
 
 ;; ****************************************************************
-(setq c-default-style "linux" c-basic-offset 4)
+
 (c-set-offset 'inline-open '0)
+
 (defun my-cc-style()
   (c-set-style "linux")
   (c-set-offset 'innamespace '0)
@@ -20,10 +14,10 @@
   (c-set-offset 'label '*)
   (c-set-offset 'case-label '*)
   (c-set-offset 'access-label '-)
-  (setq comment-start "//" comment-end "")
-  (setq c-basic-offset 4)
-  (setq tab-width 4)
-  (setq indent-tabs-mode nil) ;//use tab to indent.
+  (setf c-default-style "linux"
+	c-basic-offset 4
+	indent-tabs-mode nil ;; do not use tab to indent.
+	tab-width 4)
   (define-key c++-mode-map (kbd "M-/") 'comment-or-uncomment-region-or-line)
   (define-key c-mode-base-map (kbd "M-/") 'comment-or-uncomment-region-or-line)
   (define-key c++-mode-map (kbd "C-/") 'hippie-expand)
@@ -36,21 +30,27 @@
   (key-chord-define c-mode-map "()"  "()\C-b\C-i")
   (key-chord-define c-mode-map "\"\"" "\"\"\C-b")
   (hs-minor-mode 1)
-  ;; (auto-complete-mode)
-  (company-mode)
-  (load "~/.emacs.d/oyhy/clang_config.el")
   (whitespace-mode 1)
+  (company-mode)
   (flycheck-mode)
-  (setf flycheck-gcc-language-standard "c++17")
-  (setf flycheck-clang-language-standard "c++17")
   (setf flycheck-clang-warnings '("no-pragma-once-outside-header"))
   (add-hook 'flycheck-before-syntax-check-hook
  	    #'(lambda ()
-		(setf flycheck-clang-args
-		      (if (file-exists-p ".clang_complete")
-			  (s-split "\n" (f-read ".clang_complete") t)
-			nil))))
-)
+		(if (file-exists-p ".clang_complete")
+		    (setf flycheck-clang-args (s-split "\n" (f-read ".clang_complete") t))))))
+
+(defun company-manual-begin ()
+  (interactive)
+  (company-assert-enabled)
+  (if (file-exists-p ".clang_complete")
+      (setf company-clang-arguments (nconc company-clang-arguments (s-split "\n" (f-read ".clang_complete") t))))
+  (setq company--manual-action t)
+  (unwind-protect
+      (let ((company-minimum-prefix-length 0))
+        (or company-candidates
+            (company-auto-begin)))
+    (unless company-candidates
+      (setq company--manual-action nil))))
 
 (require 'font-lock)
 
@@ -114,8 +114,10 @@
            ))
     ) t)
 
-;; (add-hook 'c++-mode-hook #'modern-c++-font-lock-mode)
 (add-hook 'c++-mode-hook 'my-cc-style)
+(add-hook 'c++-mode-hook #'(lambda ()
+                             (setf flycheck-gcc-language-standard "c++17"
+                                   flycheck-clang-language-standard "c++17")))
 (add-hook 'c-mode-hook 'my-cc-style)
 (add-hook 'before-save-hook 'clean-up-for-cc-mode)
 

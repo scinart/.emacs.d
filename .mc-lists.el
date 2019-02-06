@@ -25,6 +25,7 @@
 	c-electric-slash
 	c-electric-star
 	c-end-of-statement
+	c-indent-line-or-region
 	continuous-capitalize-word
 	continuous-downcase-word
 	continuous-num/++
@@ -91,6 +92,7 @@
 	sgml-close-tag
 	sh-assignment
 	slime-space
+	transpose-words
 	undefined
 	wdired-next-line
 	yaml-electric-backspace

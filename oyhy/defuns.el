@@ -1,5 +1,5 @@
 ;;; defuns.el ---
-;;; Time-stamp: <2016-07-21 14:11:21 scinart>
+;;; Time-stamp: <2018-12-24 16:34:38 scinart>
 ;;; Code:
 
 (load "~/.emacs.d/oyhy/bare-defuns.el")
@@ -116,7 +116,7 @@ at around 2013-06-04 Tuesday 00:23:22"
   "set the frame to the left half"
   (interactive)
   (when (display-graphic-p)
-    (setq frame (or frame (selected-frame)))  
+    (setq frame (or frame (selected-frame)))
     (set-frame-position frame 0 0)
     (set-frame-size frame (my-frame-size-scale-width 0.548) (my-frame-size-scale-height 1.0))))
 
@@ -427,7 +427,7 @@ with prefix barkwark barf"
 		   (hexnumberp c)
 		   (hexnumberp d))
 	      (progn
-		(backward-delete-char 4) 
+		(backward-delete-char 4)
 		(insert-char (string-to-number ssss 16) 1))
 	    (progn
 	      (backward-delete-char 1)
@@ -632,7 +632,7 @@ if cancelable, \\[keyboard-quit] is able to cancels do-after.
      (interactive)
      (let ,let-pair-list
        ,do-before
-       ,(if (not cancelable) 
+       ,(if (not cancelable)
 	    `(define-key (current-local-map) [remap keyboard-quit] 'ignore))
        (read-key)
        (when last-input-event
@@ -673,7 +673,7 @@ if cancelable, \\[keyboard-quit] is able to cancels do-after.
   "use find-file to open file in bookmark list
 2013-06-07 Friday 00:11:03 by Scinart"
   (interactive)
-  (let ((str (cdr 
+  (let ((str (cdr
 	      (find-if #'(lambda (x)
 			   (and (listp x)
 				(equal (car x) (intern "filename"))))
@@ -867,4 +867,3 @@ call func-N if prefix N is applied before the return function is called.
 
 (provide 'defuns)
 ;;; defuns.el ends here
-
