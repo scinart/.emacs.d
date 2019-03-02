@@ -1,9 +1,12 @@
 ;;; my-org.el ---
-;;; Time-stamp: <2017-10-22 01:26:10 scinart>
+;;; Time-stamp: <2019-03-02 19:39:08 mama>
 ;;; Code:
 
-(setq org-latex-pdf-process '("xelatex -interaction nonstopmode -shell-escape %f"
-			      "xelatex -interaction nonstopmode -shell-escape %f"))
+(setf org-latex-pdf-process '("sed -i 's/	/        /g' %f"
+			      "xelatex -interaction nonstopmode -shell-escape %f"
+			      "xelatex -interaction nonstopmode -shell-escape %f")
+      org-export-in-background t
+      org-src-tab-acts-natively t)
 
 (unless (boundp 'org-export-latex-classes)
   (setq org-export-latex-classes nil))
@@ -75,5 +78,5 @@
 (provide 'my-org)
 
 ;; Local Variables:
-;; eval:(progn (hs-minor-mode t) (let ((hs-state 'nil) (HSmark 'eCMs9PnUiV6Z)) (dolist (i hs-state) (when (car i) (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil)))) (goto-char 2545) (recenter-top-bottom))
+;; eval:(progn (hs-minor-mode t) (let ((hs-state 'nil) (HSmark 'eCMs9PnUiV6Z)) (dolist (i hs-state) (when (car i) (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil)))) (goto-char 2647) (recenter-top-bottom))
 ;; End:
