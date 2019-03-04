@@ -1,6 +1,6 @@
 ;;; -*- coding:utf-8 -*-
 ;;; new-bindings.el ---
-;;; Time-stamp: <2018-10-10 13:28:38 scinart>
+;;; Time-stamp: <2019-03-04 14:01:10 mama>
 ;;; Code:
 
 (when windows-p ; Microsoft Windows
@@ -232,7 +232,7 @@
 (global-set-key (kbd "C-s-l") 'screensaver)
 (global-set-key (kbd "C-x C-c") 'my-exit)
 (global-set-key (kbd "C-x <return> o") 'open-this-buffer-in-explorer)
-(global-set-key (kbd "C-x C-<return> o") 'open-this-buffer-in-explorer)
+(global-set-key (kbd "C-x <return> t") 'open-this-buffer-folder-in-terminal)
 (global-set-key (kbd "M-x") 'smex)
 
 ;; fresh frame title
@@ -435,8 +435,7 @@
 
   (global-set-key (kbd "<scroll> a") 'ignore)
   (fset 'copy-sexp "\200\367")
-  (global-set-key (kbd "M-c M-@") 'copy-sexp)
-  (global-set-key (kbd "C-h C-k") 'command-keys))
+  (global-set-key (kbd "M-c M-@") 'copy-sexp))
 
 
 

@@ -1,5 +1,5 @@
 ;;; defuns.el ---
-;;; Time-stamp: <2018-12-24 16:34:38 scinart>
+;;; Time-stamp: <2019-03-04 14:00:59 mama>
 ;;; Code:
 
 (load "~/.emacs.d/oyhy/bare-defuns.el")
@@ -81,8 +81,7 @@ at around 2013-06-04 Tuesday 00:23:22"
 				 (substring (or (buffer-file-name) " ") 1)
 				 (format-time-string "    %B %e, %Y %H:%M:%S")
 				 "    GNU Emacs: The extensible self-documenting text editor. Version"
-				 (substring (emacs-version) 9 14)
-				 " 标题叫啥好呢？")))
+				 (third (split-string (emacs-version))))))
 
 (defun my-frame-size-scale-width (float)
   (floor (* float (display-pixel-width) (/ 0.976 (frame-char-width)))))
@@ -219,47 +218,28 @@ at around 2013-06-04 Tuesday 00:23:22"
 (defun smart-backward-window ()
   (interactive)
   (smart-other-window -1))
-(defun open-this-buffer-in-explorer ()
-  "Open this buffer or this buffer's directory in Explorer
-   2013-04-18 Thursday 14:27:04"
-  (interactive)
-  ;; (cond ((eq 'gnu/linux system-type)
-  ;; 	 (let ((pro-name "xdg-open" ;; generic
-  ;; 		;; "gvfs-open" ;;gnome only
-  ;; 		))
-  ;; 	   (cond ((buffer-file-name)
-  ;; 		  (call-process pro-name nil 0 nil (file-name-directory (buffer-file-name))))
-  ;; 		 (dired-directory
-  ;; 		  (call-process pro-name nil 0 nil dired-directory))
-  ;; 		 (t
-  ;; 		  (message "%s" "Buffer Not Recognized as File or Directory")))))
-  ;; 	((eq 'windows-nt system-type)
-  ;; 	 (cond ((buffer-file-name)
-  ;; 		(w32-shell-execute 1 (file-name-directory (buffer-file-name))))
-  ;; 	       (dired-directory
-  ;; 		(w32-shell-execute 1 dired-directory))
-  ;; 	       (t
-  ;; 		(message "%s" "Buffer Not Recognized as File or Directory")))))
+
+(defun dir-of-current-buffer ()
   (cond ((buffer-file-name)
-	 (extern (file-name-directory (buffer-file-name))))
+	 (file-name-directory (buffer-file-name)))
 	(dired-directory
-	 (extern dired-directory))
+	 dired-directory)
 	(t
-	 (message "%s" "Buffer Not Recognized as File or Directory"))))
+	 nil)))
+
+(defun open-this-buffer-in-explorer ()
+  (interactive)
+  (let ((dir (dir-of-current-buffer)))
+    (if dir
+	(extern dir)
+      (message "%s" "Buffer Not Recognized as File or Directory"))))
 
 (defun open-this-buffer-folder-in-terminal ()
-  "TODO"
   (interactive)
-  (let (dir)
-    (cond ((buffer-file-name)
-	   (setq dir (file-name-directory (buffer-file-name))))
-	  (dired-directory
-	   (setq dir dired-directory))
-	  (t
-	   (message "%s" "Buffer Not Recognized as File or Directory")))
+  (let ((dir (dir-of-current-buffer)))
     (if dir
-	(start-process-shell-command  )
-	(async-shell-command (concat "gnome-terminal --working-directory=" dir)))))
+	(extern (concat "--working-directory=" dir) "gnome-terminal")
+      (message "%s" "Buffer Not Recognized as File or Directory"))))
 
 ;; Borrowed from http://whattheemacsd.com/key-bindings.el-01.html
 (defun goto-line-with-feedback ()
@@ -387,7 +367,7 @@ with prefix barkwark barf"
 (defun yy-or-nn-p (str)
   "ask twice, if answers are the same, give the answer,
    else, ask for sure using yes or no.
-   by Sciart 2013-05-19 Sunday 13:30:12"
+   by Scinart 2013-05-19 Sunday 13:30:12"
   (let ((a (y-or-n-p str))
 	(b (y-or-n-p (concat "Really " (downcase str)))))
     (if (and a b)
@@ -471,25 +451,6 @@ with prefix barkwark barf"
   (backward-sexp)
   (kill-sexp))
 
-(defun google-site-ishare ()
-  "push \"site:ishare.iask.sina.com.cn\" to clipboard
-   this function is useful.
-   2013-05-28 Tuesday 15:36:18"
-  (interactive)
-  (with-temp-buffer
-    (insert "site:ishare.iask.sina.com.cn")
-    (clipboard-kill-region (point-min) (point-max))))
-
-
-(defun command-keys ()
-  "by which key is a command bound
-  2013-05-28 Tuesday 20:34:34"
-  (interactive)
-  (let ((f (read-string "function: ")))
-    (if (fboundp (intern f))
-	(message "%s in bound to %s" f (substitute-command-keys (concat "\\[" f "]")))
-      (message "%s is not a function" f))))
-
 (defun recov ()
   "shorthands for recover this file"
   (interactive)
@@ -523,9 +484,8 @@ with prefix barkwark barf"
     (forward-char)
     (setq repeat-key-str (format-kbd-macro (vector repeat-key) nil))
     (while repeat-key
-      (unless (current-message)
-	(message "(Type %s to repeat)"
-		 repeat-key-str))
+      (message "(Type %s to repeat)"
+	       repeat-key-str)
       (if (equal repeat-key (read-event))
 	  (progn
 	    (clear-this-command-keys t)
@@ -546,9 +506,8 @@ with prefix barkwark barf"
     (search-forward (char-to-string char))
     (setq repeat-key-str (format-kbd-macro (vector repeat-key) nil))
     (while repeat-key
-      (unless (current-message)
-	(message "(Type %s to repeat)"
-		 repeat-key-str))
+      (message "(Type %s to repeat)"
+	       repeat-key-str)
       (if (equal repeat-key (read-event))
 	  (progn
 	    (clear-this-command-keys t)
@@ -766,12 +725,8 @@ param string is not used"
   "Edit the file that is associated with the current buffer as root\nhttp://wenshanren.org/?p=298"
   (interactive)
   (if (buffer-file-name)
-      (progn
-        (setq file (concat "/sudo:root@localhost:" (buffer-file-name)))
-        (find-file file))
+      (find-file (concat "/sudo:root@localhost:" (buffer-file-name)))
     (message "Current buffer does not have an associated file.")))
-
-
 
 (defun extern (string &optional command-name)
   "use native application to open [string]"
@@ -859,11 +814,9 @@ call func-N if prefix N is applied before the return function is called.
 ;;;; options, Vraiables
 ;;;;##########################################################################
 
-
-;;;;##########################################################################
-					;(setq auto-window-vscroll nil)
-
-(setq redisplay-dont-pause t)
+(if (version< emacs-version "24.5")
+    ;; The default value of this variable is `t` and also this variable is obsolete since emacs 24.5.
+    (setq redisplay-dont-pause t))
 
 (provide 'defuns)
 ;;; defuns.el ends here
