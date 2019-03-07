@@ -39,7 +39,7 @@ Will throw an error if the archive version is too new."
  '(major-mode (quote text-mode))
  '(package-selected-packages
    (quote
-    (yasnippet-snippets elpy company-ghc mmm-mode dockerfile-mode go-snippets go-mode ace-jump-mode ace-flyspell xcscope modern-cpp-font-lock slime-company flycheck yari yaml-mode web-beautify w3m w3 typing-game typing tabbar solarized-theme smex smarter-compile smart-compile session rust-mode ruby-mode ruby-end ruby-electric robe rainbow-delimiters pretty-mode-plus pos-tip php-mode paredit nodejs-repl multiple-cursors multi-term minimap markdown-mode kill-ring-ido key-chord julia-mode js2-mode highlight-tail haskell-mode git-rebase-mode git-gutter-fringe git-commit-mode fuzzy f erlang emms eldoc-extension dired+ desktop cppcheck buffer-move bookmark+ auto-complete-clang-async ace-jump-buffer ac-inf-ruby)))
+    (yasnippet-snippets elpy company-ghc mmm-mode dockerfile-mode go-snippets go-mode ace-jump-mode ace-flyspell xcscope modern-cpp-font-lock slime-company flycheck yaml-mode web-beautify w3m w3 tabbar solarized-theme smex smarter-compile smart-compile session rainbow-delimiters pretty-mode-plus pos-tip paredit nodejs-repl multiple-cursors markdown-mode kill-ring-ido key-chord julia-mode js2-mode highlight-tail haskell-mode git-rebase-mode git-gutter-fringe git-commit-mode fuzzy f eldoc-extension dired+ desktop cppcheck buffer-move bookmark+ ace-jump-buffer)))
  '(python-indent-offset 2)
  '(python-shell-interpreter "/opt/anaconda3/bin/python3")
  '(recenter-positions (quote (middle top bottom)))
@@ -48,81 +48,67 @@ Will throw an error if the archive version is too new."
  '(template-default-directories (quote ("~/.emacs.d/.templates/")))
  '(tramp-connection-timeout 3)
  '(truncate-lines t)
+ '(user-mail-address "akubeej@gmail.com")
  '(yas-triggers-in-field t))
 
-(setq user-full-name "Scinart")
-(setq user-mail-address "akubeej@gmail.com")
-
-(setq load-path (cons "~/.emacs.d/oyhy" load-path))
-(add-to-list 'load-path "~/.emacs.d/configs")
-
-;; cross platforms settings
-(defvar monitor-width (display-pixel-width) "requires.el 2013-05-18 Saturday 16:36:57")
-(defvar monitor-height (display-pixel-height) "requires.el 2013-05-18 Saturday 16:36:59")
-
-(defvar windows-p (string-match "windows" (symbol-name system-type)))
-(defvar macosx-p (string-match "darwin" (symbol-name system-type)))
-(defvar linux-p (string-match "linux" (symbol-name system-type)))
-(defvar user-home (expand-file-name "~"))
+(nconc load-path '("~/.emacs.d/oyhy" "~/.emacs.d/configs"))
 
 (setq package-archives
       '(("GNU ELPA"     . "http://elpa.gnu.org/packages/")
         ("MELPA Stable" . "https://stable.melpa.org/packages/")
         ("MELPA"        . "https://melpa.org/packages/"))
       package-archive-priorities
-      '(("MELPA Stable" . 10)
-        ("GNU ELPA"     . 5)
+      '(("GNU ELPA"     . 10)
+        ("MELPA Stable" . 5)
         ("MELPA"        . 0)))
 
+(setf cursor-type 'box
+      cursor-in-non-selected-windows 'hollow)
 
-(setq cursor-type 'box)
-(setq cursor-in-non-selected-windows 'hollow)
-
-(setq initial-scratch-message
+(setf initial-scratch-message
       (format "%s%s\n%s" ";; Now is "
               (format-time-string "%x %A %T")
               ";; And Happy Hacking\n\n"))
 
 ;; This makes emacs works better when marking large regions
-(setq select-active-regions 'only)
+(setf select-active-regions 'only)
 
-(setq x-select-enable-clipboard t)
-(setq kill-ring-max 200)
-(setq visible-bell nil)
-(setq ring-bell-function 'ignore)
+(setf x-select-enable-clipboard t
+      kill-ring-max 200
+      visible-bell nil
+      ring-bell-function 'ignore
 
-(setq split-height-threshold nil)
-(setq split-width-threshold 100)
+      split-height-threshold nil
+      split-width-threshold 100
 
-(setq window-min-height 10)
-(setq window-min-width 20)
+      window-min-height 10
+      window-min-width 20
 
-(setq margin 2)
-(setq scroll-conservatively 10000)
-(setq recentf-max-menu-items 50)
-(setq recentf-max-saved-items 600)
-(setq echo-keystrokes 0.0001)
+      margin 2
+      scroll-conservatively 10000
+      recentf-max-menu-items 50
+      recentf-max-saved-items 600
+      echo-keystrokes 0.0001
 
-(setq mode-require-final-newline nil)
-(setq make-backup-files nil)
-(setq time-stamp-pattern "8/[Tt]ime-?stamp:[ \t]+\\\\?[\"<]+%:y-%02m-%02d %02H:%02M:%02S %u\\\\?[\">]")
+      mode-require-final-newline nil
+      make-backup-files nil )
+
+(setf time-stamp-pattern "8/[Tt]ime-?stamp:[ \t]+\\\\?[\"<]+%:y-%02m-%02d %02H:%02M:%02S %u\\\\?[\">]")
 
 ;; ***************************************************************************
 ;; coding settings
-(setq default-buffer-file-coding-system 'utf-8-unix)
-(prefer-coding-system 'utf-8-unix)
-(set-language-environment 'UTF-8)
-(set-locale-environment "UTF-8")
+(when t
+  (setf (default-value 'buffer-file-coding-system) 'utf-8-unix)
+  (prefer-coding-system 'utf-8-unix)
+  (set-language-environment 'UTF-8)
+  (set-locale-environment "UTF-8"))
 
 ;; ****************************************************************
 ;; Abbrev-mode settings
-(setq abbrev-mode t)
-(setq abbrev-file-name "~/.emacs.d/abbrev_defs")
-(setq save-abbrevs t)
+(setf abbrev-mode t
+      abbrev-file-name "~/.emacs.d/abbrev_defs"
+      save-abbrevs t)
 (quietly-read-abbrev-file)
-
-
-
 
 (eval-when-compile
   (require 'cl))
@@ -151,9 +137,8 @@ Will throw an error if the archive version is too new."
   )
 (require 'smart-compile)
 (require 'smex)
-(and (executable-find "w3m")
-     (require 'w3m))
-(require 'yari)
+(when (executable-find "w3m")
+  (require 'w3m))
 (require 'yaml-mode)
 (require 'xcscope)
 (cscope-setup)
@@ -162,24 +147,17 @@ Will throw an error if the archive version is too new."
 
 (company-mode)
 (global-git-gutter-mode)
-;; (helm-mode 1)
 (key-chord-mode 1)
 (paredit-mode 1)
 (yas/global-mode 1)
 (add-hook 'after-init-hook 'session-initialize)
 (when (display-graphic-p) (global-pretty-mode 1))
 
-
 ;; configs
 (require 'sci-math-symbol)
 (require 'template)
 (template-initialize)
 (require 'make-regexp)
-
-;; flex, bison, gas mode were used when I wrote my compiler homework.
-;; (require 'flex-mode)
-;; (require 'bison-mode)
-;; (require 'gas-mode)
 
 ;; oyhy
 (require 'init-utils)
@@ -192,11 +170,8 @@ Will throw an error if the archive version is too new."
 (require 'my-ido)
 (require 'my-org)
 (require 'my-scheme)
-;; (require 'my-ruby)
 (require 'my-python)
 (require 'my-common-lisp)
-; (require 'my-tex)
-(require 'gas-config)
 (require 'new-bindings)
 (require 'minimode)
 (require 'minor-mode)
@@ -204,7 +179,6 @@ Will throw an error if the archive version is too new."
 (require 'my-smart-compile)
 (require 'emacs-lisp-color)
 (require 'enabled-commands)
-
 (require 'scheme-mode-color)
 
 
@@ -227,7 +201,6 @@ Will throw an error if the archive version is too new."
 ;; (frame-alpha-set-all '(90 45))
 (full-screen)
 
-
 (add-to-list 'custom-theme-load-path "~/.emacs.d/submodules/emacs-color-theme-solarized")
 (load-theme 'solarized t)
 (custom-set-faces
@@ -245,11 +218,7 @@ Will throw an error if the archive version is too new."
  '(rainbow-delimiters-depth-8-face ((t (:foreground "magenta3"))))
  '(rainbow-delimiters-depth-9-face ((t (:foreground "yellow4"))))
  '(rainbow-delimiters-unmatched-face ((t (:foreground "red" :box (:line-width 2 :color "grey75" :style pressed-button))))))
-;; Local Variables:
-;; eval:(progn (hs-minor-mode t) (let ((hs-state 'nil) (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (car i) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char 7661) (recenter-top-bottom))
-;; End:
-
 
 ;; Local Variables:
-;; eval:(progn (hs-minor-mode t) (let ((hs-state 'nil) (HSmark 'eCMs9PnUiV6Z)) (dolist (i hs-state) (when (car i) (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil)))) (goto-char 8681) (recenter-top-bottom))
+;; eval:(progn (hs-minor-mode t) (let ((hs-state 'nil) (HSmark 'eCMs9PnUiV6Z)) (dolist (i hs-state) (when (car i) (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil)))) (goto-char 7462) (recenter-top-bottom))
 ;; End:

@@ -1,3 +1,11 @@
+;; cross platforms settings
+(defvar monitor-width (display-pixel-width) "requires.el 2013-05-18 Saturday 16:36:57")
+(defvar monitor-height (display-pixel-height) "requires.el 2013-05-18 Saturday 16:36:59")
+(defvar windows-p (string-match "windows" (symbol-name system-type)))
+(defvar macosx-p (string-match "darwin" (symbol-name system-type)))
+(defvar linux-p (string-match "linux" (symbol-name system-type)))
+
+
 (defmacro continuous-do-things (name round-expression)
   "continuous-do-things, no arg now, please.
 example: (continuous-do-things continuous-downcase-word (downcase-word 1))
@@ -75,7 +83,7 @@ so great"
 	  (t
 	   (goto-char p)
 	   (if (is-digit (char-after p))
-	       (progn 
+	       (progn
 		 (insert ?1)
 		 (goto-char (1+ end)))
 	     (goto-char end)))
