@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: inline src
+# key: isrc
+# --
+src_c++[:export code]{$0}
