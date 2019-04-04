@@ -2,4 +2,4 @@
 # name: inline src
 # key: isrc
 # --
-src_c++[:export code]{$0}
+src_c++[:exports code :padline no]{$0}

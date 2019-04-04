@@ -1,5 +1,5 @@
 ;;; File created at 2013-05-02 Thursday 20:24:12
-;;; Time-stamp: <2019-02-06 18:00:19 scinart>
+;;; Time-stamp: <2019-03-19 11:44:32 scinart>
 
 
 ;; ****************************************************************
@@ -119,6 +119,10 @@
                              (setf flycheck-gcc-language-standard "c++17"
                                    flycheck-clang-language-standard "c++17")))
 (add-hook 'c-mode-hook 'my-cc-style)
+(add-hook 'c-mode-hook #'(lambda ()
+			   (setf flycheck-gcc-language-standard nil
+				 flycheck-clang-language-standard nil)))
+
 (add-hook 'before-save-hook 'clean-up-for-cc-mode)
 
 

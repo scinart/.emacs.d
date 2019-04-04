@@ -282,6 +282,7 @@
      ("sphericalangle"."∢" )
      ("rightangle"."⦜"))
    '( ;;shapes
+     ("check"."✓") ("wrong"."❌")
      ("square"."■") ("square2"."□")
      ("circle"."●") ("circle2"."○")
      ("triangle"."▲") ("triangle2"."△")
@@ -447,5 +448,5 @@ Home page at: URL `http://ergoemacs.org/emacs/sci-math-symbols-input.html'"
 (provide 'sci-math-symbol)
 
 ;; Local Variables:
-;; eval:(progn (hs-minor-mode t) (let ((hs-state '((1253 2596 hs) (2661 3356 hs))) (HSmark 'eCMs9PnUiV6Z)) (dolist (i hs-state) (when (car i) (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil)))) (goto-char 18151) (recenter-top-bottom))
+;; eval:(progn (hs-minor-mode t) (let ((hs-state '((1253 2596 hs) (2661 3356 hs))) (HSmark 'eCMs9PnUiV6Z)) (dolist (i hs-state) (when (car i) (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil)))) (goto-char 18184) (recenter-top-bottom))
 ;; End:
