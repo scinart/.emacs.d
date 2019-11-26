@@ -48,6 +48,7 @@ Will throw an error if the archive version is too new."
  '(package-selected-packages
    (quote
     (company-coq proof-general yasnippet-snippets elpy company-ghc mmm-mode dockerfile-mode go-snippets go-mode ace-jump-mode ace-flyspell xcscope modern-cpp-font-lock slime-company flycheck yaml-mode web-beautify w3m w3 tabbar solarized-theme smex smarter-compile smart-compile session rainbow-delimiters pretty-mode-plus pos-tip paredit nodejs-repl multiple-cursors markdown-mode kill-ring-ido key-chord julia-mode js2-mode highlight-tail haskell-mode git-rebase-mode git-gutter-fringe git-commit-mode fuzzy f eldoc-extension dired+ desktop cppcheck buffer-move bookmark+ ace-jump-buffer)))
+ '(proof-three-window-mode-policy (quote hybrid))
  '(python-indent-offset 2)
  '(python-shell-interpreter "/opt/anaconda3/bin/python3")
  '(recenter-positions (quote (middle top bottom)))
@@ -226,7 +227,3 @@ Will throw an error if the archive version is too new."
  '(rainbow-delimiters-depth-8-face ((t (:foreground "magenta3"))))
  '(rainbow-delimiters-depth-9-face ((t (:foreground "yellow4"))))
  '(rainbow-delimiters-unmatched-face ((t (:foreground "red" :box (:line-width 2 :color "grey75" :style pressed-button))))))
-
-;; Local Variables:
-;; eval:(progn (hs-minor-mode t) (let ((hs-state 'nil) (HSmark 'eCMs9PnUiV6Z)) (dolist (i hs-state) (when (car i) (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil)))) (goto-char 7819) (recenter-top-bottom))
-;; End:
