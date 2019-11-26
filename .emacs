@@ -27,7 +27,15 @@ Will throw an error if the archive version is too new."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(bmkp-last-as-first-bookmark-file "~/.emacs.d/bookmarks")
+ '(case-fold-search t)
  '(company-clang-arguments (quote ("-std=c++17")))
+ '(coq-compile-before-require t)
+ '(coq-compiler "/home/scinart/.opam/4.05.0/bin/coqc")
+ '(coq-dependency-analyzer "/home/scinart/.opam/4.05.0/bin/coqdep")
+ '(coq-prog-args
+   (quote
+    ("-emacs" "-R" "/home/scinart/repos/SF-zh/lf-current/" "LF")))
+ '(coq-prog-name "/home/scinart/.opam/4.05.0/bin/coqtop")
  '(delete-selection-mode nil)
  '(elpy-rpc-python-command "python3")
  '(elpy-syntax-check-command "")
@@ -39,7 +47,7 @@ Will throw an error if the archive version is too new."
  '(major-mode (quote text-mode))
  '(package-selected-packages
    (quote
-    (yasnippet-snippets elpy company-ghc mmm-mode dockerfile-mode go-snippets go-mode ace-jump-mode ace-flyspell xcscope modern-cpp-font-lock slime-company flycheck yaml-mode web-beautify w3m w3 tabbar solarized-theme smex smarter-compile smart-compile session rainbow-delimiters pretty-mode-plus pos-tip paredit nodejs-repl multiple-cursors markdown-mode kill-ring-ido key-chord julia-mode js2-mode highlight-tail haskell-mode git-rebase-mode git-gutter-fringe git-commit-mode fuzzy f eldoc-extension dired+ desktop cppcheck buffer-move bookmark+ ace-jump-buffer)))
+    (company-coq proof-general yasnippet-snippets elpy company-ghc mmm-mode dockerfile-mode go-snippets go-mode ace-jump-mode ace-flyspell xcscope modern-cpp-font-lock slime-company flycheck yaml-mode web-beautify w3m w3 tabbar solarized-theme smex smarter-compile smart-compile session rainbow-delimiters pretty-mode-plus pos-tip paredit nodejs-repl multiple-cursors markdown-mode kill-ring-ido key-chord julia-mode js2-mode highlight-tail haskell-mode git-rebase-mode git-gutter-fringe git-commit-mode fuzzy f eldoc-extension dired+ desktop cppcheck buffer-move bookmark+ ace-jump-buffer)))
  '(python-indent-offset 2)
  '(python-shell-interpreter "/opt/anaconda3/bin/python3")
  '(recenter-positions (quote (middle top bottom)))
@@ -220,5 +228,5 @@ Will throw an error if the archive version is too new."
  '(rainbow-delimiters-unmatched-face ((t (:foreground "red" :box (:line-width 2 :color "grey75" :style pressed-button))))))
 
 ;; Local Variables:
-;; eval:(progn (hs-minor-mode t) (let ((hs-state 'nil) (HSmark 'eCMs9PnUiV6Z)) (dolist (i hs-state) (when (car i) (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil)))) (goto-char 7462) (recenter-top-bottom))
+;; eval:(progn (hs-minor-mode t) (let ((hs-state 'nil) (HSmark 'eCMs9PnUiV6Z)) (dolist (i hs-state) (when (car i) (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil)))) (goto-char 7819) (recenter-top-bottom))
 ;; End:

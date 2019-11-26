@@ -26,11 +26,14 @@
 	c-electric-star
 	c-end-of-statement
 	c-indent-line-or-region
+	comment-or-uncomment-region
+	company-coq-maybe-exit-snippet
 	continuous-capitalize-word
 	continuous-downcase-word
 	continuous-num/++
 	continuous-num/--
 	continuous-upcase-word
+	coq-terminator-insert
 	delete-region-unless-prefix
 	dired-mark
 	electric-newline-and-maybe-indent
@@ -84,6 +87,7 @@
 	paredit-semicolon
 	paredit-splice-sexp-killing-backward
 	perl-electric-terminator
+	pg-protected-undo
 	python-indent-electric-colon
 	replace-string
 	ruby-end-space
@@ -117,6 +121,8 @@
 	mouse-yank-primary
 	my-scroll-down
 	org-ctrl-c-ctrl-c
+	org-cycle
+	org-shiftmetaleft
 	save-buffer-enhanced
 	smart-compile
 	smex

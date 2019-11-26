@@ -1,5 +1,5 @@
 ;;; my-org.el ---
-;;; Time-stamp: <2019-03-02 19:39:08 mama>
+;;; Time-stamp: <2019-04-01 02:56:37 scinart>
 ;;; Code:
 
 (setf org-latex-pdf-process '("sed -i 's/	/        /g' %f"
@@ -30,7 +30,7 @@
 	("" "hyperref" nil)
 	("" "fontspec" nil)
 	("" "xeCJK" nil)
-	("a4paper,left=3cm,right=2cm,top=2.5cm,bottom=2.5cm" "geometry" nil)
+	("a4paper,landscape,left=3cm,right=2cm,top=2.5cm,bottom=2.5cm" "geometry" nil)
 	;; ("a4paper" "geometry" nil)
 
 	"\\setlength{\\parskip}{1em}"
@@ -78,5 +78,5 @@
 (provide 'my-org)
 
 ;; Local Variables:
-;; eval:(progn (hs-minor-mode t) (let ((hs-state 'nil) (HSmark 'eCMs9PnUiV6Z)) (dolist (i hs-state) (when (car i) (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil)))) (goto-char 2647) (recenter-top-bottom))
+;; eval:(progn (hs-minor-mode t) (let ((hs-state 'nil) (HSmark 'eCMs9PnUiV6Z)) (dolist (i hs-state) (when (car i) (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil)))) (goto-char 2660) (recenter-top-bottom))
 ;; End:
