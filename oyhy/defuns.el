@@ -1,16 +1,8 @@
 ;;; defuns.el ---
-;;; Time-stamp: <2019-03-04 14:00:59 mama>
+;;; Time-stamp: <2019-12-08 11:34:15 scinart>
 ;;; Code:
 
 (load "~/.emacs.d/oyhy/bare-defuns.el")
-
-(defun dntbs ()
-  "in defuns.el
-   insert Day aNd Time By Scinart
-   2013-05-05 Sunday 23:20:54"
-  (interactive)
-  (dnt)
-  (insert " by Scinart"))
 
 (defun zap-almost-to-char (arg char)
   "Kill up to but excluding ARG'th occurrence of CHAR.
@@ -92,11 +84,11 @@ at around 2013-06-04 Tuesday 00:23:22"
 (defun full-screen (&optional frame)
   "total full screen"
   (interactive)
-  (setq frame (or frame (selected-frame)))
-  (set-frame-position frame 0 0)
-  (if (display-graphic-p)
-      (set-frame-size frame (my-frame-size-scale-width 1.0) (my-frame-size-scale-height 1.0))
-    (set-frame-size frame (display-pixel-width) (display-pixel-height))))
+  (when (display-graphic-p)
+    (setq frame (or frame (selected-frame)))
+    (set-frame-position frame 0 0)
+    (set-frame-size frame (my-frame-size-scale-width 1.0) (my-frame-size-scale-height 1.0))))
+
 (defun right-half (&optional frame)
   "set the frame to the right half"
   (interactive)
@@ -258,63 +250,6 @@ at around 2013-06-04 Tuesday 00:23:22"
 ;; used by command line.
 ;; ********************************************************************************************************************************
 
-;; group of very short keyboard commands
-(defun iwb()
-  "Make the whole buffer pretty and consistent, iwb for Indent Whole Buffer"
-  (interactive)
-  (delete-trailing-whitespace)
-  (indent-region (point-min) (point-max) nil)
-  (untabify (point-min) (point-max)))
-(defun om ()
-  "shorthands for org-mode 2013-04-28 Sunday 00:03:45 by scinart"
-  (interactive)
-  (org-mode))
-(defun lm ()
-  "shorthands for lisp-mode 2013-05-04 Saturday 23:00:08 by scinart"
-  (interactive)
-  (lisp-mode))
-(defun elm ()
-  "shorthands for emacs lisp mode 2013-05-05 Sunday 20:15:42 by scinart"
-  (interactive)
-  (emacs-lisp-mode))
-(defun clm ()
-  "shorthands for common-lisp-mode about 2013 April"
-  (interactive)
-  (common-lisp-mode))
-(defun scm ()
-  "shorthands for scheme-mode"
-  (interactive)
-  (scheme-mode))
-
-(defun lim ()
-  "shorthands for lisp-interactive-mode 2013-05-27 Monday 22:38:27 by Scinart"
-  (interactive)
-  (lisp-interaction-mode))
-(defun rsm ()
-  "shorthands for run-slime. 2013-05-05 Sunday 12:31:53 by Scinart"
-  (interactive)
-  (run-slime))
-(defun tm ()
-  "shorthands for text-mode. 2013-05-11 Saturday 10:57:55 by Scinart"
-  (interactive)
-  (text-mode))
-(defun atoz ()
-  "insert a to z
-   2013-05-23 Thursday 22:48:23 by Scinart"
-  (interactive)
-  (dotimes (i 25)
-    (insert (+ i ?a) " "))
-  (insert (+ 25 ?a)))
-(defun atob ()
-  "insert from a to b
-   2013-05-23 Thursday 22:48:29 by Scinart"
-  (interactive)
-  (let ((a (read-char "insert from"))
-	(b (read-char "to")))
-    (dotimes (i (- b a))
-      (insert (+ i a) " "))
-    (insert b)))
-
 (defun paredit-wrap-round-from-behind ()
   "backward round sexp? I'm not sure What I'm thinking about, even though it is only a few days ago. Commented at 2013-05-01 Wednesday 22:51:19"
   (interactive)
@@ -364,65 +299,6 @@ with prefix barkwark barf"
   (forward-word)
   (ispell-set-spellchecker-params)
   (flyspell-auto-correct-word))
-(defun yy-or-nn-p (str)
-  "ask twice, if answers are the same, give the answer,
-   else, ask for sure using yes or no.
-   by Scinart 2013-05-19 Sunday 13:30:12"
-  (let ((a (y-or-n-p str))
-	(b (y-or-n-p (concat "Really " (downcase str)))))
-    (if (and a b)
-	t
-      (if (not (or a b))
-	  nil
-	(yes-or-no-p (concat "TELL ME, " (downcase str) " "))))))
-(defun yy-or-n-p (str)
-  "yes-or-no. If yes, ask again.
-   by Sciart 2013-05-23 Thursday 00:01:08"
-  (and (y-or-n-p str)
-     (y-or-n-p-with-timeout (concat "Really " str) 8 t)))
-
-(defun hexnumberp (number)
-  "return t if number is 0-9, a-f, A-F
-   2013-05-26 Sunday 14:30:22 by Scinart"
-  (or (and (<= ?0 number)
-	(<= number ?9))
-      (and (<= ?a number)
-	 (<= number ?f))
-      (and (<= ?A number)
-	 (<= number ?F))))
-
-(defun Meta-x ()
-  "Mimic Microsoft word Alt-x function
-   2013-05-26 Sunday 14:54:22 by Scinart"
-  (interactive)
-  (let ((p (point)))
-    (if (> p 4)
-	(let ((ssss (buffer-substring (- p 4) p))
-	      (a (char-before p))
-	      (b (char-before (- p 1)))
-	      (c (char-before (- p 2)))
-	      (d (char-before (- p 3))))
-	  (if (and (hexnumberp a)
-		   (hexnumberp b)
-		   (hexnumberp c)
-		   (hexnumberp d))
-	      (progn
-		(backward-delete-char 4)
-		(insert-char (string-to-number ssss 16) 1))
-	    (progn
-	      (backward-delete-char 1)
-	      (insert (format "%04X" a)))))
-      (progn
-	(let ((a (char-before p)))
-	  (backward-delete-char 1)
-	  (insert (format "%04X" a)))))))
-
-(defun char-name ()
-  "Show the Unicode name of previous char"
-  (interactive)
-  (let* ((char (char-before (point)))
-	 (char-name (get-char-code-property char 'name)))
-    (message "U%04X %s" char char-name)))
 
 (defun set-file-read-only (arg)
   "set current buffer-file as read-only
@@ -539,21 +415,19 @@ else forward char arg times
 or switch-to-scratch, if with prefix argument."
   (interactive "P")
   (if (listp (or arg 1))
-	  (switch-to-buffer "*scratch*")
-	(let ((blst (buffer-list)))
-	  (if (memq t
-				(mapcar (lambda (s) (string-equal "*scratch*" (format "%s" s))) blst))
-		  (kill-buffer "*scratch*"))
-	  (get-buffer-create "*scratch*")
-	  (switch-to-buffer "*scratch*")
-	  (lim)
-	  (insert (format "%s%s\n%s" ";; Now is "
-					  (format-time-string "%x %A %T")
-					  ";; And Happy Hacking\n\n"))
-	  (if linux-p
-	      (setq dafault-directory "~/")
-	    (setq default-directory "D:/My Document/"))
-	  (set-buffer-modified-p nil))))
+      (switch-to-buffer "*scratch*")
+    (let ((blst (buffer-list)))
+      (if (memq t
+		(mapcar (lambda (s) (string-equal "*scratch*" (format "%s" s))) blst))
+	  (kill-buffer "*scratch*"))
+      (get-buffer-create "*scratch*")
+      (switch-to-buffer "*scratch*")
+      (lisp-interaction-mode)
+      (insert (format "%s%s\n%s" ";; Now is "
+		      (format-time-string "%x %A %T")
+		      ";; And Happy Hacking\n\n"))
+      (setf dafault-directory "~/")
+      (set-buffer-modified-p nil))))
 (defun peek (arg)
   "temorary set transparent to arg seconds
 2013-06-06 Thursday 22:45:34 by Scinart"
@@ -566,28 +440,12 @@ or switch-to-scratch, if with prefix argument."
       (sleep-for (abs time) 500)
       (frame-alpha-set-active alpha))))
 
-(defun eval-string (string)
-  "eval this string without side effect"
-  (eval (read string) t))
-(defun superstring (string)
-  "make ruby like string
-2013-08-16 Friday 11:40:15 by scinart"
-  (while (string-match "#{[^}]*?}" string)
-    (let* ((b (match-beginning 0))
-	   (e (match-end 0))
-	   (whole (substring string b e))
-	   (exp (substring string (+ 2 b) (- e 1))))
-      (setq string
-	    (replace-regexp-in-string (regexp-quote whole)
-				      (format "%S" (eval-string exp)) string))))
-  string)
-
 (defmacro keep-until (name let-pair-list do-before do-after &optional cancelable)
   "defun NAME a function that do two things seperately before and after a single keystroke,
 if cancelable, \\[keyboard-quit] is able to cancels do-after.
 2013-08-16 Friday 10:16:30 by Scinart"
   `(defun ,name ()
-     ,(superstring "in #{let-pair-list} bind \n do \n #{do-before} until a keystroke do \n #{do-after}.")
+     "in #{let-pair-list} bind \n do \n #{do-before} until a keystroke do \n #{do-after}."
      (interactive)
      (let ,let-pair-list
        ,do-before
@@ -599,12 +457,6 @@ if cancelable, \\[keyboard-quit] is able to cancels do-after.
 	      `(define-key (current-local-map) [remap keyboard-quit] 'keyboard-quit))
 	 ,do-after
 	 (setq unread-command-events (list last-input-event))))))
-
-;; (macroexpand '(keep-until translucent
-;; 			  ((ori-alpha (frame-alpha-get)))
-;; 			  (frame-alpha-set-all '(90 40))
-;; 			  (frame-alpha-set-all ori-alpha)
-;; 			  nil))
 
 (keep-until translucent
 	    ((ori-alpha (frame-alpha-get)))
@@ -645,45 +497,6 @@ if cancelable, \\[keyboard-quit] is able to cancels do-after.
   (interactive)
   (ibuffer nil))
 
-
-;; the following is defined 2013-06-11 Tuesday 10:35:47
-
-;; I no longer use windows any more.
-(when windows-p
-  (defun move-frame ()
-    (interactive)
-    (w32-send-sys-command 61456))
-  (defun resize-frame ()
-    (interactive)
-    (w32-send-sys-command 61440))
-  (defun start-button ()
-    (interactive)
-    (w32-send-sys-command 61744))
-  (defun screensaver ()
-    (interactive)
-    (w32-send-sys-command 61760)))
-;; 61440 - resize the window via keyboard
-;; 61456 - move window via keyboard
-;; 61472 - minimize current frame
-;; 61488 - maximize current frame
-;; 61504 - next window (not very practical)
-;; 61520 - previous window (not very practical)
-;; 61536 - close the window (this will quit the application)
-;; 61552 - vertical scroll – doesn’t seem to do anything for me
-;; 61568 - horizontal scroll – doesn’t seem to do anything for me
-;; 61584 - mouse menu(?) – doesn’t seem to do anything for me
-;; 61696 - activate menubar (will not de-activate it, though)
-;; 61712 - arrange(?) – doesn’t seem to do anything for me
-;; 61728 - restore current frame
-;; 61744 - simulate pressing Windows Start button
-;; 61760 - activate screensaver
-;; 61776 - hotkey(?) – doesn’t seem to do anything for me
-
-
-
-
-
-
 (defun decode-google-link (string &optional start end)
   "extract url in google jump link
 2013-07-27 Saturday 22:37:15 by scinart
@@ -718,24 +531,6 @@ param string is not used"
       (insert (replace-regexp-in-string "%line%" line-text command-string))
       (next-line)
       (decf num))))
-
-
-
-(defun root-current-buffer ()
-  "Edit the file that is associated with the current buffer as root\nhttp://wenshanren.org/?p=298"
-  (interactive)
-  (if (buffer-file-name)
-      (find-file (concat "/sudo:root@localhost:" (buffer-file-name)))
-    (message "Current buffer does not have an associated file.")))
-
-(defun extern (string &optional command-name)
-  "use native application to open [string]"
-  (interactive)
-  (setq command-name (or command-name "xdg-open"))
-  (cond (linux-p
-	 (call-process command-name nil 0 nil string))
-	(windows-p
-	 (w32-shell-execute 1 string))))
 
 ;;; these functions are no longer useful, T_T;
 
@@ -805,18 +600,10 @@ call func-N if prefix N is applied before the return function is called.
 			    (nth (- arg 1) 123-list)
 			  123-list) arg))))))
 
-
-
-
-
 
 ;;;;##########################################################################
 ;;;; options, Vraiables
 ;;;;##########################################################################
-
-(if (version< emacs-version "24.5")
-    ;; The default value of this variable is `t` and also this variable is obsolete since emacs 24.5.
-    (setq redisplay-dont-pause t))
 
 (provide 'defuns)
 ;;; defuns.el ends here

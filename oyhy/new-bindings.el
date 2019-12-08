@@ -1,54 +1,40 @@
 ;;; -*- coding:utf-8 -*-
 ;;; new-bindings.el ---
-;;; Time-stamp: <2019-03-04 14:01:10 mama>
+;;; Time-stamp: <2019-12-08 11:22:17 scinart>
 ;;; Code:
-
-(when windows-p ; Microsoft Windows
-  (setq w32-pass-lwindow-to-system nil
-	w32-pass-apps-to-system nil
-	w32-lwindow-modifier 'super
-	;; w32-apps-modifier 'super
-	))
-
-(when macosx-p   ; Mac OS X
-  )
-
-(when linux-p ; linux
-  (define-key key-translation-map (kbd "<menu>") (kbd "<apps>"))
-  )
-
 
 ;;; aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 ;;; glabol unset key
-(progn "glabol unset key"
-       (global-unset-key (kbd "C-h h")) ; view-hello-file
-       (global-unset-key (kbd "C-x i"))
-       (global-unset-key (kbd "C-x m")) ;; post mail
-       (global-unset-key (kbd "C-h C-h")); help-for-help
-       (global-unset-key (kbd "M-c")) ;use as a prefix arg
-       (global-unset-key (kbd "C-h C-c")) ; describe-copying
-       (global-unset-key (kbd "C-/"))
-       (global-unset-key (kbd "C-z"))
-       (global-unset-key (kbd "C-x C-z")) ;; suspend-frame
-       (global-unset-key (kbd "C-\\"))
-       (global-set-key (kbd "M-m") 'ignore) ;; for dictionaries
-       (global-set-key (kbd "C-x C-g") 'ignore) ;; I often use C-g to cancel C-x
-       (global-unset-key (kbd "<f3>"))
-       (global-unset-key (kbd "<f2>"))) ;; for dired mode rename.
+(when t
+  "glabol unset key"
+  (global-unset-key (kbd "C-h h")) ; view-hello-file
+  (global-unset-key (kbd "C-x i"))
+  (global-unset-key (kbd "C-x m")) ;; post mail
+  (global-unset-key (kbd "C-h C-h")); help-for-help
+  (global-unset-key (kbd "M-c")) ;use as a prefix arg
+  (global-unset-key (kbd "C-h C-c")) ; describe-copying
+  (global-unset-key (kbd "C-/"))
+  (global-unset-key (kbd "C-z"))
+  (global-unset-key (kbd "C-x C-z")) ;; suspend-frame
+  (global-unset-key (kbd "C-\\"))
+  (global-set-key (kbd "M-m") 'ignore) ;; for dictionaries
+  (global-set-key (kbd "C-x C-g") 'ignore) ;; I often use C-g to cancel C-x
+  (global-unset-key (kbd "<f3>"))
+  (global-unset-key (kbd "<f2>"))) ;; for dired mode rename.
 
 ;;; aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-;;; bookmarks  and registers
-(progn "registers"
-
-       (global-set-key (kbd "C-x r p") 'sci-push-register)
-       (global-set-key (kbd "C-x r j") 'jump-to-register)
-       (global-set-key (kbd "C-x r v") 'view-register)
-       (global-set-key (kbd "C-x r +") 'increment-register)
-       (global-set-key (kbd "C-x r i") 'insert-register)
-       (global-set-key (kbd "C-x r n") 'number-to-register)
-       (global-set-key (kbd "C-x r r") 'copy-rectangle-to-register)
-       (global-set-key (kbd "C-x r s") 'copy-to-register)
-       )
+;;; bookmarks and registers
+(when t
+  "registers"
+  (global-set-key (kbd "C-x r p") 'sci-push-register)
+  (global-set-key (kbd "C-x r j") 'jump-to-register)
+  (global-set-key (kbd "C-x r v") 'view-register)
+  (global-set-key (kbd "C-x r +") 'increment-register)
+  (global-set-key (kbd "C-x r i") 'insert-register)
+  (global-set-key (kbd "C-x r n") 'number-to-register)
+  (global-set-key (kbd "C-x r r") 'copy-rectangle-to-register)
+  (global-set-key (kbd "C-x r s") 'copy-to-register)
+  )
 
 (progn "defaule rectangle bindings"
        (global-set-key (kbd "C-x r k") 'kill-rectangle)
@@ -61,7 +47,6 @@
 (global-set-key (kbd "C-x C-M-r") 'recentf-open-files)
 (global-set-key (kbd "C-x r b") 'find-bookmark+-file)
 (global-set-key (kbd "C-x r l") 'bookmark-bmenu-list)
-
 (global-set-key (kbd "C-x r m") 'bookmark-set)
 
 ;;; aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
@@ -70,18 +55,12 @@
 (global-set-key (kbd "C-/") 'hippie-expand)
 (global-set-key (kbd "C-\\") 'yas-expand)
 ;; insert
-(global-set-key (kbd "C-x i f") 'ido-insert-file)
-(global-set-key (kbd "C-x i c") 'atob)
 (global-set-key (kbd "C-x i r") 'insert-register)
 (global-set-key (kbd "M-c M-d") 'today)
 (global-set-key (kbd "M-c M-t") 'now)
 (global-set-key (kbd "M-c q") 'qdnt)
 (global-set-key (kbd "M-c d") 'today)
 (global-set-key (kbd "M-c M-q") 'push-time)
-(global-set-key (kbd "M-c M-x") 'Meta-x)
-(global-set-key (kbd "M-c x") 'char-name)
-
-
 
 ;;; eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
 ;;; buffer edit mark copy kill and file
@@ -99,93 +78,80 @@
 (global-set-key (kbd "C-S-y") 'yank-primary)
 ;;; eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
 ;;; buffer edit word lines region
-(progn "edit word lines region"
-       (global-set-key (kbd "S-<backspace>") 'subword-backward-kill)
-       (global-set-key (kbd "M-l") 'downcase-word)
-       (global-set-key (kbd "M-t") 'transpose-words)
-       (global-set-key (kbd "M-u") 'upcase-word)
-       (global-set-key (kbd "M-$") 'ispell-word)
-       (global-set-key (kbd "C-x M-c") 'capitalize-word)
-       (global-set-key (kbd "M-c SPC") 'capitalize-word)
-       (global-set-key (kbd "M-c c") 'continuous-capitalize-word)
-       (global-set-key (kbd "M-c l") 'continuous-downcase-word)
-       (global-set-key (kbd "M-c u") 'continuous-upcase-word)
-       (global-set-key (kbd "M-h") 'my-flyspell-auto-correct-word)
-       (global-set-key (kbd "M-H") 'flyspell-auto-correct-word)
-       (global-set-key (kbd "M-%") 'query-replace)
-       (global-set-key (kbd "M-c M-%") 'replace-regexp)
-       (global-set-key (kbd "M-c M-&") 'replace-string)
-       (global-set-key (kbd "M-c M-SPC") 'sci-change-to-symbol)
+(when t
+  "edit word lines region"
+  (global-set-key (kbd "S-<backspace>") 'subword-backward-kill)
+  (global-set-key (kbd "M-l") 'downcase-word)
+  (global-set-key (kbd "M-t") 'transpose-words)
+  (global-set-key (kbd "M-u") 'upcase-word)
+  (global-set-key (kbd "M-$") 'ispell-word)
+  (global-set-key (kbd "C-x M-c") 'capitalize-word)
+  (global-set-key (kbd "M-c SPC") 'capitalize-word)
+  (global-set-key (kbd "M-c c") 'continuous-capitalize-word)
+  (global-set-key (kbd "M-c l") 'continuous-downcase-word)
+  (global-set-key (kbd "M-c u") 'continuous-upcase-word)
+  (global-set-key (kbd "M-h") 'my-flyspell-auto-correct-word)
+  (global-set-key (kbd "M-H") 'flyspell-auto-correct-word)
+  (global-set-key (kbd "M-%") 'query-replace)
+  (global-set-key (kbd "M-c M-%") 'replace-regexp)
+  (global-set-key (kbd "M-c M-&") 'replace-string)
+  (global-set-key (kbd "M-c M-SPC") 'sci-change-to-symbol)
 
-       (global-set-key (kbd "C-t") 'transpose-chars)
-       (global-set-key (kbd "C-S-t") '(lambda () (interactive) (transpose-chars -1)))
-       (global-set-key (kbd "M-t") 'transpose-words)
-       (global-set-key (kbd "M-T") '(lambda () (interactive) (transpose-words -1)))
-       (global-set-key (kbd "C-M-t") (lambda () (interactive) (transpose-sexps 1)))
-       (global-set-key (kbd "C-M-S-t") (lambda () (interactive) (transpose-sexps -1)))
+  (global-set-key (kbd "C-t") 'transpose-chars)
+  (global-set-key (kbd "C-S-t") '(lambda () (interactive) (transpose-chars -1)))
+  (global-set-key (kbd "M-t") 'transpose-words)
+  (global-set-key (kbd "M-T") '(lambda () (interactive) (transpose-words -1)))
+  (global-set-key (kbd "C-M-t") (lambda () (interactive) (transpose-sexps 1)))
+  (global-set-key (kbd "C-M-S-t") (lambda () (interactive) (transpose-sexps -1)))
 
-       (global-set-key (kbd "C-x C-l") 'downcase-region)
-       (global-set-key (kbd "C-x C-u") 'upcase-region)
-       (global-set-key (kbd "C-x C-t") 'transpose-lines)
-       (global-set-key (kbd "C-w") 'delete-region-unless-prefix))
-;;; eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-;;; buffer statistics
-(global-set-key (kbd "M-=") 'count-words-region)
-(global-set-key (kbd "M-c n i") 'continuous-num/++)
-(global-set-key (kbd "M-c n d") 'continuous-num/--)
-(global-set-key (kbd "M-c n +") 'continuous-num/++)
-(global-set-key (kbd "M-c n -") 'continuous-num/--)
-(global-set-key (kbd "M-c M-+") 'continuous-num/++)
-(global-set-key (kbd "M-c M--") 'continuous-num/--)
+  (global-set-key (kbd "C-x C-l") 'downcase-region)
+  (global-set-key (kbd "C-x C-u") 'upcase-region)
+  (global-set-key (kbd "C-x C-t") 'transpose-lines)
+  (global-set-key (kbd "C-w") 'delete-region-unless-prefix)
+
+  (global-set-key (kbd "M-=") 'count-words-region)
+  (global-set-key (kbd "M-c M-+") 'continuous-num/++)
+  (global-set-key (kbd "M-c M--") 'continuous-num/--))
+
 ;;; aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 ;;; buffer view cursor move
-(progn "move cursor functions"
-       (global-set-key (kbd "M-a") 'backward-sentence)
-       (global-set-key (kbd "M-b") 'backward-word)
-       (global-set-key (kbd "M-e") 'forward-sentence)
-       (global-set-key (kbd "M-f") 'forward-word)
-       (global-set-key (kbd "M-v") 'scroll-down-command)
-       (global-set-key (kbd "M-<") 'beginning-of-buffer)
-       (global-set-key (kbd "M->") 'end-of-buffer)
-       (global-set-key (kbd "M-{") 'backward-paragraph)
-       (global-set-key (kbd "M-}") 'forward-paragraph)
-       (global-set-key (kbd "C-a") '(lambda () (interactive)
-				      (if visual-line-mode
-					  (beginning-of-visual-line)
-					(beginning-of-line))))
-       (global-set-key (kbd "C-b") 'backward-or-to-char)
-       (global-set-key (kbd "C-e") '(lambda () (interactive)
-				      (if visual-line-mode
-					  (end-of-visual-line)
-					(end-of-line))))
-       (global-set-key (kbd "C-f") 'forward-or-to-char)
-       (global-set-key (kbd "C-n") 'next-line)
-       (global-set-key (kbd "C-p") 'previous-line)
-       ;; define this in case I occasionally press '.' insteand of p
-       (global-set-key (kbd "C-.") 'previous-line)
-       (global-set-key (kbd "C-v") 'scroll-up-command)
-       (global-set-key (kbd "C-x C-s") 'save-buffer-enhanced)
-       (global-set-key (kbd "C-x C-n") 'set-goal-column)
-       (global-set-key (kbd "C-M-v") 'scroll-other-window)
-       (global-set-key (kbd "C-M-S-v") 'scroll-other-window-down)
-       (global-set-key (kbd "C-<apps>") '(lambda () "bindings.el" (interactive) (forward-line)))
-       (global-set-key (kbd "C-c C-n") 'half-screen-down)
-       (global-set-key (kbd "C-c C-p") 'half-screen-up)
-       (global-set-key (kbd "M-c M-n") 'half-screen-down)
-       (global-set-key (kbd "M-c M-h") 'half-screen-up)
-       (global-set-key (kbd "C-c C-S-h") 'half-screen-up)
-       (global-set-key (kbd "C-c C-h") 'half-screen-up)
-       (global-set-key (kbd "C-c C-S-n") 'half-screen-down)
-       (global-set-key (kbd "C-S-n") (lambda () (interactive) (ignore-errors (next-line 5))))
-       (global-set-key (kbd "C-S-p") (lambda () (interactive) (ignore-errors (previous-line 5))))
-       (global-set-key (kbd "M-p") 'my-scroll-up)
-       (global-set-key (kbd "M-.") 'find-tag) ;; extremely useful
-       (global-set-key (kbd "M-n") 'my-scroll-down)
-       (global-set-key (kbd "M-P") (lambda () (interactive) (ignore-errors (scroll-down 5))))
-       (global-set-key (kbd "M-N") (lambda () (interactive) (ignore-errors (scroll-up 5))))
-       (global-set-key (kbd "C-c SPC") 'ace-jump-mode)
-       (global-set-key (kbd "C-M-g") 'ace-jump-mode)
-       (global-set-key (kbd "M-g") 'goto-line-or-char))
+(when t
+  "move cursor functions"
+  (global-set-key (kbd "M-a") 'backward-sentence)
+  (global-set-key (kbd "M-b") 'backward-word)
+  (global-set-key (kbd "M-e") 'forward-sentence)
+  (global-set-key (kbd "M-f") 'forward-word)
+  (global-set-key (kbd "M-v") 'scroll-down-command)
+  (global-set-key (kbd "M-<") 'beginning-of-buffer)
+  (global-set-key (kbd "M->") 'end-of-buffer)
+  (global-set-key (kbd "M-{") 'backward-paragraph)
+  (global-set-key (kbd "M-}") 'forward-paragraph)
+  (global-set-key (kbd "C-a") 'move-beginning-of-line)
+  (global-set-key (kbd "C-b") 'backward-or-to-char)
+  (global-set-key (kbd "C-e") 'move-end-of-line)
+  (global-set-key (kbd "C-f") 'forward-or-to-char)
+  (global-set-key (kbd "C-v") 'scroll-up-command)
+  (global-set-key (kbd "C-x C-s") 'save-buffer-enhanced)
+  (global-set-key (kbd "C-x C-n") 'set-goal-column)
+  (global-set-key (kbd "C-M-v") 'scroll-other-window)
+  (global-set-key (kbd "C-M-S-v") 'scroll-other-window-down)
+
+  (global-set-key (kbd "C-n") 'next-line)
+  (global-set-key (kbd "C-p") 'previous-line)
+  (global-set-key (kbd "C-S-n") (lambda () (interactive) (ignore-errors (next-line 5))))
+  (global-set-key (kbd "C-S-p") (lambda () (interactive) (ignore-errors (next-line -5))))
+  (global-set-key (kbd "C-c C-n") 'continuous-drift-down)
+  (global-set-key (kbd "C-c C-p") 'continuous-drift-up)
+  (global-set-key (kbd "M-c M-n") 'continuous-drift-down/5)
+  (global-set-key (kbd "M-c M-p") 'continuous-drift-up/5)
+  (global-set-key (kbd "M-p") '(lambda () (interactive) (scroll-up -1)))
+  (global-set-key (kbd "M-n") '(lambda () (interactive) (scroll-up 1)))
+  (global-set-key (kbd "M-P") (lambda () (interactive) (ignore-errors (scroll-down 5))))
+  (global-set-key (kbd "M-N") (lambda () (interactive) (ignore-errors (scroll-up 5))))
+
+  (global-set-key (kbd "M-.") 'find-tag) ;; extremely useful
+  (global-set-key (kbd "C-M-g") 'ace-jump-mode)
+  (global-set-key (kbd "M-g") 'goto-line-or-char))
 
 ;;; eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
 ;; multiple cursors
@@ -348,8 +314,6 @@
 (global-set-key (kbd "M-j") (lambda () (interactive) (join-line) (indent-for-tab-command)))
 (global-set-key (kbd "M-k") 'sci-copy-line)
 (global-set-key (kbd "M-c f r") 'set-file-read-only)
-(global-set-key (kbd "M-c r") 'set-file-read-only)
-(global-set-key (kbd "M-c C-r") 'set-file-read-only)
 (global-set-key (kbd "M-c k p") 'temporarily-bind-prog)
 
 (global-set-key (kbd "<f3> <f3>") 'kmacro-start-macro-or-insert-counter)
@@ -398,45 +362,5 @@
 
 ;;; aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 ;; Custom Shortcuts ends here
-;; (global-unset-key (kbd "<apps> f"))
-(progn "<apps>"
-  (global-set-key (kbd "<apps> a c") 'auto-complete-mode)
-  (global-set-key (kbd "<apps> b") 'ignore)
-  (global-set-key (kbd "<apps> c") 'ignore)
-  (global-set-key (kbd "<apps> d") 'ignore)
-  (global-set-key (kbd "<apps> f a") 'frame-alpha-get)
-  (global-set-key (kbd "<apps> e") 'ignore)
-  (global-set-key (kbd "<apps> g") 'ignore)
-  (global-set-key (kbd "<apps> h l") 'hl-line-mode)
-  (global-set-key (kbd "<apps> h s") 'hs-minor-mode)
-  (global-set-key (kbd "<apps> i") 'ignore)
-  (global-set-key (kbd "<apps> j") 'ignore)
-  (global-set-key (kbd "<apps> k") 'ignore)
-  (global-set-key (kbd "<apps> l") 'linum-mode)
-  (global-set-key (kbd "<apps> m a p c") 'minimap-create)
-  (global-set-key (kbd "<apps> m a p k") 'minimap-kill)
-  (global-set-key (kbd "<apps> m e n u") 'toggle-menu-bar-mode-from-frame)
-  (global-set-key (kbd "<apps> m c") 'minimap-create)
-  (global-set-key (kbd "<apps> m k") 'minimap-kill)
-  (global-set-key (kbd "<apps> n") 'ignore)
-  (global-set-key (kbd "<apps> o") 'ignore)
-  (global-set-key (kbd "<apps> p") 'paredit-mode)
-  (global-set-key (kbd "<apps> q") 'refresh-title)
-  (global-set-key (kbd "<apps> r") 'ignore)
-  (global-set-key (kbd "<apps> s c r") 'toggle-scroll-bar)
-  (global-set-key (kbd "<apps> s i t e") 'google-site-ishare)
-  ;; (global-set-key (kbd "<apps> t") 'tabbar-mode)
-  (global-set-key (kbd "<apps> u") 'ignore)
-  (global-set-key (kbd "<apps> v") 'visual-line-mode)
-  (global-set-key (kbd "<apps> w") 'ignore)
-  (global-set-key (kbd "<apps> x") 'ignore)
-  (global-set-key (kbd "<apps> y") 'ignore)
-  (global-set-key (kbd "<apps> z") 'ignore)
-
-  (global-set-key (kbd "<scroll> a") 'ignore)
-  (fset 'copy-sexp "\200\367")
-  (global-set-key (kbd "M-c M-@") 'copy-sexp))
-
-
 
 (provide 'new-bindings)

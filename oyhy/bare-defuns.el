@@ -5,49 +5,60 @@
 (defvar macosx-p (string-match "darwin" (symbol-name system-type)))
 (defvar linux-p (string-match "linux" (symbol-name system-type)))
 
+;;
+(defun hexnumberp (number)
+  "return t if number is 0-9, a-f, A-F
+   2013-05-26 Sunday 14:30:22 by Scinart"
+  (or (and (<= ?0 number) (<= number ?9))
+     (and (<= ?a number) (<= number ?f))
+     (and (<= ?A number) (<= number ?F))))
 
-(defmacro continuous-do-things (name round-expression)
+(defun char-name ()
+  "Show the Unicode name of previous char"
+  (interactive)
+  (let* ((char (char-before (point)))
+	 (char-name (get-char-code-property char 'name)))
+    (message "U%04X %s" char char-name)))
+
+(defun is-digit (d)
+  (and (not (null d))
+       (>= d ?0)
+       (<= d ?9)))
+
+
+(defmacro continuous-do-things (name round-expression &optional init-hook finish-hook)
   "continuous-do-things, no arg now, please.
 example: (continuous-do-things continuous-downcase-word (downcase-word 1))
 2013-05-30 Thursday 09:43:50 by Scinart.
 so great"
   `(defun ,name ()
      (interactive)
+     ,init-hook
      ,round-expression
-     (let ((repeat-key (and (> (length (this-single-command-keys)) 1)
-			    last-input-event))
-	   repeat-key-str)
-       (setq repeat-key-str (format-kbd-macro (vector repeat-key) nil))
-       (while repeat-key
-	 (unless (current-message)
-	   (message "(Type %s to repeat)"
-		    repeat-key-str))
-	 (if (equal repeat-key (read-event))
-	     (progn
-	       (clear-this-command-keys t)
-	       ,round-expression
-	       (setq last-input-event nil))
-	   (setq repeat-key nil)))
-       (when last-input-event
-	 (clear-this-command-keys t)
-	 (setq unread-command-events (list last-input-event))))))
+     (unwind-protect
+	 (let ((repeat-key (and (> (length (this-single-command-keys)) 1)
+			      last-input-event))
+	       repeat-key-str)
+	   (setq repeat-key-str (format-kbd-macro (vector repeat-key) nil))
+	   (message "(Type %s to repeat)" repeat-key-str)
+	   (while repeat-key
+	     (if (equal repeat-key (read-event))
+		 (progn
+		   (clear-this-command-keys t)
+		   ,round-expression
+		   (setq last-input-event nil))
+	       (setq repeat-key nil)))
+	   (when last-input-event
+	     (clear-this-command-keys t)
+	     (setq unread-command-events (list last-input-event))))
+       ,finish-hook)))
 
-(defun eval-string (string)
-  "eval this string without side effect"
-  (eval (read string) t))
-(defun superstring (string)
-  "make ruby like string
-2013-08-16 Friday 11:40:15 by scinart"
-  (while (string-match "#{[^}]*?}" string)
-    (let* ((b (match-beginning 0))
-	   (e (match-end 0))
-	   (whole (substring string b e))
-	   (exp (substring string (+ 2 b) (- e 1))))
-      (setq string
-	    (replace-regexp-in-string (regexp-quote whole)
-				      (format "%S" (eval-string exp)) string))))
-  string)
-;; (superstring "abc#{[]}
+(defun yy-or-n-p (str)
+  "yes-or-no. If yes, ask again.
+   by Sciart 2013-05-23 Thursday 00:01:08"
+  (and (y-or-n-p str)
+     (y-or-n-p-with-timeout (concat "Really " str) 8 t)))
+
 (defun my-exit ()
   "in bindings.el, ask for sure when you exit.
 2013-06-11 Tuesday 10:36:45"
@@ -61,11 +72,6 @@ so great"
     (if (memq t (mapcar (lambda (s) (string-equal string (format "%s" s))) blst))
 	t)))
 
-
-(defun is-digit (d)
-  (and (not (null d))
-       (>= d ?0)
-       (<= d ?9)))
 (defun aid-num/++ (p end)
   (let ((a (char-before p)))
     (setq a (or a ?a))
@@ -136,13 +142,6 @@ so great"
 
 (continuous-do-things continuous-num/++ (num/++))
 (continuous-do-things continuous-num/-- (num/--))
-
-
-
-(defun my-point ()
-  "return point position"
-  (interactive)
-  (point))
 
 (defun binary-to-hex ()
   "enumeration of 4 bits binary number to one bit hex number.
@@ -310,18 +309,7 @@ Otherwise, determine it from the file contents as usual for visiting a file."
 	   (copy-whole-buffer)
 	   (mark-whole-buffer))
 
-
-(defun my-scroll-down (&optional n)
-  (interactive "p")
-  (scroll-up (or n 1)))
-
-(defun my-scroll-up (&optional n)
-  (interactive "p")
-  (scroll-down (or n 1)))
-
 (defun copy-whole-buffer ()
-  "Copy entire buffer to clipboard"
-  (interactive)
   (clipboard-kill-ring-save (point-min) (point-max))
   (message "buffer copied."))
 
@@ -384,3 +372,53 @@ on eval success, last sexp is deleted and evaled, and non-nil return value is al
 	   "eval-last-sexp, If with C-u, delete last sexp."
 	   (eval-last-sexp-and-replace)
 	   (eval-last-sexp nil))
+
+(defun drift (&optional n)
+  "scroll-buffer with fixed cursor on screen"
+  (let ((column-position (current-column))
+	(n (or n 1)))
+    (next-line n)
+    (scroll-up n)))
+
+(defun drift-down (&optional arg)
+  "scroll-buffer with fixed cursor on screen"
+  (interactive "P")
+  (let ((n (if (numberp arg) arg 1)))
+    (drift_ n)))
+
+(defun drift-up (&optional arg)
+  "scroll-buffer with fixed cursor on screen"
+  (interactive "P")
+  (let ((n (if (numberp arg) arg 1)))
+    (drift_ (- n))))
+
+(defun set-goal-column-as-current ()
+  (set-goal-column (current-column)))
+
+(continuous-do-things continuous-drift-up (drift-up)
+		      (setf oy-drift-goal-column goal-column
+			    goal-column (or goal-column (current-column)))
+		      (setf goal-column oy-drift-goal-column))
+(continuous-do-things continuous-drift-down (drift-down)
+		      (setf oy-drift-goal-column goal-column
+			    goal-column (or goal-column (current-column)))
+		      (setf goal-column oy-drift-goal-column))
+
+(continuous-do-things continuous-drift-up/5 (ignore-errors (drift-up 5)))
+(continuous-do-things continuous-drift-down/5 (ignore-errors (drift-down 5)))
+
+(defun root-current-buffer ()
+  "Edit the file that is associated with the current buffer as root\nhttp://wenshanren.org/?p=298"
+  (interactive)
+  (if (buffer-file-name)
+      (find-file (concat "/sudo:root@localhost:" (buffer-file-name)))
+    (message "Current buffer does not have an associated file.")))
+
+(defun extern (str &optional command-name)
+  "use native application to open [string]"
+  (interactive)
+  (setq command-name (or command-name "xdg-open"))
+  (cond (linux-p
+	 (call-process command-name nil 0 nil str))
+	(windows-p
+	 (w32-shell-execute 1 str))))

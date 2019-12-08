@@ -26,7 +26,7 @@ Will throw an error if the archive version is too new."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(bmkp-last-as-first-bookmark-file "~/.emacs.d/bookmarks")
+ '(bmkp-last-as-first-bookmark-file "/home/scinart/.emacs.d/bookmarks")
  '(case-fold-search t)
  '(company-clang-arguments (quote ("-std=c++17")))
  '(coq-compile-before-require t)
@@ -47,13 +47,12 @@ Will throw an error if the archive version is too new."
  '(major-mode (quote text-mode))
  '(package-selected-packages
    (quote
-    (company-coq proof-general yasnippet-snippets elpy company-ghc mmm-mode dockerfile-mode go-snippets go-mode ace-jump-mode ace-flyspell xcscope modern-cpp-font-lock slime-company flycheck yaml-mode web-beautify w3m w3 tabbar solarized-theme smex smarter-compile smart-compile session rainbow-delimiters pretty-mode-plus pos-tip paredit nodejs-repl multiple-cursors markdown-mode kill-ring-ido key-chord julia-mode js2-mode highlight-tail haskell-mode git-rebase-mode git-gutter-fringe git-commit-mode fuzzy f eldoc-extension dired+ desktop cppcheck buffer-move bookmark+ ace-jump-buffer)))
+    (company-coq proof-general yasnippet-snippets elpy company-ghc mmm-mode dockerfile-mode go-snippets go-mode ace-jump-mode ace-flyspell xcscope modern-cpp-font-lock slime-company flycheck yaml-mode web-beautify w3m w3 tabbar solarized-theme smex smarter-compile smart-compile rainbow-delimiters pretty-mode-plus pos-tip paredit nodejs-repl multiple-cursors markdown-mode kill-ring-ido key-chord julia-mode js2-mode highlight-tail haskell-mode git-rebase-mode git-gutter-fringe git-commit-mode fuzzy f eldoc-extension dired+ desktop cppcheck buffer-move bookmark+ ace-jump-buffer)))
  '(proof-three-window-mode-policy (quote hybrid))
  '(python-indent-offset 2)
  '(python-shell-interpreter "/opt/anaconda3/bin/python3")
  '(recenter-positions (quote (middle top bottom)))
  '(safe-local-variable-values (quote ((encoding . utf-8))))
- '(session-use-package t nil (session))
  '(template-default-directories (quote ("~/.emacs.d/.templates/")))
  '(tramp-connection-timeout 3)
  '(truncate-lines t)
@@ -139,7 +138,6 @@ Will throw an error if the archive version is too new."
 ;; ELPA
 (require 'yasnippet)
 (setf yas/root-directory '("~/.emacs.d/oyhy/snippets" yas-installed-snippets-dir))
-(require 'session)
 (when (display-graphic-p)
   (require 'pretty-mode-plus)
   (require 'git-gutter-fringe)
@@ -159,7 +157,6 @@ Will throw an error if the archive version is too new."
 (key-chord-mode 1)
 (paredit-mode 1)
 (yas/global-mode 1)
-(add-hook 'after-init-hook 'session-initialize)
 (when (display-graphic-p) (global-pretty-mode 1))
 
 ;; configs
