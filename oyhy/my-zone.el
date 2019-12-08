@@ -1,6 +1,8 @@
 ;; zone.el
-;; Time-stamp: <2013-11-24 00:50:21 scinart> 
+;; Time-stamp: <2019-12-08 12:08:00 scinart>
 ;; Date created: <2013-05-05 Sunday 20:19:43>
+
+;; see https://www.emacswiki.org/emacs/ZoneMode
 (setq zone-programs [zone-pgm-jitter])
 (setq zone-programs [zone-pgm-putz-with-case])
 (setq zone-programs [zone-pgm-dissolve])
@@ -11,7 +13,7 @@
 (setq zone-programs [zone-pgm-rotate-RL-lockstep])
 (setq zone-programs [zone-pgm-rotate-LR-variable])
 (setq zone-programs [zone-pgm-rotate-RL-variable])
-(setq zone-programs [zone-pgm-drip])
+(setq zone-programs [zone-pgm-drip])q
 (setq zone-programs [zone-pgm-drip-fretfully])
 (setq zone-programs [zone-pgm-five-oclock-swan-dive])
 (setq zone-programs [zone-pgm-martini-swan-dive])
