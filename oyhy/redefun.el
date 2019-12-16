@@ -1,5 +1,5 @@
 ;;; redefun.el
-;;; Time-stamp: <2015-04-16 17:23:23 scinart>
+;;; Time-stamp: <2019-12-16 00:29:13 scinart>
 ;;; date created around 2013-05-04 Saturday
 ;;;;##########################################################################
 ;;;; OVERRIDE SYSTEM FUNCTIONS
@@ -330,11 +330,60 @@ search (cond ...  ((eq ido-exit 'fallback) ... )) to see where it's used.
 	(ido-record-work-directory)
 	(ido-visit-buffer (find-file-noselect filename nil ido-find-literal) method))))))
 
+;; Here is a patch to fix https://github.com/ProofGeneral/PG/issues/449
+(defun coq-seq-get-library-dependencies (lib-src-file &optional command-intro)
+  "Compute dependencies of LIB-SRC-FILE.
+Invoke \"coqdep\" on LIB-SRC-FILE and parse the output to
+compute the compiled coq library object files on which
+LIB-SRC-FILE depends.  The return value is either a string or a
+list.  If it is a string then an error occurred and the string is
+the core of the error message.  If the return value is a list no
+error occurred and the returned list is the (possibly empty) list
+of file names LIB-SRC-FILE depends on.
 
-(ignore)
+If an error occurs this funtion displays
+`coq--compile-response-buffer' with the complete command and its
+output.  The optional argument COMMAND-INTRO is only used in the
+error case.  It is prepended to the displayed command.
 
-
-
+LIB-SRC-FILE should be an absolute file name.  If it is, the
+dependencies are absolute too and the simplified treatment of
+`coq-load-path-include-current' in `coq-include-options' won't
+break."
+  (let ((coqdep-arguments
+         ;; FIXME should this use coq-coqdep-prog-args?
+         (nconc (coq-include-options coq-load-path (file-name-directory lib-src-file) (coq--pre-v85))
+		(list lib-src-file)))
+        coqdep-status coqdep-output)
+    (when coq--debug-auto-compilation
+      (message "call coqdep arg list: %S" coqdep-arguments))
+    (with-temp-buffer
+      (setq coqdep-status
+            (apply 'call-process
+                   coq-dependency-analyzer nil (current-buffer) nil
+                   coqdep-arguments))
+      (setq coqdep-output (buffer-string)))
+    (when coq--debug-auto-compilation
+      (message "coqdep status %s, output on %s: %s"
+	       coqdep-status lib-src-file coqdep-output))
+    (if (or
+         (not (eq coqdep-status 0))
+         (string-match coq-coqdep-error-regexp coqdep-output))
+        (let* ((this-command (cons coq-dependency-analyzer coqdep-arguments))
+               (full-command (if command-intro
+                                 (cons command-intro this-command)
+                               this-command)))
+          ;; display the error
+          (coq-init-compile-response-buffer
+           (mapconcat 'identity full-command " "))
+          (let ((inhibit-read-only t))
+            (with-current-buffer coq--compile-response-buffer
+              (insert coqdep-output)))
+          (coq-display-compile-response-buffer)
+          "unsatisfied dependencies")
+      (if (string-match ".v.beautified: \\(.*\\)$" coqdep-output)
+          (cdr-safe (split-string (match-string 1 coqdep-output)))
+        ()))))
 
 ;; Local Variables:
 ;; eval:(progn (hs-minor-mode t) (let ((hs-state '((277 512 hs) (592 2426 hs) (2461 2677 hs) (2716 3249 hs) (3289 3859 hs) (3889 4736 hs) (4774 5224 hs) (5255 5621 hs) (5658 5925 hs) (6087 6109 hs))) (the-mark 'scinartspecialmarku2npbmfydfnwzwnpywxnyxjr)) (dolist (i hs-state) (if (car i) (progn (goto-char (car i)) (hs-find-block-beginning) (hs-hide-block-at-point nil nil))))) (goto-char 12083) (recenter-top-bottom))

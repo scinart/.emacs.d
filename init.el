@@ -32,9 +32,7 @@ Will throw an error if the archive version is too new."
  '(coq-compile-before-require t)
  '(coq-compiler "/home/scinart/.opam/4.05.0/bin/coqc")
  '(coq-dependency-analyzer "/home/scinart/.opam/4.05.0/bin/coqdep")
- '(coq-prog-args
-   (quote
-    ("-emacs" "-R" "/home/scinart/repos/SF-zh/lf-current/" "LF")))
+ '(coq-prog-args (quote ("-emacs")))
  '(coq-prog-name "/home/scinart/.opam/4.05.0/bin/coqtop")
  '(delete-selection-mode nil)
  '(elpy-rpc-python-command "python3")
@@ -47,7 +45,7 @@ Will throw an error if the archive version is too new."
  '(major-mode (quote text-mode))
  '(package-selected-packages
    (quote
-    (company-coq proof-general yasnippet-snippets elpy company-ghc mmm-mode dockerfile-mode go-snippets go-mode ace-jump-mode ace-flyspell xcscope modern-cpp-font-lock slime-company flycheck yaml-mode web-beautify w3m w3 tabbar solarized-theme smex smarter-compile smart-compile rainbow-delimiters pretty-mode-plus pos-tip paredit nodejs-repl multiple-cursors markdown-mode kill-ring-ido key-chord julia-mode js2-mode highlight-tail haskell-mode git-rebase-mode git-gutter-fringe git-commit-mode fuzzy f eldoc-extension dired+ desktop cppcheck buffer-move bookmark+ ace-jump-buffer)))
+    (company-coq yasnippet-snippets elpy company-ghc mmm-mode dockerfile-mode go-snippets go-mode ace-jump-mode ace-flyspell xcscope modern-cpp-font-lock slime-company flycheck yaml-mode web-beautify w3m w3 tabbar solarized-theme smex smarter-compile smart-compile rainbow-delimiters pretty-mode-plus pos-tip paredit nodejs-repl multiple-cursors markdown-mode kill-ring-ido key-chord julia-mode js2-mode highlight-tail haskell-mode git-rebase-mode git-gutter-fringe git-commit-mode fuzzy f eldoc-extension dired+ cppcheck buffer-move bookmark+ ace-jump-buffer)))
  '(proof-three-window-mode-policy (quote hybrid))
  '(python-indent-offset 2)
  '(python-shell-interpreter "/opt/anaconda3/bin/python3")
@@ -163,7 +161,6 @@ Will throw an error if the archive version is too new."
 (require 'sci-math-symbol)
 (require 'template)
 (template-initialize)
-(require 'make-regexp)
 
 ;; oyhy
 (require 'init-utils)
